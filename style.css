@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+
+*{
+  padding: 0;
+  margin: 0;
+  font-family: "Roboto";
+}
+
+.nav-menu {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-item {
+  position: relative;
+  cursor: pointer; /* Курсор указывает на то, что элемент кликабельный */
+}
+
+/* Стили для выпадающего меню */
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  gap: 20px;
+}
+.nav-item:hover .dropdown {
+  display: flex; 
+}
+/* Стили для колонки в выпадающем меню */
+.dropdown-column {
+  padding: 10px;
+}
+
+.sub-menu {
+  list-style-type: none;
+
+}
+
+.sub-menu li {
+  margin-bottom: 5px;
+}
+
+.column-title {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.freeground {
+  display: block;
+  text-align: center;
+  background-color: #000 ;
+  padding: .5rem 2rem;
+  font-size: .8rem;
+  box-sizing: border-box;
+}
+
+
+.freeground a{
+  color: #fff !important;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: .05rem;
+  line-height: 2;
+  text-decoration: none;
+}
+
+.sport_fitness {
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  padding: 16px;
+}
+
+
+.sport_fitness a {
+  color: #000;
+  text-decoration: none;
+  font-optical-sizing: auto;
+  font-size: 1.1rem;
+  letter-spacing: .05rem;
+}
+
+
+.banner {
+  position: relative;
+  display: inline-block;
+}
+.banner img{
+  max-width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.banner-text{
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 55%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+}
+
+.banner-text h1 {
+  font-family: "Oswald", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  letter-spacing: 1.8px;
+  line-height: 1.25;
+  font-size: 43px;
+}
+
+.banner-text p {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  letter-spacing: 0.04rem;
+  max-width: 400px;
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 1.5;
+  padding-top: 20px;
+}
+
+
+.card {
+  background: #fff;
+  padding: 32px 16px;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+
+  
+}
+
+
+.card p {
+  font-size: 1.125rem;
+  font-family: "Roboto", sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  margin: 18px;
+}
+
+.card h3 {
+  font-family: "Oswald", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  letter-spacing: .05rem;
+  line-height: 1.25;
+  margin: 1.5rem 0;
+  font-size: 35px;
+}
+
+.card a {
+  font-family:  "Roboto";
+  color: #000;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 14px 30px;
+  border: 1px solid #000;
+  transition: .2s;
+  text-transform: uppercase;
+}
+
+.card a:hover {
+  border: 1px solid #fff;
+  background: #000;
+  color: #fff;
+}
+
+
+.shopall {
+  padding: 50px;
+}
+#every_runner {
+
+  margin: 50px;
+  text-align: center;
+}
+
+#every_runner p{
+  font-family: "Oswald";
+  font-style: inherit;
+  font-weight: 400;
+  font-size: 2rem;
+  color: #000;
+  letter-spacing: .05rem;
+}
