@@ -40,9 +40,9 @@
 
 /* Стили для выпадающего меню */
 .dropdown {
-  /* display: none; */
-  position: absolute;
-  width: 100vw;
+  position: fixed;
+  top: 0;
+  width: 100%;
   height: 100vw;
   background-color: #ffffff;
   padding: 20px 10px;

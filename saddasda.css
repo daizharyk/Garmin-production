@@ -4,12 +4,15 @@
   font-family: "Roboto";
   box-sizing: border-box;
 }
+
+
 .nav-section{
   display: flex;
   justify-content: space-between;
   margin: 0 20px 0 20px;
   align-items: center;
 }
+
 
 .logo a{
   text-decoration: none;
@@ -23,9 +26,10 @@
   list-style-type: none;
   align-items: center;
   height: 60px;
-  padding: 0;
+  padding-right: 20px;
   margin: 0;
   gap: 30px;
+  cursor: pointer;
 }
 
 .nav-item {
@@ -36,29 +40,35 @@
 
 /* Стили для выпадающего меню */
 .dropdown {
-  /* display: none; */
-  position: absolute;
-  width: 100vw;
-  height: 100vw;
-  background-color: #ffffff;
+  display: none;
+  position: relative;
+  top: 0; 
+  left: 0;
+  width: 100%;
+  background-color: #747272;
   padding: 20px 10px;
   gap: 20px;
+  z-index: 10; 
+}
+
+.dropdown-container{
+  display: flex;
 }
 .nav-item:hover .dropdown {
   display: flex;
-  left: -100vw; 
-  transform: translateX(50%);
 }
 /* Стили для колонки в выпадающем меню */
 .dropdown-column {
-  flex: 1;
+  display: flex;
+  flex-direction: column;
   padding: 10px;
   min-width: 200px;
 }
 
 .sub-menu {
   list-style-type: none;
-
+  display: flex;
+  flex-direction: column;
 }
 
 .sub-menu a {
@@ -73,4 +83,17 @@
 .column-title {
   font-family: Superscripts-Oswald, Oswald, "Roboto Condensed", Roboto, "Noto Sans TC", "Noto Sans SC", "Noto Sans JP", "Noto Sans KR", Prompt, sans-serif;
   margin-bottom: 10px;
+  
 }
+
+img {
+  position: relative;
+  z-index: 1
+}
+
+
+.nav-item-section {
+  display: flex;
+}
+
+.nav-menu
