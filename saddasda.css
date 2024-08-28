@@ -1,53 +1,76 @@
-.cards {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.item-card {
-  display: flex;
-  flex-direction: column; 
-  width: calc(33.333% - 32px); //* Рассчитываем ширину с учетом margin */
-  margin: 16px 0px 0px 16px;
-  box-shadow: 0 2px 3px 1px #e6e6e6;
-}
-
-.item-card-img img{
-  object-fit: contain;
-  height: 350px;
-  width: 100%;
-}
-
-.product-card-description{
-  padding: 0px 16px 24px 16px;
-}
-
-.product-card-description p{
-  margin-bottom: 16px;
-}
-
-.product-card-description h2{
-  font-family: "Oswald";
-  font-size: 1.7rem;
-  font-weight: 400;
-  letter-spacing: .05rem;
-  line-height: 1.25;
-  text-align: left;
-  color: #000000;
-  margin-bottom: 16px;
-}
-
-.product-description {
+*{
+  padding: 0;
+  margin: 0;
   font-family: "Roboto";
-  font-weight: 400;
-  line-height: 1.5;
-  text-align: left;
-  font-size: 1rem;
-  margin: 0 0 1rem;
+  box-sizing: border-box;
+}
+.nav-section{
+  display: flex;
+  justify-content: space-between;
+  margin: 0 20px 0 20px;
+  align-items: center;
 }
 
-.price-text {
-  font-family: "Roboto";
+.logo a{
+  text-decoration: none;
+  font-size: 1.5rem;
   font-weight: 700;
-  font-size: 15px;
+  color: #000;
+  letter-spacing: 0.1rem;
+}
+.nav-menu {
+  display: flex;
+  list-style-type: none;
+  align-items: center;
+  height: 60px;
+  padding: 0;
+  margin: 0;
+  gap: 30px;
+}
 
+.nav-item {
+  font-family: Superscripts-Oswald, Oswald, "Roboto Condensed", Roboto, "Noto Sans TC", "Noto Sans SC", "Noto Sans JP", "Noto Sans KR", Prompt, sans-serif;
+  position: relative;
+  cursor: pointer; 
+}
+
+/* Стили для выпадающего меню */
+.dropdown {
+  /* display: none; */
+  position: absolute;
+  width: 100vw;
+  height: 100vw;
+  background-color: #ffffff;
+  padding: 20px 10px;
+  gap: 20px;
+}
+.nav-item:hover .dropdown {
+  display: flex;
+  left: -100vw; 
+  transform: translateX(50%);
+}
+/* Стили для колонки в выпадающем меню */
+.dropdown-column {
+  flex: 1;
+  padding: 10px;
+  min-width: 200px;
+}
+
+.sub-menu {
+  list-style-type: none;
+
+}
+
+.sub-menu a {
+  margin-bottom: 5px;
+  text-decoration: none;
+  color: #000;
+}
+.sub-menu a:hover{
+  text-decoration: underline;
+}
+
+.column-title {
+  font-family: Superscripts-Oswald, Oswald, "Roboto Condensed", Roboto, "Noto Sans TC", "Noto Sans SC", "Noto Sans JP", "Noto Sans KR", Prompt, sans-serif;
+  margin-bottom: 10px;
 }

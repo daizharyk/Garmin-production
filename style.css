@@ -8,38 +8,56 @@
   font-family: "Roboto";
   box-sizing: border-box;
 }
+.nav-section{
+  display: flex;
+  justify-content: space-between;
+  margin: 0 20px 0 20px;
+  align-items: center;
+}
 
+.logo a{
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #000;
+  letter-spacing: 0.1rem;
+}
 .nav-menu {
+  display: flex;
   list-style-type: none;
+  align-items: center;
+  height: 60px;
   padding: 0;
   margin: 0;
-  display: flex;
-  gap: 20px;
+  gap: 30px;
 }
 
 .nav-item {
+  font-family: Superscripts-Oswald, Oswald, "Roboto Condensed", Roboto, "Noto Sans TC", "Noto Sans SC", "Noto Sans JP", "Noto Sans KR", Prompt, sans-serif;
   position: relative;
-  cursor: pointer; /* Курсор указывает на то, что элемент кликабельный */
+  cursor: pointer; 
 }
 
 /* Стили для выпадающего меню */
 .dropdown {
-  display: none;
+  /* display: none; */
   position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: white;
-  padding: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
+  width: 100vw;
+  height: 100vw;
+  background-color: #ffffff;
+  padding: 20px 10px;
   gap: 20px;
 }
 .nav-item:hover .dropdown {
-  display: flex; 
+  display: flex;
+  left: -100vw; 
+  transform: translateX(50%);
 }
 /* Стили для колонки в выпадающем меню */
 .dropdown-column {
+  flex: 1;
   padding: 10px;
+  min-width: 200px;
 }
 
 .sub-menu {
@@ -47,12 +65,17 @@
 
 }
 
-.sub-menu li {
+.sub-menu a {
   margin-bottom: 5px;
+  text-decoration: none;
+  color: #000;
+}
+.sub-menu a:hover{
+  text-decoration: underline;
 }
 
 .column-title {
-  font-weight: bold;
+  font-family: Superscripts-Oswald, Oswald, "Roboto Condensed", Roboto, "Noto Sans TC", "Noto Sans SC", "Noto Sans JP", "Noto Sans KR", Prompt, sans-serif;
   margin-bottom: 10px;
 }
 
@@ -60,7 +83,7 @@
   display: block;
   text-align: center;
   background-color: #000 ;
-  padding: .5rem 2rem;
+  padding: 0.2rem 0 0.2rem 0;
   font-size: .8rem;
   box-sizing: border-box;
 }
@@ -88,7 +111,7 @@
   color: #000;
   text-decoration: none;
   font-optical-sizing: auto;
-  font-size: 1.1rem;
+  font-size: 0.95rem;
   letter-spacing: .05rem;
 }
 
@@ -172,7 +195,7 @@
   font-weight: 500;
   padding: 14px 30px;
   border: 1px solid #000;
-  transition: .2s;
+  transition: .2s ,color 0.2s;
   text-transform: uppercase;
 }
 
@@ -246,7 +269,7 @@
   margin: 1rem 0 0;
   padding: 0.5rem 1.5rem;
   line-height: 1.15;
-  transition: 0.2s, color 0.2s;
+  transition: .2s ,color 0.2s;
   color: #fff;
 }
 
@@ -644,32 +667,30 @@
 
 .tile-card{
   position: relative;
-  width: 550px;
   flex: 1;
   margin: 8px;
   overflow: hidden; 
+  height: 350px;
 }
 
 .tile-card img{
   width: 100%;
   height: 100%;
   object-fit: cover;
-  
 }
 
 .tile-card_discription{
   position: absolute;
+  width: 100%;
   bottom: 0;
   left: 0;
-  width: 100%;
-  padding: 50px;
+  padding-bottom: 50px;
   color: #fff;
   text-align: center;
   z-index: 2;
 }
 
 .tile-card_discription h2{
-  
   position: relative;
   color: #ffffff;
   bottom: 30px;
@@ -689,4 +710,198 @@
   background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%); 
   filter: blur(10px); /* Размытие фона */
   z-index: 1;
+}
+
+.singup{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin: 20px;
+}
+
+.signup-content {
+  padding: 20px;
+}
+
+.signup-content h2{
+  color: #000;
+  font-family: "Oswald";
+  letter-spacing: .05rem;
+  font-weight: 400;
+  font-size: 1.5rem;
+  padding-bottom: 20px;
+}
+
+.signup-content p{
+  font-size: 0.7rem;
+  padding-top: 20px;
+}
+
+.signup-content a{
+  font-size: 0.7rem;
+}
+
+.email-form {
+  display: flex;
+  align-items: center;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.email-form input[type="email"] {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-right: none;
+  
+}
+
+.email-form button {
+  font-size: 30px;
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
+  border: none;
+  transition: transform 0.2s ,color 0.3s ;
+}
+
+.email-form button:hover {
+  background-color: #fff;
+  color: #000;
+  border: 1px solid;
+}
+
+
+
+
+footer {
+  background: #000;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.nav_footer {
+  width: 100%;
+}
+
+
+
+.nav_list {
+  display: flex;
+  justify-content: space-between;
+  padding: 30px;
+}
+
+
+
+.nav_list a {
+  font-weight: 400;
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav-list-item button {
+  color: #fff;
+  font-family: "Roboto";
+  font-weight: 400;
+  letter-spacing: .05rem;
+  border: 0;
+  line-height: 2rem;
+  font-size: 1.3rem;
+  background: transparent;
+  cursor: pointer;
+}
+
+.nav-list-li {
+  font-family: "Roboto";
+  position: relative;
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.05rem;
+}
+
+.nav-list-item {
+  margin-right: 10rem;
+  line-height: 1.5rem;
+}
+
+
+.nav-list-li a:hover {
+  text-decoration: underline;
+}
+
+.socialmediafooter h4 {
+  color: #fff;
+  font-family: "Roboto";
+  font-size: 0.9rem;
+  cursor: pointer;
+  font-weight: 500;
+  margin: 1rem 0 0 0;
+}
+
+
+.socialmediafooter h4:hover {
+  text-decoration: underline;
+}
+
+.socialmediafooter {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+  padding-top: 3rem;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.fotter_social_media {
+  display: flex;
+}
+
+.fotter_social_media_items {
+  margin: 0 1rem;
+}
+
+.white-line-footer {
+  width: 100%;
+  height: auto;
+  margin: 0 30px 0px 30px;
+  border-bottom: 4px solid #fff;
+}
+
+
+.foter_nav {
+  font-family: "Roboto";
+  font-size: .8rem;
+  display: flex;
+  width: 100%;
+  margin: 10px 30px 10px 30px;
+  color: #fff;
+  list-style: none;
+  font-weight: 500;
+  align-items: center;
+}
+
+
+
+.foter_nav_li {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.foter_nav_li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.foter_nav_li li {
+  padding-left: 25px;
+}
+
+.foter_nav_li a:hover {
+  text-decoration: underline;
 }
