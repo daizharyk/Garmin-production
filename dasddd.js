@@ -1,7 +1,7 @@
 document.querySelectorAll('.nav-menu').forEach(menu => {
   menu.addEventListener('mouseover', () => {
-    const dropdownClass = menu.classList.contains('smartwatches') ? '.smartwatches-dropdown' : '.marine-dropdown';
-    const dropdown = document.querySelector(dropdownClass);
+    const dropdownClass = `${menu.classList[1]}-dropdown`;
+    const dropdown = document.querySelector(`.${dropdownClass}`);
     
 
     dropdown.style.display = 'flex';
@@ -12,14 +12,14 @@ document.querySelectorAll('.nav-menu').forEach(menu => {
     });
 
 
-    dropdown.addEventListener('mouseout', () => {
-      dropdown.style.display = 'none';
-    });
+    // dropdown.addEventListener('mouseout', () => {
+    //   dropdown.style.display = 'none';
+    // });
   });
 
   menu.addEventListener('mouseout', () => {
-    const dropdownClass = menu.classList.contains('smartwatches') ? '.smartwatches-dropdown' : '.marine-dropdown';
-    const dropdown = document.querySelector(dropdownClass);
+    const dropdownClass = `${menu.classList[1]}-dropdown`; 
+    const dropdown = document.querySelector(`.${dropdownClass}`);
     dropdown.style.display = 'none';
   });
 });

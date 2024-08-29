@@ -8,6 +8,8 @@
   font-family: "Roboto";
   box-sizing: border-box;
 }
+
+
 .nav-section{
   display: flex;
   justify-content: space-between;
@@ -15,7 +17,9 @@
   align-items: center;
 }
 
+
 .logo a{
+  font-family: 'Roboto';
   text-decoration: none;
   font-size: 1.5rem;
   font-weight: 700;
@@ -24,49 +28,65 @@
 }
 .nav-menu {
   display: flex;
+  padding: 0 10px 0 10px;
   list-style-type: none;
   align-items: center;
   height: 60px;
-  padding: 0;
-  margin: 0;
-  gap: 30px;
+  cursor: pointer;
+}
+.nav-menu:hover{
+  border-bottom: 4px solid #000;
 }
 
-.nav-item {
-  font-family: Superscripts-Oswald, Oswald, "Roboto Condensed", Roboto, "Noto Sans TC", "Noto Sans SC", "Noto Sans JP", "Noto Sans KR", Prompt, sans-serif;
-  position: relative;
-  cursor: pointer; 
+.nav-item  {
+    font-family: Superscripts-Oswald, Oswald, "Roboto Condensed", Roboto, "Noto Sans TC", "Noto Sans SC", "Noto Sans JP", "Noto Sans KR", Prompt, sans-serif;
+    position: relative;
+    cursor: pointer; 
+    font-size: 1rem;
+    cursor: pointer; 
+    letter-spacing: .04rem;
+    font-weight: 400;
 }
 
 /* Стили для выпадающего меню */
 .dropdown {
-  position: fixed;
-  top: 0;
+  display: none;
+  justify-content: center;
+  position: absolute;
   width: 100%;
-  height: 100vw;
   background-color: #ffffff;
-  padding: 20px 10px;
+  padding: 35px 0 35px 0;
   gap: 20px;
+  z-index: 10; 
+  border-top: 1px solid #d9d9d9;
+}
+
+.dropdown-column {
+  padding-right: 80px;
+}
+
+
+.dropdown-container{
+  display: flex;
 }
 .nav-item:hover .dropdown {
   display: flex;
-  left: -100vw; 
-  transform: translateX(50%);
 }
 /* Стили для колонки в выпадающем меню */
-.dropdown-column {
-  flex: 1;
-  padding: 10px;
-  min-width: 200px;
-}
+
 
 .sub-menu {
   list-style-type: none;
-
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
 }
 
 .sub-menu a {
-  margin-bottom: 5px;
+  font-family: "Roboto";
+  font-size: 0.8rem;
+  letter-spacing: .05rem;
+  margin-bottom: 10px;
   text-decoration: none;
   color: #000;
 }
@@ -76,7 +96,68 @@
 
 .column-title {
   font-family: Superscripts-Oswald, Oswald, "Roboto Condensed", Roboto, "Noto Sans TC", "Noto Sans SC", "Noto Sans JP", "Noto Sans KR", Prompt, sans-serif;
+  margin-bottom: 15px;
+  border-bottom: 1px solid  #d9d9d9;
+}
+
+
+
+
+.nav-item-section {
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+}
+
+.new-card{
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 0px 3px 3px #e6e6e6;
+  cursor: pointer;
+  width: 230px;
+  height: 300px;
+  align-items: center;
+}
+
+.new-card img {
+  width: 180px;
+  margin: 10px;
+}
+
+.new-card-discription {
+  text-align: center;
+  padding: 10px;
+}
+
+.new-card-discription h2{
+  font-family: "Oswald";
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: .05rem;
+  color: #000000;
   margin-bottom: 10px;
+}
+.new-card-discription p {
+  font-family: "Roboto";
+  font-weight: 400;
+  letter-spacing: .05rem;
+  line-height: 1.3;
+  font-size: 0.8rem;
+  margin: 0 0 1rem;
+  flex-grow: 1;
+}
+
+.trademark-dropdown{
+  font-size: 0.6em; 
+  vertical-align: super; 
+  color: #000; 
+  font-weight: bold;
+}
+
+.new-cards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 .freeground {
@@ -373,19 +454,21 @@
 
 .sidebar {
   padding: 7px 14px 7px 14px;
-  
+  border-right: 1px solid #d9d9d9;
+  width: 310px;
+  flex-shrink: 0;
 }
 
 .sidebar h2 {
   font-weight: 600;
   padding: 1em 0;
-  font-size: 1rem;
+  font-size: 0.8rem;
   line-height: 1.5;
 }
 
 
 .feature-list {
-  font-size: 1rem;
+  font-size: 0.875rem;
   list-style: none;
   padding: .5em 1em;
   margin: 0;
@@ -408,7 +491,7 @@
   height: 14px;
   cursor: pointer;
   background-color: #fff;
-  border: 3px solid #000;
+  border: 2px solid #000;
   margin-right:  0.5rem;
   
 }
@@ -433,14 +516,6 @@
   cursor: pointer;
 }
 
-
-
-.sidebar {
-  padding: 7px 14px 7px 14px;
-  border-right: 1px solid #d9d9d9;
-  width: 360px;
-  flex-shrink: 0;
-}
 
 
 
@@ -488,7 +563,7 @@
 
 .sidebar h3{
     font-weight: 450;
-    font-size: 1.1rem;
+    font-size: 0.875rem;
     line-height: 1.5;
     
 }
@@ -519,12 +594,11 @@
 
 .compare-buttom {
   cursor: pointer;
-
 }
 
 .compare-buttom a {
   background: #000;
-  width: 140px;
+  width: 120px;
   height: 40px;
   font-family: "Roboto";
   color: #fff;
@@ -533,8 +607,7 @@
   outline: none;
   text-transform: uppercase;
   font-weight: 500;
-  display: inline-block;
-  font-size: 1rem;
+  font-size: 0.875rem;
   border: solid 1px #fff;
   text-align: center;
   padding: 8px 24px 8px 24px;
@@ -553,13 +626,13 @@
 .select-option p {
   margin-right: 1rem;
   font-weight: 550;
-  font-size: 1rem;
+  font-size: 0.875rem;
   text-align: left;
   font-family: "Roboto";
 }
 
 .select-option select {
-  font-size: 1.2em;
+  font-size: 1em;
   width: 100%;
   height: auto;
   background-color: #ffffff;
@@ -584,7 +657,7 @@
 .item-card {
   display: flex;
   flex-direction: column; 
-  width: calc(33.333% - 17px); /* Рассчитываем ширину с учетом margin */
+  width: calc(33.333% - 17px);
   margin: 16px 0px 0px 16px;
   box-shadow: 0 2px 3px 1px #e6e6e6;
   cursor: pointer;
@@ -599,7 +672,7 @@
 
 .item-card-img img{
   object-fit: contain;
-  height: 350px;
+  height: 300px;
   width: 100%;
 }
 
@@ -646,16 +719,16 @@
 .trademark {
   font-size: 0.6em; 
   vertical-align: super; 
-  color: #fd0457; 
+  color: #000; 
   font-weight: bold;
 }
 
 .tm-symbol {
-  font-size: 0.7em; /* Изменение размера */
-  vertical-align: super; /* Поднятие символа вверх */
-  font-weight: bold; /* Жирный шрифт */
-  color: #ff0000; /* Изменение цвета */
-  margin-left: 4px; /* Отступ слева */
+  font-size: 0.7em; 
+  vertical-align: super; 
+  font-weight: bold; 
+  color: #000; 
+  margin-left: 4px; 
 }
 
 
@@ -891,17 +964,15 @@ footer {
   display: flex;
   width: 100%;
   justify-content: flex-end;
-}
-
-.foter_nav_li a {
-  color: #fff;
   text-decoration: none;
 }
 
-.foter_nav_li li {
-  padding-left: 25px;
-}
 
+.foter_nav_li a {
+  padding-left: 25px;
+  color: #fff;
+  text-decoration: none;
+}
 .foter_nav_li a:hover {
   text-decoration: underline;
 }
