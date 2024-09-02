@@ -1,0 +1,22 @@
+.product-filter_dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  display: none; /* Скрыто по умолчанию */
+  position: absolute;
+  background-color: #fff;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  padding: 20px;
+  width: 300px; /* Размер dropdown */
+}
+
+.product-filter_dropdown:hover .dropdown-content {
+  display: block; /* Показать при наведении */
+}
+
+.sidebar,
+.grid__options {
+  margin-bottom: 20px; /* Разделение элементов */
+}

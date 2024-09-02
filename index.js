@@ -23,3 +23,9 @@ document.querySelectorAll('.nav-menu').forEach(menu => {
     dropdown.style.display = 'none';
   });
 });
+
+document.getElementById('filterSortToggle').addEventListener('click',function(){
+  const sidebar = document.getElementById('sidebar');
+  
+  sidebar.classList.toggle('sidebar');
+})
