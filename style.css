@@ -10,6 +10,8 @@
 }
 
 
+
+
 .nav-section{
   display: flex;
   justify-content: space-between;
@@ -126,7 +128,6 @@
 
 .new-card-discription {
   text-align: center;
-  padding: 10px;
 }
 
 .new-card-discription h2{
@@ -199,7 +200,6 @@
 
 .banner {
   position: relative;
-
 }
 .banner img{
   max-width: 100%;
@@ -316,7 +316,6 @@
 
 .box{
   position: relative;
-  
 }
 
 .box img{
@@ -408,7 +407,7 @@
   font-weight: 400;
   padding-bottom: 50px;
 }
-
+ 
 .content a{
   font-family: "Roboto";
   color: #ffffff;
@@ -546,10 +545,20 @@
   border-bottom: 3px solid #000;
   transform: rotate(45deg);
   position: absolute;
-  right: 0px;
+  right: 20px;
   transition: transform 0.4s ease;
 }
-
+.arrow-white {
+  display: none;
+  width: 10px;
+  height: 10px;
+  border-right: 3px solid #fff;
+  border-bottom: 3px solid #fff;
+  transform: rotate(45deg);
+  position: absolute;
+  right: 20px;
+  transition: transform 0.4s ease;
+}
 .toggle-checkbox:checked + .toggle-label .arrow {
   transform: rotate(-135deg); 
 }
@@ -871,15 +880,21 @@ footer {
 }
 
 .nav-list-item button {
-  color: #fff;
-  font-family: "Roboto";
-  font-weight: 400;
-  letter-spacing: .05rem;
   border: 0;
-  line-height: 2rem;
-  font-size: 1.3rem;
   background: transparent;
   cursor: pointer;
+  padding-bottom:1.5rem ;
+}
+
+.nav-list-item span{
+  font-family: Superscripts-Oswald, Oswald, "Roboto Condensed", Roboto, "Noto Sans TC", "Noto Sans SC", "Noto Sans JP", "Noto Sans KR", Prompt, sans-serif;
+    font-weight: 400;
+    letter-spacing: .05rem;
+    color: #fff;
+    line-height: 2rem;
+    font-size: 1.3rem;
+    cursor: pointer;
+
 }
 
 .nav-list-li {
@@ -975,14 +990,33 @@ footer {
   display:none ;
 }
 
-@media (max-width:1000px) {
+
+.product-filter_dropdown{
+  display: none;
+}
+
+.cards-content{
+  margin-right: 20px;
+}
+.grid__options{
+  padding-top: 20px;
+}
+
+@media (max-width:1000px){ 
+ 
+ 
+
+
+
   .nav-item-section{
     display: none;
   }
   .nav-section {
     justify-content: center;
   }
-
+.nav-item-section.active {
+    display: flex; /* Показать навигацию при активации */
+  }
   .login-section{
     position: absolute;
     right: 20px;
@@ -1002,17 +1036,22 @@ footer {
   .banner-text {
     background-color: #000000;
     position: relative;
+    top: 80px;
     left: auto;
     text-align: center;
     width: 100%;
-    padding: 50px 0;
+    padding: 25px 0;
   }
 .banner-text h1{
-  font-size: 2rem;
+  font-size: 1.9rem;
+}
+.head-nav{
+  margin: 10px 0 10px 0;
 }
   .banner-p{
     display: flex;
     justify-content: center;
+    margin: 5px;
   }
   .container-items {
     display: flex;
@@ -1023,18 +1062,117 @@ footer {
   display: none;
   width: 100%;
 }
-#filterSortToggle {
-        cursor: pointer;
+
+.product-filter_dropdown{
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 20px;
+  border-top: 1px solid #d9d9d9 ;
+  font-family: "roboto";
 }
+
+
+
 .cards{
   display: flex;
   flex-wrap: wrap;
+}
+
+.grid__options{
+  margin: 0;
+}
+.product-filter_dropdown .arrow {
+  transition: transform 0.3s ease;
+}
+
+.product-filter_dropdown.active .arrow {
+  transform: rotate(-135deg); 
+  
+}
+
+.product-filter_dropdown p{
+  font-family: "Roboto";
+  color: #000;
+  font-weight: 500;
+  font-size: 1rem;
+}
+.nav_list{
+  display: block;
+}
+.nav-list-li {
+  display: none; 
+  list-style: none;
+  padding-left: 20px;
+}
+
+.nav-list-item{
+  width: 100%;
+  padding: 0 20px 0 20px;
+  
+}
+.nav-list-li li {
+  margin-bottom: 20px ;
+}
+.nav-list-item button {
+  display: flex;
+  align-items: center;
+}
+.nav-list-item.active .nav-list-li {
+  display: block; /* Показать при активном состоянии */
+  padding-bottom: 20px;
+}
+.arrow-white  {
+  display: flex;
+}
+.nav-list-item.active .arrow-white {
+  transform: rotate(225deg); 
+  border-right: 3px solid #000;
+  border-bottom: 3px solid #000;
+}
+
+.nav-list-item.active {
+  background: #fff;
+}
+
+.nav-list-item.active span {
+  color: #000;
+}
+.nav-list-item.active a {
+  color: #000;
+
+}
+.nav_list{
+  padding: 30px 0 30px 0;
+}
+
+
+.socialmediafooter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.socialmediafooter  h4{
+  padding: 20px;
+}
+.foter_nav {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: center;
+  
+}
+.foter_nav_li {
+  width: auto;
+  padding: 15px 0 50px 0;
+}
 
 }
 
 
 
-}
 
 
 @media (max-width: 1200px){
@@ -1044,8 +1182,123 @@ footer {
 }
 
 
-@media (max-width: 450px){
-  .cards .item-card {
-    flex: 1 1 calc(100% - 20px); /* Две карточки в ряд */
+@media (max-width: 755px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+  .box img{
+    height: 300px;
+  }
+  .tile-container{
+    flex-direction: column;
+    height: 1150px;
+  }
+  .select-option label {
+    width: auto;
+  }
+  .product-card-description h2{
+    font-family: "Oswald";
+    font-size: 1.2rem;
+    font-weight: 400;
+    letter-spacing: .05rem;
+    line-height: 1.25;
+    text-align: left;
+    color: #000000;
+    margin-bottom: 16px;
+  }
+  
+  .product-description {
+    font-family: "Roboto";
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: left;
+    font-size: 0.8rem;
+    margin: 0 0 1rem;
+    flex-grow: 1;
+  }
+
+
+  .item-card {
+    display: flex;
+    flex-direction: column; 
+    width: calc(33.333% - 17px);
+    margin: 16px 0px 0px 10px;
+    box-shadow: 0 2px 3px 1px #e6e6e6;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    word-wrap: break-word;
+  }
+  
+ .cards {
+  margin: 10px;
+ }
+ 
+  .item-card-img img{
+    object-fit: contain;
+    height: 200px;
+    width: 100%;
+  }
+
+  .cards-content {
+    margin: 0 ;
   }
 }
+
+@media (max-width: 450px){
+  .cards .item-card {
+    flex: 1 1 calc(100% - 20px); 
+    margin: 10px 0 10px 0;
+  }
+ 
+
+  
+.select-option p {
+  margin-right: 1rem;
+  font-weight: 550;
+  font-size: 0.775rem;
+  text-align: left;
+  font-family: "Roboto";
+}
+
+.select-option select {
+  font-size: 0.8em;
+  width: 190px;
+  height: auto;
+  background-color: #ffffff;
+  border: 1px solid #d9d9d9;
+  margin: 14 48px 14px 14px;
+  padding: 0.875rem 7em 0.875rem 0.875rem;
+  
+}
+.grid__options {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 5px ;
+}
+
+.select-option label {
+  width: auto;
+}
+.content h2{
+  font-size: 1.4rem;
+}
+.content p {
+  font-size: 1rem;
+  padding: 0;
+}
+.content a {
+  font-size: 0.8rem;
+}
+
+#every_runner {
+  margin: 10px;
+}
+#every_runner p {
+  font-size: 1.5rem;
+}
+.shopall {
+  padding: 10px;
+}
+}
+
