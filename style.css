@@ -60,7 +60,7 @@
   padding: 35px 0 35px 0;
   gap: 20px;
   z-index: 10; 
-  border-top: 1px solid #d9d9d9;
+  border: 1px 0 1px 0 solid #d9d9d9;
 }
 
 .dropdown-column {
