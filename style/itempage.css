@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.product {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+
+.product-img-container{
+  display: flex;
+}
+
+.product-img {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.product-img img{
+  width: 500px;
+  height: 500px;
+}
+
+.gallery-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-height: 500px;
+}
+
+.product-title {
+  font-family: "Oswald";
+  font-size: 2.3rem;
+  font-weight: 400;
+  letter-spacing: .05rem;
+  line-height: 1.25;
+  text-align: left;
+  color: #000000;
+}
+.carousel-control {
+  width: 100%;
+  height: 100;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  transition: .2s ,color 0.2s ease;
+}
+
+
+button:hover {
+  background: #9a9a9a;
+}
+
+.carousel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  max-height: 400px;
+}
+
+.carousel-box {
+  width: 80px; 
+  height: 80px; 
+  margin: 5px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #ccc;
+  cursor: pointer;
+}
+
+.carousel-img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+}
+
+
+
+.sale-box p {
+  background-color: #6DCFF6;
+    font-weight: bold;
+    font-family: Roboto, sans-serif, Microsoft JhengHei;
+    font-size: 9pt;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: #6DCFF6 solid 5pt;
+    width: 70px;
+}
+
+.product-price {
+  margin: 1rem  0 0 0;
+  color: #0079be;
+  
+}
+
+.currency-code {
+  font-size: 1rem;
+  width: 500;
+}
+#product-price {
+  font-family: "roboto";
+  font-size: 1.5em;
+    font-weight: 600;
+    line-height: 1.25rem;
+    color: #0079be;
+}
+
+.price-save-box  {
+  color: #fff;
+  font-size: 0.875rem;
+    line-height: 1rem;
+    background: #777b00;
+    display: inline-block;
+    margin-bottom: 0;
+    padding: .7em 1em;
+    margin-top: 1em;
+}
+
+.currency {
+  font-size: 0.7rem;
+}
+.add-cart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+    line-height: 1rem;
+    background: #1146a7;
+    width: 170px;
+    height: 45px;
+    margin-bottom: 0;
+    padding: .7em 1em;
+    margin: 1em 0 1em;
+    cursor: pointer;
+
+}
+
+
+.product-color {
+  margin: 1em 0 1em;
+}

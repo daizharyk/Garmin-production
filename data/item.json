@@ -1,0 +1,12 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "category": "smartwatches",
+      "name": "Forerunner® 165 Series",
+      "image": "16green.webp",
+      "text": "You’re a runner who has moved beyond just running. You’re ready to train brilliantly. With a bright AMOLED display, training metrics, wellness insights, and optional music your goals are about to be met.",
+      "price": 249.99
+    }
+  ]
+}

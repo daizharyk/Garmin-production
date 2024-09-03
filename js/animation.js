@@ -45,4 +45,3 @@ document.querySelectorAll('.nav-list-item').forEach(item => {
     item.classList.toggle('active');
   });
 });
-
