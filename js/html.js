@@ -1,29 +1,8 @@
 
-
-
-
-document.querySelectorAll('.carousel-img').forEach(img => {
-  img.addEventListener('click', function () {
-    const mainImage = document.getElementById('mainImage');
-    mainImage.src = this.src;
-  });
-});
-
-const carousel = document.querySelector('.carousel');
-const btnUp = document.getElementById('carouselUp');
-const btnDown = document.getElementById('carouselDown');
-
-
-btnUp.addEventListener('click', () => {
-  carousel.scrollBy({ top: -80, behavior: 'smooth' });
-});
-
-btnDown.addEventListener('click', () => {
-  carousel.scrollBy({ top: 80, behavior: 'smooth' });
-});
+import data from '../data/item.json' with { type: 'json' };
 
 // Функция для создания карточек
- export function creatCards(data) {
+export function createCards(data) {
   const container = document.getElementById('cards-container')
 
   data.items.forEach(item => {
@@ -60,3 +39,6 @@ btnDown.addEventListener('click', () => {
     container.appendChild(card);
   });
 }
+
+
+

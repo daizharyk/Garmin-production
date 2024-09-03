@@ -883,7 +883,9 @@ footer {
   border: 0;
   background: transparent;
   cursor: pointer;
-  padding-bottom:1.5rem ;
+  padding:1rem ;
+  display: flex;
+  align-items: center;
 }
 
 .nav-list-item span{
@@ -894,6 +896,7 @@ footer {
     line-height: 2rem;
     font-size: 1.3rem;
     cursor: pointer;
+    text-align: left;
 
 }
 
@@ -1114,10 +1117,7 @@ footer {
 .nav-list-li li {
   margin-bottom: 20px ;
 }
-.nav-list-item button {
-  display: flex;
-  align-items: center;
-}
+
 .nav-list-item.active .nav-list-li {
   display: block; /* Показать при активном состоянии */
   padding-bottom: 20px;

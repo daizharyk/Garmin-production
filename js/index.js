@@ -1,4 +1,7 @@
-import data from './item.json' with { type: 'json'}
+import { createCards } from './html.js';
+import data from '../data/item.json' with { type: 'json' };
 
-console.log(data);
+
+
+createCards(data);
 
