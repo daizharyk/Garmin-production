@@ -2,48 +2,53 @@
   "items": [
     {
       "id": 1,
-      "color": "White",
+      "color": "Mist Gray/Whitestone",
       "category": "smartwatches",
-      "product_title":  "",
+      "product_title":  "Forerunner® 165 Music",
       "name": "Forerunner® 165 Series",
       "image": "165green.webp",
       "text": "You’re a runner who has moved beyond just running. You’re ready to train brilliantly. With a bright AMOLED display, training metrics, wellness insights, and optional music your goals are about to be met.",
-      "price": 249.99
+      "price": 249.99,
+      "status": "NEW"
     },
     {
       "id": 2,
-      "color": "White",
+      "color": "Black",
       "category": "smartwatches",
-      "product_title":  "",
-      "name": "Enduro™ 2",
+      "product_title":  "Enduro™ 3",
+      "name": "Enduro™ 3",
       "text": "You’re an ultra racer. You need a multisport GPS watch that can go to extremes — with solar charging, incredible GPS battery life and built-in mapping to help you stay ahead of the pack.",
       "image": "enduro2.webp",
-      "price": 999.99
+      "price": 899.99,
+      "status": "NEW"
     },
     {
       "id": 3,
       "color": "White",
       "category": "smartwatches",
-      "product_title":  "",
+      "product_title":  "Forerunner® 55",
       "name": "Forerunner® 55",
       "text": "See yourself as a runner. Get the easy-to-use GPS running smartwatch that encourages running and healthy lifestyles.",
       "image": "55.webp",
-      "price": 169.99
+      "price": 169.99,
+      "status": "Sale"
     },
     {
       "id": 4,
-      "color": "White",
+      "color": "Slate Stainless Steel Bezel with Black Case and Silicone Band",
       "category": "smartwatches",
+      "product_title":  "Venu® 3",
       "name": "Venu® 3 Series",
       "text": "You’ve got health and fitness goals and want an on-wrist coach to support you. This GPS smartwatch that can make calls and send texts when connected to your smartphone is the one.",
       "image": "venus3.webp",
-      "price": 449.99
+      "price": 449.99,
+      "status": "Customizable"
     },
     {
       "id": 5,
-      "color": "Black",
+      "color": "Premium Tactical GPS Watch with Silicone Band",
       "category": "smartwatches",
-      "product_title":  "",
+      "product_title":  "tactix® 7 – Standard Edition",
       "name": "tactix® 7 Series",
       "text": "You want to be field-ready. You want specialized GPS smartwatches with tactical features, built-in flashlights, routable TOPO mapping and more.",
       "image": "tartix.webp",
@@ -51,12 +56,14 @@
     },
     {
       "id": 6,
-      "color": "Black",
+      "color": "Carbon Gray DLC Titanium with Black Band",
       "category": "smartwatches",
+      "product_title":  "epix™ Pro (Gen 2) – Sapphire Edition | 47 mm",
       "name": "epix™ Series",
       "text": "You’re an athlete who refuses to compromise. Wherever you’re going, only the best will do. Get the ultimate high-performance smartwatch with a stunning AMOLED display, optional built-in LED flashlight, advanced training metrics and more.",
       "image": "epix.webp",
-      "price": 799.99
+      "price": 999.99,
+      "status": "Customizable"
     },
     {
       "id": 7,
@@ -66,23 +73,25 @@
       "name": "fēnix® 8 Series",
       "text": "You’re an athlete or adventurer looking to push beyond limits with a smartwatch offering advanced strength training, sports apps, 24/7 health monitoring, dynamic round-trip routing and more. ",
       "image": "fenix8yellow.webp",
-      "price": 799.99
+      "price": 799.99,
+      "status": "NEW"
     },
     {
       "id": 8,
-      "color": "Pink",
+      "color": "Metallic Lilac with Lilac Silicone Band",
       "category": "smartwatches",
-      "product_title":  "",
+      "product_title":  "Lily® 2",
       "name": "Lily® 2 Series",
       "text": "You’re trendy, health-focused and connected to your world. These small, stylish smartwatches are too. Meet your new favorite accessory.",
       "image": "Lily® 2 Series.webp",
-      "price": 249.99
+      "price": 249.99,
+      "status": "Customizable"
     },
     {
       "id": 9,
       "color": "Aviator Smartwatch with Vented Titanium Bracelet",
       "category": "smartwatches",
-      "product_title":  "",
+      "product_title":  "D2™ Mach 1",
       "name": "D2™ Mach 1 Series",
       "text": "You’re a pilot. You want a larger premium GPS smartwatch with a built-in flashlight and the most advanced tools for flying — plus long battery life and health/fitness features that keep you on top.",
       "image": "D2™ Mach 1 Series.webp",
@@ -92,11 +101,12 @@
       "id": 10,
       "color": "Modern Tool Watch",
       "category": "smartwatches",
-      "product_title": "",
+      "product_title": "MARQ® Golfer (Gen 2)",
       "name": "MARQ® Golfer (Gen 2)",
       "text": "You want to stay on top of your game on and off the green. You need a luxury modern tool watch built from Grade-5 titanium with an AMOLED display, virtual caddie and more.",
       "image": "MARQ® Golfer (Gen 2).webp",
-      "price": 2300.00
+      "price": 2300.00,
+      "status": "NEW"
     }
   ]
 }

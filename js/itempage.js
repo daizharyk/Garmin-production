@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const carouselItemsVertical = Array.from(carouselVertical.children);
 
   let currentIndex = 0;
-  
   document.getElementById('carouselUp').addEventListener('click', () => {
     document.querySelector('.carousel').scrollBy({
       top: -80, 
@@ -22,7 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
       behavior: 'smooth'
     });
   });
-
   const updateCarousel = () => {
     // Обновление горизонтального каруселя
     const offset = -currentIndex * 100; // 100% ширины одного элемента

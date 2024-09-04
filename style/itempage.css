@@ -9,12 +9,17 @@
 
 .product {
   display: flex;
-  justify-content: center;
-  margin: 20px;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+  width: 100%;
 }
 
 .product-img-container{
   display: flex;
+  justify-content: right;
+  margin-right: 50px;
+  width: 50%;
 }
 
 .product-img {
@@ -158,29 +163,33 @@ button:hover {
   letter-spacing: .1em;
   font-weight: 700;
     line-height: 1rem;
-    background: #1146a7;
+    background: #2677b1;
     width: 170px;
     height: 45px;
     padding: 1em 3em;
     margin: 1em 0 1em;
     cursor: pointer;
-    transition: 0.3s ,color 0.3s ease;
+    transition: 0.2s ,color 0.2s ease;
 }
 .add-cart:hover{
-  background: #3070e5;
+  background: #3495db;
 }
 
 .product-color {
   margin: 1em 0 1em;
 }
-
+.product-info{
+  height: 500px;
+  margin: 0 30px ;
+  width: 50%;
+}
 /* --------------------- */
 
 
 .product-img-container1 {
   position: relative;
-  width: 500px; /* Ширина контейнера */
-  height: 500px; /* Высота контейнера */
+  width: 500px; 
+  height: 500px; 
   overflow: hidden;
 }
 
@@ -188,11 +197,11 @@ button:hover {
   display: flex;
   width: 100%;
   height: 100%;
-  transition: transform 0.3s ease-in-out; /* Плавный переход */
+  transition: transform 0.3s ease-in-out; 
 }
 
 .carousel-box1 {
-  flex: 0 0 100%; /* Каждый элемент занимает 100% ширины контейнера */
+  flex: 0 0 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -206,25 +215,25 @@ button:hover {
 
 .carousel-control1 {
   position: absolute;
-  width: 50px; /* Ширина кнопок */
-  height: 50px; /* Высота кнопок */
+  width: 80px; 
+  height: 100px; 
+  background: none;
   border: none;
-  font-size: 20px; /* Размер шрифта */
+  font-size: 20px; 
   cursor: pointer;
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
-  display: flex;
+  color: #000000;
   align-items: center;
   justify-content: center;
   z-index: 1;
-  top: 50%; /* Центрирование по высоте */
-  transform: translateY(-50%); /* Коррекция центрации */
-  opacity: 0; /* Скрываем кнопки по умолчанию */
-  transition: opacity 0.3s ease; /* Плавный переход */
+  top: 50%; 
+  transform: translateY(-50%); 
+  opacity: 0; 
+  transition: opacity 0.3s ease; 
 }
 
 .product-img-container1:hover .carousel-control1 {
-  opacity: 1; /* Показ кнопок при наведении на контейнер */
+  background: none;
+  opacity: 1; 
 }
 
 .arrow-left1 {
@@ -235,6 +244,6 @@ button:hover {
   right: 0;
 }
 
-.carousel-control1:hover {
-  background: rgba(0, 0, 0, 0.8);
-}
+
+
+
