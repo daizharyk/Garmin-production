@@ -2,7 +2,9 @@
   "items": [
     {
       "id": 1,
+      "color": "White",
       "category": "smartwatches",
+      "product_title":  "",
       "name": "Forerunner® 165 Series",
       "image": "165green.webp",
       "text": "You’re a runner who has moved beyond just running. You’re ready to train brilliantly. With a bright AMOLED display, training metrics, wellness insights, and optional music your goals are about to be met.",
@@ -10,7 +12,9 @@
     },
     {
       "id": 2,
+      "color": "White",
       "category": "smartwatches",
+      "product_title":  "",
       "name": "Enduro™ 2",
       "text": "You’re an ultra racer. You need a multisport GPS watch that can go to extremes — with solar charging, incredible GPS battery life and built-in mapping to help you stay ahead of the pack.",
       "image": "enduro2.webp",
@@ -18,7 +22,9 @@
     },
     {
       "id": 3,
+      "color": "White",
       "category": "smartwatches",
+      "product_title":  "",
       "name": "Forerunner® 55",
       "text": "See yourself as a runner. Get the easy-to-use GPS running smartwatch that encourages running and healthy lifestyles.",
       "image": "55.webp",
@@ -26,6 +32,7 @@
     },
     {
       "id": 4,
+      "color": "White",
       "category": "smartwatches",
       "name": "Venu® 3 Series",
       "text": "You’ve got health and fitness goals and want an on-wrist coach to support you. This GPS smartwatch that can make calls and send texts when connected to your smartphone is the one.",
@@ -34,7 +41,9 @@
     },
     {
       "id": 5,
+      "color": "Black",
       "category": "smartwatches",
+      "product_title":  "",
       "name": "tactix® 7 Series",
       "text": "You want to be field-ready. You want specialized GPS smartwatches with tactical features, built-in flashlights, routable TOPO mapping and more.",
       "image": "tartix.webp",
@@ -42,6 +51,7 @@
     },
     {
       "id": 6,
+      "color": "Black",
       "category": "smartwatches",
       "name": "epix™ Series",
       "text": "You’re an athlete who refuses to compromise. Wherever you’re going, only the best will do. Get the ultimate high-performance smartwatch with a stunning AMOLED display, optional built-in LED flashlight, advanced training metrics and more.",
@@ -50,7 +60,9 @@
     },
     {
       "id": 7,
+      "color": "Sapphire, Titanium with Spark Orange/Graphite Silicone Band",
       "category": "smartwatches",
+      "product_title": "fēnix® 8 - 51 mm, AMOLED",
       "name": "fēnix® 8 Series",
       "text": "You’re an athlete or adventurer looking to push beyond limits with a smartwatch offering advanced strength training, sports apps, 24/7 health monitoring, dynamic round-trip routing and more. ",
       "image": "fenix8yellow.webp",
@@ -58,7 +70,9 @@
     },
     {
       "id": 8,
+      "color": "Pink",
       "category": "smartwatches",
+      "product_title":  "",
       "name": "Lily® 2 Series",
       "text": "You’re trendy, health-focused and connected to your world. These small, stylish smartwatches are too. Meet your new favorite accessory.",
       "image": "Lily® 2 Series.webp",
@@ -66,11 +80,23 @@
     },
     {
       "id": 9,
+      "color": "Aviator Smartwatch with Vented Titanium Bracelet",
       "category": "smartwatches",
+      "product_title":  "",
       "name": "D2™ Mach 1 Series",
       "text": "You’re a pilot. You want a larger premium GPS smartwatch with a built-in flashlight and the most advanced tools for flying — plus long battery life and health/fitness features that keep you on top.",
       "image": "D2™ Mach 1 Series.webp",
       "price": 1199.99
+    },
+    {
+      "id": 10,
+      "color": "Modern Tool Watch",
+      "category": "smartwatches",
+      "product_title": "",
+      "name": "MARQ® Golfer (Gen 2)",
+      "text": "You want to stay on top of your game on and off the green. You need a luxury modern tool watch built from Grade-5 titanium with an AMOLED display, virtual caddie and more.",
+      "image": "MARQ® Golfer (Gen 2).webp",
+      "price": 2300.00
     }
   ]
 }
