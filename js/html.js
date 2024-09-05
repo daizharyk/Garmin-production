@@ -41,4 +41,7 @@ export function createCards(data) {
 }
 
 
+const creatInfoCards = () => {
+
+}
 

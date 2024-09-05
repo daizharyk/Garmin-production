@@ -1165,8 +1165,12 @@ footer {
   
 }
 .foter_nav_li {
-  width: auto;
+  flex-wrap: wrap;
+  text-align: center;
+  justify-content: center;
+  width: 100%;
   padding: 15px 0 50px 0;
+
 }
 
 }
