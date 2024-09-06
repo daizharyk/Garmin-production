@@ -44,6 +44,21 @@ export function createCards(data) {
 }
 
 
+let shopall = document.getElementById("shopall")
+let cardsContent = document.getElementsByClassName("cards-content");
+
+
+let scrollIntoElement = (el) => {
+  el.scrollintoView ({behavior: "smooth"})
+};
+shopall.addEventListner("click" , (e) =>{
+  e.preventDefault();
+  scrollIntoElement(cardsContent)
+});
+
+
+
+
 
 const params = new URLSearchParams(location.search);
 
