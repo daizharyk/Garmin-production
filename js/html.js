@@ -43,18 +43,20 @@ export function createCards(data) {
   });
 }
 
-
 let shopall = document.getElementById("shopall")
-let cardsContent = document.getElementsByClassName("cards-content");
+let cardsContent = document.querySelector(".cards-content");
 
 
 let scrollIntoElement = (el) => {
-  el.scrollintoView ({behavior: "smooth"})
+  el.scrollIntoView ({behavior: "smooth"})
 };
-shopall.addEventListner("click" , (e) =>{
+shopall.addEventListener("click" , (e) =>{
   e.preventDefault();
   scrollIntoElement(cardsContent)
 });
+
+
+
 
 
 
