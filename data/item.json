@@ -9,7 +9,17 @@
       "image": "165green.webp",
       "text": "You’re a runner who has moved beyond just running. You’re ready to train brilliantly. With a bright AMOLED display, training metrics, wellness insights, and optional music your goals are about to be met.",
       "price": 249.99,
-      "status": "NEW"
+      "status": "NEW",
+      "carousel_images": [
+        "../img/smartwatch_info_pictures/forerunner165/165.webp",
+        "../img/smartwatch_info_pictures/forerunner165/165-1.webp",
+        "../img/smartwatch_info_pictures/forerunner165/165-2.webp",
+        "../img/smartwatch_info_pictures/forerunner165/165-3.webp",
+        "../img/smartwatch_info_pictures/forerunner165/165-4.webp",
+        "../img/smartwatch_info_pictures/forerunner165/165-5.webp",
+        "../img/smartwatch_info_pictures/forerunner165/165-6.webp"
+      ] 
+      
     },
     {
       "id": 2,
@@ -20,7 +30,21 @@
       "text": "You’re an ultra racer. You need a multisport GPS watch that can go to extremes — with solar charging, incredible GPS battery life and built-in mapping to help you stay ahead of the pack.",
       "image": "enduro2.webp",
       "price": 899.99,
-      "status": "NEW"
+      "status": "NEW",
+      "carousel_images": [
+        "../img/smartwatch_info_pictures/enduro3/enduro3.webp",
+        "../img/smartwatch_info_pictures/enduro3/enduro3-1.webp",
+        "../img/smartwatch_info_pictures/enduro3/enduro3-2.webp",
+        "../img/smartwatch_info_pictures/enduro3/enduro3-3.webp",
+        "../img/smartwatch_info_pictures/enduro3/enduro3-4.webp",
+        "../img/smartwatch_info_pictures/enduro3/enduro3-5.webp",
+        "../img/smartwatch_info_pictures/enduro3/enduro3-6.webp",
+        "../img/smartwatch_info_pictures/enduro3/enduro3-7.webp",
+        "../img/smartwatch_info_pictures/enduro3/enduro3-8.webp",
+        "../img/smartwatch_info_pictures/enduro3/enduro3-9.webp",
+        "../img/smartwatch_info_pictures/enduro3/enduro3-10.webp",
+        "../img/smartwatch_info_pictures/enduro3/enduro3-11.webp"
+      ]
     },
     {
       "id": 3,
@@ -31,7 +55,76 @@
       "text": "See yourself as a runner. Get the easy-to-use GPS running smartwatch that encourages running and healthy lifestyles.",
       "image": "55.webp",
       "price": 169.99,
-      "status": "Sale"
+      "status": "Sale",
+      "carousel_images": [
+        "../img/smartwatch_info_pictures/forerunner55/55.webp",
+        "../img/smartwatch_info_pictures/forerunner55/55-1.webp",
+        "../img/smartwatch_info_pictures/forerunner55/55-2.webp",
+        "../img/smartwatch_info_pictures/forerunner55/55-3.webp",
+        "../img/smartwatch_info_pictures/forerunner55/55-4.webp",
+        "../img/smartwatch_info_pictures/forerunner55/55-5.webp",
+        "../img/smartwatch_info_pictures/forerunner55/55-6.webp",
+        "../img/smartwatch_info_pictures/forerunner55/55-7.webp",
+        "../img/smartwatch_info_pictures/forerunner55/55-8.webp"
+      ],
+
+      "banner_text": {
+        "text": "More ways to track health and wellness.",
+        "banner_images": {
+          "main_banner": "../img/smartwatch_info_pictures/forerunner55/bannerwithtext-forerunner55.webp",
+          "adaptive_banner": "../img/smartwatch_info_pictures/forerunner55/bannerwithtext-forerunner55-adaptive.webp"
+        }
+      },
+      "video_section": {
+        "thumbnail": "../img/smartwatch_info_pictures/forerunner55/bannerforvideo-forerunner55.webp",
+        "video_url": "https://www.youtube.com/embed/qqqrOjkBRw8?si=RxDK3Osy6hmENCAb"
+      },
+      "additional_images": {
+        "main_image": "../img/smartwatch_info_pictures/forerunner55/forerunner55.webp",
+        "adaptive_image": "../img/smartwatch_info_pictures/forerunner55/forerunner55-adaptive.webp"
+      },
+      "watch_features": [
+        {
+          "image": "../img/smartwatch_info_pictures/forerunner55/forerunner55-WRIST-BASED HEART RATE.webp",
+          "title": "BUILT-IN GPS",
+          "description": "Track where you run, and get accurate stats, including distance, pace and intervals."
+        },
+        {
+          "image": "../img/smartwatch_info_pictures/forerunner55/forerunner55-GARMIN COACH.webp",
+          "title": "WRIST-BASED HEART RATE",
+          "description": "Get heart rate data along with alerts if your heart rate stays high while you’re at rest. Even gauge how hard your heart is working during activities."
+        },
+        {
+          "image": "../img/smartwatch_info_pictures/forerunner55/forerunner55-DAILY SUGGESTED WORKOUTS.webp",
+          "title": "GARMIN COACH",
+          "description": "These adaptive training plans feature guidance from expert coaches and free training plans that adapt to you and your goals. Workouts sync right to your watch from the Garmin Connect™ app."
+        },
+        {
+          "image": "../img/smartwatch_info_pictures/forerunner55/forerunner55-PACEPRO™ TECHNOLOGY.webp",
+          "title": "DAILY SUGGESTED WORKOUTS",
+          "description": "Get daily run recommendations of varying intensities based on your training history, fitness level, and recovery time."
+        },
+        {
+          "image": "../img/smartwatch_info_pictures/forerunner55/forerunner55-FINISH TIME.webp",
+          "title": "PACEPRO™ TECHNOLOGY",
+          "description": "Offers GPS-based pace guidance for a selected course or distance in the Garmin Connect app, helping you tailor your efforts."
+        },
+        {
+          "image": "../img/smartwatch_info_pictures/forerunner55/forerunner55-TRACK RUN.webp",
+          "title": "FINISH TIME",
+          "description": "Select a distance for your run and see your estimated finish time on a data screen."
+        },
+        {
+          "image": "../img/smartwatch_info_pictures/forerunner55/forerunner55-CADENCE ALERTS.webp",
+          "title": "TRACK RUN",
+          "description": "Use the built-in track run activity to record accurate lap distances and see your distances in meters."
+        },
+        {
+          "image": "../img/smartwatch_info_pictures/forerunner55/forerunner55-gps.webp",
+          "title": "CADENCE ALERTS",
+          "description": "Improve your running form by using cadence alerts to know when you've gone outside your target range."
+        }
+      ]
     },
     {
       "id": 4,
@@ -42,7 +135,17 @@
       "text": "You’ve got health and fitness goals and want an on-wrist coach to support you. This GPS smartwatch that can make calls and send texts when connected to your smartphone is the one.",
       "image": "venus3.webp",
       "price": 449.99,
-      "status": "Customizable"
+      "status": "Customizable",
+      "carousel_images": [
+        "../img/smartwatch_info_pictures/venu3/venu3.webp",
+        "../img/smartwatch_info_pictures/venu3/venu3-1.webp",
+        "../img/smartwatch_info_pictures/venu3/venu3-2.webp",
+        "../img/smartwatch_info_pictures/venu3/venu3-3.webp",
+        "../img/smartwatch_info_pictures/venu3/venu3-4.webp",
+        "../img/smartwatch_info_pictures/venu3/venu3-5.webp",
+        "../img/smartwatch_info_pictures/venu3/venu3-6.webp",
+        "../img/smartwatch_info_pictures/venu3/venu3-7.webp"
+      ]
     },
     {
       "id": 5,
@@ -52,7 +155,18 @@
       "name": "tactix® 7 Series",
       "text": "You want to be field-ready. You want specialized GPS smartwatches with tactical features, built-in flashlights, routable TOPO mapping and more.",
       "image": "tartix.webp",
-      "price": 1099.99
+      "price": 1099.99 ,
+      "carousel_images": [
+        "../img/smartwatch_info_pictures/tactix7/tactix7.webp",
+        "../img/smartwatch_info_pictures/tactix7/tactix7-1.webp",
+        "../img/smartwatch_info_pictures/tactix7/tactix7-2.webp",
+        "../img/smartwatch_info_pictures/tactix7/tactix7-3.webp",
+        "../img/smartwatch_info_pictures/tactix7/tactix7-4.webp",
+        "../img/smartwatch_info_pictures/tactix7/tactix7-5.webp",
+        "../img/smartwatch_info_pictures/tactix7/tactix7-6.webp",
+        "../img/smartwatch_info_pictures/tactix7/tactix7-7.webp",
+        "../img/smartwatch_info_pictures/tactix7/tactix7-8.webp"
+      ]
     },
     {
       "id": 6,
@@ -63,7 +177,18 @@
       "text": "You’re an athlete who refuses to compromise. Wherever you’re going, only the best will do. Get the ultimate high-performance smartwatch with a stunning AMOLED display, optional built-in LED flashlight, advanced training metrics and more.",
       "image": "epix.webp",
       "price": 999.99,
-      "status": "Customizable"
+      "status": "Customizable" ,
+      "carousel_images": [
+        "../img/smartwatch_info_pictures/epix/epixProGen2.webp",
+        "../img/smartwatch_info_pictures/epix/epixProGen2-1.webp",
+        "../img/smartwatch_info_pictures/epix/epixProGen2-2.webp",
+        "../img/smartwatch_info_pictures/epix/epixProGen2-3.webp",
+        "../img/smartwatch_info_pictures/epix/epixProGen2-4.webp",
+        "../img/smartwatch_info_pictures/epix/epixProGen2-5.webp",
+        "../img/smartwatch_info_pictures/epix/epixProGen2-6.webp",
+        "../img/smartwatch_info_pictures/epix/epixProGen2-7.webp",
+        "../img/smartwatch_info_pictures/epix/epixProGen2-8.webp"
+      ]
     },
     {
       "id": 7,
@@ -74,7 +199,18 @@
       "text": "You’re an athlete or adventurer looking to push beyond limits with a smartwatch offering advanced strength training, sports apps, 24/7 health monitoring, dynamic round-trip routing and more. ",
       "image": "fenix8yellow.webp",
       "price": 799.99,
-      "status": "NEW"
+      "status": "NEW" ,
+      "carousel_images": [
+        "../img/smartwatch_info_pictures/fenix8/fenix8-.webp",
+        "../img/smartwatch_info_pictures/fenix8/fenix8-1.webp",
+        "../img/smartwatch_info_pictures/fenix8/fenix8-2.webp",
+        "../img/smartwatch_info_pictures/fenix8/fenix8-3.webp",
+        "../img/smartwatch_info_pictures/fenix8/fenix8-4.webp",
+        "../img/smartwatch_info_pictures/fenix8/fenix8-5.webp",
+        "../img/smartwatch_info_pictures/fenix8/fenix8-6.webp",
+        "../img/smartwatch_info_pictures/fenix8/fenix8-7.webp",
+        "../img/smartwatch_info_pictures/fenix8/fenix8-8.webp"
+      ]
     },
     {
       "id": 8,
@@ -85,17 +221,18 @@
       "text": "You’re trendy, health-focused and connected to your world. These small, stylish smartwatches are too. Meet your new favorite accessory.",
       "image": "Lily® 2 Series.webp",
       "price": 249.99,
-      "status": "Customizable"
-    },
-    {
-      "id": 9,
-      "color": "Aviator Smartwatch with Vented Titanium Bracelet",
-      "category": "smartwatches",
-      "product_title":  "D2™ Mach 1",
-      "name": "D2™ Mach 1 Series",
-      "text": "You’re a pilot. You want a larger premium GPS smartwatch with a built-in flashlight and the most advanced tools for flying — plus long battery life and health/fitness features that keep you on top.",
-      "image": "D2™ Mach 1 Series.webp",
-      "price": 1199.99
+      "status": "Customizable" ,
+      "carousel_images": [
+        "../img/smartwatch_info_pictures/lily2/lily2.webp",
+        "../img/smartwatch_info_pictures/lily2/lily2-1.webp",
+        "../img/smartwatch_info_pictures/lily2/lily2-2.webp",
+        "../img/smartwatch_info_pictures/lily2/lily2-3.webp",
+        "../img/smartwatch_info_pictures/lily2/lily2-4.webp",
+        "../img/smartwatch_info_pictures/lily2/lily2-5.webp",
+        "../img/smartwatch_info_pictures/lily2/lily2-6.webp",
+        "../img/smartwatch_info_pictures/lily2/lily2-7.webp"
+        
+      ]
     },
     {
       "id": 10,
@@ -106,7 +243,18 @@
       "text": "You want to stay on top of your game on and off the green. You need a luxury modern tool watch built from Grade-5 titanium with an AMOLED display, virtual caddie and more.",
       "image": "MARQ® Golfer (Gen 2).webp",
       "price": 2300.00,
-      "status": "NEW"
+      "status": "NEW" ,
+      "carousel_images": [
+        "../img/smartwatch_info_pictures/marqfolfergen2/marq.webp",
+        "../img/smartwatch_info_pictures/marqfolfergen2/marq-1.webp",
+        "../img/smartwatch_info_pictures/marqfolfergen2/marq-2.webp",
+        "../img/smartwatch_info_pictures/marqfolfergen2/marq-3.webp",
+        "../img/smartwatch_info_pictures/marqfolfergen2/marq-4.webp",
+        "../img/smartwatch_info_pictures/marqfolfergen2/marq-5.webp",
+        "../img/smartwatch_info_pictures/marqfolfergen2/marq-6.webp",
+        "../img/smartwatch_info_pictures/marqfolfergen2/marq-7.webp",
+        "../img/smartwatch_info_pictures/marqfolfergen2/marq-8.webp"
+      ]
     }
   ]
 }

@@ -366,7 +366,49 @@ button:disabled{
   
 }
 
+.banner-with-disc {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  max-width: 100%; 
+  overflow: hidden;
+}
 
+.banner-with-disc img {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: auto;
+}
+.bannertext-container{
+
+  text-align: right;
+  width: 35%;
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  color: white; /* Выберите цвет текста, который будет хорошо виден на фоне изображения */
+  font-weight: bold;
+  z-index: 1;
+  max-width: 90%;
+}
+
+.disc-right{
+  margin: 50px;
+}
+.banner-with-disc p {
+  font-family: Oswald, Roboto Condensed, Roboto, Noto Sans TC, Noto Sans SC, Noto Sans JP, Noto Sans KR, Prompt, sans-serif;
+    font-weight: 400;
+    letter-spacing: .05rem;
+    line-height: 1.25;
+    font-size: 3.5rem;
+    
+}
+
+#bannerwithtext-adaptive{
+  display: none; 
+}
 .subnav a{
   margin: 0 10px;
   height: 80px;
@@ -404,6 +446,26 @@ button:disabled{
   .function-info-card {
     width: 100%;
   }
+.walpapperinfo{
+  display: none;
+}
+.walpapperinfo-adaptive{
+  display: block;
+  justify-content: center;
+  width: 100%;
+  
+}
+#bannerwithtext{
+  display: none;
+}
+#bannerwithtext-adaptive{
+  display: flex;
+}
+.disc-right{
+  margin: 0;
+}
+
+
 
 }
 
@@ -413,12 +475,16 @@ button:disabled{
   }
   .product-img-container1 {
     position: relative;
-    width: 400px; /* Ширина контейнера по умолчанию */
-    height: 400px; /* Высота контейнера по умолчанию */
+    width: 400px;
+    height: 400px;
     overflow: hidden;
   }
   .carousel{
     height: 350px;
+  }
+
+  .bannertext-container p {
+    font-size: 2.5rem;
   }
 }
 
@@ -466,6 +532,22 @@ button:disabled{
 .nav-bar{
   display: none;
 }
+.bannertext-container p{
+  font-size: 2.5rem;
+}
+
+.bannertext-container{
+  text-align: right;
+  width: 35%;
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  color: white; /* Выберите цвет текста, который будет хорошо виден на фоне изображения */
+  font-weight: bold;
+  z-index: 1;
+  max-width: 90%;
+}
 
 }
 
@@ -490,5 +572,22 @@ button:disabled{
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+  .bannertext-container{
+    width: 100%;
+    position: absolute;
+    top: 70%;
+    left: 50% ;
+    text-align: center;
+    transform: translatex(-50%);
+    color: white;
+    font-weight: bold;
+    z-index: 1;
+  }
+  .bannertext-container p {
+    font-size: 2.5rem;
+  }
+  .disc-right{
+    margin: 0;
   }
 }

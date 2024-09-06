@@ -10,13 +10,16 @@ export function createCards(data) {
     const card = document.createElement('div');
     card.classList.add('item-card');
 
+    const link = document.createElement('a');
+    link.href = ``
+
     const cardImg = document.createElement('div');
     cardImg.classList.add('item-card-img');
     const img = document.createElement('img');
     img.src = `img/smartwatches/${item.image}`;
     img.alt = item.name;
     cardImg.appendChild(img);
-
+    
     const cardDesc = document.createElement('figcaption');
     cardDesc.classList.add('product-card-description');
     const title = document.createElement('h2');
@@ -41,7 +44,17 @@ export function createCards(data) {
 }
 
 
-const creatInfoCards = () => {
 
-}
+const params = new URLSearchParams(location.search);
+
+const itemId = params.get("itemId");
+
+console.log(itemId);
+
+
+const currentItem =  data.items.find( (item) => {
+  return item.id === Number(itemId)
+});
+
+console.log(currentItem);
 
