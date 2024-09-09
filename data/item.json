@@ -72,6 +72,7 @@
         "text": "More ways to track health and wellness.",
         "banner_images": {
           "main_banner": "../img/smartwatch_info_pictures/forerunner55/bannerwithtext-forerunner55.webp",
+          "alt": "bannerwithtext-forerunner55",
           "adaptive_banner": "../img/smartwatch_info_pictures/forerunner55/bannerwithtext-forerunner55-adaptive.webp"
         }
       },

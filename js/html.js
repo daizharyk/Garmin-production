@@ -60,18 +60,3 @@ shopall.addEventListener("click" , (e) =>{
 
 
 
-
-
-const params = new URLSearchParams(location.search);
-
-const itemId = params.get("itemId");
-
-console.log(itemId);
-
-
-const currentItem =  data.items.find( (item) => {
-  return item.id === Number(itemId)
-});
-
-console.log(currentItem);
-

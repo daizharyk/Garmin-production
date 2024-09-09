@@ -97,8 +97,8 @@
 .carousel-img {
   border: 5px solid transparent;
   transition: border-color 0.3s ease;
-  max-width: 90%;
-  max-height: 90%;
+  max-width: 100%;
+  max-height: 100%;
   object-fit: contain;
 }
 
@@ -114,15 +114,15 @@
 
 .sale-box p {
   background-color: #6DCFF6;
-    font-weight: bold;
-    font-family: Roboto, sans-serif, Microsoft JhengHei;
-    font-size: 9pt;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: #6DCFF6 solid 5pt;
-    width: 70px;
+  font-weight: bold;
+  font-family: Roboto, sans-serif, Microsoft JhengHei;
+  font-size: 9pt;
+  display: inline-flex; /* Позволяет элементу подстраиваться под размер содержимого */
+  justify-content: center;
+  align-items: center;
+  border: #6DCFF6 solid 6pt;
+  padding: 5px; /* Добавьте отступы, если это необходимо */
+  box-sizing: border-box; /* Чтобы padding и border учитывались в размерах */
 }
 
 .product-price {
@@ -507,10 +507,11 @@ button:disabled{
  .product-info h2{
    text-align: center;
  }
- .sale-box{
-  display: flex;
-   justify-content: center;
- }
+ .sale-box {
+  display: inline-flex; /* Или inline-block */
+  align-items: center;
+  justify-content: center;
+}
  .add-cart {
   margin: auto; 
 }

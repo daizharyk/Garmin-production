@@ -1,4 +1,86 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // Этот код выполняется после полной загрузки DOM
+  const params = new URLSearchParams(location.search);
+  const itemId = params.get("id");
+  console.log("item id:", itemId);
+  // Загружаем данные из JSON
+  fetch('../data/item.json')
+    .then(response => response.json())
+    .then(data => {
+      const item = data.items.find(item => item.id == itemId);
+
+      document.querySelector('.product-title').textContent = item.name;
+        document.querySelector('.product-color').textContent = item.color;
+        document.getElementById('sale-box').textContent = item.status;
+        document.getElementById('product-price').textContent = item.price.toFixed(2);
+      const carousel = document.querySelector('.carousel');
+      item.carousel_images.forEach(imgSrc => {
+        const div = document.createElement('div');
+        div.classList.add('carousel-box');
+        const img = document.createElement('img');
+        img.src = imgSrc;
+        img.alt = item.name;
+        img.classList.add('carousel-img');
+        div.appendChild(img);
+        carousel.appendChild(div);
+
+        const carousel1 = document.querySelector('.carousel1');
+          item.carousel_images.forEach(imgSrc => {
+            const div = document.createElement('div');
+            div.classList.add('carousel-box1');
+            const img = document.createElement('img');
+            img.src = imgSrc;
+            img.alt = item.name;
+            img.classList.add('carousel-img1');
+            div.appendChild(img);
+            carousel1.appendChild(div);
+          });
+      });
+
+      document.querySelector(".disc-right").textContent = item.banner_text.text;
+      document.getElementById("bannerwithtext").src = item.banner_text.banner_images.main_banner;
+      document.getElementById("bannerwithtext").alt = item.banner_text.banner_images.alt;
+      document.getElementById("bannerwithtext-adaptive").src = item.banner_text.banner_images.adaptive_banner;
+      document.getElementById("bannerwithtext-adaptive").alt = item.banner_text.banner_images.alt;
+      
+      const videoThumbnail = document.querySelector(".video-thumbnail");
+      videoThumbnail.querySelector('img').src = item.video_section.thumbnail;
+      document.querySelector(".thumbnail-img").alt = item.video_section.thumbnail;
+      document.getElementById("video-player").src = item.video_section.video_url;
+      
+      document.querySelector('.walpapperinfo').src = item.additional_images.main_image;
+      document.querySelector('.walpapperinfo').alt = item.banner_text.banner_images.alt;
+
+      document.querySelector('.walpapperinfo-adaptive').src = item.additional_images.adaptive_image;
+      document.querySelector('.walpapperinfo-adaptive').alt = item.banner_text.banner_images.alt;
+
+      const functionInfoContainer = document.querySelector('.watch-function-info-container');
+      item.watch_features.forEach(feature => {
+        const card = document.createElement('div');
+        card.classList.add('function-info-card');
+        const img = document.createElement('img');
+        img.src = feature.image;
+        img.alt = feature.title;
+        const title = document.createElement('h2');
+        title.textContent = feature.title;
+        const description = document.createElement('p');
+        description.textContent = feature.description;
+        card.appendChild(img);
+        card.appendChild(title);
+        card.appendChild(description);
+        functionInfoContainer.appendChild(card);
+      });
+      
+      // После добавления всех элементов в DOM, запускаем инициализацию карусели
+
+      initCarousel(); // Здесь вызываем нашу функцию
+      
+    })
+    .catch(error => console.error('Error loading data:', error));
+});
+        
+
+function initCarousel() {
   const carouselHorizontal = document.querySelector('.carousel1');
   const carouselItemsHorizontal = Array.from(carouselHorizontal.children);
   const carouselLeft = document.getElementById('carouselLeft1');
@@ -85,10 +167,10 @@ document.addEventListener('DOMContentLoaded', () => {
     touchEndX = event.changedTouches[0].clientX;
     handleSwipe();
   });
-});
 
 
-document.addEventListener('DOMContentLoaded', function() {
+
+
   const playButton = document.querySelector('.play-button');
   const videoThumbnail = document.querySelector('.video-thumbnail');
   const videoPlayer = document.getElementById('video-player');
@@ -101,7 +183,7 @@ document.addEventListener('DOMContentLoaded', function() {
     videoPlayer.style.display = 'block';
     videoPlayer.src += "&autoplay=1"; // Используйте ? вместо & при добавлении параметра к начальному URL
   });
-});
+
 
 
 
@@ -144,8 +226,9 @@ downButton.addEventListener('click', () => {
   setTimeout(updateButtonState, 500); // Обновить состояние кнопок после прокрутки
 });
 
-// Проверить начальное состояние кнопок
-updateButtonState();
+
+
+}
 
 
 const navBar = document.querySelector('.nav-bar');
