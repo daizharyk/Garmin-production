@@ -36,23 +36,28 @@ document.addEventListener('DOMContentLoaded', () => {
             carousel1.appendChild(div);
           });
       });
-
+      document.querySelector(".banner-title").textContent = item.banner_text.title;
       document.querySelector(".disc-right").textContent = item.banner_text.text;
       document.getElementById("bannerwithtext").src = item.banner_text.banner_images.main_banner;
       document.getElementById("bannerwithtext").alt = item.banner_text.banner_images.alt;
       document.getElementById("bannerwithtext-adaptive").src = item.banner_text.banner_images.adaptive_banner;
       document.getElementById("bannerwithtext-adaptive").alt = item.banner_text.banner_images.alt;
       
+      
+      // const titleElement = document.querySelector('.banner-title');
+      // let title = item.banner_text.title;
+      // title = title.replace(/®/g, '<sup>®</sup>');
+      // titleElement.innerHTML = title;
+
+
       const videoThumbnail = document.querySelector(".video-thumbnail");
       videoThumbnail.querySelector('img').src = item.video_section.thumbnail;
       document.querySelector(".thumbnail-img").alt = item.video_section.thumbnail;
       document.getElementById("video-player").src = item.video_section.video_url;
       
       document.querySelector('.walpapperinfo').src = item.additional_images.main_image;
-      document.querySelector('.walpapperinfo').alt = item.banner_text.banner_images.alt;
 
       document.querySelector('.walpapperinfo-adaptive').src = item.additional_images.adaptive_image;
-      document.querySelector('.walpapperinfo-adaptive').alt = item.banner_text.banner_images.alt;
 
       const functionInfoContainer = document.querySelector('.cards-container');
       item.watch_features.forEach(feature => {
@@ -71,14 +76,24 @@ document.addEventListener('DOMContentLoaded', () => {
         functionInfoContainer.appendChild(card);
       });
       
-      // После добавления всех элементов в DOM, запускаем инициализацию карусели
+      
+        
+        function replaceSymbols(text) {
+          return text
+            .replace(/®/g, '<sup class="registered">®</sup>')
+            .replace(/™/g, '<sup class="trademark2">™</sup>');
+        }
+        document.querySelector(".banner-title").innerHTML = replaceSymbols(item.banner_text.title);
+        document.querySelector(".product-title").innerHTML = replaceSymbols(item.product_title);
 
-      initCarousel(); // Здесь вызываем нашу функцию
+        // Применяем замену симво
+      initCarousel(); 
       
     })
     .catch(error => console.error('Error loading data:', error));
 });
         
+
 
 function initCarousel() {
   const carouselHorizontal = document.querySelector('.carousel1');

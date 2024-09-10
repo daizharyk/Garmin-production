@@ -133,14 +133,14 @@
 
 .currency-code {
   font-size: 1rem;
-  width: 500;
+  font-weight: bold;
 }
 #product-price {
   font-family: "roboto";
   font-size: 1.5em;
-    font-weight: 600;
     line-height: 1.25rem;
     color: #0079be;
+    font-weight: bolder;
 }
 
 
@@ -247,7 +247,7 @@ button:disabled{
 .video-wrapper {
   position: relative;
   width: 100%; 
-  height:100vh; 
+  height:110vh; 
   overflow: hidden; 
 }
 
@@ -261,8 +261,9 @@ button:disabled{
   align-items: center;
 }
 #video-player {
-  width: 100%; /* Ширина на весь экран */
-  height:100%; /* Высота на весь экран */
+  max-width: 1000px; 
+  width: 100%;
+  height: auto; 
 }
 .thumbnail-img {
   width: 100%;
@@ -323,6 +324,7 @@ button:disabled{
 .function-info-card {
   display: flex;
   flex-direction: column;
+  padding-top: 30px;
   text-align: left;
   box-sizing: border-box;
   width: calc(33.333% - 10px); 
@@ -330,7 +332,7 @@ button:disabled{
 
 .function-info-card img {
   object-fit: contain;
-  height: 500px; /* Уменьшение высоты изображения */
+  height: 500px; 
   width: 100%;
   min-width: auto;
 }
@@ -372,7 +374,14 @@ button:disabled{
   margin: 0;
   
 }
-
+.banner-title{
+  font-family: Oswald, Roboto Condensed, Roboto, Noto Sans TC, Noto Sans SC, Noto Sans JP, Noto Sans KR, Prompt, sans-serif;
+    font-weight: 400;
+    letter-spacing: .05rem;
+    line-height: 1.25;
+    font-size: 3rem;
+    margin: 1.5rem 0;
+}
 .banner-with-disc {
   position: relative;
   display: inline-block;
@@ -381,11 +390,22 @@ button:disabled{
   overflow: hidden;
 }
 
+.registered {
+  font-size: 50% !important;
+  vertical-align: top;
+  
+}
+
+.trademark2 {
+  font-size: 50% !important;
+  vertical-align: top;
+}
 .banner-with-disc img {
   position: relative;
-  display: inline-block;
+  display: block;
   width: 100%;
   height: auto;
+
 }
 .bannertext-container{
     font-family: Roboto, Noto Sans TC, Noto Sans SC, Noto Sans JP, Noto Sans KR, Prompt, sans-serif;
@@ -404,9 +424,6 @@ button:disabled{
   width: 80%; 
 }
 
-.disc-right{
-  margin: 50px;
-}
 
 
 #bannerwithtext-adaptive{
@@ -446,9 +463,17 @@ button:disabled{
   width: 50%;
 }
 @media (max-width: 770px) {
+
   .function-info-card {
     width: 100%;
+    align-items: center;
   }
+
+  .function-info-card img { 
+    width: 350px !important;
+    
+  }
+
 .walpapperinfo{
   display: none;
 }
@@ -475,8 +500,11 @@ button:disabled{
 }
 
 @media (max-width: 1200px) {
-  .video-wrapper{
-    height: 80vh;
+  .video-wrapper {
+    position: relative;
+    width: 100%; 
+    height:90vh; 
+    overflow: hidden; 
   }
   .product-img-container1 {
     position: relative;
@@ -486,7 +514,7 @@ button:disabled{
   }
   .function-info-card img {
     object-fit: contain;
-    height: auto; /* Уменьшение высоты изображения */
+    height: auto; 
     width: 100%;
     min-width: auto;
   }
@@ -504,7 +532,7 @@ button:disabled{
   }
 .function-info-card img {
   object-fit: contain;
-  height: auto; /* Уменьшение высоты изображения */
+  height: auto; 
   width: 100%;
   min-width: auto;
 }
@@ -522,7 +550,7 @@ button:disabled{
    text-align: center;
  }
  .sale-box {
-  display: inline-flex; /* Или inline-block */
+  display: inline-flex; 
   align-items: center;
   justify-content: center;
 }
@@ -554,9 +582,7 @@ button:disabled{
 }
 
 @media (max-width: 510px) {
-  .video-wrapper{
-    height:40vh;
-  }
+ 
 .cards-container{
   margin: 10px 20px;
 }
