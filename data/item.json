@@ -146,6 +146,55 @@
         "../img/smartwatch_info_pictures/venu3/venu3-5.webp",
         "../img/smartwatch_info_pictures/venu3/venu3-6.webp",
         "../img/smartwatch_info_pictures/venu3/venu3-7.webp"
+      ],
+
+      "banner_text": {
+        "text": "Built for how you move, Venu 3 can track pushes and offers built-in workouts designed for wheelchair users",
+        "banner_images": {
+          "main_banner": "../img/smartwatch_info_pictures/venu3/bannerwithtext-venu3.webp",
+          "alt": "bannerwithtext-forerunner55",
+          "adaptive_banner": "../img/smartwatch_info_pictures/venu3/bannerwithtext-venu3-adaptive.webp"
+        }
+      },
+      "video_section": {
+        "thumbnail": "../img/smartwatch_info_pictures/venu3/bannerforvideo-venu3.webp",
+        "video_url": "https://www.youtube.com/embed/ruqNHHwLdK0?si=rHDiuXHf_O1smK_7"
+      },
+      "additional_images": {
+        "main_image": "../img/smartwatch_info_pictures/venu3/banner-venu3.webp",
+        "adaptive_image": "../img/smartwatch_info_pictures/venu3/banner-venu3adaptive.webp"
+      },
+      "watch_features": [
+        {
+          "image": "../img/smartwatch_info_pictures/venu3/BODY BATTERY™ ENERGY MONITORING.webp",
+          "title": "BODY BATTERY™ ENERGY MONITORING",
+          "description": "See your energy levels throughout the day so you’ll know when your body is charged up and ready for activity or drained and needing to recharge with restful sleep. And get even more details and personal insights on how sleep, naps, daily activities and high stress specifically impact your energy2."
+        },
+        {
+          "image": "../img/smartwatch_info_pictures/venu3/SLEEP COACH.webp",
+          "title": "SLEEP COACH",
+          "description": "Get a sleep score and personalized coaching for how much sleep you need and how you can improve. Even keep track of different sleep stages and naps — and see several key metrics over your sleep period, such as HRV status and skin temperature to better understand your health3."
+        },
+        {
+          "image": "../img/smartwatch_info_pictures/venu3/BUILT-IN SPORTS APPS.webp",
+          "title": "BUILT-IN SPORTS APPS",
+          "description": "Track all the ways you move with more than 30 preloaded GPS and indoor sports apps — including walking, running, cycling, pool swimming, activities for wheelchair users and more."
+        },
+        {
+          "image": "../img/smartwatch_info_pictures/venu3/BUILT-IN SPEAKER AND MICROPHONE.webp",
+          "title": "BUILT-IN SPEAKER AND MICROPHONE",
+          "description": "When paired with your compatible smartphone, make and take phone calls right from the watch. Plus, use your smartphone’s voice assistant to respond to text messages and more."
+        },
+        {
+          "image": "../img/smartwatch_info_pictures/venu3/WORKOUT BENEFIT AND RECOVERY TIME.webp",
+          "title": "WORKOUT BENEFIT AND RECOVERY TIME",
+          "description": "Better understand how each workout affects your body and how much time you need to recover so you can take on any fitness challenge."
+        },
+        {
+          "image": "../img/smartwatch_info_pictures/venu3/GARMIN ECG APP.webp",
+          "title": "GARMIN ECG APP",
+          "description": "The ECG app2 uses sensors to record the electrical signals that control how your heart beats. It analyzes that recording to detect signs of an irregular heart rhythm called atrial fibrillation (AFib)."
+        }
       ]
     },
     {

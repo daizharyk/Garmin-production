@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
       document.querySelector('.walpapperinfo-adaptive').src = item.additional_images.adaptive_image;
       document.querySelector('.walpapperinfo-adaptive').alt = item.banner_text.banner_images.alt;
 
-      const functionInfoContainer = document.querySelector('.watch-function-info-container');
+      const functionInfoContainer = document.querySelector('.cards-container');
       item.watch_features.forEach(feature => {
         const card = document.createElement('div');
         card.classList.add('function-info-card');
