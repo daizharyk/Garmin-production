@@ -247,9 +247,11 @@ button:disabled{
 .video-wrapper {
   position: relative;
   width: 100%; 
-  height:110vh; 
+  height:100vh; 
   overflow: hidden; 
 }
+
+
 
 .video-thumbnail {
   top: 0;
@@ -261,9 +263,8 @@ button:disabled{
   align-items: center;
 }
 #video-player {
-  max-width: 1000px; 
-  width: 100%;
-  height: auto; 
+  width: 100%; /* Ширина на весь экран */
+  height:100%; /* Высота на весь экран */
 }
 .thumbnail-img {
   width: 100%;

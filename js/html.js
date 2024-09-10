@@ -6,12 +6,15 @@ export function createCards(data) {
   const container = document.getElementById('cards-container')
 
   data.items.forEach(item => {
-    // Создание карточки
+    
+    const link = document.createElement('a');
+    link.href = `pages/itempage.html?id=${item.id}`;
+    link.classList.add('card-link');
+
     const card = document.createElement('div');
     card.classList.add('item-card');
 
-    const link = document.createElement('a');
-    link.href = ``
+    
 
     const cardImg = document.createElement('div');
     cardImg.classList.add('item-card-img');
@@ -35,11 +38,12 @@ export function createCards(data) {
     cardDesc.appendChild(description);
     cardDesc.appendChild(price);
 
+    link.appendChild(card);
 
     card.appendChild(cardImg);
     card.appendChild(cardDesc);
 
-    container.appendChild(card);
+    container.appendChild(link);
   });
 }
 

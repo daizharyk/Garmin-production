@@ -390,10 +390,7 @@
   color: #fff;
   margin-top: 20px;
 }
-.item-card a {
-  text-decoration: none;
-  color: #000;
-}
+
 .content h2{
   font-family: "Oswald";
   font-weight: 400;
@@ -653,14 +650,19 @@
 .select-option select:focus{
   outline: 1px solid #000;
 }
-
+.cards a {
+  text-decoration: none;
+  color: #000;
+}
 
 .cards {
   display: flex;
   flex-wrap: wrap;
+  
 }
 
-.item-card {
+
+.card-link{
   display: flex;
   flex-direction: column; 
   width: calc(33.333% - 17px);
@@ -670,8 +672,7 @@
   transition: transform 0.2s ease;
   word-wrap: break-word;
 }
-
-.item-card:hover{
+.card-link:hover{
   transform: scale(1.01);
   box-shadow: 0 3px 5px 2px #e6e6e6;
 }
@@ -1183,7 +1184,7 @@ footer {
 
 
 @media (max-width: 1200px){
-  .cards .item-card {
+  .cards .card-link {
     flex: 1 1 calc(50% - 20px); /* Две карточки в ряд */
   }
 }
@@ -1226,7 +1227,7 @@ footer {
   }
 
 
-  .item-card {
+  .card-link{
     display: flex;
     flex-direction: column; 
     width: calc(33.333% - 17px);
@@ -1253,7 +1254,7 @@ footer {
 }
 
 @media (max-width: 450px){
-  .cards .item-card {
+  .cards .card-link {
     flex: 1 1 calc(100% - 20px); 
     margin: 10px 0 10px 0;
   }
