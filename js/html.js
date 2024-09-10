@@ -26,7 +26,12 @@ export function createCards(data) {
     const cardDesc = document.createElement('figcaption');
     cardDesc.classList.add('product-card-description');
     const title = document.createElement('h2');
-    title.innerHTML = `${item.name}<span class="trademark">®</span>`;
+    
+    let titleText = item.name;
+    titleText = titleText.replace(/®/g, '<sup class="registered">®</sup>');
+    titleText = titleText.replace(/™/g, '<sup class="trademark2">™</sup>');
+    title.innerHTML = titleText;
+
     const description =document.createElement('p');
     description.classList.add('product-description');
     description.textContent =item.text;

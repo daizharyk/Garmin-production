@@ -44,10 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById("bannerwithtext-adaptive").alt = item.banner_text.banner_images.alt;
       
       
-      // const titleElement = document.querySelector('.banner-title');
-      // let title = item.banner_text.title;
-      // title = title.replace(/®/g, '<sup>®</sup>');
-      // titleElement.innerHTML = title;
+      
 
 
       const videoThumbnail = document.querySelector(".video-thumbnail");
@@ -86,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector(".banner-title").innerHTML = replaceSymbols(item.banner_text.title);
         document.querySelector(".product-title").innerHTML = replaceSymbols(item.product_title);
 
-        // Применяем замену симво
+    
       initCarousel(); 
       
     })
@@ -111,7 +108,7 @@ function initCarousel() {
     const offset = -currentIndex * 100; // 100% ширины одного элемента
     carouselHorizontal.style.transform = `translateX(${offset}%)`;
     
-    // Обновление видимости кнопок горизонтального каруселя
+  
     carouselLeft.style.display = currentIndex === 0 ? 'none' : 'flex';
     carouselRight.style.display = currentIndex === carouselItemsHorizontal.length - 1 ? 'none' : 'flex';
 
@@ -122,7 +119,7 @@ function initCarousel() {
       behavior: 'smooth'
     });
 
-    // Обновление обводки выбранного изображения
+
     carouselItemsVertical.forEach((img, index) => {
       if (index === currentIndex) {
         img.classList.add('selected');
@@ -149,10 +146,10 @@ function initCarousel() {
   carouselLeft.addEventListener('click', moveToPrevious);
   carouselRight.addEventListener('click', moveToNext);
 
-  // Устанавливаем начальное состояние
+
   updateCarousel();
 
-  // Синхронизация вертикального каруселя с горизонтальным
+  
   document.querySelectorAll('.carousel-img').forEach((img, index) => {
     img.addEventListener('click', function () {
       currentIndex = index;
@@ -160,16 +157,16 @@ function initCarousel() {
     });
   });
 
-  // Добавление поддержки свайпов
+  
   let touchStartX = 0;
   let touchEndX = 0;
 
   const handleSwipe = () => {
     const swipeDistance = touchStartX - touchEndX;
 
-    if (swipeDistance > 50) { // Свайп влево
+    if (swipeDistance > 50) {
       moveToNext();
-    } else if (swipeDistance < -50) { // Свайп вправо
+    } else if (swipeDistance < -50) { 
       moveToPrevious();
     }
   };
@@ -191,12 +188,12 @@ function initCarousel() {
   const videoPlayer = document.getElementById('video-player');
 
   playButton.addEventListener('click', function() {
-    // Скрыть миниатюру и кнопку воспроизведения
+    
     videoThumbnail.style.display = 'none';
 
-    // Показать видео и воспроизвести его
+   
     videoPlayer.style.display = 'block';
-    videoPlayer.src += "&autoplay=1"; // Используйте ? вместо & при добавлении параметра к начальному URL
+    videoPlayer.src += "&autoplay=1"; 
   });
 
 
@@ -208,14 +205,14 @@ const downButton = document.getElementById('carouselDown');
 
 // Функция для обновления состояния кнопок
 function updateButtonState() {
-  // Если прокрутка в самом начале, отключить кнопку вверх
+
   if (carousel.scrollTop <= 0) {
     upButton.disabled = true;
   } else {
     upButton.disabled = false;
   }
   
-  // Если прокрутка достигла конца, отключить кнопку вниз
+
   if (carousel.scrollTop + carousel.clientHeight >= carousel.scrollHeight) {
     downButton.disabled = true;
   } else {
@@ -229,7 +226,7 @@ upButton.addEventListener('click', () => {
     top: -80, 
     behavior: 'smooth'
   });
-  setTimeout(updateButtonState, 500); // Обновить состояние кнопок после прокрутки
+  setTimeout(updateButtonState, 500); 
 });
 
 // Прокрутка вниз
@@ -238,7 +235,7 @@ downButton.addEventListener('click', () => {
     top: 80, 
     behavior: 'smooth'
   });
-  setTimeout(updateButtonState, 500); // Обновить состояние кнопок после прокрутки
+  setTimeout(updateButtonState, 500); 
 });
 
 
