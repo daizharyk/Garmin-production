@@ -36,9 +36,6 @@ document.querySelectorAll('.nav-menu').forEach(menu => {
   });
 });
 
-
-
-
 document.getElementById('filterSortToggle').addEventListener('click', function () {
   const sidebar = document.getElementById('sidebar');
   const filterDropdown = document.querySelector('.product-filter_dropdown');

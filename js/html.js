@@ -1,5 +1,5 @@
 
-import data from '../data/item.json' with { type: 'json' };
+
 
 // Функция для создания карточек
 export function createCards(data) {
@@ -47,7 +47,8 @@ export function createCards(data) {
   });
 }
 
-let shopall = document.getElementById("shopall")
+export function scrollToItems() {
+  let shopall = document.getElementById("shopall")
 let cardsContent = document.querySelector(".cards-content");
 
 
@@ -58,7 +59,7 @@ shopall.addEventListener("click" , (e) =>{
   e.preventDefault();
   scrollIntoElement(cardsContent)
 });
-
+}
 
 
 
