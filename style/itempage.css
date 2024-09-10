@@ -396,7 +396,10 @@ button:disabled{
   vertical-align: top;
   
 }
-
+.currency-sign{
+  vertical-align: 10px;
+  font-weight: 600;
+}
 .trademark2 {
   font-size: 40% !important;
   vertical-align: top;

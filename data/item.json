@@ -76,8 +76,8 @@
       "category": "smartwatches",
       "product_title":  "Enduro™ 3",
       "name": "Enduro™ 3",
-      "text": "You’re an ultra racer. You need a multisport GPS watch that can go to extremes — with solar charging, incredible GPS battery life and built-in mapping to help you stay ahead of the pack.",
       "image": "enduro2.webp",
+      "text": "You’re an ultra racer. You need a multisport GPS watch that can go to extremes — with solar charging, incredible GPS battery life and built-in mapping to help you stay ahead of the pack.",
       "price": 899.99,
       "status": "NEW",
       "carousel_images": [
@@ -150,8 +150,8 @@
       "category": "smartwatches",
       "product_title":  "Forerunner® 55",
       "name": "Forerunner® 55",
-      "text": "See yourself as a runner. Get the easy-to-use GPS running smartwatch that encourages running and healthy lifestyles.",
       "image": "55.webp",
+      "text": "See yourself as a runner. Get the easy-to-use GPS running smartwatch that encourages running and healthy lifestyles.",
       "price": 169.99,
       "status": "Sale",
       "carousel_images": [
@@ -165,8 +165,8 @@
         "../img/smartwatch_info_pictures/forerunner55/55-7.webp",
         "../img/smartwatch_info_pictures/forerunner55/55-8.webp"
       ],
-
       "banner_text": {
+        "title": "",
         "text": "More ways to track health and wellness.",
         "banner_images": {
           "main_banner": "../img/smartwatch_info_pictures/forerunner55/bannerwithtext-forerunner55.webp",
@@ -245,8 +245,8 @@
         "../img/smartwatch_info_pictures/venu3/venu3-6.webp",
         "../img/smartwatch_info_pictures/venu3/venu3-7.webp"
       ],
-
       "banner_text": {
+        "title": "",
         "text": "Built for how you move, Venu 3 can track pushes and offers built-in workouts designed for wheelchair users",
         "banner_images": {
           "main_banner": "../img/smartwatch_info_pictures/venu3/bannerwithtext-venu3.webp",
@@ -316,6 +316,7 @@
         "../img/smartwatch_info_pictures/tactix7/tactix7-8.webp"
       ],
       "banner_text": {
+        "title": "",
         "text": "Features for every kind of adventure.",
         "banner_images": {
           "main_banner": "../img/smartwatch_info_pictures/tactix7/banner2-tectix7.webp",

@@ -11,7 +11,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
       document.querySelector('.product-title').textContent = item.name;
         document.querySelector('.product-color').textContent = item.color;
-        document.getElementById('sale-box').textContent = item.status;
+        const saleBox = document.getElementById('sale-box');
+        saleBox.textContent = item.status;
+        saleBox.style.display = saleBox.textContent.trim() ? 'inline-flex' : 'none';
+       
         document.getElementById('product-price').textContent = item.price.toFixed(2);
       const carousel = document.querySelector('.carousel');
       item.carousel_images.forEach(imgSrc => {
@@ -74,7 +77,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       
       
-        
         function replaceSymbols(text) {
           return text
             .replace(/®/g, '<sup class="registered">®</sup>')
@@ -83,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector(".banner-title").innerHTML = replaceSymbols(item.banner_text.title);
         document.querySelector(".product-title").innerHTML = replaceSymbols(item.product_title);
 
-    
+       
       initCarousel(); 
       
     })
