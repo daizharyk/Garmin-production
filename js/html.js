@@ -1,4 +1,4 @@
-
+import data from '../data/item.json' with { type: 'json' };
 
 
 // Функция для создания карточек
@@ -51,6 +51,67 @@ export function createCards(data) {
     container.appendChild(link);
   });
 }
+
+
+
+export function createNewCards() {
+ 
+  const items = data.items;
+  const newCardsContainer = document.querySelector('.new-cards-container');
+  
+  
+  newCardsContainer.innerHTML = '';
+
+  
+
+
+  function createCard(item) {
+    const newCard = document.createElement('div');
+
+
+    const cardLink = document.createElement('a');
+    cardLink.href = `/pages/itempage.html?id=${item.id}`;
+    cardLink.classList.add('card-link-dropdownmenu');
+
+    newCard.classList.add('new-card');
+    
+    const img = document.createElement('img');
+    img.src = item.carousel_images[2];
+    img.alt = item.name;
+    
+    const newCardDescription = document.createElement('div');
+    newCardDescription.classList.add('new-card-discription');
+    
+    const h2 = document.createElement('h2');
+    h2.textContent = item.name;
+    
+    
+
+    newCardDescription.appendChild(h2);
+    newCard.appendChild(img);
+    newCard.appendChild(newCardDescription);
+    cardLink.appendChild(newCard);
+    
+    return cardLink;
+  }
+
+ 
+  const idsToCreate = [9, 7];
+  idsToCreate.forEach(id => {
+    const item = items.find(i => i.id === id);
+    if (item) {
+      const card = createCard(item);
+      newCardsContainer.appendChild(card);
+    }
+  });
+}
+
+
+
+
+
+
+
 
 export function scrollToItems() {
   let shopall = document.getElementById("shopall")

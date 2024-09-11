@@ -120,9 +120,11 @@
   height: 300px;
   align-items: center;
 }
-
+.card-link-dropdownmenu{
+  text-decoration: none;
+}
 .new-card img {
-  width: 180px;
+  width: 220px;
   margin: 10px;
 }
 
@@ -138,15 +140,7 @@
   color: #000000;
   margin-bottom: 10px;
 }
-.new-card-discription p {
-  font-family: "Roboto";
-  font-weight: 400;
-  letter-spacing: .05rem;
-  line-height: 1.3;
-  font-size: 0.8rem;
-  margin: 0 0 1rem;
-  flex-grow: 1;
-}
+
 
 .trademark-dropdown{
   font-size: 0.6em; 

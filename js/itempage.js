@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
       document.querySelector('.product-title').textContent = item.name;
         document.querySelector('.product-color').textContent = item.color;
         const saleBox = document.getElementById('sale-box');
-        saleBox.textContent = item.status;
+        
         saleBox.style.display = saleBox.textContent.trim() ? 'inline-flex' : 'none';
        
         document.getElementById('product-price').textContent = item.price.toFixed(2);
@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
         carousel.appendChild(div);
 
         const carousel1 = document.querySelector('.carousel1');
+        carousel1.innerHTML = '';
           item.carousel_images.forEach(imgSrc => {
             const div = document.createElement('div');
             div.classList.add('carousel-box1');
@@ -109,7 +110,7 @@ function initCarousel() {
     // Обновление горизонтального каруселя
     const offset = -currentIndex * 100; // 100% ширины одного элемента
     carouselHorizontal.style.transform = `translateX(${offset}%)`;
-    
+   
   
     carouselLeft.style.display = currentIndex === 0 ? 'none' : 'flex';
     carouselRight.style.display = currentIndex === carouselItemsHorizontal.length - 1 ? 'none' : 'flex';
@@ -151,7 +152,7 @@ function initCarousel() {
 
   updateCarousel();
 
-  
+ 
   document.querySelectorAll('.carousel-img').forEach((img, index) => {
     img.addEventListener('click', function () {
       currentIndex = index;
@@ -200,22 +201,22 @@ function initCarousel() {
 
 
 
+ 
 
-const carousel = document.querySelector('.carousel');
 const upButton = document.getElementById('carouselUp');
 const downButton = document.getElementById('carouselDown');
 
 // Функция для обновления состояния кнопок
 function updateButtonState() {
 
-  if (carousel.scrollTop <= 0) {
+  if (carouselVertical.scrollTop <= 0) {
     upButton.disabled = true;
   } else {
     upButton.disabled = false;
   }
   
 
-  if (carousel.scrollTop + carousel.clientHeight >= carousel.scrollHeight) {
+  if (carouselVertical.scrollTop + carouselVertical.clientHeight >= carouselVertical.scrollHeight) {
     downButton.disabled = true;
   } else {
     downButton.disabled = false;
@@ -224,7 +225,7 @@ function updateButtonState() {
 
 // Прокрутка вверх
 upButton.addEventListener('click', () => {
-  carousel.scrollBy({
+  carouselVertical.scrollBy({
     top: -80, 
     behavior: 'smooth'
   });
@@ -233,12 +234,13 @@ upButton.addEventListener('click', () => {
 
 // Прокрутка вниз
 downButton.addEventListener('click', () => {
-  carousel.scrollBy({
+  carouselVertical.scrollBy({
     top: 80, 
     behavior: 'smooth'
   });
   setTimeout(updateButtonState, 500); 
 });
+
 
 
 
