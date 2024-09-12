@@ -6,7 +6,6 @@
   margin: 0;
   padding: 0;
 }
-
 a {
   color: #000;
 }
@@ -17,14 +16,12 @@ a {
   padding: 2rem 1rem;
   background: #fff;
 }
-
 .contentt {
   max-width: 900px;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
 }
-
 .contentt h1 {
   color: #000;
   margin: 1.5rem 0;
