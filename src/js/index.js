@@ -4,9 +4,18 @@ import '../style/style.css';
 import '../style/shipping.css';
 import '../style/itempage.css';
 
-console.log(data);
+function loadModule(){
+  import(/* webpackChunkName: "html-module" */ './html.js')
+  .then(module => {
+    const{ createCards ,scrollToItems , createNewCards } = module;
 
-createCards(data);
-scrollToItems();
-createNewCards();
-
+    createCards(data);
+    scrollToItems();
+    createNewCards();
+    
+  })
+  .catch(error => {
+    console.error('Ошибка при загрузке модуля:', error);
+  });
+}
+loadModule();
