@@ -1,4 +1,4 @@
-import { createCards , scrollToItems , createNewCards } from './html.js';
+
 import data from '../data/item.json' with { type: 'json' };
 import '../style/style.css';
 import '../style/shipping.css';
@@ -18,4 +18,4 @@ function loadModule(){
     console.error('Ошибка при загрузке модуля:', error);
   });
 }
-loadModule();
+   loadModule();
