@@ -11,9 +11,9 @@
       "price": 249.99,
       "status": "NEW",
       "carousel_images": [
-        "../img/smartwatch_info_pictures/forerunner165/165.webp",
-        "../img/smartwatch_info_pictures/forerunner165/165-1.webp",
-        "../img/smartwatch_info_pictures/forerunner165/165-2.webp",
+        "165.webp",
+        "165-1.webp",
+        "165-2.webp",
         "../img/smartwatch_info_pictures/forerunner165/165-3.webp",
         "../img/smartwatch_info_pictures/forerunner165/165-4.webp",
         "../img/smartwatch_info_pictures/forerunner165/165-5.webp",
