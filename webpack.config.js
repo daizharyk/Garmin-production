@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
-
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   optimization:{
@@ -55,6 +55,9 @@ module: {
 },
 
   plugins: [
+    new MiniCssExtractPlugin({
+      filename: "[name].css",
+    }),
   new HtmlWebpackPlugin({
   title: "Garmin",
   filename: "index.html",
