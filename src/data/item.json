@@ -10,14 +10,15 @@
       "text": "You’re a runner who has moved beyond just running. You’re ready to train brilliantly. With a bright AMOLED display, training metrics, wellness insights, and optional music your goals are about to be met.",
       "price": 249.99,
       "status": "NEW",
+      "folder_name": "forerunner165", 
       "carousel_images": [
         "165.webp",
         "165-1.webp",
         "165-2.webp",
-        "../img/smartwatch_info_pictures/forerunner165/165-3.webp",
-        "../img/smartwatch_info_pictures/forerunner165/165-4.webp",
-        "../img/smartwatch_info_pictures/forerunner165/165-5.webp",
-        "../img/smartwatch_info_pictures/forerunner165/165-6.webp"
+        "165-3.webp",
+        "165-4.webp",
+        "165-5.webp",
+        "165-6.webp"
       ],
       "banner_text": {
         "title": "",
