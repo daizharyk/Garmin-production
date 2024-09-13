@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
 
 
-*{
+* {
   padding: 0;
   margin: 0;
   font-family: "Roboto";
@@ -12,7 +12,7 @@
 
 
 
-.nav-section{
+.nav-section {
   display: flex;
   justify-content: space-between;
   margin: 0 20px 0 20px;
@@ -20,7 +20,7 @@
 }
 
 
-.logo a{
+.logo a {
   font-family: 'Roboto';
   text-decoration: none;
   font-size: 1.5rem;
@@ -28,6 +28,7 @@
   color: #000;
   letter-spacing: 0.1rem;
 }
+
 .nav-menu {
   display: flex;
   padding: 0 10px 0 10px;
@@ -36,18 +37,19 @@
   height: 60px;
   cursor: pointer;
 }
-.nav-menu:hover{
+
+.nav-menu:hover {
   border-bottom: 4px solid #000;
 }
 
-.nav-item  {
-    font-family: Superscripts-Oswald, Oswald, "Roboto Condensed", Roboto, "Noto Sans TC", "Noto Sans SC", "Noto Sans JP", "Noto Sans KR", Prompt, sans-serif;
-    position: relative;
-    cursor: pointer; 
-    font-size: 1rem;
-    cursor: pointer; 
-    letter-spacing: .04rem;
-    font-weight: 400;
+.nav-item {
+  font-family: Superscripts-Oswald, Oswald, "Roboto Condensed", Roboto, "Noto Sans TC", "Noto Sans SC", "Noto Sans JP", "Noto Sans KR", Prompt, sans-serif;
+  position: relative;
+  cursor: pointer;
+  font-size: 1rem;
+  cursor: pointer;
+  letter-spacing: .04rem;
+  font-weight: 400;
 }
 
 /* Стили для выпадающего меню */
@@ -59,7 +61,7 @@
   background-color: #ffffff;
   padding: 35px 0 35px 0;
   gap: 20px;
-  z-index: 1001; 
+  z-index: 1001;
   border: 1px 0 1px 0 solid #d9d9d9;
 }
 
@@ -68,12 +70,14 @@
 }
 
 
-.dropdown-container{
+.dropdown-container {
   display: flex;
 }
+
 .nav-item:hover .dropdown {
   display: flex;
 }
+
 /* Стили для колонки в выпадающем меню */
 
 
@@ -92,14 +96,15 @@
   text-decoration: none;
   color: #000;
 }
-.sub-menu a:hover{
+
+.sub-menu a:hover {
   text-decoration: underline;
 }
 
 .column-title {
   font-family: Superscripts-Oswald, Oswald, "Roboto Condensed", Roboto, "Noto Sans TC", "Noto Sans SC", "Noto Sans JP", "Noto Sans KR", Prompt, sans-serif;
   margin-bottom: 15px;
-  border-bottom: 1px solid  #d9d9d9;
+  border-bottom: 1px solid #d9d9d9;
 }
 
 
@@ -111,7 +116,7 @@
   gap: 5px;
 }
 
-.new-card{
+.new-card {
   display: flex;
   flex-direction: column;
   box-shadow: 0px 0px 3px 3px #e6e6e6;
@@ -120,9 +125,11 @@
   height: 300px;
   align-items: center;
 }
-.card-link-dropdownmenu{
+
+.card-link-dropdownmenu {
   text-decoration: none;
 }
+
 .new-card img {
   width: 220px;
   margin: 10px;
@@ -132,7 +139,7 @@
   text-align: center;
 }
 
-.new-card-discription h2{
+.new-card-discription h2 {
   font-family: "Oswald";
   font-size: 1.2rem;
   font-weight: 400;
@@ -142,10 +149,10 @@
 }
 
 
-.trademark-dropdown{
-  font-size: 0.6em; 
-  vertical-align: super; 
-  color: #000; 
+.trademark-dropdown {
+  font-size: 0.6em;
+  vertical-align: super;
+  color: #000;
   font-weight: bold;
 }
 
@@ -158,14 +165,14 @@
 .freeground {
   display: block;
   text-align: center;
-  background-color: #000 ;
+  background-color: #000;
   padding: 0.2rem 0 0.2rem 0;
   font-size: .8rem;
   box-sizing: border-box;
 }
 
 
-.freeground a{
+.freeground a {
   color: #fff !important;
   font-optical-sizing: auto;
   font-weight: 400;
@@ -195,17 +202,18 @@
 .banner {
   position: relative;
 }
-.banner img{
+
+.banner img {
   max-width: 100%;
   height: auto;
   object-fit: cover;
 }
 
-.banner-text{
+.banner-text {
   color: #fff;
   position: absolute;
   top: 50%;
-  left:5%;
+  left: 5%;
   transform: translateY(-50%);
   width: auto;
   text-align: left;
@@ -240,7 +248,7 @@
   max-width: 900px;
   margin: 0 auto;
 
-  
+
 }
 
 
@@ -263,14 +271,14 @@
 }
 
 .card a {
-  font-family:  "Roboto";
+  font-family: "Roboto";
   color: #000;
   text-decoration: none;
   font-size: 15px;
   font-weight: 500;
   padding: 14px 30px;
   border: 1px solid #000;
-  transition: .2s ,color 0.2s;
+  transition: .2s, color 0.2s;
   text-transform: uppercase;
 }
 
@@ -284,13 +292,14 @@
 .shopall {
   padding: 50px;
 }
+
 #every_runner {
 
   margin: 50px;
   text-align: center;
 }
 
-#every_runner p{
+#every_runner p {
   font-family: "Oswald";
   font-style: inherit;
   font-weight: 400;
@@ -308,11 +317,11 @@
   justify-content: center;
 }
 
-.box{
+.box {
   position: relative;
 }
 
-.box img{
+.box img {
   object-fit: cover;
   cursor: pointer;
   aspect-ratio: 3 / 2;
@@ -321,21 +330,25 @@
   height: 450px;
   object-fit: cover;
 }
-.box img:hover{
+
+.box img:hover {
   filter: brightness(50%);
 }
+
 .overlay {
   position: absolute;
   bottom: 0;
   left: 50%;
-  transform: translate(-50%,-80%);
+  transform: translate(-50%, -80%);
   width: auto;
   height: auto;
   text-align: center;
   cursor: pointer;
+
 }
 
-.overlay a{
+.overlay a {
+
   color: #ffffff;
   font-family: "Roboto";
   font-size: 0.875rem;
@@ -344,12 +357,12 @@
   margin: 1rem 0 0;
   padding: 0.5rem 1.5rem;
   line-height: 1.15;
-  transition: .2s ,color 0.2s;
+  transition: .2s, color 0.2s;
   color: #fff;
 }
 
 
-.overlay a:hover{
+.overlay a:hover {
   border: 1px solid #ffffff;
   background: #ffffff;
   color: #000;
@@ -374,7 +387,7 @@
 }
 
 
-.black-card{
+.black-card {
   background: #000;
 }
 
@@ -386,7 +399,7 @@
   margin-top: 20px;
 }
 
-.content h2{
+.content h2 {
   font-family: "Oswald";
   font-weight: 400;
   letter-spacing: 0.05rem;
@@ -402,8 +415,8 @@
   font-weight: 400;
   padding-bottom: 50px;
 }
- 
-.content a{
+
+.content a {
   font-family: "Roboto";
   color: #ffffff;
   margin: 2rem;
@@ -416,7 +429,7 @@
   text-decoration: none;
 }
 
-.content a:hover{
+.content a:hover {
   background: #fff;
   color: #000;
   text-transform: uppercase;
@@ -428,7 +441,8 @@
   background: #ffffff;
   padding: 50px;
 }
-.white-card h2{
+
+.white-card h2 {
   color: #000;
   font-family: "Oswald";
   font-weight: 400;
@@ -440,7 +454,7 @@
 
 
 .container-items {
-  border-top:1px solid #d9d9d9;
+  border-top: 1px solid #d9d9d9;
   display: flex;
   width: 100%;
 }
@@ -470,8 +484,9 @@
 
 .feature-list li {
   display: flex;
-  margin-bottom: 1.6rem; /* Отступ снизу */
-  align-items: center; 
+  margin-bottom: 1.6rem;
+  /* Отступ снизу */
+  align-items: center;
   justify-content: space-between;
 }
 
@@ -485,12 +500,13 @@
   cursor: pointer;
   background-color: #fff;
   border: 2px solid #000;
-  margin-right:  0.5rem;
-  
+  margin-right: 0.5rem;
+
 }
 
 .feature-list input[type="checkbox"]:checked {
-  background-color: #000; /* Черный фон для отмеченного чекбокса */
+  background-color: #000;
+  /* Черный фон для отмеченного чекбокса */
 }
 
 .feature-list input[type="checkbox"]:checked::after {
@@ -499,13 +515,14 @@
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: #fff; 
-  font-size: 7px; 
+  color: #fff;
+  font-size: 7px;
   font-weight: 700;
 }
 
 .feature-list label {
-  flex: 1; /* Расширяем label на доступное пространство */
+  flex: 1;
+  /* Расширяем label на доступное пространство */
   cursor: pointer;
 }
 
@@ -513,7 +530,8 @@
 
 
 .toggle-checkbox {
-  display: none; /* Скрываем чекбокс */
+  display: none;
+  /* Скрываем чекбокс */
 }
 
 .hidden {
@@ -521,10 +539,11 @@
 }
 
 
-.toggle-checkbox:checked + .toggle-label + #connectivity-features {
+.toggle-checkbox:checked+.toggle-label+#connectivity-features {
   display: block;
   padding: 0;
 }
+
 .toggle-label {
   display: flex;
   align-items: center;
@@ -543,6 +562,7 @@
   right: 20px;
   transition: transform 0.4s ease;
 }
+
 .arrow-white {
   display: none;
   width: 10px;
@@ -554,17 +574,18 @@
   right: 20px;
   transition: transform 0.4s ease;
 }
-.toggle-checkbox:checked + .toggle-label .arrow {
-  transform: rotate(-135deg); 
+
+.toggle-checkbox:checked+.toggle-label .arrow {
+  transform: rotate(-135deg);
 }
 
 
 
-.sidebar h3{
-    font-weight: 450;
-    font-size: 0.875rem;
-    line-height: 1.5;
-    
+.sidebar h3 {
+  font-weight: 450;
+  font-size: 0.875rem;
+  line-height: 1.5;
+
 }
 
 #connectivity-features {
@@ -637,14 +658,15 @@
   border: 1px solid #d9d9d9;
   margin: 14 48px 14px 14px;
   padding: 0.875rem 7em 0.875rem 0.875rem;
-  
+
 }
 
 
 
-.select-option select:focus{
+.select-option select:focus {
   outline: 1px solid #000;
 }
+
 .cards a {
   text-decoration: none;
   color: #000;
@@ -653,13 +675,13 @@
 .cards {
   display: flex;
   flex-wrap: wrap;
-  
+
 }
 
 
-.card-link{
+.card-link {
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   width: calc(33.333% - 17px);
   margin: 16px 0px 0px 16px;
   box-shadow: 0 2px 3px 1px #e6e6e6;
@@ -667,29 +689,30 @@
   transition: transform 0.2s ease;
   word-wrap: break-word;
 }
-.card-link:hover{
+
+.card-link:hover {
   transform: scale(1.01);
   box-shadow: 0 3px 5px 2px #e6e6e6;
 }
 
-.item-card-img img{
+.item-card-img img {
   object-fit: contain;
   height: 300px;
   width: 100%;
 }
 
-.product-card-description{
+.product-card-description {
   display: flex;
   flex-direction: column;
   padding: 0px 16px 24px 16px;
   flex-grow: 1;
 }
 
-.product-card-description p{
+.product-card-description p {
   margin-bottom: 16px;
 }
 
-.product-card-description h2{
+.product-card-description h2 {
   font-family: "Oswald";
   font-size: 1.7rem;
   font-weight: 400;
@@ -720,35 +743,35 @@
 
 
 .tm-symbol {
-  font-size: 0.7em; 
-  vertical-align: super; 
-  font-weight: bold; 
-  color: #000; 
-  margin-left: 4px; 
+  font-size: 0.7em;
+  vertical-align: super;
+  font-weight: bold;
+  color: #000;
+  margin-left: 4px;
 }
 
 
-.tile-container{
+.tile-container {
   display: flex;
   padding: 8px;
   height: 450px;
 }
 
-.tile-card{
+.tile-card {
   position: relative;
   flex: 1;
   margin: 8px;
-  overflow: hidden; 
+  overflow: hidden;
   height: 350px;
 }
 
-.tile-card img{
+.tile-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.tile-card_discription{
+.tile-card_discription {
   position: absolute;
   width: 100%;
   bottom: 0;
@@ -759,7 +782,7 @@
   z-index: 2;
 }
 
-.tile-card_discription h2{
+.tile-card_discription h2 {
   position: relative;
   color: #ffffff;
   bottom: 30px;
@@ -770,18 +793,18 @@
 }
 
 
-.tile-card-bg{
+.tile-card-bg {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%); 
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
   filter: blur(10px);
   z-index: 1;
 }
 
-.singup{
+.singup {
   display: flex;
   justify-content: center;
   text-align: center;
@@ -792,7 +815,7 @@
   padding: 20px;
 }
 
-.signup-content h2{
+.signup-content h2 {
   color: #000;
   font-family: "Oswald";
   letter-spacing: .05rem;
@@ -801,12 +824,12 @@
   padding-bottom: 20px;
 }
 
-.signup-content p{
+.signup-content p {
   font-size: 0.7rem;
   padding-top: 20px;
 }
 
-.signup-content a{
+.signup-content a {
   font-size: 0.7rem;
 }
 
@@ -823,7 +846,7 @@
   font-size: 16px;
   border: 1px solid #ccc;
   border-right: none;
-  
+
 }
 
 .email-form button {
@@ -834,8 +857,8 @@
   width: 44px;
   height: 44px;
   border: none;
-  
-  transition: transform 0.2s ,color 0.3s ;
+
+  transition: transform 0.2s, color 0.3s;
 }
 
 .email-form button:hover {
@@ -877,20 +900,20 @@ footer {
   border: 0;
   background: transparent;
   cursor: pointer;
-  padding:1rem 0 ;
+  padding: 1rem 0;
   display: flex;
   align-items: center;
 }
 
-.nav-list-item span{
+.nav-list-item span {
   font-family: Superscripts-Oswald, Oswald, "Roboto Condensed", Roboto, "Noto Sans TC", "Noto Sans SC", "Noto Sans JP", "Noto Sans KR", Prompt, sans-serif;
-    font-weight: 400;
-    letter-spacing: .05rem;
-    color: #fff;
-    line-height: 2rem;
-    font-size: 1.3rem;
-    cursor: pointer;
-    text-align: left;
+  font-weight: 400;
+  letter-spacing: .05rem;
+  color: #fff;
+  line-height: 2rem;
+  font-size: 1.3rem;
+  cursor: pointer;
+  text-align: left;
 
 }
 
@@ -979,57 +1002,65 @@ footer {
   color: #fff;
   text-decoration: none;
 }
+
 .foter_nav_li a:hover {
   text-decoration: underline;
 }
 
-#girl-running-adaptive{
-  display:none ;
-}
-
-
-.product-filter_dropdown{
+#girl-running-adaptive {
   display: none;
 }
 
-.cards-content{
+
+.product-filter_dropdown {
+  display: none;
+}
+
+.cards-content {
   margin-right: 20px;
 }
-.grid__options{
+
+.grid__options {
   padding-top: 20px;
 }
 
-@media (max-width:1000px){ 
- 
- 
+@media (max-width:1000px) {
 
 
 
-  .nav-item-section{
+
+
+  .nav-item-section {
     display: none;
   }
+
   .nav-section {
     justify-content: center;
   }
-.nav-item-section.active {
-    display: flex; /* Показать навигацию при активации */
+
+  .nav-item-section.active {
+    display: flex;
+    /* Показать навигацию при активации */
   }
-  .login-section{
+
+  .login-section {
     position: absolute;
     right: 20px;
   }
 
-  #girl-running-full{
+  #girl-running-full {
     display: none;
   }
 
-  #girl-running-adaptive{
+  #girl-running-adaptive {
     display: flex;
   }
- .banner{
-  display: flex;
-  flex-direction: column;
- }
+
+  .banner {
+    display: flex;
+    flex-direction: column;
+  }
+
   .banner-text {
     background-color: #000000;
     position: relative;
@@ -1039,143 +1070,159 @@ footer {
     width: 100%;
     padding: 25px 0;
   }
-.banner-text h1{
-  font-size: 1.9rem;
-}
-.head-nav{
-  margin: 10px 0 10px 0;
-}
-  .banner-p{
+
+  .banner-text h1 {
+    font-size: 1.9rem;
+  }
+
+  .head-nav {
+    margin: 10px 0 10px 0;
+  }
+
+  .banner-p {
     display: flex;
     justify-content: center;
     margin: 5px;
   }
+
   .container-items {
     display: flex;
     flex-direction: column;
   }
-  
-.sidebar{
-  display: none;
-  width: 100%;
-}
 
-.product-filter_dropdown{
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  padding: 20px;
-  border-top: 1px solid #d9d9d9 ;
-  font-family: "roboto";
-}
+  .sidebar {
+    display: none;
+    width: 100%;
+  }
 
-
-
-.cards{
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.grid__options{
-  margin: 0;
-}
-.product-filter_dropdown .arrow {
-  transition: transform 0.3s ease;
-}
-
-.product-filter_dropdown.active .arrow {
-  transform: rotate(-135deg); 
-  
-}
-
-.product-filter_dropdown p{
-  font-family: "Roboto";
-  color: #000;
-  font-weight: 500;
-  font-size: 1rem;
-}
-.nav_list{
-  display: block;
-}
-.nav-list-li {
-  display: none; 
-  list-style: none;
-  padding-left: 20px;
-}
-
-.nav-list-item{
-  width: 100%;
-  padding: 0 20px 0 20px;
-  
-}
-.nav-list-li li {
-  margin-bottom: 20px ;
-}
-
-.nav-list-item.active .nav-list-li {
-  display: block; /* Показать при активном состоянии */
-  padding-bottom: 20px;
-}
-.arrow-white  {
-  display: flex;
-}
-.nav-list-item.active .arrow-white {
-  transform: rotate(225deg); 
-  border-right: 3px solid #000;
-  border-bottom: 3px solid #000;
-}
-
-.nav-list-item.active {
-  background: #fff;
-}
-
-.nav-list-item.active span {
-  color: #000;
-}
-.nav-list-item.active a {
-  color: #000;
-
-}
-.nav_list{
-  padding: 30px 0 30px 0;
-}
-
-
-.socialmediafooter {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-}
-
-.socialmediafooter  h4{
-  padding: 20px;
-}
-.foter_nav {
-  display: flex;
-  flex-direction: column-reverse;
-  align-items: center;
-  justify-content: center;
-  
-}
-.foter_nav_li {
-  flex-wrap: wrap;
-  text-align: center;
-  justify-content: center;
-  width: 100%;
-  padding: 15px 0 50px 0;
-
-}
-
-}
+  .product-filter_dropdown {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 20px;
+    border-top: 1px solid #d9d9d9;
+    font-family: "roboto";
+  }
 
 
 
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .grid__options {
+    margin: 0;
+  }
+
+  .product-filter_dropdown .arrow {
+    transition: transform 0.3s ease;
+  }
+
+  .product-filter_dropdown.active .arrow {
+    transform: rotate(-135deg);
+
+  }
+
+  .product-filter_dropdown p {
+    font-family: "Roboto";
+    color: #000;
+    font-weight: 500;
+    font-size: 1rem;
+  }
+
+  .nav_list {
+    display: block;
+  }
+
+  .nav-list-li {
+    display: none;
+    list-style: none;
+    padding-left: 20px;
+  }
+
+  .nav-list-item {
+    width: 100%;
+    padding: 0 20px 0 20px;
+
+  }
+
+  .nav-list-li li {
+    margin-bottom: 20px;
+  }
+
+  .nav-list-item.active .nav-list-li {
+    display: block;
+    /* Показать при активном состоянии */
+    padding-bottom: 20px;
+  }
+
+  .arrow-white {
+    display: flex;
+  }
+
+  .nav-list-item.active .arrow-white {
+    transform: rotate(225deg);
+    border-right: 3px solid #000;
+    border-bottom: 3px solid #000;
+  }
+
+  .nav-list-item.active {
+    background: #fff;
+  }
+
+  .nav-list-item.active span {
+    color: #000;
+  }
+
+  .nav-list-item.active a {
+    color: #000;
+
+  }
+
+  .nav_list {
+    padding: 30px 0 30px 0;
+  }
 
 
-@media (max-width: 1200px){
+  .socialmediafooter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .socialmediafooter h4 {
+    padding: 20px;
+  }
+
+  .foter_nav {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+
+  }
+
+  .foter_nav_li {
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+    padding: 15px 0 50px 0;
+
+  }
+
+}
+
+
+
+
+
+@media (max-width: 1200px) {
   .cards .card-link {
-    flex: 1 1 calc(50% - 20px); /* Две карточки в ряд */
+    flex: 1 1 calc(50% - 20px);
+    /* Две карточки в ряд */
   }
 }
 
@@ -1185,17 +1232,21 @@ footer {
     display: flex;
     flex-direction: column;
   }
-  .box img{
+
+  .box img {
     height: 300px;
   }
-  .tile-container{
+
+  .tile-container {
     flex-direction: column;
     height: 1150px;
   }
+
   .select-option label {
     width: auto;
   }
-  .product-card-description h2{
+
+  .product-card-description h2 {
     font-family: "Oswald";
     font-size: 1.2rem;
     font-weight: 400;
@@ -1205,7 +1256,7 @@ footer {
     color: #000000;
     margin-bottom: 16px;
   }
-  
+
   .product-description {
     font-family: "Roboto";
     font-weight: 400;
@@ -1217,9 +1268,9 @@ footer {
   }
 
 
-  .card-link{
+  .card-link {
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     width: calc(33.333% - 17px);
     margin: 16px 0px 0px 10px;
     box-shadow: 0 2px 3px 1px #e6e6e6;
@@ -1227,76 +1278,81 @@ footer {
     transition: transform 0.2s ease;
     word-wrap: break-word;
   }
-  
- .cards {
-  margin: 10px;
- }
- 
-  .item-card-img img{
+
+  .cards {
+    margin: 10px;
+  }
+
+  .item-card-img img {
     object-fit: contain;
     height: 200px;
     width: 100%;
   }
 
   .cards-content {
-    margin: 0 ;
+    margin: 0;
   }
 }
 
-@media (max-width: 450px){
+@media (max-width: 450px) {
   .cards .card-link {
-    flex: 1 1 calc(100% - 20px); 
+    flex: 1 1 calc(100% - 20px);
     margin: 10px 0 10px 0;
   }
- 
 
-  
-.select-option p {
-  margin-right: 1rem;
-  font-weight: 550;
-  font-size: 0.775rem;
-  text-align: left;
-  font-family: "Roboto";
-}
 
-.select-option select {
-  font-size: 0.8em;
-  width: 190px;
-  height: auto;
-  background-color: #ffffff;
-  border: 1px solid #d9d9d9;
-  margin: 14 48px 14px 14px;
-  padding: 0.875rem 7em 0.875rem 0.875rem;
-  
-}
-.grid__options {
-  display: flex;
-  justify-content: space-between;
-  padding-right: 5px ;
-}
 
-.select-option label {
-  width: auto;
-}
-.content h2{
-  font-size: 1.4rem;
-}
-.content p {
-  font-size: 1rem;
-  padding: 0;
-}
-.content a {
-  font-size: 0.8rem;
-}
+  .select-option p {
+    margin-right: 1rem;
+    font-weight: 550;
+    font-size: 0.775rem;
+    text-align: left;
+    font-family: "Roboto";
+  }
 
-#every_runner {
-  margin: 10px;
-}
-#every_runner p {
-  font-size: 1.5rem;
-}
-.shopall {
-  padding: 10px;
-}
-}
+  .select-option select {
+    font-size: 0.8em;
+    width: 190px;
+    height: auto;
+    background-color: #ffffff;
+    border: 1px solid #d9d9d9;
+    margin: 14 48px 14px 14px;
+    padding: 0.875rem 7em 0.875rem 0.875rem;
 
+  }
+
+  .grid__options {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 5px;
+  }
+
+  .select-option label {
+    width: auto;
+  }
+
+  .content h2 {
+    font-size: 1.4rem;
+  }
+
+  .content p {
+    font-size: 1rem;
+    padding: 0;
+  }
+
+  .content a {
+    font-size: 0.8rem;
+  }
+
+  #every_runner {
+    margin: 10px;
+  }
+
+  #every_runner p {
+    font-size: 1.5rem;
+  }
+
+  .shopall {
+    padding: 10px;
+  }
+}
