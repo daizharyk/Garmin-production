@@ -1,5 +1,4 @@
 import data from "../data/item.json" with { type: "json" };
-import { item } from "./itemService.js";
 import "../style/style.css";
 import "../style/shipping.css";
 import "../style/itempage.css";
@@ -63,7 +62,7 @@ export function createNewCards() {
     newCard.classList.add("new-card");
 
     const img = document.createElement("img");
-    img.src = items.carousel_images[2];
+    img.src = `../img/smartwatch_info_pictures/${folderName}/${items.carousel_images[2]}`;
     img.alt = items.name;
 
     const newCardDescription = document.createElement("div");
