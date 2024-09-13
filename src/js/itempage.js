@@ -1,4 +1,4 @@
-import data from "../data/item.json" with { type: "json" };
+import { item } from "./itemService.js"
 import "../style/style.css";
 import "../style/shipping.css";
 import "../style/itempage.css";
@@ -20,13 +20,7 @@ window.addEventListener("scroll", () => {
 
 document
   .addEventListener("DOMContentLoaded", () => {
-    // Этот код выполняется после полной загрузки DOM
-    const params = new URLSearchParams(location.search);
-    const itemId = params.get("id");
-    console.log("item id:", itemId);
-    // Загружаем данные из JSON
-
-    const item = data.items.find((item) => item.id == itemId);
+  
 
     document.querySelector(".product-title").textContent = item.name;
     document.querySelector(".product-color").textContent = item.color;
