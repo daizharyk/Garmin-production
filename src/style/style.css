@@ -142,7 +142,7 @@
 
 .new-card-discription h2 {
   font-family: "Oswald";
-  font-size:0.5rem;
+  font-size:0.5rem !important;
   font-weight: 400;
   letter-spacing: .05rem;
   color: #000000;
