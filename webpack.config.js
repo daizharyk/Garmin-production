@@ -12,6 +12,7 @@ module.exports = {
     animation: path.resolve(__dirname, "src/js/animation.js"),
     html: path.resolve(__dirname, "src/js/htmlBuilder.js"),
     itempage: path.resolve(__dirname, "src/js/itempage.js"),
+    itemService: path.resolve(__dirname, "src/js/itemService.js"),
   },
   output: {
     path: path.resolve(__dirname, "dist"),
