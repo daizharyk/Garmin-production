@@ -1,112 +1,118 @@
-import '../style/style.css';
-import '../style/shipping.css';
-import '../style/itempage.css';
+import "../style/style.css";
+import "../style/shipping.css";
+import "../style/itempage.css";
 
-
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   // Этот код выполняется после полной загрузки DOM
   const params = new URLSearchParams(location.search);
   const itemId = params.get("id");
   console.log("item id:", itemId);
   // Загружаем данные из JSON
-  fetch('../data/item.json')
-    .then(response => response.json())
-    .then(data => {
-      const item = data.items.find(item => item.id == itemId);
+  fetch("../data/item.json")
+    .then((response) => response.json())
+    .then((data) => {
+      const item = data.items.find((item) => item.id == itemId);
 
-      document.querySelector('.product-title').textContent = item.name;
-        document.querySelector('.product-color').textContent = item.color;
-        const saleBox = document.getElementById('sale-box');
-        document.title = item.product_title;
-        saleBox.style.display = saleBox.textContent.trim() ? 'inline-flex' : 'none';
-       
-        document.getElementById('product-price').textContent = item.price.toFixed(2);
-      const carousel = document.querySelector('.carousel');
-      item.carousel_images.forEach(imgSrc => {
-        const div = document.createElement('div');
-        div.classList.add('carousel-box');
-        const img = document.createElement('img');
+      document.querySelector(".product-title").textContent = item.name;
+      document.querySelector(".product-color").textContent = item.color;
+      const saleBox = document.getElementById("sale-box");
+      document.title = item.product_title;
+      saleBox.style.display = saleBox.textContent.trim()
+        ? "inline-flex"
+        : "none";
+
+      document.getElementById("product-price").textContent =
+        item.price.toFixed(2);
+      const carousel = document.querySelector(".carousel");
+      item.carousel_images.forEach((imgSrc) => {
+        const div = document.createElement("div");
+        div.classList.add("carousel-box");
+        const img = document.createElement("img");
         img.src = imgSrc;
         img.alt = item.name;
-        img.classList.add('carousel-img');
+        img.classList.add("carousel-img");
         div.appendChild(img);
         carousel.appendChild(div);
 
-        const carousel1 = document.querySelector('.carousel1');
-        carousel1.innerHTML = '';
-          item.carousel_images.forEach(imgSrc => {
-            const div = document.createElement('div');
-            div.classList.add('carousel-box1');
-            const img = document.createElement('img');
-            img.src = imgSrc;
-            img.alt = item.name;
-            img.classList.add('carousel-img1');
-            div.appendChild(img);
-            carousel1.appendChild(div);
-          });
+        const carousel1 = document.querySelector(".carousel1");
+        carousel1.innerHTML = "";
+        item.carousel_images.forEach((imgSrc) => {
+          const div = document.createElement("div");
+          div.classList.add("carousel-box1");
+          const img = document.createElement("img");
+          img.src = imgSrc;
+          img.alt = item.name;
+          img.classList.add("carousel-img1");
+          div.appendChild(img);
+          carousel1.appendChild(div);
+        });
       });
-      document.querySelector(".banner-title").textContent = item.banner_text.title;
+      document.querySelector(".banner-title").textContent =
+        item.banner_text.title;
       document.querySelector(".disc-right").textContent = item.banner_text.text;
-      document.getElementById("bannerwithtext").src = item.banner_text.banner_images.main_banner;
-      document.getElementById("bannerwithtext").alt = item.banner_text.banner_images.alt;
-      document.getElementById("bannerwithtext-adaptive").src = item.banner_text.banner_images.adaptive_banner;
-      document.getElementById("bannerwithtext-adaptive").alt = item.banner_text.banner_images.alt;
-      
-      
-      
-
+      document.getElementById("bannerwithtext").src =
+        item.banner_text.banner_images.main_banner;
+      document.getElementById("bannerwithtext").alt =
+        item.banner_text.banner_images.alt;
+      document.getElementById("bannerwithtext-adaptive").src =
+        item.banner_text.banner_images.adaptive_banner;
+      document.getElementById("bannerwithtext-adaptive").alt =
+        item.banner_text.banner_images.alt;
 
       const videoThumbnail = document.querySelector(".video-thumbnail");
-      videoThumbnail.querySelector('img').src = item.video_section.thumbnail;
-      document.querySelector(".thumbnail-img").alt = item.video_section.thumbnail;
-      document.getElementById("video-player").src = item.video_section.video_url;
-      
-      document.querySelector('.walpapperinfo').src = item.additional_images.main_image;
+      videoThumbnail.querySelector("img").src = item.video_section.thumbnail;
+      document.querySelector(".thumbnail-img").alt =
+        item.video_section.thumbnail;
+      document.getElementById("video-player").src =
+        item.video_section.video_url;
 
-      document.querySelector('.walpapperinfo-adaptive').src = item.additional_images.adaptive_image;
+      document.querySelector(".walpapperinfo").src =
+        item.additional_images.main_image;
 
-      const functionInfoContainer = document.querySelector('.cards-container');
-      item.watch_features.forEach(feature => {
-        const card = document.createElement('div');
-        card.classList.add('function-info-card');
-        const img = document.createElement('img');
+      document.querySelector(".walpapperinfo-adaptive").src =
+        item.additional_images.adaptive_image;
+
+      const functionInfoContainer = document.querySelector(".cards-container");
+      item.watch_features.forEach((feature) => {
+        const card = document.createElement("div");
+        card.classList.add("function-info-card");
+        const img = document.createElement("img");
         img.src = feature.image;
         img.alt = feature.title;
-        const title = document.createElement('h2');
+        const title = document.createElement("h2");
         title.textContent = feature.title;
-        const description = document.createElement('p');
+        const description = document.createElement("p");
         description.textContent = feature.description;
         card.appendChild(img);
         card.appendChild(title);
         card.appendChild(description);
         functionInfoContainer.appendChild(card);
       });
-      
-      
-        function replaceSymbols(text) {
-          return text
-            .replace(/®/g, '<sup class="registered">®</sup>')
-            .replace(/™/g, '<sup class="trademark2">™</sup>');
-        }
-        document.querySelector(".banner-title").innerHTML = replaceSymbols(item.banner_text.title);
-        document.querySelector(".product-title").innerHTML = replaceSymbols(item.product_title);
 
-       
-      initCarousel(); 
-      
+      function replaceSymbols(text) {
+        return text
+          .replace(/®/g, '<sup class="registered">®</sup>')
+          .replace(/™/g, '<sup class="trademark2">™</sup>');
+      }
+      document.querySelector(".banner-title").innerHTML = replaceSymbols(
+        item.banner_text.title
+      );
+      document.querySelector(".product-title").innerHTML = replaceSymbols(
+        item.product_title
+      );
+
+      initCarousel();
     })
-    .catch(error => console.error('Error loading data:', error));
+    .catch((error) => console.error("Error loading data:", error));
 });
-        
-
 
 function initCarousel() {
-  const carouselHorizontal = document.querySelector('.carousel1');
+  const carouselHorizontal = document.querySelector(".carousel1");
   const carouselItemsHorizontal = Array.from(carouselHorizontal.children);
-  const carouselLeft = document.getElementById('carouselLeft1');
-  const carouselRight = document.getElementById('carouselRight1');
+  const carouselLeft = document.getElementById("carouselLeft1");
+  const carouselRight = document.getElementById("carouselRight1");
 
-  const carouselVertical = document.querySelector('.carousel');
+  const carouselVertical = document.querySelector(".carousel");
   const carouselItemsVertical = Array.from(carouselVertical.children);
 
   let currentIndex = 0;
@@ -115,24 +121,23 @@ function initCarousel() {
     // Обновление горизонтального каруселя
     const offset = -currentIndex * 100; // 100% ширины одного элемента
     carouselHorizontal.style.transform = `translateX(${offset}%)`;
-   
-  
-    carouselLeft.style.display = currentIndex === 0 ? 'none' : 'flex';
-    carouselRight.style.display = currentIndex === carouselItemsHorizontal.length - 1 ? 'none' : 'flex';
+
+    carouselLeft.style.display = currentIndex === 0 ? "none" : "flex";
+    carouselRight.style.display =
+      currentIndex === carouselItemsHorizontal.length - 1 ? "none" : "flex";
 
     // Обновление вертикального каруселя
     const verticalOffset = currentIndex * 80; // Высота элемента в пикселях
     carouselVertical.scrollTo({
       top: verticalOffset,
-      behavior: 'smooth'
+      behavior: "smooth",
     });
-
 
     carouselItemsVertical.forEach((img, index) => {
       if (index === currentIndex) {
-        img.classList.add('selected');
+        img.classList.add("selected");
       } else {
-        img.classList.remove('selected');
+        img.classList.remove("selected");
       }
     });
   };
@@ -151,21 +156,18 @@ function initCarousel() {
     }
   };
 
-  carouselLeft.addEventListener('click', moveToPrevious);
-  carouselRight.addEventListener('click', moveToNext);
-
+  carouselLeft.addEventListener("click", moveToPrevious);
+  carouselRight.addEventListener("click", moveToNext);
 
   updateCarousel();
 
- 
-  document.querySelectorAll('.carousel-img').forEach((img, index) => {
-    img.addEventListener('click', function () {
+  document.querySelectorAll(".carousel-img").forEach((img, index) => {
+    img.addEventListener("click", function () {
       currentIndex = index;
       updateCarousel();
     });
   });
 
-  
   let touchStartX = 0;
   let touchEndX = 0;
 
@@ -174,95 +176,82 @@ function initCarousel() {
 
     if (swipeDistance > 50) {
       moveToNext();
-    } else if (swipeDistance < -50) { 
+    } else if (swipeDistance < -50) {
       moveToPrevious();
     }
   };
 
-  carouselHorizontal.addEventListener('touchstart', (event) => {
+  carouselHorizontal.addEventListener("touchstart", (event) => {
     touchStartX = event.touches[0].clientX;
   });
 
-  carouselHorizontal.addEventListener('touchend', (event) => {
+  carouselHorizontal.addEventListener("touchend", (event) => {
     touchEndX = event.changedTouches[0].clientX;
     handleSwipe();
   });
 
+  const playButton = document.querySelector(".play-button");
+  const videoThumbnail = document.querySelector(".video-thumbnail");
+  const videoPlayer = document.getElementById("video-player");
 
+  playButton.addEventListener("click", function () {
+    videoThumbnail.style.display = "none";
 
-
-  const playButton = document.querySelector('.play-button');
-  const videoThumbnail = document.querySelector('.video-thumbnail');
-  const videoPlayer = document.getElementById('video-player');
-
-  playButton.addEventListener('click', function() {
-    
-    videoThumbnail.style.display = 'none';
-
-   
-    videoPlayer.style.display = 'block';
-    videoPlayer.src += "&autoplay=1"; 
+    videoPlayer.style.display = "block";
+    videoPlayer.src += "&autoplay=1";
   });
 
+  const upButton = document.getElementById("carouselUp");
+  const downButton = document.getElementById("carouselDown");
 
+  // Функция для обновления состояния кнопок
+  function updateButtonState() {
+    if (carouselVertical.scrollTop <= 0) {
+      upButton.disabled = true;
+    } else {
+      upButton.disabled = false;
+    }
 
- 
-
-const upButton = document.getElementById('carouselUp');
-const downButton = document.getElementById('carouselDown');
-
-// Функция для обновления состояния кнопок
-function updateButtonState() {
-
-  if (carouselVertical.scrollTop <= 0) {
-    upButton.disabled = true;
-  } else {
-    upButton.disabled = false;
+    if (
+      carouselVertical.scrollTop + carouselVertical.clientHeight >=
+      carouselVertical.scrollHeight
+    ) {
+      downButton.disabled = true;
+    } else {
+      downButton.disabled = false;
+    }
   }
-  
 
-  if (carouselVertical.scrollTop + carouselVertical.clientHeight >= carouselVertical.scrollHeight) {
-    downButton.disabled = true;
-  } else {
-    downButton.disabled = false;
-  }
+  // Прокрутка вверх
+  upButton.addEventListener("click", () => {
+    carouselVertical.scrollBy({
+      top: -80,
+      behavior: "smooth",
+    });
+    setTimeout(updateButtonState, 500);
+  });
+
+  // Прокрутка вниз
+  downButton.addEventListener("click", () => {
+    carouselVertical.scrollBy({
+      top: 80,
+      behavior: "smooth",
+    });
+    setTimeout(updateButtonState, 500);
+  });
 }
 
-// Прокрутка вверх
-upButton.addEventListener('click', () => {
-  carouselVertical.scrollBy({
-    top: -80, 
-    behavior: 'smooth'
-  });
-  setTimeout(updateButtonState, 500); 
-});
-
-// Прокрутка вниз
-downButton.addEventListener('click', () => {
-  carouselVertical.scrollBy({
-    top: 80, 
-    behavior: 'smooth'
-  });
-  setTimeout(updateButtonState, 500); 
-});
-
-
-
-
-}
-
-
-const navBar = document.querySelector('.nav-bar');
+const navBar = document.querySelector(".nav-bar");
 
 const navBarOffsetTop = navBar.offsetTop;
 
-window.addEventListener('scroll', () => {
-  const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-
+window.addEventListener("scroll", () => {
+  const currentScroll =
+    window.pageYOffset || document.documentElement.scrollTop;
 
   if (currentScroll >= navBarOffsetTop) {
-    navBar.classList.add('sticky');
+    navBar.classList.add("sticky");
   } else {
-    navBar.classList.remove('sticky');
+    navBar.classList.remove("sticky");
   }
 });
