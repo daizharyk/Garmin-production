@@ -10,7 +10,7 @@ module.exports = {
   entry: {
     main: path.resolve(__dirname, "src/js/index.js"),
     animation: path.resolve(__dirname, "src/js/animation.js"),
-    html: path.resolve(__dirname, "src/js/ htmlBuilder.js"),
+    html: path.resolve(__dirname, "src/js/htmlBuilder.js"),
     itempage: path.resolve(__dirname, "src/js/itempage.js"),
   },
   output: {

@@ -4,7 +4,7 @@ import "../style/shipping.css";
 import "../style/itempage.css";
 
 function loadModule() {
-  import(/* webpackChunkName: "html-module" */ "./ htmlBuilder.js")
+  import(/* webpackChunkName: "html-module" */ "./htmlBuilder.js")
     .then((module) => {
       const { createCards, scrollToItems, createNewCards } = module;
 
