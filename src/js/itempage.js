@@ -3,6 +3,21 @@ import "../style/style.css";
 import "../style/shipping.css";
 import "../style/itempage.css";
 
+
+
+const navBar = document.querySelector(".nav-bar");
+const navBarOffsetTop = navBar.offsetTop;
+window.addEventListener("scroll", () => {
+  const currentScroll =
+    window.pageYOffset || document.documentElement.scrollTop;
+  if (currentScroll >= navBarOffsetTop) {
+    navBar.classList.add("sticky");
+  } else {
+    navBar.classList.remove("sticky");
+  }
+});
+
+
 document
   .addEventListener("DOMContentLoaded", () => {
     // Этот код выполняется после полной загрузки DOM
@@ -236,14 +251,3 @@ function initCarousel() {
   });
 }
 
-const navBar = document.querySelector(".nav-bar");
-const navBarOffsetTop = navBar.offsetTop;
-window.addEventListener("scroll", () => {
-  const currentScroll =
-    window.pageYOffset || document.documentElement.scrollTop;
-  if (currentScroll >= navBarOffsetTop) {
-    navBar.classList.add("sticky");
-  } else {
-    navBar.classList.remove("sticky");
-  }
-});
