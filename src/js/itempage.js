@@ -1,3 +1,4 @@
+import data from "../data/item.json" with { type: "json" };
 import "../style/style.css";
 import "../style/shipping.css";
 import "../style/itempage.css";
@@ -8,9 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const itemId = params.get("id");
   console.log("item id:", itemId);
   // Загружаем данные из JSON
-  fetch("../data/item.json")
-    .then((response) => response.json())
-    .then((data) => {
+  
       const item = data.items.find((item) => item.id == itemId);
 
       document.querySelector(".product-title").textContent = item.name;
@@ -104,7 +103,6 @@ document.addEventListener("DOMContentLoaded", () => {
       initCarousel();
     })
     .catch((error) => console.error("Error loading data:", error));
-});
 
 function initCarousel() {
   const carouselHorizontal = document.querySelector(".carousel1");
