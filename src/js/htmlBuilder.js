@@ -52,24 +52,24 @@ export function createNewCards() {
 
   newCardsContainer.innerHTML = "";
 
-  function createCard(items) {
+  function createCard(item) {
     const newCard = document.createElement("div");
 
     const cardLink = document.createElement("a");
-    cardLink.href = `/pages/itempage.html?id=${items.id}`;
+    cardLink.href = `/pages/itempage.html?id=${item.id}`;
     cardLink.classList.add("card-link-dropdownmenu");
 
     newCard.classList.add("new-card");
 
     const img = document.createElement("img");
-    img.src = `../img/smartwatch_info_pictures/${folderName}/${items.carousel_images[2]}`;
-    img.alt = items.name;
+    img.src = `../img/smartwatch_info_pictures/${item.folder_name}/${item.carousel_images[2]}`;
+    img.alt = item.name;
 
     const newCardDescription = document.createElement("div");
-    newCardDescription.classList.add("new-card-discription");
+    newCardDescription.classList.add("new-card-description");
 
     const h2 = document.createElement("h2");
-    h2.textContent = items.name;
+    h2.textContent = item.name;
 
     newCardDescription.appendChild(h2);
     newCard.appendChild(img);
