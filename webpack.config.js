@@ -1,28 +1,27 @@
-
-const path = require('path');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const path = require("path");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 module.exports = {
-  mode: 'development', // Измените на 'production' для финальной сборки
+  mode: "development", // Измените на 'production' для финальной сборки
   entry: {
-    main: path.resolve(__dirname, 'src/js/index.js'),
-    animation: path.resolve(__dirname, 'src/js/animation.js'),
-    html: path.resolve(__dirname, 'src/js/html.js'),
-    itempage: path.resolve(__dirname, 'src/js/itempage.js'),
+    main: path.resolve(__dirname, "src/js/index.js"),
+    animation: path.resolve(__dirname, "src/js/animation.js"),
+    html: path.resolve(__dirname, "src/js/ htmlBuilder.js"),
+    itempage: path.resolve(__dirname, "src/js/itempage.js"),
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: '[name].[contenthash].js',
+    path: path.resolve(__dirname, "dist"),
+    filename: "[name].[contenthash].js",
     clean: true,
-    assetModuleFilename: 'img/[name][ext]',
+    assetModuleFilename: "img/[name][ext]",
   },
   devServer: {
     static: {
-      directory: path.resolve(__dirname, 'dist'),
+      directory: path.resolve(__dirname, "dist"),
     },
     port: 3001,
     open: true,
@@ -32,14 +31,14 @@ module.exports = {
     rules: [
       {
         test: /\.(png|svg|jpg|jpeg|webp)$/i,
-        type: 'asset/resource',
+        type: "asset/resource",
         generator: {
-          filename: 'img/[name][ext]', // Обновлено для правильного расположения изображений
+          filename: "img/[name][ext]", // Обновлено для правильного расположения изображений
         },
       },
       {
         test: /\.css$/i,
-        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
       },
     ],
   },
@@ -55,30 +54,30 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
-      filename: '[name].[contenthash].css',
+      filename: "[name].[contenthash].css",
     }),
     new HtmlWebpackPlugin({
-      title: 'Garmin',
-      filename: 'index.html',
-      template: 'src/index.html',
-      chunks: ['animation', 'main'],
+      title: "Garmin",
+      filename: "index.html",
+      template: "src/index.html",
+      chunks: ["animation", "main"],
     }),
     new HtmlWebpackPlugin({
-      title: 'Product Page',
-      filename: 'pages/itempage.html',
-      template: 'src/pages/itempage.html',
-      chunks: ['itempage', 'animation'],
+      title: "Product Page",
+      filename: "pages/itempage.html",
+      template: "src/pages/itempage.html",
+      chunks: ["itempage", "animation"],
     }),
     new HtmlWebpackPlugin({
-      title: 'Shipping',
-      filename: 'pages/shipping.html',
-      template: 'src/pages/shipping.html',
-      chunks: ['animation'],
+      title: "Shipping",
+      filename: "pages/shipping.html",
+      template: "src/pages/shipping.html",
+      chunks: ["animation"],
     }),
     new CopyWebpackPlugin({
       patterns: [
-        { from: 'src/img', to: 'img' },
-        { from: 'src/data/item.json', to: 'data/item.json' },
+        { from: "src/img", to: "img" },
+        { from: "src/data/item.json", to: "data/item.json" },
       ],
     }),
   ],
