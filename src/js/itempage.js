@@ -31,9 +31,10 @@ document
     document.getElementById("product-price").textContent =
       item.price.toFixed(2);
     const carousel = document.querySelector(".carousel");
-    item.carousel_images.forEach((imgSrc) => {
+    item.carousel_images.forEach((imgFileName) => {
       const div = document.createElement("div");
       div.classList.add("carousel-box");
+      const imgSrc = `../img/smartwatch_info_pictures/${item.folder_name}/${imgFileName}`;
       const img = document.createElement("img");
       img.src = imgSrc;
       img.alt = item.name;
@@ -43,9 +44,10 @@ document
 
       const carousel1 = document.querySelector(".carousel1");
       carousel1.innerHTML = "";
-      item.carousel_images.forEach((imgSrc) => {
+      item.carousel_images.forEach((imgFileName) => {
         const div = document.createElement("div");
         div.classList.add("carousel-box1");
+        const imgSrc = `../img/smartwatch_info_pictures/${item.folder_name}/${imgFileName}`;
         const img = document.createElement("img");
         img.src = imgSrc;
         img.alt = item.name;
