@@ -622,8 +622,8 @@
         "video_url": "https://www.youtube.com/embed/PjwvKvS-y_s?si=EPCqev6uQjjafH3F"
       },
       "additional_images": {
-        "main_image": "forerunner55.webp",
-        "adaptive_image": "forerunner55-adaptive.webp"
+        "main_image": "",
+        "adaptive_image": ""
       },
       "watch_features": [
         {
