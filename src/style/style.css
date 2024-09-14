@@ -142,15 +142,12 @@
 
 .new-card-discription h2 {
   font-family: "Oswald";
-  font-size: 0.5rem !important;
-  /* Использование !important */
+  font-size: 1.2rem;
   font-weight: 400;
   letter-spacing: .05rem;
   color: #000000;
   margin-bottom: 10px;
-
   margin-top: 0;
-  /* Пример: переопределение верхнего отступа */
 }
 
 
@@ -324,6 +321,8 @@
 
 .box {
   position: relative;
+
+  flex: 1;
 }
 
 .box img {
@@ -340,17 +339,20 @@
   filter: brightness(50%);
 }
 
+
 .overlay {
   position: absolute;
-  bottom: 0;
+  bottom: 50px;
   left: 50%;
-  transform: translate(-50%, -80%);
-  width: auto;
-  height: auto;
+  transform: translateX(-50%);
+  width: fit-content;
+  height: fit-content;
   text-align: center;
   cursor: pointer;
-
+  color: #ffffff;
 }
+
+
 
 .overlay a {
 
@@ -359,7 +361,8 @@
   font-size: 0.875rem;
   font-weight: 500;
   border: solid 1px #ffffff;
-  margin: 1rem 0 0;
+
+  white-space: nowrap;
   padding: 0.5rem 1.5rem;
   line-height: 1.15;
   transition: .2s, color 0.2s;
@@ -600,8 +603,10 @@
 
 .select-option {
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-end;
   align-items: center;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 
@@ -609,10 +614,12 @@
 .grid__options {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+
+
   align-items: center;
   box-sizing: inherit;
-  padding: 0 0px 16px 16px;
+  margin: 20px 0 20px 16px;
+  box-sizing: border-box;
 }
 
 
@@ -657,11 +664,10 @@
 
 .select-option select {
   font-size: 1em;
-  width: 100%;
   height: auto;
   background-color: #ffffff;
   border: 1px solid #d9d9d9;
-  margin: 14 48px 14px 14px;
+
   padding: 0.875rem 7em 0.875rem 0.875rem;
 
 }
@@ -1025,9 +1031,7 @@ footer {
   margin-right: 20px;
 }
 
-.grid__options {
-  padding-top: 20px;
-}
+
 
 @media (max-width:1000px) {
 
@@ -1116,9 +1120,6 @@ footer {
     flex-wrap: wrap;
   }
 
-  .grid__options {
-    margin: 0;
-  }
 
   .product-filter_dropdown .arrow {
     transition: transform 0.3s ease;
@@ -1247,9 +1248,6 @@ footer {
     height: 1150px;
   }
 
-  .select-option label {
-    width: auto;
-  }
 
   .product-card-description h2 {
     font-family: "Oswald";
@@ -1277,7 +1275,7 @@ footer {
     display: flex;
     flex-direction: column;
     width: calc(33.333% - 17px);
-    margin: 16px 0px 0px 10px;
+    margin: 0;
     box-shadow: 0 2px 3px 1px #e6e6e6;
     cursor: pointer;
     transition: transform 0.2s ease;
@@ -1285,7 +1283,12 @@ footer {
   }
 
   .cards {
-    margin: 10px;
+    margin: 10px 0;
+    gap: 10px;
+  }
+
+  .grid__options {
+    margin: 20px 0;
   }
 
   .item-card-img img {
@@ -1295,7 +1298,7 @@ footer {
   }
 
   .cards-content {
-    margin: 0;
+    margin: 20px;
   }
 }
 
@@ -1317,24 +1320,17 @@ footer {
 
   .select-option select {
     font-size: 0.8em;
-    width: 190px;
+    width: 150px;
     height: auto;
     background-color: #ffffff;
     border: 1px solid #d9d9d9;
-    margin: 14 48px 14px 14px;
-    padding: 0.875rem 7em 0.875rem 0.875rem;
+    margin: 0;
+    padding: 0.875rem;
 
   }
 
-  .grid__options {
-    display: flex;
-    justify-content: space-between;
-    padding-right: 5px;
-  }
 
-  .select-option label {
-    width: auto;
-  }
+
 
   .content h2 {
     font-size: 1.4rem;

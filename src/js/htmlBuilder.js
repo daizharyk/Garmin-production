@@ -66,7 +66,7 @@ export function createNewCards() {
     img.alt = item.name;
 
     const newCardDescription = document.createElement("div");
-    newCardDescription.classList.add("new-card-description");
+    newCardDescription.classList.add("new-card-discription");
 
     const h2 = document.createElement("h2");
     h2.textContent = item.name;
