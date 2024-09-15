@@ -107,7 +107,7 @@ document
 
     initCarousel();
   })
-  .catch((error) => console.error("Error loading data:", error));
+  
 
 function initCarousel() {
   const carouselHorizontal = document.querySelector(".carousel1");
@@ -224,8 +224,9 @@ function initCarousel() {
       downButton.disabled = false;
     }
   }
+ 
 
-  // Прокрутка вверх
+  
   upButton.addEventListener("click", () => {
     carouselVertical.scrollBy({
       top: -80,
@@ -234,7 +235,7 @@ function initCarousel() {
     setTimeout(updateButtonState, 500);
   });
 
-  // Прокрутка вниз
+
   downButton.addEventListener("click", () => {
     carouselVertical.scrollBy({
       top: 80,

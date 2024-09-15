@@ -1,8 +1,10 @@
-import data from "../data/item.json" with { type: "json" };
+
+import {fetchData} from "./itemService.js"
 import "../style/style.css";
 import "../style/shipping.css";
 import "../style/itempage.css";
 
+const data = await fetchData();
 // Функция для создания карточек
 export function createCards(data) {
   const container = document.getElementById("cards-container");

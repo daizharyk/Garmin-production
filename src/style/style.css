@@ -89,6 +89,10 @@
 }
 
 .sub-menu a {
+  text-decoration: none;
+}
+
+.sub-menu li {
   font-family: "Roboto";
   font-size: 0.8rem;
   letter-spacing: .05rem;
@@ -642,6 +646,7 @@
   border: solid 1px #fff;
   text-align: center;
   padding: 8px 24px 8px 24px;
+  text-decoration: none;
 }
 
 
@@ -996,6 +1001,7 @@ footer {
   list-style: none;
   font-weight: 500;
   align-items: center;
+  color: #fff;
 }
 
 
@@ -1005,11 +1011,16 @@ footer {
   width: 100%;
   justify-content: flex-end;
   text-decoration: none;
+  list-style-type: none;
 }
 
+.foter_nav_items {
+  margin-bottom: 10px;
+}
 
 .foter_nav_li a {
   padding-left: 25px;
+
   color: #fff;
   text-decoration: none;
 }
@@ -1308,6 +1319,15 @@ footer {
     margin: 10px 0 10px 0;
   }
 
+
+  .foter_nav_li {
+    display: flex;
+    width: 100%;
+
+    justify-content: center;
+    text-decoration: none;
+    list-style-type: none;
+  }
 
 
   .select-option p {

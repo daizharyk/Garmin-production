@@ -18,21 +18,31 @@ document.querySelectorAll(".nav-menu").forEach((menu) => {
     const dropdownClass = `${menu.classList[1]}-dropdown`;
     const dropdown = document.querySelector(`.${dropdownClass}`);
 
-    dropdown.style.display = "flex";
-
-    dropdown.addEventListener("mouseover", () => {
+    // Проверяем, существует ли dropdown
+    if (dropdown) {
       dropdown.style.display = "flex";
-    });
 
-    dropdown.addEventListener("mouseout", () => {
-      dropdown.style.display = "none";
-    });
+      // Событие для dropdown при наведении мыши
+      dropdown.addEventListener("mouseover", () => {
+        dropdown.style.display = "flex";
+      });
+
+      // Событие для dropdown при уходе мыши
+      dropdown.addEventListener("mouseout", () => {
+        dropdown.style.display = "flex";
+      });
+    }
   });
 
+  // Событие для .nav-menu при уходе мыши
   menu.addEventListener("mouseout", () => {
     const dropdownClass = `${menu.classList[1]}-dropdown`;
     const dropdown = document.querySelector(`.${dropdownClass}`);
-    dropdown.style.display = "none";
+
+    // Проверяем, существует ли dropdown перед изменением стиля
+    if (dropdown) {
+      dropdown.style.display = "none";
+    }
   });
 });
 
