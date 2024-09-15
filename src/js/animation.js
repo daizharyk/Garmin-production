@@ -29,7 +29,7 @@ document.querySelectorAll(".nav-menu").forEach((menu) => {
 
       // Событие для dropdown при уходе мыши
       dropdown.addEventListener("mouseout", () => {
-        dropdown.style.display = "flex";
+        dropdown.style.display = "none";
       });
     }
   });
