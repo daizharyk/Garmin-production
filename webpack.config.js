@@ -26,7 +26,7 @@ module.exports = {
     },
     port: 3001,
     open: true,
-    hot: true,
+    hot: false,
   },
   module: {
     rules: [
@@ -39,7 +39,7 @@ module.exports = {
       },
       {
         test: /\.css$/i,
-        use: [MiniCssExtractPlugin.loader, "css-loader"],
+        use: [MiniCssExtractPlugin.loader, "css-loader" ],
       },
     ],
   },
@@ -53,7 +53,7 @@ module.exports = {
     ],
   },
   plugins: [
-    new CleanWebpackPlugin(),
+    // new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: "[name].[contenthash].css",
     }),

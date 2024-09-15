@@ -489,15 +489,15 @@
 .feature-list {
   font-size: 0.875rem;
   list-style: none;
-  padding: .5em 1em;
+
   margin: 0;
 }
 
 
 .feature-list li {
   display: flex;
-  margin-bottom: 1.6rem;
-  /* Отступ снизу */
+  margin-bottom: 1.2rem;
+  padding: 0 1em;
   align-items: center;
   justify-content: space-between;
 }
@@ -848,7 +848,10 @@
 .signup-content a {
   font-size: 0.7rem;
 }
+.email-form input[type="email"], .email-form button {
+  height: 44px; /* Убедитесь, что высота одинаковая */
 
+}
 .email-form {
   display: flex;
   align-items: center;
@@ -866,17 +869,22 @@
 }
 
 .email-form button {
-  font-size: 30px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+
   background-color: #000;
   color: #fff;
   cursor: pointer;
   width: 44px;
-  height: 44px;
   border: none;
 
   transition: transform 0.2s, color 0.3s;
 }
-
+.email-form span {
+  display: inline-block;
+  font-size: 25px; 
+}
 .email-form button:hover {
   background-color: #fff;
   color: #000;
