@@ -8,11 +8,11 @@ module.exports = {
       next(error);
     }
   },
-  creatNewItem: async (req, res, next) => {
+  createNewItem: async (req, res, next) => {
     try {
       const user = req.user;
       const data = req.body;
-      const item = await itemService.creatNewItem(user, data);
+      const item = await itemService.createNewItem(data);
       res.send(item);
     } catch (error) {
       next(error);
@@ -41,7 +41,7 @@ module.exports = {
     try {
       const itemid = req.params.id;
       await itemService.deleteItem(itemid);
-      res.send("Article deleted");
+      res.send("Item deleted");
     } catch (error) {
       next(error);
     }
@@ -50,9 +50,10 @@ module.exports = {
     try {
       const itemid = req.params.id;
       await itemService.deleteItemForce(itemid);
-      res.send("Article deleted");
+      res.send("Item deleted");
     } catch (error) {
       next(error);
     }
   },
 };
+

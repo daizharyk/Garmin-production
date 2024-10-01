@@ -1,17 +1,19 @@
 const { Item } = require("../database/models");
 
 module.exports = {
-  creatItem: async (item) => {
+  createItem: async (item) => {
     const newItem = new Item(item);
     const result = await newItem.save();
     return result;
   },
   findAllItems: async () => {
-    const items = await Item.find();
+    const items = await Item.find({
+      isDeleted: { $ne: true },
+    });
     return items;
   },
   findItem: async (itemid) => {
-    const item = await Item.findById(itemid);
+    const item = await Item.findById({ _id: itemid, isDeleted: { $ne: true } });
     return item;
   },
   updateItem: async (itemid, data) => {

@@ -1,15 +1,27 @@
 const mongoose = require("mongoose");
 
-const userSchema = mongoose.Schema(
+const itemSchema =  mongoose.Schema(
   {
     name: {
       type: String,
-      require: true,
+      required: true
     },
+    price: {
+      type: Number,
+      required: true
+    },
+    description: {
+      type: String,
+      required: false
+    },
+    isDeleted: {
+      type: Boolean,
+      default: false
+    }
   },
   {
     timestamps: true,
   }
 );
 
-module.exports = mongoose.model("Item", userSchema);
+module.exports = mongoose.model("Item", itemSchema);

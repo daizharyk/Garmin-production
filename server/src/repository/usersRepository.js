@@ -1,17 +1,19 @@
 const { User } = require("../database/models");
 
 module.exports = {
-  creatUser: async (user) => {
+  createUser: async (user) => {
     const newUser = new User(user);
     const result = await newUser.save();
     return result;
   },
   findAllUser: async () => {
-    const users = await User.find();
+    const users = await User.find({
+      isDeleted: { $ne: true },
+    });
     return users;
   },
   findUser: async (userid) => {
-    const user = await User.findById(userid);
+    const user = await User.findById({ _id: userid, isDeleted: { $ne: true } });
     return user;
   },
   updateUser: async (userid, userdata) => {

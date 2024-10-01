@@ -1,11 +1,27 @@
 const NotImplementedError = require("../infrastructure/errors/NotImplementedError");
+const usersRepository = require("../repository/usersRepository");
 
 module.exports = {
-  getAllUsers: () => {
-    throw new NotImplementedError("Error");
-    return "All user from service";
+  findAllUsers: async () => {
+    const users = await usersRepository.findAllUser();
+    return users;
   },
-  creatNewUser: () => {
-    return "Cresat user from service";
+  createNewUser: async (userdata) => {
+    const newUser = await usersRepository.createUser(userdata);
+    return newUser;
+  },
+  findUser: async (userid) => {
+    const user = await usersRepository.findUser(userid);
+    return user;
+  },
+  updateUser: async (userid, userdata) => {
+    const updateUser = await usersRepository.updateUser(userid, userdata);
+    return updateUser;
+  },
+  deleteUser: async (userid) => {
+    await usersRepository.deleteUser(userid);
+  },
+  deleteUserForce: async (userid) => {
+    await usersRepository.deleteUserForce(userid);
   },
 };

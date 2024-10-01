@@ -5,15 +5,15 @@ module.exports = {
     const items = await itemsRepository.findAllItems();
     return items;
   },
-  creatNewItem: async (userid, itemdata) => {
-    const newItem = await itemsRepository.creatItem(userid, itemdata);
+  createNewItem: async ( itemdata) => {
+    const newItem = await itemsRepository.createItem( itemdata);
     return newItem;
   },
   findItem: async (itemid) => {
     const item = await itemsRepository.findItem(itemid);
     return item;
   },
-  updateItem: async (itenid, itendata) => {
+  updateItem: async (itemid, itendata) => {
     const updatedItem = await itemsRepository.updateItem(itemid, itendata);
     return updatedItem;
   },
