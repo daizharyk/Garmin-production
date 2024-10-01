@@ -5,15 +5,13 @@ const {
   deleteUser,
   deleteUserForce,
   updateUser,
-  createNewUser,
+  registerUser,
+  loginUser,
 } = require("./controller");
-
 
 const router = Router();
 
 router.get("/", getAllUsers);
-
-router.post("/", createNewUser);
 
 router.get("/:id", getUser);
 
@@ -22,5 +20,9 @@ router.put("/:id", updateUser);
 router.delete("/:id", deleteUser);
 
 router.delete("/force/:id", deleteUserForce);
+
+router.post("/", registerUser);
+
+router.post("/login", loginUser)
 
 module.exports = router;

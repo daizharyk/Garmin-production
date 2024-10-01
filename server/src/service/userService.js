@@ -1,27 +1,41 @@
-const NotImplementedError = require("../infrastructure/errors/NotImplementedError");
-const usersRepository = require("../repository/usersRepository");
+const ExistingEntityError = require("../infrastructure/errors/ExistingEntityError");
+const InvalidDataError = require("../infrastructure/errors/InvalidDataError");
+const userRepository = require("../repository/userRepository");
 
 module.exports = {
   findAllUsers: async () => {
-    const users = await usersRepository.findAllUser();
+    const users = await userRepository.findAllUser();
     return users;
   },
-  createNewUser: async (userdata) => {
-    const newUser = await usersRepository.createUser(userdata);
+  createNewUser: async (userData) => {
+    const existingUser = await userRepository.findUserByEmail(userData.email);
+    if (existingUser) {
+      throw new ExistingEntityError("User with this email already exist");
+    }
+    const newUser = await userRepository.createUser(userData);
     return newUser;
   },
-  findUser: async (userid) => {
-    const user = await usersRepository.findUser(userid);
+  loginUser: async (userData) => {
+    const { email, password } = userData;
+    const existingUser = await userRepository.findUserByEmail(email);
+    if (existingUser && (await existingUser.matchPasswords(password))) {
+      return "OK";
+    } else {
+      throw new InvalidDataError("Email or password is wrong!");
+    }
+  },
+  findUser: async (userId) => {
+    const user = await userRepository.findUser(userId);
     return user;
   },
-  updateUser: async (userid, userdata) => {
-    const updateUser = await usersRepository.updateUser(userid, userdata);
+  updateUser: async (userId, userData) => {
+    const updateUser = await userRepository.updateUser(userId, userData);
     return updateUser;
   },
-  deleteUser: async (userid) => {
-    await usersRepository.deleteUser(userid);
+  deleteUser: async (userId) => {
+    await userRepository.deleteUser(userId);
   },
-  deleteUserForce: async (userid) => {
-    await usersRepository.deleteUserForce(userid);
+  deleteUserForce: async (userId) => {
+    await userRepository.deleteUserForce(userId);
   },
 };

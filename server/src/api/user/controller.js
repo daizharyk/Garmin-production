@@ -9,12 +9,21 @@ module.exports = {
       next(error);
     }
   },
-  createNewUser: async (req, res, next) => {
+  registerUser: async (req, res, next) => {
     try {
       const user = req.user;
       const data = req.body;
       const newUser = await userService.createNewUser(data);
       res.send(newUser);
+    } catch (error) {
+      next(error);
+    }
+  },
+  loginUser: async (req, res, next) => {
+    try {
+      const data = req.body;
+      const user = await userService.loginUser(data);
+      res.send(user);
     } catch (error) {
       next(error);
     }

@@ -1,26 +1,26 @@
-const itemsRepository = require("../repository/itemsRepository");
+const itemRepository = require("../repository/itemRepository");
 
 module.exports = {
   getAllItems: async () => {
-    const items = await itemsRepository.findAllItems();
+    const items = await itemRepository.findAllItems();
     return items;
   },
   createNewItem: async ( itemdata) => {
-    const newItem = await itemsRepository.createItem( itemdata);
+    const newItem = await itemRepository.createItem( itemdata);
     return newItem;
   },
   findItem: async (itemid) => {
-    const item = await itemsRepository.findItem(itemid);
+    const item = await itemRepository.findItem(itemid);
     return item;
   },
   updateItem: async (itemid, itendata) => {
-    const updatedItem = await itemsRepository.updateItem(itemid, itendata);
+    const updatedItem = await itemRepository.updateItem(itemid, itendata);
     return updatedItem;
   },
   deleteItem: async (itemid) => {
-    await itemsRepository.deletItem(itemid);
+    await itemRepository.deletItem(itemid);
   },
   deleteItemForce: async (itemid) => {
-    await itemsRepository.deletItemForce(itemid);
+    await itemRepository.deletItemForce(itemid);
   },
 };
