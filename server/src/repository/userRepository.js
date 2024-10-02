@@ -12,28 +12,31 @@ module.exports = {
     });
     return users;
   },
-  findUser: async (userid) => {
-    const user = await User.findOne({ _id: userid, isDeleted: { $ne: true } });
+  findUser: async (userId) => {
+    const user = await User.findOne({
+      _id: userId,
+      isDeleted: { $ne: true },
+    }).select("-password");
     return user;
   },
   findUserByEmail: async (email) => {
-    const user = await User.findOne({ email:email, isDeleted: { $ne: true } });
+    const user = await User.findOne({ email: email, isDeleted: { $ne: true } });
     return user;
   },
-  updateUser: async (userid, userdata) => {
-    const updatedUser = await User.findByIdAndUpdate(userid, userdata, {
+  updateUser: async (userId, userData) => {
+    const updatedUser = await User.findByIdAndUpdate(userId, userData, {
       new: true,
     });
     return updatedUser;
   },
-  deleteUser: async (userid) => {
-    await User.findByIdAndUpdate(userid, {
+  deleteUser: async (userId) => {
+    await User.findByIdAndUpdate(userId, {
       isDeleted: true,
     });
     return;
   },
-  deleteUserForce: async (userid) => {
-    await User.findByIdAndDelete(userid, {
+  deleteUserForce: async (userId) => {
+    await User.findByIdAndDelete(userId, {
       isDeleted: true,
     });
     return;

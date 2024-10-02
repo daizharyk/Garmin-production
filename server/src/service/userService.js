@@ -1,6 +1,7 @@
 const ExistingEntityError = require("../infrastructure/errors/ExistingEntityError");
 const InvalidDataError = require("../infrastructure/errors/InvalidDataError");
 const userRepository = require("../repository/userRepository");
+const { generateJWToken } = require("../utils/jwtwebtoken");
 
 module.exports = {
   findAllUsers: async () => {
@@ -19,7 +20,14 @@ module.exports = {
     const { email, password } = userData;
     const existingUser = await userRepository.findUserByEmail(email);
     if (existingUser && (await existingUser.matchPasswords(password))) {
-      return "OK";
+      const jwtToken = generateJWToken(existingUser._id);
+
+      return {
+        _id: existingUser.id,
+        name: existingUser.name,
+        email: existingUser.email,
+        token: jwtToken,
+      };
     } else {
       throw new InvalidDataError("Email or password is wrong!");
     }

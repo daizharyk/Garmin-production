@@ -1,23 +1,24 @@
 const mongoose = require("mongoose");
 
-const itemSchema =  mongoose.Schema(
+const itemSchema = mongoose.Schema(
   {
     name: {
       type: String,
-      required: true
+      required: true,
     },
     price: {
       type: Number,
-      required: true
+      required: true,
     },
     description: {
       type: String,
-      required: false
+      required: false,
     },
     isDeleted: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
+    user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
   },
   {
     timestamps: true,

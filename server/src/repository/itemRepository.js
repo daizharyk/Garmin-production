@@ -13,21 +13,36 @@ module.exports = {
     return items;
   },
   findItem: async (itemid) => {
-    const item = await Item.findById({ _id: itemid, isDeleted: { $ne: true } });
+    const item = await Item.findOne({ _id: itemid, isDeleted: { $ne: true } });
     return item;
   },
-  updateItem: async (itemid, data) => {
-    const updatedItem = await Item.findByIdAndUpdate(itemid, data, {
+  findUsersItems: async (userId) => {
+    const items = await Item.find({
+      user: userId,
+      isDeleted: { $ne: true },
+    });
+    return items;
+  },
+  findUsersItem: async (itemId, userId) => {
+    const item = await Item.findOne({
+      _id: itemId,
+      user: userId,
+      isDeleted: { $ne: true },
+    });
+    return item;
+  },
+  updateItem: async (itemId, data) => {
+    const updatedItem = await Item.findByIdAndUpdate(itemId, data, {
       new: true,
     });
     return updatedItem;
   },
-  deletItem: async (itemid) => {
-    await Item.findByIdAndUpdate(itemid, {
+  deletItem: async (itemId) => {
+    await Item.findByIdAndUpdate(itemId, {
       isDeleted: true,
     });
   },
-  deletItemForce: async (itemid) => {
-    await Item.findByIdAndDelete(itemid);
+  deleteItemForce: async (itemId) => {
+    await Item.findByIdAndDelete(itemId);
   },
 };

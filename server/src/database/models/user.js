@@ -17,7 +17,7 @@ const userSchema = mongoose.Schema(
     },
     isDeleted: {
       type: Boolean,
-      default: false, // Установлено значение по умолчанию
+      default: false, 
     },
   },
   {

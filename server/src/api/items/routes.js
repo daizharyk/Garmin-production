@@ -1,19 +1,29 @@
 const { Router } = require("express");
-const { getAllItems, getItem, deleteItemForce, deleteItem, updateItem, createNewItem } = require("./controller");
-
+const {
+  getAllItems,
+  getItem,
+  deleteItemForce,
+  deleteItem,
+  updateItem,
+  createNewItem,
+  getMyItems,
+} = require("./controller");
+const { protected } = require("../../middlewares/auth");
 const router = Router();
 
 router.get("/", getAllItems);
 
-router.post("/", createNewItem);
+router.get("/my",protected, getMyItems);
+
+router.post("/", protected, createNewItem);
 
 router.get("/:id", getItem);
 
-router.put("/:id", updateItem);
+router.put("/:id", protected, updateItem);
 
-router.delete("/:id", deleteItem);
+router.delete("/:id", protected, deleteItem);
 
-router.delete("/force/:id", deleteItemForce);
+router.delete("/force/:id", protected, deleteItemForce);
 
 
 module.exports = router;

@@ -8,10 +8,20 @@ module.exports = {
       next(error);
     }
   },
+  getMyItems: async (req, res, next) => {
+    try {
+      const user = req.user;
+      const items = await itemService.getMyItems(user._id);
+      res.send(items);
+    } catch (error) {
+      next(error);
+    }
+    
+  },
   createNewItem: async (req, res, next) => {
     try {
       const user = req.user;
-      const data = req.body;
+      const data = { ...req.body, user: user._id };
       const item = await itemService.createNewItem(data);
       res.send(item);
     } catch (error) {
@@ -29,9 +39,10 @@ module.exports = {
   },
   updateItem: async (req, res, next) => {
     try {
+      const user = req.user;
       const itemid = req.params.id;
       const data = req.body;
-      const updatedItem = await itemService.updateItem(itemid, data);
+      const updatedItem = await itemService.updateItem(itemid, data , user._id);
       res.send(updatedItem);
     } catch (error) {
       next(error);
@@ -39,8 +50,9 @@ module.exports = {
   },
   deleteItem: async (req, res, next) => {
     try {
+      const user = req.user;
       const itemid = req.params.id;
-      await itemService.deleteItem(itemid);
+      await itemService.deleteItem(itemid, user._id);
       res.send("Item deleted");
     } catch (error) {
       next(error);
@@ -48,12 +60,12 @@ module.exports = {
   },
   deleteItemForce: async (req, res, next) => {
     try {
+      const user = req.user;
       const itemid = req.params.id;
-      await itemService.deleteItemForce(itemid);
+      await itemService.deleteItemForce(itemid, user._id);
       res.send("Item deleted");
     } catch (error) {
       next(error);
     }
   },
 };
-

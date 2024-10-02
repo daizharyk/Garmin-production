@@ -7,7 +7,7 @@ const errorHandler = (err, req, res, next) => {
 
   switch (true) {
     case err instanceof NotImplementedError:
-      res.send(404);
+      res.status(404).send(err.message);
       break;
     case err instanceof ExistingEntityError:
       res.status(400).send(err.message);
@@ -21,3 +21,5 @@ const errorHandler = (err, req, res, next) => {
 };
 
 module.exports = errorHandler;
+
+

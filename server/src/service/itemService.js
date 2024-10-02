@@ -1,3 +1,4 @@
+const NotImplementedError = require("../infrastructure/errors/NotImplementedError");
 const itemRepository = require("../repository/itemRepository");
 
 module.exports = {
@@ -5,22 +6,42 @@ module.exports = {
     const items = await itemRepository.findAllItems();
     return items;
   },
-  createNewItem: async ( itemdata) => {
-    const newItem = await itemRepository.createItem( itemdata);
+  getMyItems: async (userId) => {
+    const myItems = await itemRepository.findUsersItems(userId);
+    return myItems;
+  },
+  createNewItem: async (itemData) => {
+    const newItem = await itemRepository.createItem(itemData);
     return newItem;
   },
-  findItem: async (itemid) => {
-    const item = await itemRepository.findItem(itemid);
+  findItem: async (itemId) => {
+    const item = await itemRepository.findItem(itemId);
     return item;
   },
-  updateItem: async (itemid, itendata) => {
-    const updatedItem = await itemRepository.updateItem(itemid, itendata);
+  updateItem: async (itemId, itemData, userId) => {
+    const item = await itemRepository.findUsersItem(itemId, userId);
+    if (!item) {
+      throw new NotImplementedError("Item not found");
+    }
+    const updatedItem = await itemRepository.updateItem(
+      itemId,
+      itemData,
+      userId
+    );
     return updatedItem;
   },
-  deleteItem: async (itemid) => {
-    await itemRepository.deletItem(itemid);
+  deleteItem: async (itemId, userId) => {
+    const item = await itemRepository.findUsersItem(itemId, userId);
+    if (!item) {
+      throw new NotImplementedError("Item not found");
+    }
+    await itemRepository.deletItem(itemId);
   },
-  deleteItemForce: async (itemid) => {
-    await itemRepository.deletItemForce(itemid);
+  deleteItemForce: async (itemId, userId) => {
+    const item = await itemRepository.findUsersItem(itemId, userId);
+    if (!item) {
+      throw new NotImplementedError("Item not found");
+    }
+    await itemRepository.deleteItemForce(itemId);
   },
 };
