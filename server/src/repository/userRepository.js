@@ -13,10 +13,14 @@ module.exports = {
     return users;
   },
   findUser: async (userId) => {
+    console.log("UserID-" ,userId);
+    
     const user = await User.findOne({
       _id: userId,
       isDeleted: { $ne: true },
     }).select("-password");
+    console.log("User!!!!",user);
+    
     return user;
   },
   findUserWithItems: async (userId) => {

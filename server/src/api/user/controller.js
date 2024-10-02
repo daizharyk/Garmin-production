@@ -38,7 +38,11 @@ module.exports = {
   },
   getMe: async (req, res, next) => {
     try {
+      console.log("text");
+      
       const user = req.user;
+      console.log(user);
+
       const me = await userService.findUserWithItems(user._id);
       res.send(me);
     } catch (error) {
