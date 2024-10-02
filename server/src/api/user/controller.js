@@ -29,9 +29,18 @@ module.exports = {
   },
   getUser: async (req, res, next) => {
     try {
-      const userid = req.params.id;
-      const user = await userService.findUser(userid);
+      const userId = req.params.id;
+      const user = await userService.findUser(userId);
       res.send(user);
+    } catch (error) {
+      next(error);
+    }
+  },
+  getMe: async (req, res, next) => {
+    try {
+      const user = req.user;
+      const me = await userService.findUserWithItems(user._id);
+      res.send(me);
     } catch (error) {
       next(error);
     }

@@ -1,4 +1,6 @@
+
 const { Router } = require("express");
+const {protected}  = require("../../middlewares/auth")
 const {
   getAllUsers,
   getUser,
@@ -7,6 +9,7 @@ const {
   updateUser,
   registerUser,
   loginUser,
+  getMe,
 } = require("./controller");
 
 const router = Router();
@@ -23,6 +26,8 @@ router.delete("/force/:id", deleteUserForce);
 
 router.post("/", registerUser);
 
-router.post("/login", loginUser)
+router.post("/login", loginUser);
+
+router.get("/me", getMe);
 
 module.exports = router;

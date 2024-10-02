@@ -17,13 +17,20 @@ const userSchema = mongoose.Schema(
     },
     isDeleted: {
       type: Boolean,
-      default: false, 
+      default: false,
     },
   },
   {
     timestamps: true,
+    toJSON: { virtuals: true },
   }
 );
+
+userSchema.virtual("items", {
+  ref: "Item",
+  foreignField: "user",
+  localField: "_id",
+});
 
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) {

@@ -19,6 +19,15 @@ module.exports = {
     }).select("-password");
     return user;
   },
+  findUserWithItems: async (userId) => {
+    const user = await User.findOne({
+      _id: userId,
+      isDeleted: { $ne: true },
+    })
+      .select("-password")
+      .populate("items");
+    return user;
+  },
   findUserByEmail: async (email) => {
     const user = await User.findOne({ email: email, isDeleted: { $ne: true } });
     return user;
@@ -42,3 +51,4 @@ module.exports = {
     return;
   },
 };
+
