@@ -16,7 +16,7 @@ const router = Router();
 
 router.get("/", getAllUsers);
 
-router.get("/:id", getUser);
+router.get("/me",protected, getMe);
 
 router.put("/:id", updateUser);
 
@@ -28,6 +28,7 @@ router.post("/", registerUser);
 
 router.post("/login", loginUser);
 
-router.get("/me", getMe);
+
 
 module.exports = router;
+

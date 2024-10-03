@@ -29,7 +29,7 @@ module.exports = {
   },
   getUser: async (req, res, next) => {
     try {
-      const userId = req.params.id;
+      const userId = req.user;
       const user = await userService.findUser(userId);
       res.send(user);
     } catch (error) {
@@ -38,11 +38,7 @@ module.exports = {
   },
   getMe: async (req, res, next) => {
     try {
-      console.log("text");
-      
       const user = req.user;
-      console.log(user);
-
       const me = await userService.findUserWithItems(user._id);
       res.send(me);
     } catch (error) {
