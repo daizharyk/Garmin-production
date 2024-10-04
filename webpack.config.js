@@ -83,8 +83,7 @@ module.exports = {
     }),
     new CopyWebpackPlugin({
       patterns: [
-        { from: "src/img", to: "img" },
-        { from: "src/data/item.json", to: "data/item.json" },
+        { from: "src/img", to: "img" }
       ],
     }),
   ],

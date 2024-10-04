@@ -1,8 +1,7 @@
-import data from "../data/item.json" with { type: "json" };
 
 
 async function getItemById(itemId) {
-  const response = await fetch(`http://localhost:3005/api/items/${itemId}`); // Запрос к вашему API для получения элемента по ID
+  const response = await fetch(`https://garmin-backend-2ijh.onrender.com/api/items/${itemId}`); // Запрос к вашему API для получения элемента по ID
 
   if (!response.ok) {
     throw new Error('Network response was not ok');
@@ -24,7 +23,7 @@ export async function loadItem() {
 
 
 export async function fetchData() {
-  const response = await fetch('http://localhost:3005/api/items');
+  const response = await fetch('https://garmin-backend-2ijh.onrender.com/api/items');
  
   
   if (!response.ok) {
