@@ -27,6 +27,12 @@ module.exports = {
     port: 3001,
     open: true,
     hot: false,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3005',
+        changeOrigin: true,
+      }
+    }
   },
   module: {
     rules: [

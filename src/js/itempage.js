@@ -1,4 +1,4 @@
-import { item } from "./itemService.js";
+import { loadItem } from "./itemService.js";
 import "../style/style.css";
 import "../style/shipping.css";
 import "../style/itempage.css";
@@ -15,99 +15,97 @@ window.addEventListener("scroll", () => {
   }
 });
 
-document
-  .addEventListener("DOMContentLoaded", () => {
-    document.querySelector(".product-title").textContent = item.name;
-    document.querySelector(".product-color").textContent = item.color;
-    const saleBox = document.getElementById("sale-box");
-    document.title = item.product_title;
-    saleBox.style.display = saleBox.textContent.trim() ? "inline-flex" : "none";
+document.addEventListener("DOMContentLoaded", async () => {
+  const itemId = new URLSearchParams(location.search).get("id");
+  const item = await loadItem(itemId);
+  document.querySelector(".product-title").textContent = item.name;
+  document.querySelector(".product-color").textContent = item.color;
+  const saleBox = document.getElementById("sale-box");
+  document.title = item.product_title;
+  saleBox.style.display = saleBox.textContent.trim() ? "inline-flex" : "none";
 
-    document.getElementById("product-price").textContent =
-      item.price.toFixed(2);
-    const carousel = document.querySelector(".carousel");
+  document.getElementById("product-price").textContent = item.price.toFixed(2);
+  const carousel = document.querySelector(".carousel");
+  item.carousel_images.forEach((imgFileName) => {
+    const div = document.createElement("div");
+    div.classList.add("carousel-box");
+    const imgSrc = `../img/smartwatch_info_pictures/${item.folder_name}/${imgFileName}`;
+    const img = document.createElement("img");
+    img.src = imgSrc;
+    img.alt = item.name;
+    img.classList.add("carousel-img");
+    div.appendChild(img);
+    carousel.appendChild(div);
+
+    const carousel1 = document.querySelector(".carousel1");
+    carousel1.innerHTML = "";
     item.carousel_images.forEach((imgFileName) => {
       const div = document.createElement("div");
-      div.classList.add("carousel-box");
+      div.classList.add("carousel-box1");
       const imgSrc = `../img/smartwatch_info_pictures/${item.folder_name}/${imgFileName}`;
       const img = document.createElement("img");
       img.src = imgSrc;
       img.alt = item.name;
-      img.classList.add("carousel-img");
+      img.classList.add("carousel-img1");
       div.appendChild(img);
-      carousel.appendChild(div);
-
-      const carousel1 = document.querySelector(".carousel1");
-      carousel1.innerHTML = "";
-      item.carousel_images.forEach((imgFileName) => {
-        const div = document.createElement("div");
-        div.classList.add("carousel-box1");
-        const imgSrc = `../img/smartwatch_info_pictures/${item.folder_name}/${imgFileName}`;
-        const img = document.createElement("img");
-        img.src = imgSrc;
-        img.alt = item.name;
-        img.classList.add("carousel-img1");
-        div.appendChild(img);
-        carousel1.appendChild(div);
-      });
+      carousel1.appendChild(div);
     });
-    const folderName = item.folder_name;
+  });
+  const folderName = item.folder_name;
 
-    document.querySelector(".banner-title").textContent =
-      item.banner_text.title;
-    document.querySelector(".disc-right").textContent = item.banner_text.text;
-    document.getElementById("bannerwithtext").src =
-      `../img/smartwatch_info_pictures/${folderName}/${item.banner_text.banner_images.main_banner}`;
-    document.getElementById("bannerwithtext").alt =
-      item.banner_text.banner_images.alt;
-    document.getElementById("bannerwithtext-adaptive").src =
-      `../img/smartwatch_info_pictures/${folderName}/${item.banner_text.banner_images.adaptive_banner}`;
-    document.getElementById("bannerwithtext-adaptive").alt =
-      item.banner_text.banner_images.alt;
+  document.querySelector(".banner-title").textContent = item.banner_text.title;
+  document.querySelector(".disc-right").textContent = item.banner_text.text;
+  document.getElementById("bannerwithtext").src =
+    `../img/smartwatch_info_pictures/${folderName}/${item.banner_text.banner_images.main_banner}`;
+  document.getElementById("bannerwithtext").alt =
+    item.banner_text.banner_images.alt;
+  document.getElementById("bannerwithtext-adaptive").src =
+    `../img/smartwatch_info_pictures/${folderName}/${item.banner_text.banner_images.adaptive_banner}`;
+  document.getElementById("bannerwithtext-adaptive").alt =
+    item.banner_text.banner_images.alt;
 
-    const videoThumbnail = document.querySelector(".video-thumbnail");
-    videoThumbnail.querySelector("img").src =
-      `../img/smartwatch_info_pictures/${folderName}/${item.video_section.thumbnail}`;
-    document.querySelector(".thumbnail-img").alt = item.video_section.thumbnail;
-    document.getElementById("video-player").src = item.video_section.video_url;
+  const videoThumbnail = document.querySelector(".video-thumbnail");
+  videoThumbnail.querySelector("img").src =
+    `../img/smartwatch_info_pictures/${folderName}/${item.video_section.thumbnail}`;
+  document.querySelector(".thumbnail-img").alt = item.video_section.thumbnail;
+  document.getElementById("video-player").src = item.video_section.video_url;
 
-    document.querySelector(".walpapperinfo").src =
-      `../img/smartwatch_info_pictures/${folderName}/${item.additional_images.main_image}`;
-    document.querySelector(".walpapperinfo-adaptive").src =
-      `../img/smartwatch_info_pictures/${folderName}/${item.additional_images.adaptive_image}`;
+  document.querySelector(".walpapperinfo").src =
+    `../img/smartwatch_info_pictures/${folderName}/${item.additional_images.main_image}`;
+  document.querySelector(".walpapperinfo-adaptive").src =
+    `../img/smartwatch_info_pictures/${folderName}/${item.additional_images.adaptive_image}`;
 
-    const functionInfoContainer = document.querySelector(".cards-container");
-    item.watch_features.forEach((feature) => {
-      const card = document.createElement("div");
-      card.classList.add("function-info-card");
-      const img = document.createElement("img");
-      img.src = `../img/smartwatch_info_pictures/${folderName}/${feature.image}`;
-      img.alt = feature.title;
-      const title = document.createElement("h2");
-      title.textContent = feature.title;
-      const description = document.createElement("p");
-      description.textContent = feature.description;
-      card.appendChild(img);
-      card.appendChild(title);
-      card.appendChild(description);
-      functionInfoContainer.appendChild(card);
-    });
+  const functionInfoContainer = document.querySelector(".cards-container");
+  item.watch_features.forEach((feature) => {
+    const card = document.createElement("div");
+    card.classList.add("function-info-card");
+    const img = document.createElement("img");
+    img.src = `../img/smartwatch_info_pictures/${folderName}/${feature.image}`;
+    img.alt = feature.title;
+    const title = document.createElement("h2");
+    title.textContent = feature.title;
+    const description = document.createElement("p");
+    description.textContent = feature.description;
+    card.appendChild(img);
+    card.appendChild(title);
+    card.appendChild(description);
+    functionInfoContainer.appendChild(card);
+  });
 
-    function replaceSymbols(text) {
-      return text
-        .replace(/®/g, '<sup class="registered">®</sup>')
-        .replace(/™/g, '<sup class="trademark2">™</sup>');
-    }
-    document.querySelector(".banner-title").innerHTML = replaceSymbols(
-      item.banner_text.title
-    );
-    document.querySelector(".product-title").innerHTML = replaceSymbols(
-      item.product_title
-    );
+  function replaceSymbols(text) {
+    return text
+      .replace(/®/g, '<sup class="registered">®</sup>')
+      .replace(/™/g, '<sup class="trademark2">™</sup>');
+  }
+  document.querySelector(".banner-title").innerHTML = replaceSymbols(
+    item.banner_text.title
+  );
+  document.querySelector(".product-title").innerHTML = replaceSymbols(
+    item.product_title
+  );
 
-    initCarousel();
-  })
-  
+  initCarousel();
+});
 
 function initCarousel() {
   const carouselHorizontal = document.querySelector(".carousel1");
@@ -224,9 +222,7 @@ function initCarousel() {
       downButton.disabled = false;
     }
   }
- 
 
-  
   upButton.addEventListener("click", () => {
     carouselVertical.scrollBy({
       top: -80,
@@ -234,7 +230,6 @@ function initCarousel() {
     });
     setTimeout(updateButtonState, 500);
   });
-
 
   downButton.addEventListener("click", () => {
     carouselVertical.scrollBy({

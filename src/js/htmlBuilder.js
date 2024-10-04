@@ -8,9 +8,9 @@ import "../style/itempage.css";
 export function createCards(data) {
   const container = document.getElementById("cards-container");
 
-  data.items.forEach((item) => {
+  data.forEach((item) => {
     const link = document.createElement("a");
-    link.href = `pages/itempage.html?id=${item.id}`;
+    link.href = `pages/itempage.html?id=${item._id}`;
     link.classList.add("card-link");
 
     const cardImg = document.createElement("div");
@@ -34,7 +34,7 @@ export function createCards(data) {
     description.textContent = item.text;
     const price = document.createElement("p");
     price.classList.add("price-text");
-    price.textContent = `$${item.price.toFixed(2)} USD`;
+    price.textContent = `$${item.price?.toFixed(2) || '0.00'} USD`;
 
     cardDesc.appendChild(title);
     cardDesc.appendChild(description);
@@ -48,8 +48,9 @@ export function createCards(data) {
 }
 
 export async function createNewCards() {
-  const data = await fetchData(); 
-  const items = data.items;
+  const items = await fetchData(); 
+  
+  
   const newCardsContainer = document.querySelector(".new-cards-container");
 
   newCardsContainer.innerHTML = "";
@@ -58,7 +59,7 @@ export async function createNewCards() {
     const newCard = document.createElement("div");
 
     const cardLink = document.createElement("a");
-    cardLink.href = `/pages/itempage.html?id=${item.id}`;
+    cardLink.href = `/pages/itempage.html?id=${item._id}`;
     cardLink.classList.add("card-link-dropdownmenu");
 
     newCard.classList.add("new-card");
@@ -81,9 +82,9 @@ export async function createNewCards() {
     return cardLink;
   }
 
-  const idsToCreate = [9, 7];
+  const idsToCreate = ["66fe90f80e683cf96358307a", "66fe90f80e683cf963583079"];
   idsToCreate.forEach((id) => {
-    const item = items.find((i) => i.id === id);
+    const item = items.find((i) => i._id === id);
     if (item) {
       const card = createCard(item);
       newCardsContainer.appendChild(card);
