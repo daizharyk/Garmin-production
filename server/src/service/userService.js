@@ -1,8 +1,8 @@
 const ExistingEntityError = require("../infrastructure/errors/ExistingEntityError");
 const InvalidDataError = require("../infrastructure/errors/InvalidDataError");
 const userRepository = require("../repository/userRepository");
-const { generateJWToken } = require("../utils/jwtwebtoken");
-
+const { generateJWToken } = require("../utils/jwtWebToken");
+const jwt = require('jsonwebtoken');
 module.exports = {
   findAllUsers: async () => {
     const users = await userRepository.findAllUser();
