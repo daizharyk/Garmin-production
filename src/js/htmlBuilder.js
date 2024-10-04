@@ -3,7 +3,6 @@ import {fetchData} from "./itemService.js"
 import "../style/style.css";
 import "../style/shipping.css";
 import "../style/itempage.css";
-
 const data = await fetchData();
 // Функция для создания карточек
 export function createCards(data) {
