@@ -11,12 +11,19 @@ const itemId = params.get("id");
 export const item = getItemById(itemId);
 
 
+
 export async function fetchData() {
-  const response = await fetch('../data/item.json');
+  const response = await fetch('data/item.json');
+ 
+  
   if (!response.ok) {
     throw new Error('Network response was not ok');
   }
   const data = await response.json();
+  console.log(data);
+  
   return data;
 }
+
+
 

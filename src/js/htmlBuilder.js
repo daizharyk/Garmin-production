@@ -3,7 +3,7 @@ import {fetchData} from "./itemService.js"
 import "../style/style.css";
 import "../style/shipping.css";
 import "../style/itempage.css";
-const data = await fetchData();
+
 // Функция для создания карточек
 export function createCards(data) {
   const container = document.getElementById("cards-container");
@@ -47,7 +47,8 @@ export function createCards(data) {
   });
 }
 
-export function createNewCards() {
+export async function createNewCards() {
+  const data = await fetchData(); 
   const items = data.items;
   const newCardsContainer = document.querySelector(".new-cards-container");
 
