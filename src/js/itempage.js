@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   item.carousel_images.forEach((imgFileName) => {
     const div = document.createElement("div");
     div.classList.add("carousel-box");
-    const imgSrc = `https://i.ibb.co.com/${item.image}/${imgFileName}`;
+    const imgSrc = `https://i.ibb.co.com/${imgFileName}`;
     const img = document.createElement("img");
     img.src = imgSrc;
     img.alt = item.name;
