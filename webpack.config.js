@@ -27,12 +27,14 @@ module.exports = {
     port: 3001,
     open: true,
     hot: false,
-    proxy: {
-      '/api': {
-        target: 'http://localhost:3005',
+    proxy: [
+      {
+        context: ['/api'], // Определяем, какие пути нужно проксировать
+        target: 'http://localhost:3005', // Сервер, на который перенаправляются запросы
         changeOrigin: true,
-      }
-    }
+        logLevel: 'info',
+      },
+    ],
   },
   module: {
     rules: [
@@ -45,7 +47,7 @@ module.exports = {
       },
       {
         test: /\.css$/i,
-        use: [MiniCssExtractPlugin.loader, "css-loader" ],
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
       },
     ],
   },
@@ -82,9 +84,7 @@ module.exports = {
       chunks: ["animation"],
     }),
     new CopyWebpackPlugin({
-      patterns: [
-        { from: "src/img", to: "img" }
-      ],
+      patterns: [{ from: "src/img", to: "img" }],
     }),
   ],
 };
