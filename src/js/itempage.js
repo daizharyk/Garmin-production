@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   item.carousel_images.forEach((imgFileName) => {
     const div = document.createElement("div");
     div.classList.add("carousel-box");
-    const imgSrc = `../img/smartwatch_info_pictures/${item.folder_name}/${imgFileName}`;
+    const imgSrc = `https://ibb.co/${item.image}/${imgFileName}`;
     const img = document.createElement("img");
     img.src = imgSrc;
     img.alt = item.name;
@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     item.carousel_images.forEach((imgFileName) => {
       const div = document.createElement("div");
       div.classList.add("carousel-box1");
-      const imgSrc = `../img/smartwatch_info_pictures/${item.folder_name}/${imgFileName}`;
+      const imgSrc = `https://ibb.co/${imgFileName}`;
       const img = document.createElement("img");
       img.src = imgSrc;
       img.alt = item.name;
@@ -51,12 +51,11 @@ document.addEventListener("DOMContentLoaded", async () => {
       carousel1.appendChild(div);
     });
   });
-  const folderName = item.folder_name;
 
   document.querySelector(".banner-title").textContent = item.banner_text.title;
   document.querySelector(".disc-right").textContent = item.banner_text.text;
   document.getElementById("bannerwithtext").src =
-    `../img/smartwatch_info_pictures/${folderName}/${item.banner_text.banner_images.main_banner}`;
+    `https://ibb.co/${item.banner_text.banner_images.main_banner}`;
   document.getElementById("bannerwithtext").alt =
     item.banner_text.banner_images.alt;
   document.getElementById("bannerwithtext-adaptive").src =
