@@ -16,7 +16,7 @@ export function createCards(data) {
     const cardImg = document.createElement("div");
     cardImg.classList.add("item-card-img");
     const img = document.createElement("img");
-    img.src = `img/smartwatches/${item.image}`;
+    img.src = `https://i.ibb.co.com/${item.image}`;
     img.alt = item.name;
     cardImg.appendChild(img);
 
@@ -65,7 +65,7 @@ export async function createNewCards() {
     newCard.classList.add("new-card");
 
     const img = document.createElement("img");
-    img.src = `../img/smartwatch_info_pictures/${item.folder_name}/${item.carousel_images[2]}`;
+    img.src = `https://i.ibb.co.com/${item.carousel_images[2]}`;
     img.alt = item.name;
 
     const newCardDescription = document.createElement("div");
@@ -82,7 +82,7 @@ export async function createNewCards() {
     return cardLink;
   }
 
-  const idsToCreate = ["66fe90f80e683cf96358307a", "66fe90f80e683cf963583079"];
+  const idsToCreate = ["6702db1c66b48142a2e0bdc9", "6702db1c66b48142a2e0bdc8"];
   idsToCreate.forEach((id) => {
     const item = items.find((i) => i._id === id);
     if (item) {
