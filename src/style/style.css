@@ -11,6 +11,65 @@
 
 
 
+.login-section {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.user-menu {
+  cursor: pointer;
+}
+
+.svg-container {
+  position: relative;
+  display: inline-block;
+  width: 25px;
+  margin: 5px;
+}
+
+.svg-container:hover {
+  border-bottom: 2px solid #000;
+}
+
+.dropdown-user {
+ display: none;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  padding: 10px;
+  margin-top: 1px;
+  left: -70px;
+  width: 140px;
+  height: auto;
+}
+
+.svg-container:hover .dropdown-user {
+  display: block;
+
+}
+
+.dropdown-user a {
+  text-align: left;
+  font-size: 0.830rem;
+  display: block;
+  margin: 10px 20px 10px 10px;
+  text-decoration: none;
+  color: #000000;
+}
+
+.dropdown-user a:hover {
+  text-decoration: underline;
+  font-size: 0.9rem;
+  transition: .2s, color 0.2s;
+}
+
+.dropdown-user a:hover::after {
+  background-color: #000000;
+}
 
 .nav-section {
   display: flex;
@@ -107,7 +166,7 @@
 
 .column-title {
   font-family: Superscripts-Oswald, Oswald, "Roboto Condensed", Roboto, "Noto Sans TC", "Noto Sans SC", "Noto Sans JP", "Noto Sans KR", Prompt, sans-serif;
-  margin: 20px 0  15px 0;
+  margin: 20px 0 15px 0;
   border-bottom: 1px solid #d9d9d9;
 }
 
@@ -216,7 +275,7 @@
 }
 
 .banner-text {
- 
+
   align-items: center;
   color: #fff;
   position: absolute;
@@ -850,10 +909,13 @@
 .signup-content a {
   font-size: 0.7rem;
 }
+
 .email-form input[type="email"], .email-form button {
-  height: 44px; /* Убедитесь, что высота одинаковая */
+  height: 44px;
+  /* Убедитесь, что высота одинаковая */
 
 }
+
 .email-form {
   display: flex;
   align-items: center;
@@ -883,10 +945,12 @@
 
   transition: transform 0.2s, color 0.3s;
 }
+
 .email-form span {
   display: inline-block;
-  font-size: 25px; 
+  font-size: 25px;
 }
+
 .email-form button:hover {
   background-color: #fff;
   color: #000;

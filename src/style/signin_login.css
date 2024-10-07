@@ -1,0 +1,237 @@
+.footer_simbol {
+  display: block;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  justify-content: center;
+  text-align: left;
+  background-color: #fff;
+  padding: 20px;
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto";
+}
+
+.foter_nav {
+  color: #fff;
+  background-color: #000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+}
+
+.foter_nav_li {
+  display: flex;
+  text-decoration: none;
+  list-style: none;
+}
+
+
+.foter_nav_li a:hover {
+  text-decoration: underline;
+}
+
+body {
+  background: url('https://i.ibb.co.com/YQhX97k/jonatan-pie-3l3-Rw-Qd-HRHg-unsplash-11zon-1.jpg') no-repeat center center fixed;
+  background-size: cover;
+  height: 100vh;
+  display: block;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 80px 0;
+}
+
+.login-box {
+  background-color: white;
+  padding: 40px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+h2 {
+  font-family: "Roboto";
+  font-weight: 400;
+  text-align: left;
+  border-bottom: 1px solid #000;
+  font-size: 40px;
+  padding: 20px 0 20px 0;
+  margin-bottom: 20px;
+  color: #000;
+}
+
+form {
+  text-align: left;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+input[type="email"], input[type="password"] {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  outline: none; 
+  transition: border-color 0.3s ease; 
+  margin-bottom: 20px ;
+}
+
+input[type="email"]:focus {
+  border-color: #000;
+  box-shadow: 0 0 5px rgba(11, 11, 11, 0.5);
+  outline: none; 
+}
+
+
+
+
+.password-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.password-container input {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+.password-container input:focus {
+  border-color: #000;
+  box-shadow: 0 0 5px rgba(11, 11, 11, 0.5);
+  outline: none; 
+}
+.show-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 16px;
+  text-decoration: underline;
+  color: #000;
+  cursor: pointer;
+}
+
+.show-password:hover {
+  text-decoration: none;
+}
+.error-message {
+  color: #920000; /* Цвет сообщения об ошибке */
+  font-size: 12px; /* Размер шрифта */
+  margin-bottom: 20px;
+  display: none;
+}
+
+input.error {
+  border-color: #920000; /* Красная граница при ошибке */
+}
+
+.remember-forgot {
+  font-family: "Roboto";
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+
+}
+
+.remember-forgot a {
+  font-size: 16px;
+  color: #000;
+
+}
+.remember-label {
+  display: flex;              
+  align-items: center;        
+   
+}
+.remember-forgot a:hover {
+  text-decoration: none;
+}
+
+.sign-in-btn {
+
+  width: 100%;
+  padding: 10px;
+  background-color: #ccc;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.create-account {
+  margin-top: 40px;
+}
+
+.create-account a {
+  color: #000;
+
+}
+
+.create-account a:hover {
+  text-decoration: none;
+}
+
+
+.remember-forgot input[type="checkbox"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  position: relative;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  background-color: #fff;
+  border: 2px solid #000;
+  margin-right: 0.5rem;
+  outline: none;
+}
+
+
+
+
+
+.remember-forgot input[type="checkbox"]:checked::after {
+  content: '\2713';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #000;
+  font-size: 15px;
+  font-weight: 1000;
+}
+
+.foter_nav_items a {
+  color: #fff;
+  text-decoration: none;
+
+}
+
