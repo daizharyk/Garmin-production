@@ -57,7 +57,10 @@ module.exports = {
     }
     await userRepository.deleteUser(userIdFromParams);
   },
-  deleteUserForce: async (userId) => {
-    await userRepository.deleteUserForce(userId);
+  deleteUserForce: async (userIdFromParams, userIdFromToken) => {
+    if (userIdFromParams !== userIdFromToken.toString()) {
+      throw new InvalidDataError("You can only delete your own account");
+    }
+    await userRepository.deleteUserForce(userIdFromParams);
   },
 };

@@ -66,16 +66,18 @@ module.exports = {
       const userIdFromParams = req.params.id;
       const userIdFromToken = req.user._id;
       await userService.deleteUser(userIdFromParams, userIdFromToken);
-      res.send("User deleted!");
+      res.send("User marked as deleted!");
     } catch (error) {
       next(error);
     }
   },
+  
   deleteUserForce: async (req, res, next) => {
     try {
-      const userid = req.params.id;
-      await userService.deleteUserForce(userid);
-      res.send("User marked as deleted!");
+      const userIdFromParams = req.params.id;
+      const userIdFromToken = req.user._id;
+      await userService.deleteUserForce(userIdFromParams, userIdFromToken);
+      res.send("User deleted!");
     } catch (error) {
       next(error);
     }
