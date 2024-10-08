@@ -3,7 +3,6 @@ const { Router } = require("express");
 const {protected}  = require("../../middlewares/auth")
 const {
   getAllUsers,
-  getUser,
   deleteUser,
   deleteUserForce,
   updateUser,
@@ -14,20 +13,19 @@ const {
 
 const router = Router();
 
-router.get("/", getAllUsers);
+router.get("/",protected, getAllUsers);
 
 router.get("/me",protected, getMe);
 
-router.put("/:id", updateUser);
+router.put("/:id",protected, updateUser);
 
-router.delete("/:id", deleteUser);
+router.patch("/:id",protected, deleteUser);
 
-router.delete("/force/:id", deleteUserForce);
+router.delete("/force/:id",protected, deleteUserForce);
 
 router.post("/", registerUser);
 
 router.post("/login", loginUser);
-
 
 
 module.exports = router;

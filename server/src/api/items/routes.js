@@ -21,7 +21,7 @@ router.get("/:id", getItem);
 
 router.put("/:id", protected, updateItem);
 
-router.delete("/:id", protected, deleteItem);
+router.patch("/:id", protected, deleteItem);
 
 router.delete("/force/:id", protected, deleteItemForce);
 

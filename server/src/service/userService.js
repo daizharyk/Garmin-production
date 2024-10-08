@@ -40,12 +40,22 @@ module.exports = {
     const userWithItems = await userRepository.findUserWithItems(userId);
     return userWithItems;
   },
-  updateUser: async (userId, userData) => {
-    const updateUser = await userRepository.updateUser(userId, userData);
+  updateUser: async (userIdFromParams, userIdFromToken, userData) => {
+    if (userIdFromParams !== userIdFromToken.toString()) {
+      throw new InvalidDataError("You can only update your own account");
+    }
+
+    const updateUser = await userRepository.updateUser(
+      userIdFromParams,
+      userData
+    );
     return updateUser;
   },
-  deleteUser: async (userId) => {
-    await userRepository.deleteUser(userId);
+  deleteUser: async (userIdFromParams, userIdFromToken) => {
+    if (userIdFromParams !== userIdFromToken.toString()) {
+      throw new InvalidDataError("You can only delete your own account");
+    }
+    await userRepository.deleteUser(userIdFromParams);
   },
   deleteUserForce: async (userId) => {
     await userRepository.deleteUserForce(userId);

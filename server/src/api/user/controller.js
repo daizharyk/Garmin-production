@@ -48,8 +48,14 @@ module.exports = {
   updateUser: async (req, res, next) => {
     try {
       const data = req.body;
-      const userid = req.params.id;
-      const updatedUser = await userService.updateUser(userid, data);
+      const userIdFromParams = req.params.id;
+      const userIdFromToken = req.user._id;
+
+      const updatedUser = await userService.updateUser(
+        userIdFromParams,
+        userIdFromToken,
+        data
+      );
       res.send(updatedUser);
     } catch (error) {
       next(error);
@@ -57,8 +63,9 @@ module.exports = {
   },
   deleteUser: async (req, res, next) => {
     try {
-      const userid = req.params.id;
-      await userService.deleteUser(userid);
+      const userIdFromParams = req.params.id;
+      const userIdFromToken = req.user._id;
+      await userService.deleteUser(userIdFromParams, userIdFromToken);
       res.send("User deleted!");
     } catch (error) {
       next(error);
@@ -68,7 +75,7 @@ module.exports = {
     try {
       const userid = req.params.id;
       await userService.deleteUserForce(userid);
-      res.send("User deleted!");
+      res.send("User marked as deleted!");
     } catch (error) {
       next(error);
     }
