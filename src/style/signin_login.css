@@ -1,3 +1,19 @@
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto";
+}
+
+
+main {
+  min-height: 100vh; 
+  display: flex;
+  flex-direction: column;
+}
+
 .footer_simbol {
   display: block;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
@@ -8,26 +24,25 @@
 }
 
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Roboto";
-}
-
 .foter_nav {
+  box-sizing: border-box;
+  width: 100%;
   color: #fff;
   background-color: #000;
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 50px;
+  font-size: 0.875rem;
+  padding: 0 20px;
 }
 
 .foter_nav_li {
+
   display: flex;
   text-decoration: none;
   list-style: none;
+  gap: 15px;
 }
 
 
@@ -111,8 +126,7 @@ input[type="email"]:focus {
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
-  text-align: center;
+
 }
 .password-container input {
   width: 100%;
@@ -129,7 +143,7 @@ input[type="email"]:focus {
 .show-password {
   position: absolute;
   right: 10px;
-  top: 50%;
+  top: 35%;
   transform: translateY(-50%);
   background: none;
   border: none;
@@ -177,15 +191,36 @@ input.error {
 }
 
 .sign-in-btn {
-
+  border: 1px solid transparent;
   width: 100%;
   padding: 10px;
   background-color: #ccc;
   border: none;
+  cursor: not-allowed;
   font-size: 16px;
   cursor: pointer;
+  transition:  0.2s, color 0.3s;
+ font-weight: 500;
+ margin: 20px 0;
+ box-sizing: border-box;
 }
 
+.sign-in-btn:disabled {
+  background-color: #ddd; /* Цвет для неактивной кнопки */
+  cursor: not-allowed; /* Курсор "запрещено" */
+  color: #000; /* Бледный цвет текста */
+}
+
+.sign-in-btn:not(:disabled) {
+  border: 1px solid transparent; 
+  background-color: #6dcff6; 
+} 
+
+.sign-in-btn:not(:disabled):hover {
+  background-color: #fff; 
+  border: 1px solid #6dcff6;
+  color: #000;
+}
 .create-account {
   margin-top: 40px;
 }

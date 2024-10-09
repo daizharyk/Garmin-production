@@ -633,7 +633,7 @@
   transform: rotate(45deg);
   position: absolute;
   right: 20px;
-  transition: transform 0.4s ease;
+  transition:  0.4s ease;
 }
 
 .arrow-white {
@@ -645,7 +645,7 @@
   transform: rotate(45deg);
   position: absolute;
   right: 20px;
-  transition: transform 0.4s ease;
+  transition:  0.4s ease;
 }
 
 .toggle-checkbox:checked+.toggle-label .arrow {
@@ -943,7 +943,7 @@
   width: 44px;
   border: none;
 
-  transition: transform 0.2s, color 0.3s;
+  transition:  0.2s, color 0.3s;
 }
 
 .email-form span {
@@ -1211,7 +1211,7 @@ footer {
 
 
   .product-filter_dropdown .arrow {
-    transition: transform 0.3s ease;
+    transition: 0.3s ease;
   }
 
   .product-filter_dropdown.active .arrow {
