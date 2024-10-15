@@ -10,11 +10,7 @@ const { auth } = require("./middlewares/auth");
 const cors = require("cors");
 
 
-app.use(cors({
-  origin:  ['http://localhost:3001', 'http://127.0.0.1:5500' , 'https://garmin-d.netlify.app'], // Укажите, с какого источника разрешены запросы
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Укажите разрешенные методы
-  credentials: true, // Разрешить отправку куки
-}));
+app.use(cors());
 
 
 app.use(express.json());
