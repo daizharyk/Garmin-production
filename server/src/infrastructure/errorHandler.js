@@ -7,13 +7,13 @@ const errorHandler = (err, req, res, next) => {
 
   switch (true) {
     case err instanceof NotImplementedError:
-      res.status(404).send(err.message);
+      res.status(404).json({ message: err.message });
       break;
     case err instanceof ExistingEntityError:
-      res.status(400).send(err.message);
+      res.status(400).json({ message: err.message });
       break;
     case err instanceof InvalidDataError:
-      res.status(401).send(err.message);
+      res.status(401).json({ message: err.message });
       break;
     default:
       res.status(500).send("Something goes wrong");
@@ -21,5 +21,3 @@ const errorHandler = (err, req, res, next) => {
 };
 
 module.exports = errorHandler;
-
-

@@ -13,7 +13,10 @@ module.exports = {
     html: path.resolve(__dirname, "src/js/htmlBuilder.js"),
     itempage: path.resolve(__dirname, "src/js/itempage.js"),
     itemService: path.resolve(__dirname, "src/js/itemService.js"),
-    
+    signIn: path.resolve(__dirname, "src/js/signIn.js"),
+    login: path.resolve(__dirname, "src/js/login.js"),
+    register: path.resolve(__dirname, "src/js/register.js"),
+    registration: path.resolve(__dirname , "src/js/registration.js")
   },
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -30,10 +33,10 @@ module.exports = {
     hot: false,
     proxy: [
       {
-        context: ['/api'], // Определяем, какие пути нужно проксировать
-        target: 'http://localhost:3005', // Сервер, на который перенаправляются запросы
+        context: ["/api"], // Определяем, какие пути нужно проксировать
+        target: "http://localhost:3005", // Сервер, на который перенаправляются запросы
         changeOrigin: true,
-        logLevel: 'info',
+        logLevel: "info",
       },
     ],
   },
@@ -84,8 +87,21 @@ module.exports = {
       template: "src/pages/shipping.html",
       chunks: ["animation"],
     }),
+    new HtmlWebpackPlugin({
+      title: "Login Page",
+      filename: "pages/signIn.html",
+      template: "src/pages/signIn.html",
+      chunks: ["signIn", "login"],
+    }),
+    new HtmlWebpackPlugin({
+      title: "Registration Page",
+      filename: "pages/registration.html",
+      template: "src/pages/registration.html",
+      chunks: ["register", "registration"],
+    }),
     new CopyWebpackPlugin({
       patterns: [{ from: "src/img", to: "img" }],
     }),
   ],
 };
+

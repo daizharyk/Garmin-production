@@ -15,6 +15,10 @@ const userSchema = mongoose.Schema(
       type: String,
       require: true,
     },
+    country: {
+      type: String,
+      required: false,
+    },
     isDeleted: {
       type: Boolean,
       default: false,

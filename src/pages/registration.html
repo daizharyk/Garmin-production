@@ -53,50 +53,145 @@
               ></path>
             </svg>
           </h1>
-          <h2 id="signInTitle">SIGN IN</h2>
-          <form id="loginForm" action="/login" method="POST" novalidate>
-            <label for="email" class="label_text">Email Address <span class="required">*</span></label>
-            <input type="email" id="email" name="email" />
-            <div class="error-message" id="emailError">
-              This field is required
+          <h2 id="createAccountTitle">CREATE AN ACCOUNT</h2>
+          <form id="registerForm" action="/register" method="POST" novalidate>
+            <!-- Name -->
+            <label for="name" class="label_text"
+              >Name <span class="required">*</span></label
+            >
+            <input type="text" id="name" name="name" required />
+            <div
+              class="error-message"
+              id="requiredNameError"
+              style="display: none"
+            >
+              Name must not contain numbers or special characters.
             </div>
-            <label for="password"class="label_text">Password <span class="required">*</span></label>
+            <div class="error-message" id="nameError" style="display: none">
+              This field is required.
+            </div>
+
+            <!-- Email -->
+            <label for="email" class="label_text"
+              >Email Address <span class="required">*</span></label
+            >
+            <input type="email" id="email" name="email" required />
+            <div class="error-message" id="emailError" style="display: none">
+              
+            </div>
+
+            <!-- Retype Email -->
+            <label for="retypeEmail" class="label_text"
+              >Retype Email Address <span class="required">*</span></label
+            >
+            <input type="email" id="retypeEmail" name="retypeEmail" required />
+            <div class="error-message" id="retypeEmailError">
+              
+            </div>
+
+            <!-- Password -->
+            <label for="password" class="label_text"
+              >Password <span class="required">*</span></label
+            >
+
             <div class="password-container">
-              <input type="password" id="password" name="password" />
+              <input type="password" id="password" name="password" required />
               <button type="button" class="show-password">Show</button>
             </div>
-            <div class="error-message" id="passwordError">
+
+            <div class="error-message" id="passwordError" style="display: none">
               This field is required
             </div>
-            <div class="remember-forgot">
-              <label class="remember-label">
-                <input type="checkbox" name="remember" id="rememberMe" /> Remember Me
-              </label>
-              <a href="#" id="forgotPasswordLink">Forgot Password?</a>
+
+            <div class="password-requirements">
+              Minimum password length is 8 characters. Please use at least 1
+              uppercase letter, 1 lowercase letter and 1 number.
             </div>
-            <button type="submit" class="sign-in-btn" id="signInBtn" disabled>
-              <span id="loadingSpinner" style="display: block;" class="spinner"></span>
-              SIGN IN
+            <!-- Retype Password -->
+            <label for="retypePassword" class="label_text"
+              >Retype Password <span class="required">*</span></label
+            >
+            <div class="password-container">
+              <input
+                type="password"
+                id="retypePassword"
+                name="retypePassword"
+                required
+              />
+              <button type="button" class="show-password">Show</button>
+            </div>
+            <div class="error-message" id="retypePasswordError">
+              This field is required
+            </div>
+            <div class="error-message" id="do-not-match-error">
+              Passwords do not match.
+            </div>
+            <label for="country" class="label_text"
+              >Country/Region<span class="required">*</span></label
+            >
+            <select id="country" name="country" class="country_select" required>
+              <option value="Kazakhstan">Kazakhstan</option>
+              <option value="Russia">Russia</option>
+              <option value="USA">USA</option>
+            </select>
+            <div class="error-message" id="countryError">
+              This field is required
+            </div>
+            <p class="password-requirements">
+              Your country or region of residence helps us comply with data
+              privacy regulations and is never shared with others.
+            </p>
+
+            <label class="label-checkbox">
+              <input type="checkbox" id="promotions" name="promotions" />
+              <p>Send me email about promotions and new products.</p>
+              <span
+                id="promotionsError"
+                class="error-message"
+                style="display: none; color: #960303"
+                >You must agree to receive promotions.</span
+              >
+            </label>
+
+            <!-- Checkbox: Terms of Use -->
+            <label class="label-checkbox">
+              <input type="checkbox" id="terms" name="terms" required />
+              <p>I have read and agree to the Terms of Use.</p>
+              <span
+                id="termsError"
+                class="error-message"
+                style="display: none; color: #960303"
+                >You must accept the terms.</span
+              >
+            </label>
+            <a href="/terms-of-use" target="_blank" class="terms_link"
+              >Terms of Use</a
+            >.
+            <p class="privacy-text">
+              We take your privacy seriously. Our
+              <a href="/privacy-policy" target="_blank">Privacy Policy</a> is
+              available for your review.
+            </p>
+
+            <!-- Submit Button -->
+            <button
+              type="submit"
+              class="sign-in-btn"
+              id="createAccountBtn"
+              disabled
+            >
+              <span
+                id="loadingSpinner"
+                style="display: none"
+                class="spinner"
+              ></span>
+              CREATE ACCOUNT
             </button>
           </form>
-          <form
-            id="forgotPasswordForm"
-            action="/recover-password"
-            method="POST"
-            style="display: none"
-          >
-            <h2>FORGOT PASSWORD</h2>
-            <p class="forget-desctiption">Enter the email address associated with your account.</p>
-            <label for="resetEmail" class="label_text">Email <span class="required">*</span></label>
-            <input type="email" id="resetEmail" name="email" required />
-            <div class="error-message" id="resetEmailError">
-              This field is required
-            </div>
-            <button type="submit" class="sign-in-btn" id="recoverPasswordBtn">Recover Password</button>
-            <a href="#" id="backToLoginLink" class="goBack-btn">GO BACK</a>
-          </form>
-          <div class="create-account">
-            <p>Don't have an account? <a href="../pages/registration.html">Create One</a></p>
+
+          <!-- Link to Sign In -->
+          <div class="sign-in">
+            <p>Already have an account? <a href="./signIn.html">Sign In</a></p>
           </div>
         </div>
       </div>

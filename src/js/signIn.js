@@ -1,4 +1,4 @@
-
+import "../style/signin_login.css";
 const signInBtn = document.getElementById("signInBtn");
 
 function togglePassword() {
@@ -7,101 +7,79 @@ function togglePassword() {
 
   // Проверяем текущее состояние типа поля ввода
   if (passwordInput.type === "password") {
-    passwordInput.type = "text"; 
-    showPasswordButton.textContent = "Hide"; 
+    passwordInput.type = "text";
+    showPasswordButton.textContent = "Hide";
   } else {
     passwordInput.type = "password";
-    showPasswordButton.textContent = "Show"; 
+    showPasswordButton.textContent = "Show";
   }
-}
-
-
-document.getElementById("email").addEventListener("blur", function () {
-  if (this.value.trim() === "") {
-    this.classList.add("error");
-    document.getElementById("emailError").style.display = "block";
-  } else {
-    this.classList.remove("error");
-    document.getElementById("emailError").style.display = "none";
-  }
-});
-
-document.getElementById("password").addEventListener("blur", function () {
-  if (this.value.trim() === "") {
-    this.classList.add("error");
-    document.getElementById("passwordError").style.display = "block";
-  } else {
-    this.classList.remove("error");
-    document.getElementById("passwordError").style.display = "none";
-  }
-});
-
-function validateEmail(email) {
-  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailPattern.test(email);
-}
-
-function validateForm() {
-  let isValid = true;
-  // Сбросьте предыдущие сообщения об ошибках и классы ошибок
-  document.getElementById("emailError").textContent = "";
-  document.getElementById("passwordError").textContent = "";
-  document.getElementById("email").classList.remove("error");
-  document.getElementById("password").classList.remove("error");
-
-  const email = document.getElementById("email").value.trim();
-  const password = document.getElementById("password").value.trim();
-  // Проверка email
-  if (!email) {
-    document.getElementById("emailError").textContent = "Email is required.";
-    document.getElementById("email").classList.add("error");
-    isValid = false;
-  } else if (!validateEmail(email)) {
-    document.getElementById("emailError").textContent =
-      "Please enter a valid email address.";
-    document.getElementById("email").classList.add("error");
-    isValid = false;
-  }
-
-  // Проверка пароля
-  if (!password) {
-    document.getElementById("passwordError").textContent =
-      "Password is required.";
-    document.getElementById("password").classList.add("error");
-    isValid = false;
-  }
-
-  return isValid;
 }
 document
-  .getElementById("loginForm")
-  .addEventListener("submit", function (event) {
-    if (!validateForm()) {
-      event.preventDefault();
-    }
+  .querySelector(".show-password")
+  .addEventListener("click", togglePassword);
+
+  const fields = ["email", "resetEmail", "password"];
+
+  fields.forEach(field => {
+    const input = document.getElementById(field);
+    const errorElement = document.getElementById(`${field}Error`);
+  
+    input.addEventListener("blur", function () {
+      if (this.value.trim() === "") {
+        this.classList.add("error");
+        errorElement.style.display = "block";
+      } else {
+        this.classList.remove("error");
+        errorElement.style.display = "none";
+      }
+    });
   });
-
-
-
-document.getElementById("email").addEventListener("input", checkFormValidity);
-document.getElementById("password").addEventListener("input", checkFormValidity);
+  
 
 function checkFormValidity() {
   const email = document.getElementById("email").value.trim();
   const password = document.getElementById("password").value.trim();
-  
-  signInBtn.disabled = !(email && password); // Устанавливаем доступность кнопки
+  const resetEmail = document.getElementById("resetEmail")
+    ? document.getElementById("resetEmail").value.trim()
+    : "";
+  const recoverPasswordBtn = document.getElementById("recoverPasswordBtn");
+  if (signInBtn) {
+    signInBtn.disabled = !(email && password); // Деактивируем кнопку логина, если поля пусты
+  }
+
+  if (recoverPasswordBtn) {
+    recoverPasswordBtn.disabled = !resetEmail; // Деактивируем кнопку восстановления пароля, если email не введен
+  }
 }
 
+document.getElementById("email").addEventListener("input", checkFormValidity);
+if (document.getElementById("password")) {
+  document
+    .getElementById("password")
+    .addEventListener("input", checkFormValidity);
+}
+if (document.getElementById("resetEmail")) {
+  document
+    .getElementById("resetEmail")
+    .addEventListener("input", checkFormValidity);
+}
 
-document.getElementById("forgotPasswordLink").addEventListener("click", function(event) {
-  event.preventDefault();
-  document.getElementById("loginForm").style.display = "none";
-  document.getElementById("forgotPasswordForm").style.display = "block";
-});
+checkFormValidity();
 
-document.getElementById("backToLoginLink").addEventListener("click", function(event) {
-  event.preventDefault();
-  document.getElementById("forgotPasswordForm").style.display = "none";
-  document.getElementById("loginForm").style.display = "block";
-});
+document
+  .getElementById("forgotPasswordLink")
+  .addEventListener("click", function (event) {
+    event.preventDefault();
+    document.getElementById("loginForm").style.display = "none";
+    document.getElementById("signInTitle").style.display = "none";
+    document.getElementById("forgotPasswordForm").style.display = "block";
+  });
+
+document
+  .getElementById("backToLoginLink")
+  .addEventListener("click", function (event) {
+    event.preventDefault();
+    document.getElementById("forgotPasswordForm").style.display = "none";
+    document.getElementById("signInTitle").style.display = "block";
+    document.getElementById("loginForm").style.display = "block";
+  });
