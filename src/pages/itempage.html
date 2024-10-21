@@ -11,7 +11,7 @@
         <nav>
           <div class="nav-section">
             <div class="logo">
-              <a href="../index.html"
+              <a href="index.html"
                 ><svg
                   id="garmin-logo"
                   width="161px"
@@ -30,276 +30,559 @@
                   ></path></svg
               ></a>
             </div>
+            <div class="burger-menu">
+              <button class="burger-button" id="burgerButton">
+                <span class="burger-line line1"></span>
+                <span class="burger-line line2"></span>
+              </button>
+              <div class="nav-item-section" id="navMenu">
+                <div class="search-container">
+                  <svg
+                    class="search-icon"
+                    version="1.1"
+                    id="Layer_1"
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    x="0px"
+                    y="0px"
+                    viewBox="0 0 2200 2200"
+                    style="enable-background: new 0 0 2200 2200"
+                    xml:space="preserve"
+                  >
+                    <style type="text/css">
+                      .st0 {
+                        fill: none;
+                        stroke: #000000;
+                        stroke-width: 125;
+                        stroke-miterlimit: 10;
+                      }
+                    </style>
+                    <g id="Background"></g>
+                    <g id="Layer_3">
+                      <circle class="st0" cx="777" cy="793" r="404" />
+                      <line
+                        class="st0"
+                        x1="1055"
+                        y1="1056.5"
+                        x2="1765"
+                        y2="1774"
+                      />
+                    </g>
+                  </svg>
 
-            <div class="nav-item-section">
-              <ul class="nav-menu smartwatches">
-                <li class="nav-item">SMARTWATCHES</li>
-              </ul>
-              <ul class="nav-menu sport-fitness">
-                <li class="nav-item">SPORTS & FITNESS</li>
-              </ul>
-              <ul class="nav-menu outdoor-recreation">
-                <li class="nav-item">OUTDOOR RECREATION</li>
-              </ul>
-              <ul class="nav-menu automative">
-                <li class="nav-item">AUTOMOTIVE</li>
-              </ul>
-              <ul class="nav-menu marine">
-                <li class="nav-item">MARINE</li>
-              </ul>
-              <ul class="nav-menu aviation">
-                <li class="nav-item">AVIATION</li>
-              </ul>
-              <ul class="nav-menu sale">
-                <li class="nav-item">SALE</li>
-              </ul>
+                  <input
+                    type="text"
+                    class="search-input"
+                    placeholder="Search..."
+                  />
+                </div>
+
+                <ul class="nav-menu smartwatches">
+                  <li class="nav-item" data-dropdown="smartwatches-dropdown">
+                    SMARTWATCHES <span class="toggle-sign">+</span>
+                  </li>
+                </ul>
+                <div class="dropdown smartwatches-dropdown">
+                  <div class="dropdown-container">
+                    <div class="dropdown-column">
+                      <p class="column-title">
+                        PRODUCTS <span class="toggle-sign">+</span>
+                      </p>
+                      <ul class="sub-menu">
+                        <li><a href="#">All Smartwatches</a></li>
+                        <li><a href="#">Design Your Own Watch</a></li>
+                        <li><a href="#">Watches for Women</a></li>
+                        <li><a href="#">Fashion & Hybrid Smartwatches</a></li>
+                        <li><a href="#">MARQ Luxury Watch Collection</a></li>
+                        <li><a href="#">Running</a></li>
+                        <li><a href="#">Multisport & Triathlete</a></li>
+                        <li><a href="#">Adventure</a></li>
+                        <li><a href="#">Swimming</a></li>
+                        <li><a href="#">Diving</a></li>
+                        <li><a href="#">Golf</a></li>
+                        <li><a href="#">Fitness & Health Tracking</a></li>
+                        <li><a href="#">Just for Kids</a></li>
+                      </ul>
+                    </div>
+                    <div class="dropdown-column">
+                      <p class="column-title">
+                        MAPS <span class="toggle-sign">+</span>
+                      </p>
+                      <ul class="sub-menu">
+                        <li><a href="#">Cycling Maps</a></li>
+                        <li><a href="#">Outdoor Maps</a></li>
+                        <li><a href="#">Golf Course Locator</a></li>
+                        <p class="column-title">
+                          ACCESSORIES & PLANS <span class="toggle-sign">+</span>
+                        </p>
+                        <li><a href="#">Smartwatch Accessories</a></li>
+                        <li><a href="#">Cycling Accessories</a></li>
+                        <li><a href="#">Indoor Training Accessories</a></li>
+                        <li><a href="#">Apps</a></li>
+                        <li><a href="#">Subscription & Service Plans</a></li>
+                      </ul>
+                    </div>
+                    <div class="dropdown-column">
+                      <p class="column-title">
+                        DISCOVER <span class="toggle-sign">+</span>
+                      </p>
+                      <ul class="sub-menu">
+                        <li><a href="#">Garmin Pay</a></li>
+                        <li><a href="#">Garmin Technology</a></li>
+                        <li><a href="#">Watch Finder</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="new-cards-container"></div>
+                </div>
+                <ul class="nav-menu sport-fitness">
+                  <li class="nav-item" data-dropdown="sport-fitness-dropdown">
+                    SPORTS & FITNESS <span class="toggle-sign">+</span>
+                  </li>
+                </ul>
+                <div class="dropdown sport-fitness-dropdown">
+                  <div class="dropdown-container">
+                    <div class="dropdown-column">
+                      <p class="column-title">
+                        PRODUCTS <span class="toggle-sign">+</span>
+                      </p>
+                      <ul class="sub-menu">
+                        <li><a href="#">Running</a></li>
+                        <li><a href="#">Cycling</a></li>
+                        <li><a href="#">Tacx® Indoor Cycling</a></li>
+                        <li><a href="#">Fitness & Health Tracking</a></li>
+                        <li><a href="#">Design Your Own Watch</a></li>
+                        <li><a href="#">Golf</a></li>
+                        <li><a href="#">Multisport & Triathlete</a></li>
+                        <li><a href="#">Swimming</a></li>
+                        <li><a href="#">Diving</a></li>
+                        <li><a href="#">Scales & Monitors</a></li>
+                        <li><a href="#">Just for Kids</a></li>
+                      </ul>
+                    </div>
+                    <div class="dropdown-column">
+                      <p class="column-title">
+                        MAPS <span class="toggle-sign" s>+</span>
+                      </p>
+                      <ul class="sub-menu">
+                        <li><a href="#">Cycling Maps</a></li>
+                        <li><a href="#">Outdoor Maps</a></li>
+                        <li><a href="#">Golf Course Locator</a></li>
+                        <p class="column-title">ACCESSORIES & PLANS</p>
+                        <li><a href="#">Smartwatch Accessories</a></li>
+                        <li><a href="#">Cycling Accessories</a></li>
+                        <li><a href="#">Indoor Training Accessories</a></li>
+                        <li><a href="#">Apps</a></li>
+                        <li><a href="#">Subscription & Service Plans</a></li>
+                      </ul>
+                    </div>
+                    <div class="dropdown-column">
+                      <p class="column-title">
+                        DISCOVER <span class="toggle-sign">+</span>
+                      </p>
+                      <ul class="sub-menu">
+                        <li><a href="#">Garmin Pay</a></li>
+                        <li><a href="#">Garmin Technology</a></li>
+                        <li><a href="#">Watch Finder</a></li>
+                        <p class="column-title">
+                          Communities <span class="toggle-sign">+</span>
+                        </p>
+                        <ul class="sub-menu">
+                          <li><a href="#">Garmin Pros</a></li>
+                          <li><a href="#">Student Athletes</a></li>
+                        </ul>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <ul class="nav-menu outdoor-recreation">
+                  <li
+                    class="nav-item"
+                    data-dropdown="outdoor-recreation-dropdown"
+                  >
+                    OUTDOOR RECREATION <span class="toggle-sign">+</span>
+                  </li>
+                </ul>
+                <div class="dropdown outdoor-recreation-dropdown">
+                  <div class="dropdown-container">
+                    <div class="dropdown-column">
+                      <p class="column-title">
+                        PRODUCTS <span class="toggle-sign">+</span>
+                      </p>
+                      <ul class="sub-menu">
+                        <li><a href="#">Handhelds</a></li>
+                        <li><a href="#">Satellite Communicators</a></li>
+                        <li><a href="#">Off-Road</a></li>
+                        <li><a href="#">Adventure Watches</a></li>
+                        <li><a href="#">Design Your Own Watch</a></li>
+                        <li><a href="#">Sportsman & Tactical</a></li>
+                        <li><a href="#">Dog Tracking and Training</a></li>
+                      </ul>
+                    </div>
+                    <div class="dropdown-column">
+                      <p class="column-title">
+                        MAPS <span class="toggle-sign">+</span>
+                      </p>
+                      <ul class="sub-menu">
+                        <li><a href="#">Hunting Maps</a></li>
+                        <li><a href="#">Outdoor Maps</a></li>
+                        <li><a href="#">DeLorme Atlas & Gazetteer</a></li>
+                        <p class="column-title">
+                          ACCESSORIES & PLANS <span class="toggle-sign">+</span>
+                        </p>
+                        <li><a href="#">Apps</a></li>
+                        <li><a href="#">Subscription & Service Plans</a></li>
+                        <li><a href="#">inReach Account</a></li>
+                      </ul>
+                    </div>
+                    <div class="dropdown-column">
+                      <p class="column-title">
+                        DISCOVER <span class="toggle-sign">+</span>
+                      </p>
+                      <ul class="sub-menu">
+                        <li><a href="#">Garmin Pay</a></li>
+                        <li><a href="#">Garmin Technology</a></li>
+                        <li><a href="#">Watch Finder</a></li>
+                        <p class="column-title">
+                          Communities <span class="toggle-sign">+</span>
+                        </p>
+                        <ul class="sub-menu">
+                          <li><a href="#">Garmin Pros</a></li>
+                          <li><a href="#">Women of Adventure</a></li>
+                        </ul>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <ul class="nav-menu automative">
+                  <li class="nav-item" data-dropdown="automative-dropdown">
+                    AUTOMOTIVE <span class="toggle-sign">+</span>
+                  </li>
+                </ul>
+                <div class="dropdown automative-dropdown">
+                  <div class="dropdown-container">
+                    <div class="dropdown-column">
+                      <p class="column-title">
+                        PRODUCTS <span class="toggle-sign">+</span>
+                      </p>
+                      <ul class="sub-menu">
+                        <li><a href="#">Cars</a></li>
+                        <li><a href="#">Motorcycles</a></li>
+                        <li><a href="#">Trucks</a></li>
+                        <li><a href="#">RV</a></li>
+                        <li><a href="#">Motorsports</a></li>
+                        <li><a href="#">Off-Road</a></li>
+                        <li><a href="#">Dash & Backup Cameras</a></li>
+                      </ul>
+                    </div>
+                    <div class="dropdown-column">
+                      <p class="column-title">
+                        MAPS <span class="toggle-sign">+</span>
+                      </p>
+                      <ul class="sub-menu">
+                        <li><a href="#">Map Updates</a></li>
+                        <li><a href="#">Purchase New Maps</a></li>
+                        <li><a href="#">In-Dash Maps</a></li>
+                        <li><a href="#">Off-Road Maps</a></li>
+                      </ul>
+
+                      <p class="column-title">
+                        ACCESSORIES & PLANS <span class="toggle-sign">+</span>
+                      </p>
+                      <ul class="sub-menu">
+                        <li><a href="#">Apps</a></li>
+                        <li><a href="#">Subscription & Service Plans</a></li>
+                      </ul>
+                    </div>
+                    <div class="dropdown-column">
+                      <p class="column-title">
+                        OEM Solutions <span class="toggle-sign">+</span>
+                      </p>
+                      <ul class="sub-menu">
+                        <li><a href="#">Automotive</a></li>
+                        <li><a href="#">RV</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <ul class="nav-menu marine">
+                  <li class="nav-item" data-dropdown="marine-dropdown">
+                    MARINE <span class="toggle-sign">+</span>
+                  </li>
+                </ul>
+                <div class="dropdown marine-dropdown">
+                  <div class="dropdown-container">
+                    <div class="dropdown-column">
+                      <p class="column-title">
+                        PRODUCTS <span class="toggle-sign">+</span>
+                      </p>
+                      <ul class="sub-menu">
+                        <li><a href="#">Chartplotters & Fishfinders</a></li>
+                        <li><a href="#">Autopilots</a></li>
+                        <li><a href="#">Radar</a></li>
+                        <li><a href="#">Live Sonar</a></li>
+                        <li><a href="#">Sonar Black Boxes</a></li>
+                        <li><a href="#">Transducers</a></li>
+                        <li><a href="#">Sailing</a></li>
+                        <li><a href="#">Instruments & Instrument Packs</a></li>
+                        <li><a href="#">VHF & AIS</a></li>
+                        <li><a href="#">Marine Cameras</a></li>
+                        <li><a href="#">Marine GPS</a></li>
+                      </ul>
+                    </div>
+                    <div class="dropdown-column">
+                      <p class="column-title">
+                        MAPS <span class="toggle-sign">+</span>
+                      </p>
+                      <ul class="sub-menu">
+                        <li><a href="#">Marine Maps</a></li>
+                        <li><a href="#">Chart Updates</a></li>
+                        <li><a href="#">Satellite Imagery</a></li>
+                      </ul>
+                    </div>
+                    <div class="dropdown-column">
+                      <p class="column-title">
+                        ACCESSORIES & PLANS <span class="toggle-sign">+</span>
+                      </p>
+                      <ul class="sub-menu">
+                        <li><a href="#">Marine Accessories</a></li>
+                        <li><a href="#">Apps</a></li>
+                        <li><a href="#">Subscription & Service Plans</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <ul class="nav-menu aviation">
+                  <li class="nav-item" data-dropdown="aviation-dropdown">
+                    AVIATION <span class="toggle-sign">+</span>
+                  </li>
+                </ul>
+                <div class="dropdown aviation-dropdown">
+                  <div class="dropdown-container">
+                    <div class="dropdown-column">
+                      <p class="column-title">
+                        PRODUCTS <span class="toggle-sign">+</span>
+                      </p>
+                      <ul class="sub-menu">
+                        <li><a href="#">Avionics</a></li>
+                        <li><a href="#">Portable GPS</a></li>
+                        <li><a href="#">Flight Planning</a></li>
+                        <li><a href="#">Weather</a></li>
+                        <li><a href="#">Flight Control</a></li>
+                        <li><a href="#">Safety & Survival</a></li>
+                        <li><a href="#">Training & Entertainment</a></li>
+                      </ul>
+                    </div>
+                    <div class="dropdown-column">
+                      <p class="column-title">
+                        ACCESSORIES & PLANS <span class="toggle-sign">+</span>
+                      </p>
+                      <ul class="sub-menu">
+                        <li><a href="#">Aviation Accessories</a></li>
+                        <li><a href="#">Apps</a></li>
+                        <li><a href="#">Subscription & Service Plans</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <ul class="nav-menu sale">
+                  <li class="nav-item" data-dropdown="sale-dropdown">
+                    SALE <span class="toggle-sign">+</span>
+                  </li>
+                </ul>
+                <div class="dropdown sale-dropdown" >
+                  <div class="dropdown-container">
+                    <div class="dropdown-column">
+                      <p class="column-title">
+                        SALES AND PROMOTIONS <span class="toggle-sign">+</span>
+                      </p>
+                      <ul class="sub-menu">
+                        <li><a href="#">Shop All Sales</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="login-section">dsddadss</div>
+            <div class="login-section">
+              <div class="svg-container" id="supportSvg">
+                <span class="support">
+                  <svg
+                    version="1.1"
+                    id="Layer_1"
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    x="0px"
+                    y="0px"
+                    viewBox="0 0 2200 2200"
+                    style="width: 100%; height: auto"
+                    xml:space="preserve"
+                  >
+                    <style type="text/css">
+                      .st0 {
+                        stroke: #000000;
+                        stroke-width: 90;
+                        stroke-miterlimit: 10;
+                      }
+                      .st1 {
+                        enable-background: new;
+                      }
+                      .st2 {
+                        stroke: #000000;
+                        stroke-width: 40;
+                        stroke-miterlimit: 10;
+                      }
+                    </style>
+                    <g id="Background"></g>
+                    <g id="Objects">
+                      <g>
+                        <path
+                          class="st0"
+                          d="M1085,1865c-407.5,0-739-331.5-739-739s331.5-739,739-739s739,331.5,739,739S1492.5,1865,1085,1865z
+			 M1085,428.6c-384.6,0-697.4,312.9-697.4,697.4c0,384.6,312.9,697.4,697.4,697.4c384.6,0,697.4-312.9,697.4-697.4
+			C1782.5,741.5,1469.6,428.6,1085,428.6z"
+                        />
+                      </g>
+                      <g class="st1">
+                        <path
+                          class="st2"
+                          d="M1054,1300.8l-3.5-30.1c-7-61.4,15.1-130.9,73-199.3c51-62.6,81.1-107.8,81.1-159.9
+			c0-59.1-38.2-98.5-111.2-99.7c-40.6,0-88.1,13.9-117,37.1l-27.8-74.2c39.4-27.8,105.5-46.4,165.7-46.4
+			c133.3,0,194.7,82.3,194.7,170.3c0,78.8-44,136.7-100.8,201.6c-49.8,61.4-69.5,112.4-64.9,171.5l1.2,29H1054z M1028.5,1464.2
+			c0-42.9,27.8-73,68.4-73c41.7,0,68.4,30.1,69.5,73c0,40.6-27.8,71.8-69.5,71.8C1056.3,1536,1028.5,1504.7,1028.5,1464.2z"
+                        />
+                      </g>
+                    </g>
+                  </svg>
+                </span>
+              </div>
+              <div class="svg-container" id="searchingSvg">
+                <svg
+                  version="1.1"
+                  id="Layer_1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  x="0px"
+                  y="0px"
+                  viewBox="0 0 2200 2200"
+                  style="enable-background: new 0 0 2200 2200"
+                  xml:space="preserve"
+                >
+                  <style type="text/css">
+                    .st0 {
+                      fill: none;
+                      stroke: #000000;
+                      stroke-width: 125;
+                      stroke-miterlimit: 10;
+                    }
+                  </style>
+                  <g id="Background"></g>
+                  <g id="Layer_3">
+                    <circle class="st0" cx="777" cy="793" r="404" />
+                    <line
+                      class="st0"
+                      x1="1055"
+                      y1="1056.5"
+                      x2="1765"
+                      y2="1774"
+                    />
+                  </g>
+                </svg>
+              </div>
+              <div class="svg-container">
+                <div class="user-menu">
+                  <svg
+                    version="1.1"
+                    id="Layer_1"
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    x="0px"
+                    y="0px"
+                    viewBox="0 0 2200 2200"
+                    style="enable-background: new 0 0 2200 2200"
+                    xml:space="preserve"
+                  >
+                    <style type="text/css">
+                      .st0 {
+                        stroke: #000000;
+                        stroke-width: 35;
+                        stroke-miterlimit: 10;
+                      }
+                    </style>
+                    <g id="Background"></g>
+                    <g id="Objects">
+                      <g>
+                        <path
+                          class="st0"
+                          d="M1085,1146.8c-150.4,0-272.7-122.3-272.7-272.7S934.7,601.5,1085,601.5s272.7,122.3,272.7,272.7
+			S1235.4,1146.8,1085,1146.8z M1085,643c-127.5,0-231.1,103.7-231.1,231.1c0,127.5,103.7,231.1,231.1,231.1
+			s231.1-103.7,231.1-231.1C1316.2,746.7,1212.5,643,1085,643z"
+                        />
+                        <path
+                          class="st0"
+                          d="M1085,1865c-407.5,0-739-331.5-739-739s331.5-739,739-739s739,331.5,739,739S1492.5,1865,1085,1865z
+			 M1085,428.6c-384.6,0-697.4,312.9-697.4,697.4c0,384.6,312.9,697.4,697.4,697.4c384.6,0,697.4-312.9,697.4-697.4
+			C1782.5,741.5,1469.6,428.6,1085,428.6z"
+                        />
+                        <path
+                          class="st0"
+                          d="M1085,1757.2c-130.7,0-256.2-39.6-362.8-114.6c-26.9-18.9-52.5-40.1-76.1-62.9c-4-3.9-6.3-9.3-6.3-14.9v-43.3
+			c0-85.8,46.6-172,127.8-236.5c84.5-67.2,197.2-104.2,317.4-104.2c122.4,0,235.9,37,319.7,104.2c79.8,64,125.5,150.2,125.5,236.5
+			v43.3c0,5.6-2.3,11-6.3,14.9c-23.7,22.9-49.3,44.1-76.1,62.9C1341.2,1717.6,1215.8,1757.2,1085,1757.2z M681.4,1555.9
+			c20.3,19.1,42,36.8,64.7,52.8c99.6,70,216.7,107.1,338.9,107.1s239.3-37,338.9-107c22.7-16,44.5-33.7,64.8-52.8v-34.4
+			c0-73.6-40.1-148-110-204.1c-76.4-61.3-180.7-95.1-293.7-95.1c-241.4,0-403.6,154.7-403.6,299.2V1555.9z M1509.5,1564.7
+			L1509.5,1564.7L1509.5,1564.7z"
+                        />
+                      </g>
+                    </g>
+                  </svg>
+                  <div class="dropdown-user">
+                    <a href="#account">Account</a>
+                    <a href="#orders">Orders</a>
+                    <a href="./pages/signIn.html">Sign In</a>
+                  </div>
+                </div>
+              </div>
+              <div class="svg-container">
+                <svg
+                  version="1.1"
+                  id="Layer_4"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  x="0px"
+                  y="0px"
+                  viewBox="0 0 2200 2200"
+                  style="enable-background: new 0 0 2200 2200"
+                  xml:space="preserve"
+                >
+                  <style type="text/css">
+                    .st0 {
+                      fill: none;
+                      stroke: #000000;
+                      stroke-width: 90;
+                      stroke-miterlimit: 10;
+                    }
+                  </style>
+                  <path
+                    class="st0"
+                    d="M275,568c0,0,196-45,245,98s245,752,245,752l780-8l188-621L557,809"
+                  />
+                  <circle class="st0" cx="814" cy="1508" r="94" />
+                  <circle class="st0" cx="1488" cy="1508" r="94" />
+                </svg>
+              </div>
+            </div>
           </div>
         </nav>
-        <div class="dropdown smartwatches-dropdown">
-          <div class="dropdown-container">
-            <div class="dropdown-column">
-              <p class="column-title">PRODUCTS</p>
-              <ul class="sub-menu">
-                <li><a href="#">All Smartwatches</a></li>
-                <li><a href="#">Design Your Own Watch</a></li>
-                <li><a href="#">Watches for Women</a></li>
-                <li><a href="#">Fashion & Hybrid Smartwatches</a></li>
-                <li><a href="#">MARQ Luxury Watch Collection</a></li>
-                <li><a href="#">Running</a></li>
-                <li><a href="#">Multisport & Triathlete</a></li>
-                <li><a href="#">Adventure</a></li>
-                <li><a href="#">Swimming</a></li>
-                <li><a href="#">Diving</a></li>
-                <li><a href="#">Golf</a></li>
-                <li><a href="#">Fitness & Health Tracking</a></li>
-                <li><a href="#">Just for Kids</a></li>
-              </ul>
-            </div>
-            <div class="dropdown-column">
-              <p class="column-title">MAPS</p>
-              <ul class="sub-menu">
-                <li><a href="#">Cycling Maps</a></li>
-                <li><a href="#">Outdoor Maps</a></li>
-                <li><a href="#">Golf Course Locator</a></li>
-                <p class="column-title">ACCESSORIES & PLANS</p>
-                <li><a href="#">Smartwatch Accessories</a></li>
-                <li><a href="#">Cycling Accessories</a></li>
-                <li><a href="#">Indoor Training Accessories</a></li>
-                <li><a href="#">Apps</a></li>
-                <li><a href="#">Subscription & Service Plans</a></li>
-              </ul>
-            </div>
-            <div class="dropdown-column">
-              <p class="column-title">DISCOVER</p>
-              <ul class="sub-menu">
-                <li><a href="#">Garmin Pay</a></li>
-                <li><a href="#">Garmin Technology</a></li>
-                <li><a href="#">Watch Finder</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="new-cards-container"></div>
-        </div>
-
-        <div class="dropdown sport-fitness-dropdown">
-          <div class="dropdown-column">
-            <p class="column-title">PRODUCTS</p>
-            <ul class="sub-menu">
-              <li><a href="#">Running</a></li>
-              <li><a href="#">Cycling</a></li>
-              <li><a href="#">Tacx® Indoor Cycling</a></li>
-              <li><a href="#">Fitness & Health Tracking</a></li>
-              <li><a href="#">Design Your Own Watch</a></li>
-              <li><a href="#">Golf</a></li>
-              <li><a href="#">Multisport & Triathlete</a></li>
-              <li><a href="#">Swimming</a></li>
-              <li><a href="#">Diving</a></li>
-              <li><a href="#">Scales & Monitors</a></li>
-              <li><a href="#">Just for Kids</a></li>
-            </ul>
-          </div>
-          <div class="dropdown-column">
-            <p class="column-title">MAPS</p>
-            <ul class="sub-menu">
-              <li><a href="#">Cycling Maps</a></li>
-              <li><a href="#">Outdoor Maps</a></li>
-              <li><a href="#">Golf Course Locator</a></li>
-              <p class="column-title">ACCESSORIES & PLANS</p>
-              <li><a href="#">Smartwatch Accessories</a></li>
-              <li><a href="#">Cycling Accessories</a></li>
-              <li><a href="#">Indoor Training Accessories</a></li>
-              <li><a href="#">Apps</a></li>
-              <li><a href="#">Subscription & Service Plans</a></li>
-            </ul>
-          </div>
-          <div class="dropdown-column">
-            <p class="column-title">DISCOVER</p>
-            <ul class="sub-menu">
-              <li><a href="#">Garmin Pay</a></li>
-              <li><a href="#">Garmin Technology</a></li>
-              <li><a href="#">Watch Finder</a></li>
-              <p class="column-title">Communities</p>
-              <ul class="sub-menu">
-                <li><a href="#">Garmin Pros</a></li>
-                <li><a href="#">Student Athletes</a></li>
-              </ul>
-            </ul>
-          </div>
-        </div>
-
-        <div class="dropdown outdoor-recreation-dropdown">
-          <div class="dropdown-column">
-            <p class="column-title">PRODUCTS</p>
-            <ul class="sub-menu">
-              <li><a href="#">Handhelds</a></li>
-              <li><a href="#">Satellite Communicators</a></li>
-              <li><a href="#">Off-Road</a></li>
-              <li><a href="#">Adventure Watches</a></li>
-              <li><a href="#">Design Your Own Watch</a></li>
-              <li><a href="#">Sportsman & Tactical</a></li>
-              <li><a href="#">Dog Tracking and Training</a></li>
-            </ul>
-          </div>
-          <div class="dropdown-column">
-            <p class="column-title">MAPS</p>
-            <ul class="sub-menu">
-              <li><a href="#">Hunting Maps</a></li>
-              <li><a href="#">Outdoor Maps</a></li>
-              <li><a href="#">DeLorme Atlas & Gazetteer</a></li>
-              <p class="column-title">ACCESSORIES & PLANS</p>
-              <li><a href="#">Apps</a></li>
-              <li><a href="#">Subscription & Service Plans</a></li>
-              <li><a href="#">inReach Account</a></li>
-            </ul>
-          </div>
-          <div class="dropdown-column">
-            <p class="column-title">DISCOVER</p>
-            <ul class="sub-menu">
-              <li><a href="#">Garmin Pay</a></li>
-              <li><a href="#">Garmin Technology</a></li>
-              <li><a href="#">Watch Finder</a></li>
-              <p class="column-title">Communities</p>
-              <ul class="sub-menu">
-                <li><a href="#">Garmin Pros</a></li>
-                <li><a href="#">Women of Adventure</a></li>
-              </ul>
-            </ul>
-          </div>
-        </div>
-
-        <div class="dropdown automative-dropdown">
-          <div class="dropdown-column">
-            <p class="column-title">PRODUCTS</p>
-            <ul class="sub-menu">
-              <li><a href="#">Cars</a></li>
-              <li><a href="#">Motorcycles</a></li>
-              <li><a href="#">Trucks</a></li>
-              <li><a href="#">RV</a></li>
-              <li><a href="#">Motorsports</a></li>
-              <li><a href="#">Off-Road</a></li>
-              <li><a href="#">Dash & Backup Cameras</a></li>
-            </ul>
-          </div>
-          <div class="dropdown-column">
-            <p class="column-title">MAPS</p>
-            <ul class="sub-menu">
-              <li><a href="#">Map Updates</a></li>
-              <li><a href="#">Purchase New Maps</a></li>
-              <li><a href="#">In-Dash Maps</a></li>
-              <li><a href="#">Off-Road Maps</a></li>
-            </ul>
-            <!-- Новая секция для аксессуаров и планов -->
-            <p class="column-title">ACCESSORIES & PLANS</p>
-            <ul class="sub-menu">
-              <li><a href="#">Apps</a></li>
-              <li><a href="#">Subscription & Service Plans</a></li>
-            </ul>
-          </div>
-          <div class="dropdown-column">
-            <p class="column-title">OEM Solutions</p>
-            <ul class="sub-menu">
-              <li><a href="#">Automotive</a></li>
-              <li><a href="#">RV</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="dropdown marine-dropdown">
-          <div class="dropdown-column">
-            <p class="column-title">PRODUCTS</p>
-            <ul class="sub-menu">
-              <li><a href="#">Chartplotters & Fishfinders</a></li>
-              <li><a href="#">Autopilots</a></li>
-              <li><a href="#">Radar</a></li>
-              <li><a href="#">Live Sonar</a></li>
-              <li><a href="#">Sonar Black Boxes</a></li>
-              <li><a href="#">Transducers</a></li>
-              <li><a href="#">Sailing</a></li>
-              <li><a href="#">Instruments & Instrument Packs</a></li>
-              <li><a href="#">VHF & AIS</a></li>
-              <li><a href="#">Marine Cameras</a></li>
-              <li><a href="#">Marine GPS</a></li>
-            </ul>
-          </div>
-          <div class="dropdown-column">
-            <p class="column-title">MAPS</p>
-            <ul class="sub-menu">
-              <li><a href="#">Marine Maps</a></li>
-              <li><a href="#">Chart Updates</a></li>
-              <li><a href="#">Satellite Imagery</a></li>
-            </ul>
-          </div>
-          <div class="dropdown-column">
-            <p class="column-title">ACCESSORIES & PLANS</p>
-            <ul class="sub-menu">
-              <li><a href="#">Marine Accessories</a></li>
-              <li><a href="#">Apps</a></li>
-              <li><a href="#">Subscription & Service Plans</a></li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="dropdown aviation-dropdown">
-          <div class="dropdown-column">
-            <p class="column-title">PRODUCTS</p>
-            <ul class="sub-menu">
-              <li><a href="#">Avionics</a></li>
-              <li><a href="#">Portable GPS</a></li>
-              <li><a href="#">Flight Planning</a></li>
-              <li><a href="#">Weather</a></li>
-              <li><a href="#">Flight Control</a></li>
-              <li><a href="#">Safety & Survival</a></li>
-              <li><a href="#">Training & Entertainment</a></li>
-            </ul>
-          </div>
-          <div class="dropdown-column">
-            <p class="column-title">ACCESSORIES & PLANS</p>
-            <ul class="sub-menu">
-              <li><a href="#">Aviation Accessories</a></li>
-              <li><a href="#">Apps</a></li>
-              <li><a href="#">Subscription & Service Plans</a></li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="dropdown sale-dropdown">
-          <div class="dropdown-column">
-            <p class="column-title">SALES AND PROMOTIONS</p>
-            <ul class="sub-menu">
-              <li><a href="#">Shop All Sales</a></li>
-            </ul>
-          </div>
-        </div>
       </div>
       <div>
         <nav class="freeground">
-          <a href="../pages/shipping.html"
+          <a href="./pages/shipping.html"
             >FREE GROUND SHIPPING ON ORDERS $25 AND UP</a
           >
         </nav>
         <nav class="sport_fitness">
-          <a href="../index.html">SPORTS & FITNESS / RUNNING</a>
+          <a href="./index.html">SPORTS & FITNESS / RUNNING</a>
         </nav>
       </div>
     </header>
@@ -522,5 +805,6 @@
         </ul>
       </div>
     </footer>
+    
   </body>
 </html>

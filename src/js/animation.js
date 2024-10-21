@@ -2,9 +2,7 @@ import "../style/style.css";
 import "../style/shipping.css";
 import "../style/itempage.css";
 
-
 document.addEventListener("DOMContentLoaded", function () {
-
   function setupActiveClass() {
     document.querySelectorAll(".nav-list-item").forEach((item) => {
       item.addEventListener("click", () => {
@@ -19,14 +17,14 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
   }
-  
+
   // Функция для обработки выпадающих меню
   function setupDropdownMenus() {
     const isLargeScreen = window.innerWidth >= 1100; // Изменено на 1120px
     document.querySelectorAll(".nav-menu").forEach((menu) => {
       const dropdownClass = `${menu.classList[1]}-dropdown`;
       const dropdown = document.querySelector(`.${dropdownClass}`);
-  
+
       if (isLargeScreen) {
         // Показываем дропдаун при наведении на меню или на дропдаун
         menu.onmouseover = () => toggleDropdown(menu, true);
@@ -35,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
             toggleDropdown(menu, false);
           }
         };
-  
+
         if (dropdown) {
           // Не скрываем дропдаун, если мышка над ним
           dropdown.onmouseover = () => toggleDropdown(menu, true);
@@ -49,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Очищаем обработчики для мобильной версии
         menu.onmouseover = null;
         menu.onmouseout = null;
-  
+
         if (dropdown) {
           dropdown.onmouseover = null;
           dropdown.onmouseout = null;
@@ -58,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
-  
+
   function toggleDropdown(menu, show) {
     const dropdownClass = `${menu.classList[1]}-dropdown`;
     const dropdown = document.querySelector(`.${dropdownClass}`);
@@ -66,68 +64,51 @@ document.addEventListener("DOMContentLoaded", function () {
       dropdown.style.display = show ? "flex" : "none";
     }
   }
-  
+
   // Проверка, находится ли мышка над дропдауном
   function isMouseOverDropdown(event, dropdown) {
     const relatedTarget = event.relatedTarget;
     return dropdown.contains(relatedTarget);
   }
-  
+
   // Инициализация
   setupDropdownMenus();
   window.addEventListener("resize", setupDropdownMenus);
-  
+
   // Функция для обработки фильтров
-  function setupFilterToggle() {
-    document
-      .getElementById("filterSortToggle")
-      .addEventListener("click", function () {
-        const sidebar = document.getElementById("sidebar");
-        const filterDropdown = document.querySelector(".product-filter_dropdown");
-  
-        sidebar.style.display =
-          sidebar.style.display === "none" || sidebar.style.display === ""
-            ? "block"
-            : "none";
-        filterDropdown.classList.toggle("active");
-      });
-  }
-  
+
   // Функция для обработки меню пользователя
   function setupUserMenu() {
     const userMenu = document.querySelector(".user-menu");
     const dropdown = document.querySelector(".dropdown-user");
-  
+
     function handleMenuEvents() {
       if (window.innerWidth >= 500) {
         userMenu.addEventListener("mouseenter", function () {
           dropdown.classList.add("show");
         });
-  
+
         userMenu.addEventListener("mouseleave", function () {
           dropdown.classList.remove("show");
         });
       }
     }
     window.addEventListener("resize", handleMenuEvents);
-  
+
     handleMenuEvents();
-  
+
     userMenu.addEventListener("click", function () {
       dropdown.classList.toggle("show");
     });
   }
-  
+
   function init() {
     setupActiveClass();
-    setupFilterToggle();
     setupUserMenu();
   }
-  
+
   init();
 
-
-  
   // Обработчик события для навигационного элемента
   const burgerButton = document.getElementById("burgerButton");
   const navMenu = document.getElementById("navMenu");
@@ -138,7 +119,7 @@ document.addEventListener("DOMContentLoaded", function () {
       navMenu.style.display =
         navMenu.style.display === "block" ? "none" : "block"; // Скрыть или показать меню
     });
-    function handleResize() {
+    function handleResize4() {
       const windowWidth = window.innerWidth;
 
       // Если ширина экрана 1100px или больше, сбросить классы и стили
@@ -149,8 +130,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }
     }
-    window.addEventListener("resize", handleResize);
-    handleResize();
+    window.addEventListener("resize", handleResize4);
+    handleResize4();
   }
 
   function setupDropdowns() {
@@ -158,8 +139,7 @@ document.addEventListener("DOMContentLoaded", function () {
       item.addEventListener("click", function () {
         const dropdownClass = this.getAttribute("data-dropdown"); // Получаем класс дропдауна
         const dropdown = document.querySelector(`.${dropdownClass}`);
-        const dropdown2 = document.querySelector(".dropdown");
-        dropdown;
+
         if (dropdown) {
           // Переключаем видимость дропдауна
           dropdown.style.display =
@@ -175,19 +155,30 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  function handleResize() {
-    const windowWidth = window.innerWidth;
-    setupDropdowns();
-    if (windowWidth <= 1100) {
-    }
+  function resetDropdowns() {
+    // Скрыть все dropdown'ы
+    document.querySelectorAll(".dropdown").forEach((dropdown) => {
+      dropdown.style.display = "none";
+    });
   }
-  window.addEventListener("resize", handleResize);
-  handleResize();
+
+  // Инициализация dropdown'ов
+  setupDropdowns();
+
+  // Обработчик изменения размера окна
+  window.addEventListener("resize", function () {
+    resetDropdowns(); // Сбросить состояние dropdown'ов при изменении размера
+  });
+
+  // Начальный вызов
+  resetDropdowns();
 
   function resetSubMenus() {
-    document.querySelectorAll(".dropdown-container .sub-menu").forEach((subMenu) => {
-      subMenu.style.display = ""; 
-    });
+    document
+      .querySelectorAll(".dropdown-container .sub-menu")
+      .forEach((subMenu) => {
+        subMenu.style.display = "";
+      });
   }
 
   document.querySelectorAll(".dropdown-container").forEach((container) => {
@@ -206,7 +197,6 @@ document.addEventListener("DOMContentLoaded", function () {
   function handleResize1() {
     const windowWidth = window.innerWidth;
 
-
     if (windowWidth >= 1100) {
       resetSubMenus(); // Сбросить стили всех подменю
     }
@@ -215,15 +205,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
   handleResize1();
   // Обработчик для column-title
-  document.querySelectorAll(".nav-item, .column-title").forEach((title) => {
-    const toggleSign = title.querySelector(".toggle-sign");
-    if (toggleSign) {
-      toggleSign.textContent = "+";
-      title.addEventListener("click", function () {
 
-        this.classList.toggle("active");
-        toggleSign.textContent = toggleSign.textContent === "+" ? "-" : "+";
-      });
-    }
+  function taggleSing() {
+    document.querySelectorAll(".nav-item, .column-title").forEach((title) => {
+      const toggleSign = title.querySelector(".toggle-sign");
+      if (toggleSign) {
+        toggleSign.textContent = "+";
+        title.addEventListener("click", function () {
+          this.classList.toggle("active");
+          toggleSign.textContent = toggleSign.textContent === "+" ? "-" : "+";
+        });
+      }
+    });
+  }
+
+
+  function resetActiveClasses() {
+    document.querySelectorAll(".toggle-sign").forEach((toggleSign) => {
+      toggleSign.textContent = "+";
+    });
+  }
+  taggleSing();
+
+  window.addEventListener("resize", function () {
+    resetActiveClasses();
   });
 });

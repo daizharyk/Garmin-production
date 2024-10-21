@@ -12,10 +12,11 @@ async function loadModule() {
     const module = await import(
       /* webpackChunkName: "html-module" */ "./htmlBuilder.js"
     );
-    const { createCards, scrollToItems, createNewCards } = module;
+    const { createCards, scrollToItems, createNewCards,setupFilterToggle } = module;
     createNewCards();
     createCards(data);
     scrollToItems();
+    setupFilterToggle();
   } catch (error) {
     console.error("Ошибка при загрузке модуля:", error);
   }

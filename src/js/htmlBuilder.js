@@ -1,5 +1,4 @@
-
-import {fetchData} from "./itemService.js"
+import { fetchData } from "./itemService.js";
 import "../style/style.css";
 import "../style/shipping.css";
 import "../style/itempage.css";
@@ -34,7 +33,7 @@ export function createCards(data) {
     description.textContent = item.text;
     const price = document.createElement("p");
     price.classList.add("price-text");
-    price.textContent = `$${item.price?.toFixed(2) || '0.00'} USD`;
+    price.textContent = `$${item.price?.toFixed(2) || "0.00"} USD`;
 
     cardDesc.appendChild(title);
     cardDesc.appendChild(description);
@@ -48,9 +47,8 @@ export function createCards(data) {
 }
 
 export async function createNewCards() {
-  const items = await fetchData(); 
-  
-  
+  const items = await fetchData();
+
   const newCardsContainer = document.querySelector(".new-cards-container");
 
   newCardsContainer.innerHTML = "";
@@ -104,3 +102,20 @@ export function scrollToItems() {
     scrollIntoElement(cardsContent);
   });
 }
+
+export function setupFilterToggle() {
+  document
+    .getElementById("filterSortToggle")
+    .addEventListener("click", function () {
+      const sidebar = document.getElementById("sidebar");
+      const filterDropdown = document.querySelector(".product-filter_dropdown");
+
+      sidebar.style.display =
+        sidebar.style.display === "none" || sidebar.style.display === ""
+          ? "block"
+          : "none";
+      filterDropdown.classList.toggle("active");
+    });
+}
+
+
