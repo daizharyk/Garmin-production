@@ -461,3 +461,22 @@ label .required {
     transform: rotate(360deg);
   }
 }
+
+@media (max-width:450px){
+ .foter_nav{
+  display: block;
+justify-content: center;
+align-items: center;
+  text-align: center;
+  height: auto;
+  padding: 20px;
+ }
+ .foter_nav_li{
+  justify-content: center;
+ }
+
+ .login-box{
+  width: 350px;
+ }
+}
+
