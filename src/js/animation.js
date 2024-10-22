@@ -228,6 +228,8 @@ document.addEventListener("DOMContentLoaded", function () {
   taggleSing();
 
   window.addEventListener("resize", function () {
-    resetActiveClasses();
+    if (window.innerWidth > 1100) {
+      resetActiveClasses();
+    }
   });
 });
