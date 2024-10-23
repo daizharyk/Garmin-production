@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
   setupDropdownMenus();
   window.addEventListener("resize", setupDropdownMenus);
 
-  // Функция для обработки фильтров
+
 
   // Функция для обработки меню пользователя
   function setupUserMenu() {
@@ -201,7 +201,7 @@ document.addEventListener("DOMContentLoaded", function () {
       resetSubMenus(); // Сбросить стили всех подменю
     }
   }
-  window.addEventListener("resize", handleResize1);
+
 
   handleResize1();
   // Обработчик для column-title
@@ -228,8 +228,8 @@ document.addEventListener("DOMContentLoaded", function () {
   taggleSing();
 
   window.addEventListener("resize", function () {
-    if (window.innerWidth > 1100) {
+   
       resetActiveClasses();
-    }
+    
   });
 });

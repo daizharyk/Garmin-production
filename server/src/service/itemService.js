@@ -45,4 +45,3 @@ module.exports = {
     await itemRepository.deleteItemForce(itemId);
   },
 };
-
