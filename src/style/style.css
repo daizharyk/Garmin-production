@@ -1170,7 +1170,7 @@ footer {
 #garmin-logo{
   display: flex;
  position: relative;
- right: -35px;
+
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -1184,8 +1184,10 @@ footer {
 
 
   .logo {
-    display: flex;
-    justify-content: center;
+    position: absolute; 
+    left: 50%;
+    transform: translateX(-50%); 
+    font-size: 24px; 
 
     order: 2;
   }
@@ -1426,13 +1428,15 @@ footer {
 
   .logo {
     flex: 1;
-    text-align: center;
 
   }
 
 
   .nav-section {
-    justify-content: center;
+    display: flex; /* Используем flexbox */
+    justify-content: space-between; /* Распределяем элементы по краям */
+    align-items: center; /* Центрируем по вертикали */
+    position: relative; 
   }
 
 
