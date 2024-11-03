@@ -16,13 +16,21 @@ module.exports = {
     } catch (error) {
       next(error);
     }
-    
   },
   createNewItem: async (req, res, next) => {
     try {
+      
       const user = req.user;
+      if (!user) {
+        return res.status(401).json({ message: 'Пользователь не авторизован' });
+      }
       const data = { ...req.body, user: user._id };
-      const item = await itemService.createNewItem(data);
+      if (!req.file) {
+        return res.status(400).json({ message: 'Файл не загружен' });
+      }
+      const fileBuffer = req.file.buffer;
+
+      const item = await itemService.createNewItem(data, fileBuffer);
       res.send(item);
     } catch (error) {
       next(error);
@@ -42,7 +50,7 @@ module.exports = {
       const user = req.user;
       const itemid = req.params.id;
       const data = req.body;
-      const updatedItem = await itemService.updateItem(itemid, data , user._id);
+      const updatedItem = await itemService.updateItem(itemid, data, user._id);
       res.send(updatedItem);
     } catch (error) {
       next(error);

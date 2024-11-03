@@ -3,6 +3,7 @@ import "../style/shipping.css";
 import "../style/itempage.css";
 
 document.addEventListener("DOMContentLoaded", function () {
+  //Футер
   function setupActiveClass() {
     document.querySelectorAll(".nav-list-item").forEach((item) => {
       item.addEventListener("click", () => {
@@ -55,8 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }
     });
-  }
-
+    
   function toggleDropdown(menu, show) {
     const dropdownClass = `${menu.classList[1]}-dropdown`;
     const dropdown = document.querySelector(`.${dropdownClass}`);
@@ -70,6 +70,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const relatedTarget = event.relatedTarget;
     return dropdown.contains(relatedTarget);
   }
+  }
+
 
   // Инициализация
   setupDropdownMenus();
@@ -167,7 +169,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Обработчик изменения размера окна
 window.addEventListener("resize", function () {
-    resetDropdowns(); // Сбросить состояние dropdown'ов при изменении размера
+  if (activeDropdown) {
+    // Сбросить состояние dropdown'ов при изменении размера, если есть активный dropdown
+    resetDropdowns();
+    // Скрыть только текущий активный dropdown
+    activeDropdown.style.display = "none";
+    activeDropdown = null; // Сбросить активный dropdown
+  }
 });
 
 // Начальный вызов

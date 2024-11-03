@@ -1,4 +1,5 @@
 const { Router } = require("express");
+const multer = require("multer");
 const {
   getAllItems,
   getItem,
@@ -10,12 +11,12 @@ const {
 } = require("./controller");
 const { protected } = require("../../middlewares/auth");
 const router = Router();
-
+const upload = multer();
 router.get("/", getAllItems);
 
 router.get("/my",protected, getMyItems);
 
-router.post("/", protected, createNewItem);
+router.post("/", protected, upload.single("file"),createNewItem);
 
 router.get("/:id", getItem);
 
