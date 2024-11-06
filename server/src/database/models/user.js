@@ -24,6 +24,7 @@ const userSchema = mongoose.Schema(
       default: false,
     },
   },
+  
   {
     timestamps: true,
     toJSON: { virtuals: true },

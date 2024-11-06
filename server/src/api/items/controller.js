@@ -19,18 +19,37 @@ module.exports = {
   },
   createNewItem: async (req, res, next) => {
     try {
-      
       const user = req.user;
-      if (!user) {
-        return res.status(401).json({ message: 'Пользователь не авторизован' });
-      }
-      const data = { ...req.body, user: user._id };
-      if (!req.file) {
-        return res.status(400).json({ message: 'Файл не загружен' });
-      }
-      const fileBuffer = req.file.buffer;
 
-      const item = await itemService.createNewItem(data, fileBuffer);
+      const data = { ...req.body, user: user._id };
+      if (!req.files || req.files.length === 0) {
+        return res.status(400).json({ message: "Файл не загружен" });
+      }
+      const carouselImages = req.files.carouselImages || [];
+
+      const mainBanner = req.files.mainBanner ? req.files.mainBanner[0] : null;
+      const adaptiveBanner = req.files.adaptiveBanner
+        ? req.files.adaptiveBanner[0]
+        : null;
+      const videoThumbnail = req.files.videoThumbnail
+        ? req.files.videoThumbnail[0]
+        : null;
+      const mainAdditionImg = req.files.mainAdditionImg
+        ? req.files.mainAdditionImg[0]
+        : null;
+      const adaptiveAdditionImg = req.files.adaptiveAdditionImg
+        ? req.files.adaptiveAdditionImg[0]
+        : null;
+
+  
+
+      const item = await itemService.createNewItem(data, carouselImages, {
+        main: mainBanner,
+        adaptive: adaptiveBanner,
+        videoThumb: videoThumbnail,
+        addition_main: mainAdditionImg,
+        addition_adaptive: adaptiveAdditionImg,
+      });
       res.send(item);
     } catch (error) {
       next(error);

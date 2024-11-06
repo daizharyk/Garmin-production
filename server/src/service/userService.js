@@ -22,6 +22,7 @@ module.exports = {
     if (existingUser && (await existingUser.matchPasswords(password))) {
       const jwtToken = generateJWToken(existingUser._id);
 
+      
       return {
         _id: existingUser.id,
         name: existingUser.name,
