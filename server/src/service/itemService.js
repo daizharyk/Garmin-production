@@ -38,7 +38,7 @@ const uploadImagesToImgbb = async (files) => {
     throw new NotImplementedError("Ошибка при загрузке изображения на imgbb");
   }
 };
-console.log("uploadImagesToImgbb", uploadImagesToImgbb);
+// console.log("uploadImagesToImgbb", uploadImagesToImgbb);
 
 module.exports = {
   getAllItems: async () => {
