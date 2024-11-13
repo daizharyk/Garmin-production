@@ -26,6 +26,7 @@ router.post(
     { name: "videoThumbnail" }, // Поле для баннера
     { name: "mainAdditionImg" }, // Поле для баннера
     { name: "adaptiveAdditionImg" }, // Поле для баннера
+    { name: "watch_features[image]", maxCount: 15 }, 
   ]),
   createNewItem
 );

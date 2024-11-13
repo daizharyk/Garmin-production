@@ -21,7 +21,16 @@ module.exports = {
     try {
       const user = req.user;
 
-      const data = { ...req.body, user: user._id };
+      const data = {
+        ...req.body,
+        user: user._id,
+        bannerText: {
+          title: req.body.banner_title || "",
+          text: req.body.banner_text || "",
+        },
+        video_url: req.body.video_url || "",
+      };
+
       if (!req.files || req.files.length === 0) {
         return res.status(400).json({ message: "Файл не загружен" });
       }
@@ -41,8 +50,26 @@ module.exports = {
         ? req.files.adaptiveAdditionImg[0]
         : null;
 
-  
+        
+      let watchFeatures = [];
+      if (req.body.watch_features) {
+        // Если данные watch_features пришли в виде JSON-строки
+        const parsedFeatures = JSON.parse(req.body.watch_features);
 
+        // Обработка каждого элемента watch_features
+        watchFeatures = parsedFeatures.map((feature, index) => {
+          const imageFile = req.files[`watch_features[${index}][image]`]
+            ? req.files[`watch_features[${index}][image]`][0]
+            : null;
+          return {
+            title: feature.title,
+            description: feature.description,
+            image: imageFile ? imageFile.path : "", // Сохраняем путь к изображению
+          };
+        });
+      }
+      data.watch_features = watchFeatures;
+      
       const item = await itemService.createNewItem(data, carouselImages, {
         main: mainBanner,
         adaptive: adaptiveBanner,
@@ -50,6 +77,8 @@ module.exports = {
         addition_main: mainAdditionImg,
         addition_adaptive: adaptiveAdditionImg,
       });
+      console.log(item);
+
       res.send(item);
     } catch (error) {
       next(error);

@@ -53,7 +53,6 @@ module.exports = {
     // Загрузка изображений для карусели
 
     const carouselImageUrls = await uploadImagesToImgbb(carouselImages);
-    console.log("carouselImageUrls", carouselImageUrls);
 
     let videoThumbUrl = null;
     let mainBannerUrl = null;
@@ -69,7 +68,6 @@ module.exports = {
             bannerImages.main,
           ]);
           mainBannerUrl = uploadedMainUrl;
-          console.log("URL для основного баннера:", mainBannerUrl);
         } catch (error) {
           console.error(
             "Ошибка при загрузке основного баннера:",
@@ -84,7 +82,6 @@ module.exports = {
             bannerImages.adaptive,
           ]);
           adaptiveBannerUrl = uploadedAdaptiveUrl;
-          console.log("URL для адаптивного баннера:", adaptiveBannerUrl);
         } catch (error) {
           console.error(
             "Ошибка при загрузке адаптивного баннера:",
@@ -126,6 +123,35 @@ module.exports = {
       }
     }
 
+    let watchFeatures = [];
+    if (itemData.watch_features && itemData.watch_features.length > 0) {
+      watchFeatures = await Promise.all(
+        itemData.watch_features.map(async (feature, index) => {
+          let imageUrl = "";
+
+          if (feature.image) {
+            try {
+              const [uploadedImageUrl] = await uploadImagesToImgbb([
+                feature.image,
+              ]);
+              imageUrl = uploadedImageUrl;
+            } catch (error) {
+              console.error(
+                `Ошибка при загрузке изображения для watch_feature #${index}:`,
+                error.message
+              );
+            }
+          }
+
+          return {
+            title: feature.title,
+            description: feature.description,
+            image: imageUrl,
+          };
+        })
+      );
+    }
+
     const newItemData = {
       ...itemData,
       carousel_images: carouselImageUrls,
@@ -146,6 +172,7 @@ module.exports = {
         main_image: mainAdditionImgUrl || "",
         adaptive_image: adaptiveAdditionalUrl || "",
       },
+      watch_features: watchFeatures, 
     };
 
     console.log("newItemData", newItemData);
