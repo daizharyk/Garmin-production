@@ -20,7 +20,7 @@ module.exports = {
   createNewItem: async (req, res, next) => {
     try {
       const user = req.user;
-
+  
       const data = {
         ...req.body,
         user: user._id,
@@ -34,42 +34,55 @@ module.exports = {
       if (!req.files || req.files.length === 0) {
         return res.status(400).json({ message: "Файл не загружен" });
       }
-      const carouselImages = req.files.carouselImages || [];
+      const carouselImages = req.files.filter(
+        (file) => file.fieldname === "carouselImages"
+      );
+      const mainBanner = req.files.find(
+        (file) => file.fieldname === "mainBanner"
+      );
+      const adaptiveBanner = req.files.find(
+        (file) => file.fieldname === "adaptiveBanner"
+      );
+      const videoThumbnail = req.files.find(
+        (file) => file.fieldname === "videoThumbnail"
+      );
+      const mainAdditionImg = req.files.find(
+        (file) => file.fieldname === "mainAdditionImg"
+      );
+      const adaptiveAdditionImg = req.files.find(
+        (file) => file.fieldname === "adaptiveAdditionImg"
+      );
 
-      const mainBanner = req.files.mainBanner ? req.files.mainBanner[0] : null;
-      const adaptiveBanner = req.files.adaptiveBanner
-        ? req.files.adaptiveBanner[0]
-        : null;
-      const videoThumbnail = req.files.videoThumbnail
-        ? req.files.videoThumbnail[0]
-        : null;
-      const mainAdditionImg = req.files.mainAdditionImg
-        ? req.files.mainAdditionImg[0]
-        : null;
-      const adaptiveAdditionImg = req.files.adaptiveAdditionImg
-        ? req.files.adaptiveAdditionImg[0]
-        : null;
-
-        
-      let watchFeatures = [];
-      if (req.body.watch_features) {
-        // Если данные watch_features пришли в виде JSON-строки
-        const parsedFeatures = JSON.parse(req.body.watch_features);
-
-        // Обработка каждого элемента watch_features
-        watchFeatures = parsedFeatures.map((feature, index) => {
-          const imageFile = req.files[`watch_features[${index}][image]`]
-            ? req.files[`watch_features[${index}][image]`][0]
-            : null;
-          return {
-            title: feature.title,
-            description: feature.description,
-            image: imageFile ? imageFile.path : "", // Сохраняем путь к изображению
+      const watchFeatures = [];
+      console.log("Watch features from body:", req.body.watch_features);
+      req.files.forEach((file) => {
+        console.log("Processing file:", file);
+        const match = file.fieldname.match(/watch_features_image_(\d+)/);
+        if (match) {
+          const index = parseInt(match[1], 10);
+          console.log("Extracted index:", index);
+          if (!watchFeatures[index]) {
+            watchFeatures[index] = {};
+          }
+          watchFeatures[index] = {
+            buffer: file.buffer,
+            originalname: file.originalname,
           };
-        });
-      }
-      data.watch_features = watchFeatures;
-      
+          console.log(
+            "Saved image buffer and original name for itemService:",
+            watchFeatures[index].buffer,
+            watchFeatures[index].originalname
+          );
+        }
+      });
+      console.log("watchFeaturesto save:", watchFeatures);
+      data.watch_features = req.body.watch_features.map((feature, index) => ({
+        image: watchFeatures[index] ? watchFeatures[index] : "",
+        title: feature.title,
+        description: feature.description,
+      }));
+
+
       const item = await itemService.createNewItem(data, carouselImages, {
         main: mainBanner,
         adaptive: adaptiveBanner,

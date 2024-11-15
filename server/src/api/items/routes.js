@@ -19,15 +19,7 @@ router.get("/my", protected, getMyItems);
 router.post(
   "/",
   protected,
-  upload.fields([
-    { name: "carouselImages", maxCount: 20 }, // Поле для карусели
-    { name: "mainBanner" },
-    { name: "adaptiveBanner" }, // Поле для баннера
-    { name: "videoThumbnail" }, // Поле для баннера
-    { name: "mainAdditionImg" }, // Поле для баннера
-    { name: "adaptiveAdditionImg" }, // Поле для баннера
-    { name: "watch_features[image]", maxCount: 15 }, 
-  ]),
+  upload.any(), // Разрешаем загрузку любых файлов
   createNewItem
 );
 

@@ -8,11 +8,9 @@ const uploadImagesToImgbb = async (files) => {
     const uploadedUrls = [];
     for (const file of files) {
       const formData = new FormData();
-      console.log("Тип файла:", file);
+
       formData.append("image", file.buffer.toString("base64"));
-      console.log("Проверка файла перед отправкой:", file);
-      console.log("Ключ API:", process.env.IMGBB_API_KEY);
-      console.log("Отправка изображения на imgbb...");
+
       const response = await axios.post(
         `https://api.imgbb.com/1/upload?key=${process.env.IMGBB_API_KEY}`,
         formData,
@@ -60,7 +58,7 @@ module.exports = {
     let mainAdditionImgUrl = null;
     let adaptiveAdditionalUrl = null;
     if (bannerImages) {
-      console.log("Загружается изображение баннера...");
+      // console.log("Загружается изображение баннера...");
 
       if (bannerImages.main) {
         try {
@@ -96,7 +94,7 @@ module.exports = {
             bannerImages.videoThumb,
           ]);
           videoThumbUrl = uploadedVideoThumbUrl;
-          console.log("URL для миниатюры видео:", videoThumbUrl);
+          // console.log("URL для миниатюры видео:", videoThumbUrl);
         } catch (error) {
           console.error("Ошибка при загрузке миниатюры видео:", error.message);
         }
@@ -123,35 +121,35 @@ module.exports = {
       }
     }
 
-    let watchFeatures = [];
-    if (itemData.watch_features && itemData.watch_features.length > 0) {
-      watchFeatures = await Promise.all(
-        itemData.watch_features.map(async (feature, index) => {
-          let imageUrl = "";
-
-          if (feature.image) {
-            try {
-              const [uploadedImageUrl] = await uploadImagesToImgbb([
-                feature.image,
-              ]);
-              imageUrl = uploadedImageUrl;
-            } catch (error) {
-              console.error(
-                `Ошибка при загрузке изображения для watch_feature #${index}:`,
-                error.message
-              );
-            }
+    const watchFeatureUrls = await Promise.all(
+      itemData.watch_features.map(async (feature) => {
+        let imageUrl = null;
+        if (feature.image && feature.image.buffer) {
+          console.log(
+            `Загружается изображение для watch feature: ${feature.image.originalname}`
+          );
+          try {
+            const [uploadedImageUrl] = await uploadImagesToImgbb([
+              { buffer: feature.image.buffer },
+            ]);
+            imageUrl = uploadedImageUrl;
+            console.log(`Изображение загружено: ${imageUrl}`);
+          } catch (error) {
+            console.error(
+              `Ошибка при загрузке изображения для watch feature:`,
+              error.message
+            );
           }
+        }
+        return {
+          image: imageUrl || "",
+          title: feature.title || null,
+          description: feature.description || null,
+        };
+      })
+    );
 
-          return {
-            title: feature.title,
-            description: feature.description,
-            image: imageUrl,
-          };
-        })
-      );
-    }
-
+    console.log("Watch features to save:", watchFeatureUrls);
     const newItemData = {
       ...itemData,
       carousel_images: carouselImageUrls,
@@ -172,13 +170,14 @@ module.exports = {
         main_image: mainAdditionImgUrl || "",
         adaptive_image: adaptiveAdditionalUrl || "",
       },
-      watch_features: watchFeatures, 
+      watch_features: watchFeatureUrls,
     };
 
-    console.log("newItemData", newItemData);
+    // console.log("newItemData before saving:", newItemData);
 
     const newItem = await itemRepository.createItem(newItemData); // Сохранение нового элемента
     console.log("newItem", newItem);
+
     if (!newItem) {
       throw new NotImplementedError("Ошибка при создании нового элемента");
     }
