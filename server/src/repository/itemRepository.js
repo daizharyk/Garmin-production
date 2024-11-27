@@ -19,8 +19,11 @@ module.exports = {
   findUsersItems: async (userId) => {
     const items = await Item.find({
       user: userId,
-      isDeleted: { $ne: true },
     });
+    return items;
+  },
+  findDeletedItems: async (userId) => {
+    const items = await Item.find({ user: userId, isDeleted: true });
     return items;
   },
   findUsersItem: async (itemId, userId) => {
@@ -31,7 +34,7 @@ module.exports = {
     });
     return item;
   },
-  
+
   updateItem: async (itemId, data) => {
     const updatedItem = await Item.findByIdAndUpdate(itemId, data, {
       new: true,
