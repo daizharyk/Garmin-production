@@ -31,6 +31,7 @@ module.exports = {
     });
     return item;
   },
+  
   updateItem: async (itemId, data) => {
     const updatedItem = await Item.findByIdAndUpdate(itemId, data, {
       new: true,
@@ -46,4 +47,3 @@ module.exports = {
     await Item.findByIdAndDelete(itemId);
   },
 };
-

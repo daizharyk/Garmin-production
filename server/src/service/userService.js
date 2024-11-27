@@ -9,20 +9,23 @@ module.exports = {
     return users;
   },
   createNewUser: async (userData) => {
+    console.log("Received user data:", userData); // Логируем входящие данные
     const existingUser = await userRepository.findUserByEmail(userData.email);
+    console.log("Existing user:", existingUser); // Логируем результат поиска
     if (existingUser) {
       throw new ExistingEntityError("User with this email already exist");
     }
     const newUser = await userRepository.createUser(userData);
+    console.log("New user created:", newUser); // Логируем результат создания нового пользователя
     return newUser;
   },
+
   loginUser: async (userData) => {
     const { email, password } = userData;
     const existingUser = await userRepository.findUserByEmail(email);
     if (existingUser && (await existingUser.matchPasswords(password))) {
       const jwtToken = generateJWToken(existingUser._id);
 
-      
       return {
         _id: existingUser.id,
         name: existingUser.name,
@@ -41,15 +44,14 @@ module.exports = {
     const userWithItems = await userRepository.findUserWithItems(userId);
     return userWithItems;
   },
-  updateUser: async (userIdFromParams, userIdFromToken, userData) => {
-    if (userIdFromParams !== userIdFromToken.toString()) {
-      throw new InvalidDataError("You can only update your own account");
-    }
+  updateUser: async (userId, userData) => {
+    const existingUser = await userRepository.findUserByEmail(userData.email);
+    console.log("existingUser", existingUser);
 
-    const updateUser = await userRepository.updateUser(
-      userIdFromParams,
-      userData
-    );
+    if (existingUser && existingUser._id.toString() !== userId.toString()) {
+      throw new ExistingEntityError("This email is already used");
+    }
+    const updateUser = await userRepository.updateUser(userId, userData);
     return updateUser;
   },
   deleteUser: async (userIdFromParams, userIdFromToken) => {

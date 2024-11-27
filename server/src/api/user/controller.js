@@ -45,17 +45,14 @@ module.exports = {
       next(error);
     }
   },
+
   updateUser: async (req, res, next) => {
     try {
       const data = req.body;
-      const userIdFromParams = req.params.id;
-      const userIdFromToken = req.user._id;
+      const userId = req.user._id;
+console.log("UserId", userId);
 
-      const updatedUser = await userService.updateUser(
-        userIdFromParams,
-        userIdFromToken,
-        data
-      );
+      const updatedUser = await userService.updateUser(userId, data);
       res.send(updatedUser);
     } catch (error) {
       next(error);
@@ -71,7 +68,7 @@ module.exports = {
       next(error);
     }
   },
-  
+
   deleteUserForce: async (req, res, next) => {
     try {
       const userIdFromParams = req.params.id;

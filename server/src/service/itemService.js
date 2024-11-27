@@ -1,7 +1,9 @@
+const { default: mongoose } = require("mongoose");
 const NotImplementedError = require("../infrastructure/errors/NotImplementedError");
 const itemRepository = require("../repository/itemRepository");
 const axios = require("axios");
 const FormData = require("form-data");
+const item = require("../database/models/item");
 
 const uploadImagesToImgbb = async (files) => {
   try {
@@ -36,7 +38,6 @@ const uploadImagesToImgbb = async (files) => {
     throw new NotImplementedError("Ошибка при загрузке изображения на imgbb");
   }
 };
-// console.log("uploadImagesToImgbb", uploadImagesToImgbb);
 
 module.exports = {
   getAllItems: async () => {
@@ -57,8 +58,22 @@ module.exports = {
     let adaptiveBannerUrl = null;
     let mainAdditionImgUrl = null;
     let adaptiveAdditionalUrl = null;
+    let mainImageUrl = null;
+
     if (bannerImages) {
-      // console.log("Загружается изображение баннера...");
+      if (bannerImages.mainImage) {
+        try {
+          const [uploadMainImageUrl] = await uploadImagesToImgbb([
+            bannerImages.mainImage,
+          ]);
+          mainImageUrl = uploadMainImageUrl;
+        } catch (error) {
+          console.error(
+            "Ошибка при загрузке основного изображения:",
+            error.message
+          );
+        }
+      }
 
       if (bannerImages.main) {
         try {
@@ -120,10 +135,11 @@ module.exports = {
         }
       }
     }
-
     const watchFeatureUrls = await Promise.all(
-      itemData.watch_features.map(async (feature) => {
+      (itemData.watch_features || []).map(async (feature) => {
         let imageUrl = null;
+
+        // Проверка, есть ли изображение и его буфер
         if (feature.image && feature.image.buffer) {
           console.log(
             `Загружается изображение для watch feature: ${feature.image.originalname}`
@@ -141,10 +157,12 @@ module.exports = {
             );
           }
         }
+
+        // Возвращаем объект, но если данных нет, пропускаем или ставим дефолтные значения
         return {
-          image: imageUrl || "",
-          title: feature.title || null,
-          description: feature.description || null,
+          image: imageUrl || "", // Если изображения нет, ставим пустую строку
+          title: feature.title || null, // Если нет названия, ставим null
+          description: feature.description || null, // Если нет описания, ставим null
         };
       })
     );
@@ -152,6 +170,7 @@ module.exports = {
     console.log("Watch features to save:", watchFeatureUrls);
     const newItemData = {
       ...itemData,
+      image: mainImageUrl,
       carousel_images: carouselImageUrls,
       banner_text: {
         banner_images: {
@@ -183,21 +202,153 @@ module.exports = {
     }
     return newItem;
   },
-
   findItem: async (itemId) => {
     const item = await itemRepository.findItem(itemId);
     return item;
   },
-  updateItem: async (itemId, itemData, userId) => {
+  updateItem: async (
+    itemId,
+    userId,
+    itemData,
+    carouselImages,
+    bannerImages
+  ) => {
     const item = await itemRepository.findUsersItem(itemId, userId);
+
     if (!item) {
       throw new NotImplementedError("Item not found");
     }
+    let carouselImageUrls = item.carousel_images || [];
+    if (carouselImages.length > 0) {
+      const newImageUrls = await uploadImagesToImgbb(carouselImages);
+      carouselImageUrls = [...carouselImageUrls, ...newImageUrls];
+    }
+
+    let videoThumbUrl = item.video_section?.thumbnail || null;
+    let mainBannerUrl = item.banner_text?.banner_images?.main_banner || null;
+    let adaptiveBannerUrl =
+      item.banner_text?.banner_images?.adaptive_banner || null;
+    let mainAdditionImgUrl = item.additional_images?.main_image || null;
+    let adaptiveAdditionalUrl = item.additional_images?.adaptive_image || null;
+
+    if (bannerImages) {
+      if (bannerImages.main) {
+        try {
+          const [uploadedMainUrl] = await uploadImagesToImgbb([
+            bannerImages.main,
+          ]);
+          mainBannerUrl = uploadedMainUrl;
+        } catch (error) {
+          console.error(
+            "Ошибка при загрузке основного баннера:",
+            error.message
+          );
+        }
+      }
+
+      if (bannerImages.adaptive) {
+        try {
+          const [uploadedAdaptiveUrl] = await uploadImagesToImgbb([
+            bannerImages.adaptive,
+          ]);
+          adaptiveBannerUrl = uploadedAdaptiveUrl;
+        } catch (error) {
+          console.error(
+            "Ошибка при загрузке адаптивного баннера:",
+            error.message
+          );
+        }
+      }
+
+      if (bannerImages.videoThumb) {
+        try {
+          const [uploadedVideoThumbUrl] = await uploadImagesToImgbb([
+            bannerImages.videoThumb,
+          ]);
+          videoThumbUrl = uploadedVideoThumbUrl;
+        } catch (error) {
+          console.error("Ошибка при загрузке миниатюры видео:", error.message);
+        }
+      }
+
+      if (bannerImages.addition_main) {
+        try {
+          const [uploadedAdditionMainUrl] = await uploadImagesToImgbb([
+            bannerImages.addition_main,
+          ]);
+          mainAdditionImgUrl = uploadedAdditionMainUrl;
+        } catch (error) {
+          console.error("Ошибка при загрузке main addition:", error.message);
+        }
+      }
+
+      if (bannerImages.addition_adaptive) {
+        try {
+          const [uploadedAdditionAdaptiveUrl] = await uploadImagesToImgbb([
+            bannerImages.addition_adaptive,
+          ]);
+          adaptiveAdditionalUrl = uploadedAdditionAdaptiveUrl;
+        } catch (error) {
+          console.error(
+            "Ошибка при загрузке adaptive addition:",
+            error.message
+          );
+        }
+      }
+    }
+    const watchFeatureUrls = await Promise.all(
+      (itemData.watch_features || []).map(async (feature, index) => {
+        let imageUrl = item.watch_features?.[index]?.image || null;
+        if (feature.image && feature.image.buffer) {
+          try {
+            const [uploadedImageUrl] = await uploadImagesToImgbb([
+              { buffer: feature.image.buffer },
+            ]);
+            imageUrl = uploadedImageUrl;
+          } catch (error) {
+            console.error(
+              `Ошибка при загрузке изображения для watch feature:`,
+              error.message
+            );
+          }
+        }
+        return {
+          image: imageUrl || "",
+          title: feature.title || null,
+          description: feature.description || null,
+        };
+      })
+    );
+    const updatedItemData = {
+      ...itemData,
+      carousel_images: carouselImageUrls,
+      banner_text: {
+        banner_images: {
+          main_banner: mainBannerUrl || "",
+          alt: itemData.alt || "",
+          adaptive_banner: adaptiveBannerUrl || "",
+        },
+        title: itemData.bannerText?.title || "",
+        text: itemData.bannerText?.text || "",
+      },
+      video_section: {
+        thumbnail: videoThumbUrl || "",
+        video_url: itemData.video_url || "",
+      },
+      additional_images: {
+        main_image: mainAdditionImgUrl || "",
+        adaptive_image: adaptiveAdditionalUrl || "",
+      },
+      watch_features: watchFeatureUrls,
+    };
     const updatedItem = await itemRepository.updateItem(
       itemId,
-      itemData,
-      userId
+      updatedItemData
     );
+
+    if (!updatedItem) {
+      throw new NotImplementedError("Ошибка при обновлении элемента");
+    }
     return updatedItem;
   },
   deleteItem: async (itemId, userId) => {

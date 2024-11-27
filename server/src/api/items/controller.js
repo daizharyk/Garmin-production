@@ -1,4 +1,5 @@
 const itemService = require("../../service/itemService");
+
 module.exports = {
   getAllItems: async (req, res, next) => {
     try {
@@ -11,6 +12,7 @@ module.exports = {
   getMyItems: async (req, res, next) => {
     try {
       const user = req.user;
+
       const items = await itemService.getMyItems(user._id);
       res.send(items);
     } catch (error) {
@@ -20,7 +22,7 @@ module.exports = {
   createNewItem: async (req, res, next) => {
     try {
       const user = req.user;
-  
+
       const data = {
         ...req.body,
         user: user._id,
@@ -52,43 +54,47 @@ module.exports = {
       const adaptiveAdditionImg = req.files.find(
         (file) => file.fieldname === "adaptiveAdditionImg"
       );
-
+      const mainImage = req.files.find(
+        (file) => file.fieldname === "mainImage"
+      );
       const watchFeatures = [];
-      console.log("Watch features from body:", req.body.watch_features);
-      req.files.forEach((file) => {
-        console.log("Processing file:", file);
-        const match = file.fieldname.match(/watch_features_image_(\d+)/);
-        if (match) {
-          const index = parseInt(match[1], 10);
-          console.log("Extracted index:", index);
-          if (!watchFeatures[index]) {
-            watchFeatures[index] = {};
+
+      if (req.body.watch_features && Array.isArray(req.body.watch_features)) {
+        req.files.forEach((file) => {
+          const match = file.fieldname.match(/watch_features_image_(\d+)/);
+          if (match) {
+            const index = parseInt(match[1], 10);
+
+            if (!watchFeatures[index]) {
+              watchFeatures[index] = {};
+            }
+            watchFeatures[index] = {
+              buffer: file.buffer,
+              originalname: file.originalname,
+            };
           }
-          watchFeatures[index] = {
-            buffer: file.buffer,
-            originalname: file.originalname,
-          };
-          console.log(
-            "Saved image buffer and original name for itemService:",
-            watchFeatures[index].buffer,
-            watchFeatures[index].originalname
+        });
+
+        console.log("watchFeaturesto save:", watchFeatures);
+
+        // Проверка, если в body есть watch_features, тогда обрабатываем их
+        if (req.body.watch_features.length > 0) {
+          data.watch_features = req.body.watch_features.map(
+            (feature, index) => ({
+              image: watchFeatures[index] ? watchFeatures[index] : "",
+              title: feature.title,
+              description: feature.description,
+            })
           );
         }
-      });
-      console.log("watchFeaturesto save:", watchFeatures);
-      data.watch_features = req.body.watch_features.map((feature, index) => ({
-        image: watchFeatures[index] ? watchFeatures[index] : "",
-        title: feature.title,
-        description: feature.description,
-      }));
-
-
+      }
       const item = await itemService.createNewItem(data, carouselImages, {
         main: mainBanner,
         adaptive: adaptiveBanner,
         videoThumb: videoThumbnail,
         addition_main: mainAdditionImg,
         addition_adaptive: adaptiveAdditionImg,
+        mainImage: mainImage,
       });
       console.log(item);
 
@@ -99,19 +105,106 @@ module.exports = {
   },
   getItem: async (req, res, next) => {
     try {
-      const itemid = req.params.id;
-      const item = await itemService.findItem(itemid);
+      const itemId = req.params.id;
+
+      const item = await itemService.findItem(itemId);
       res.send(item);
     } catch (error) {
       next(error);
     }
   },
+
   updateItem: async (req, res, next) => {
     try {
-      const user = req.user;
-      const itemid = req.params.id;
-      const data = req.body;
-      const updatedItem = await itemService.updateItem(itemid, data, user._id);
+      const user = req.user._id;
+      const itemId = req.params.id;
+
+      const data = {
+        ...req.body,
+        bannerText: {
+          title: req.body.banner_title || "",
+          text: req.body.banner_text || "",
+        },
+        video_url: req.body.video_url || "",
+      };
+
+      const carouselImages = req.files
+        ? req.files.filter((file) => file.fieldname === "carouselImages")
+        : [];
+      const mainBanner = req.files
+        ? req.files.find((file) => file.fieldname === "mainBanner")
+        : null;
+      const adaptiveBanner = req.files
+        ? req.files.find((file) => file.fieldname === "adaptiveBanner")
+        : null;
+      const videoThumbnail = req.files
+        ? req.files.find((file) => file.fieldname === "videoThumbnail")
+        : null;
+      const mainAdditionImg = req.files
+        ? req.files.find((file) => file.fieldname === "mainAdditionImg")
+        : null;
+      const adaptiveAdditionImg = req.files
+        ? req.files.find((file) => file.fieldname === "adaptiveAdditionImg")
+        : null;
+      const mainImage = req.files
+        ? req.files.find((file) => file.fieldname === "mainImage")
+        : null;
+
+      const watchFeatures = [];
+      req.files?.forEach((file) => {
+        const match = file.fieldname.match(/watch_features_image_(\d+)/);
+        if (match) {
+          const index = parseInt(match[1], 10);
+          if (!watchFeatures[index]) {
+            watchFeatures[index] = {};
+          }
+          watchFeatures[index] = {
+            buffer: file.buffer,
+            originalname: file.originalname,
+          };
+        }
+      });
+
+      console.log("watchFeatures (обработанные файлы):", watchFeatures);
+      console.log(
+        "req.body.watch_features (данные клиента):",
+        req.body.watch_features
+      );
+
+      data.watch_features = req.body.watch_features?.map((feature, index) => {
+        console.log("Данные для обновления:", data.watch_features);
+
+        // Проверяем, если у элемента есть изображение, иначе оставляем текущее
+        const imageData = watchFeatures[index]
+          ? watchFeatures[index]
+          : feature.image;
+
+        return {
+          image: imageData,
+          title: feature.title,
+          description: feature.description,
+        };
+      });
+
+      const updatedItem = await itemService.updateItem(
+        itemId,
+        user,
+        data,
+        carouselImages,
+        {
+          main: mainBanner,
+          adaptive: adaptiveBanner,
+          videoThumb: videoThumbnail,
+          addition_main: mainAdditionImg,
+          addition_adaptive: adaptiveAdditionImg,
+          mainImage: mainImage,
+        }
+      );
+      if (!updatedItem) {
+        return res.status(404).json({ message: "Элемент не найден" });
+      }
+
+      // Возвращаем обновлённый элемент
       res.send(updatedItem);
     } catch (error) {
       next(error);

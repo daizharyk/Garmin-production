@@ -17,7 +17,7 @@ router.get("/",protected, getAllUsers);
 
 router.get("/me",protected, getMe);
 
-router.put("/:id",protected, updateUser);
+router.put("/",protected, updateUser);
 
 router.patch("/:id",protected, deleteUser);
 
