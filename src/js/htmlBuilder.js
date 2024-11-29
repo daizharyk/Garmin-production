@@ -63,7 +63,7 @@ export async function createNewCards() {
     newCard.classList.add("new-card");
 
     const img = document.createElement("img");
-    img.src = `https://i.ibb.co.com/${item.carousel_images[2]}`;
+    img.src = item.carousel_images[2];
     img.alt = item.name;
 
     const newCardDescription = document.createElement("div");

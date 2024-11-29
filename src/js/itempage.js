@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   item.carousel_images.forEach((imgFileName) => {
     const div = document.createElement("div");
     div.classList.add("carousel-box");
-    const imgSrc = `https://i.ibb.co.com/${imgFileName}`;
+    const imgSrc = imgFileName;
     const img = document.createElement("img");
     img.src = imgSrc;
     img.alt = item.name;
@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     item.carousel_images.forEach((imgFileName) => {
       const div = document.createElement("div");
       div.classList.add("carousel-box1");
-      const imgSrc = `https://i.ibb.co.com/${imgFileName}`;
+      const imgSrc = imgFileName;
       const img = document.createElement("img");
       img.src = imgSrc;
       img.alt = item.name;
@@ -55,31 +55,31 @@ document.addEventListener("DOMContentLoaded", async () => {
   document.querySelector(".banner-title").textContent = item.banner_text.title;
   document.querySelector(".disc-right").textContent = item.banner_text.text;
   document.getElementById("bannerwithtext").src =
-    `https://i.ibb.co.com/${item.banner_text.banner_images.main_banner}`;
+    item.banner_text.banner_images.main_banner;
   document.getElementById("bannerwithtext").alt =
     item.banner_text.banner_images.alt;
   document.getElementById("bannerwithtext-adaptive").src =
-    `https://i.ibb.co.com/${item.banner_text.banner_images.adaptive_banner}`;
+    item.banner_text.banner_images.adaptive_banner;
   document.getElementById("bannerwithtext-adaptive").alt =
     item.banner_text.banner_images.alt;
 
   const videoThumbnail = document.querySelector(".video-thumbnail");
   videoThumbnail.querySelector("img").src =
-    `https://i.ibb.co.com/${item.video_section.thumbnail}`;
+    item.video_section.thumbnail;
   document.querySelector(".thumbnail-img").alt = item.video_section.thumbnail;
   document.getElementById("video-player").src = item.video_section.video_url;
 
   document.querySelector(".walpapperinfo").src =
-    `https://i.ibb.co.com/${item.additional_images.main_image}`;
+    item.additional_images.main_image;
   document.querySelector(".walpapperinfo-adaptive").src =
-    `https://i.ibb.co.com/${item.additional_images.adaptive_image}`;
+    item.additional_images.adaptive_image;
 
   const functionInfoContainer = document.querySelector(".cards-container");
   item.watch_features.forEach((feature) => {
     const card = document.createElement("div");
     card.classList.add("function-info-card");
     const img = document.createElement("img");
-    img.src = `https://i.ibb.co.com//${feature.image}`;
+    img.src = feature.image;
     img.alt = feature.title;
     const title = document.createElement("h2");
     title.textContent = feature.title;
