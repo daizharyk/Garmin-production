@@ -8,6 +8,7 @@ const {
   updateItem,
   createNewItem,
   getMyItems,
+  restoreItem,
 } = require("./controller");
 const { protected } = require("../../middlewares/auth");
 const router = Router();
@@ -28,6 +29,8 @@ router.put("/:id", protected, upload.any(), (req, res, next) => {
 });
 
 router.patch("/:id", protected, deleteItem);
+
+router.patch("/:id/restore", protected , restoreItem)
 
 router.delete("/force/:id", protected, deleteItemForce);
 

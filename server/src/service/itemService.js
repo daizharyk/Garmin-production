@@ -1,9 +1,7 @@
-const { default: mongoose } = require("mongoose");
 const NotImplementedError = require("../infrastructure/errors/NotImplementedError");
 const itemRepository = require("../repository/itemRepository");
 const axios = require("axios");
 const FormData = require("form-data");
-const item = require("../database/models/item");
 
 const uploadImagesToImgbb = async (files) => {
   try {
@@ -359,10 +357,18 @@ module.exports = {
     await itemRepository.deletItem(itemId);
   },
   deleteItemForce: async (itemId, userId) => {
-    const item = await itemRepository.findUsersItem(itemId, userId);
+    const item = await itemRepository.findUsersDeletedItem(itemId, userId);
     if (!item) {
       throw new NotImplementedError("Item not found");
     }
     await itemRepository.deleteItemForce(itemId);
+  },
+  restoreItem: async (itemId, userId) => {
+    const item = await itemRepository.findUsersDeletedItem(itemId, userId);
+
+    if (!item) {
+      throw new NotImplementedError("Item not found");
+    }
+    await itemRepository.restoreItem(itemId);
   },
 };

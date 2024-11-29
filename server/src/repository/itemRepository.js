@@ -22,15 +22,20 @@ module.exports = {
     });
     return items;
   },
-  findDeletedItems: async (userId) => {
-    const items = await Item.find({ user: userId, isDeleted: true });
-    return items;
-  },
+
   findUsersItem: async (itemId, userId) => {
     const item = await Item.findOne({
       _id: itemId,
       user: userId,
       isDeleted: { $ne: true },
+    });
+    return item;
+  },
+  findUsersDeletedItem: async (itemId, userId) => {
+    const item = await Item.findOne({
+      _id: itemId,
+      user: userId,
+      isDeleted: { $in: [true, null, undefined] },
     });
     return item;
   },
@@ -48,5 +53,8 @@ module.exports = {
   },
   deleteItemForce: async (itemId) => {
     await Item.findByIdAndDelete(itemId);
+  },
+  restoreItem: async (itemId) => {
+    await Item.findByIdAndUpdate(itemId, { isDeleted: false });
   },
 };

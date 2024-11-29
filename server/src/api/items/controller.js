@@ -230,4 +230,16 @@ module.exports = {
       next(error);
     }
   },
+  restoreItem: async (req, res, next) => {
+    try {
+      const user = req.user;
+
+      const itemId = req.params.id;
+
+      await itemService.restoreItem(itemId, user._id);
+      res.send("Item restored");
+    } catch (error) {
+      next(error);
+    }
+  },
 };

@@ -15,7 +15,7 @@ export function createCards(data) {
     const cardImg = document.createElement("div");
     cardImg.classList.add("item-card-img");
     const img = document.createElement("img");
-    img.src = `https://i.ibb.co.com/${item.image}`;
+    img.src = item.image;
     img.alt = item.name;
     cardImg.appendChild(img);
 
