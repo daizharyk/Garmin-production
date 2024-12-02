@@ -33,8 +33,8 @@ module.exports = {
     hot: false,
     proxy: [
       {
-        context: ["/api"], // Определяем, какие пути нужно проксировать
-        target: "http://localhost:3005", // Сервер, на который перенаправляются запросы
+        context: ["/api"], 
+        target: "http://localhost:3005", 
         changeOrigin: true,
         logLevel: "info",
       },

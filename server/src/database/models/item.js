@@ -40,6 +40,16 @@ const itemSchema = new mongoose.Schema(
         description: { type: String },
       },
     ],
+    delete_urls: {
+      mainImageDeleteUrl: { type: String },
+      mainBannerDeleteUrl: { type: String },
+      adaptiveBannerDeleteUrl: { type: String },
+      videoThumbDeleteUrl: { type: String },
+      mainAdditionImgDeleteUrl: { type: String },
+      adaptiveAddDeleteUrl: { type: String },
+      carouselDeleteUrls: { type: [String] },
+      watchFeatureDeleteUrls: { type: [String] },
+    },
   },
   {
     timestamps: true,

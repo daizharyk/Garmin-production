@@ -15,7 +15,6 @@ document
     loadingSpinner.style.display = "inline-block";
     document.getElementById("signInBtn").style.color = "#ddd";
     signInBtn.disabled = true;
-    // Отправка данных на сервер через fetch
     try {
       const response = await fetch("/api/users/login", {
         method: "POST",
@@ -26,6 +25,7 @@ document
       });
       const data = await response.json();
 
+      
       loadingSpinner.style.display = "none";
       document.getElementById("signInBtn").style.color = "#000";
       signInBtn.disabled = false;

@@ -165,16 +165,10 @@ module.exports = {
         }
       });
 
-      console.log("watchFeatures (обработанные файлы):", watchFeatures);
-      console.log(
-        "req.body.watch_features (данные клиента):",
-        req.body.watch_features
-      );
-
       data.watch_features = req.body.watch_features?.map((feature, index) => {
-        console.log("Данные для обновления:", data.watch_features);
+  
 
-        // Проверяем, если у элемента есть изображение, иначе оставляем текущее
+
         const imageData = watchFeatures[index]
           ? watchFeatures[index]
           : feature.image;
@@ -203,8 +197,6 @@ module.exports = {
       if (!updatedItem) {
         return res.status(404).json({ message: "Элемент не найден" });
       }
-
-      // Возвращаем обновлённый элемент
       res.send(updatedItem);
     } catch (error) {
       next(error);
