@@ -13,7 +13,7 @@ const uploadImagesToImgbb = async (files) => {
       formData.append("image", file.buffer.toString("base64"));
 
       const response = await axios.post(
-        `https://api.imgbb.com/1/upload?key=${process.env.IMGBB_API_KEY}`,
+        `https://api.imgbb.com/1/upload?key=16fb81e14a5584f9cd0d9ecb6d6150da`,
         formData,
         {
           headers: {
@@ -391,7 +391,6 @@ module.exports = {
           try {
             const {
               uploadedUrls: [uploadedImageUrl],
-
             } = await uploadImagesToImgbb([{ buffer: feature.image.buffer }]);
             imageUrl = uploadedImageUrl;
           } catch (error) {
