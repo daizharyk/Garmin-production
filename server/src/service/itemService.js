@@ -2,45 +2,46 @@ const NotImplementedError = require("../infrastructure/errors/NotImplementedErro
 const itemRepository = require("../repository/itemRepository");
 const axios = require("axios");
 const FormData = require("form-data");
-
-
-
 const uploadImagesToImgbb = async (files) => {
   try {
+    const uploadedUrls = [];
+    const deleteUrls = [];
     const apiKey = process.env.IMGBB_API_KEY;
+
     if (!apiKey) {
       throw new Error("IMGBB_API_KEY is not defined");
     }
 
-    // Параллельная загрузка файлов
-    const uploadPromises = files.map(async (file) => {
+    // Перебор всех файлов
+    for (const file of files) {
       const formData = new FormData();
-      formData.append("image", file.buffer.toString("base64"));
 
+      // Добавление файла в formData
+      formData.append("image", file.buffer, file.originalname); // Передаем файл как buffer
+
+      // Отправка POST-запроса
       const response = await axios.post(
         `https://api.imgbb.com/1/upload?key=${apiKey}`,
         formData,
-        { headers: formData.getHeaders() }
+        {
+          headers: formData.getHeaders(),
+        }
       );
 
-      const { url, delete_url } = response.data.data || {};
-      if (!url || !delete_url) {
+      console.log("Ответ от ImgBB:", response.data);
+      if (response.data && response.data.data) {
+        const { url, delete_url } = response.data.data;
+        uploadedUrls.push(url);
+        deleteUrls.push(delete_url);
+      } else {
         throw new Error("Не удалось получить URL изображения");
       }
-
-      return { url, delete_url };
-    });
-
-    // Ожидаем завершения всех загрузок
-    const results = await Promise.all(uploadPromises);
-
-    const uploadedUrls = results.map((result) => result.url);
-    const deleteUrls = results.map((result) => result.delete_url);
+    }
 
     return { uploadedUrls, deleteUrls };
   } catch (error) {
     console.error("Ошибка загрузки изображений:", error.message);
-    throw error; // Бросаем ошибку дальше
+    throw error;
   }
 };
 
