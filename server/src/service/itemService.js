@@ -10,14 +10,20 @@ const uploadImagesToImgbb = async (files) => {
     for (const file of files) {
       const formData = new FormData();
 
-      console.log("file---", file);
-
+      console.log("Processing file:", file.originalname);
+      console.log("File buffer length:", file.buffer.length);
 
       formData.append("image", file.buffer.toString("base64"));
-      console.log("file.buffer", file.buffer.toString("base64"));
+      console.log("Base64 image size:", file.buffer.toString("base64").length);
+
+      const apiKey = process.env.IMGBB_API_KEY;
+      if (!apiKey) {
+        throw new Error("IMGBB_API_KEY is not defined");
+      }
+
       console.log(
-        "IBB API",
-        `https://api.imgbb.com/1/upload?key=${process.env.IMGBB_API_KEY}`
+        "Sending request to:",
+        `https://api.imgbb.com/1/upload?key=${apiKey}`
       );
 
       const response = await axios.post(
@@ -41,10 +47,7 @@ const uploadImagesToImgbb = async (files) => {
 
     return { uploadedUrls, deleteUrls };
   } catch (error) {
-    console.error(
-      "JSON.stringify(error, null, 2)",
-      JSON.stringify(error, null, 2)
-    );
+    
     console.error(
       "Ошибка при отправке изображения на imgbb:",
       error.response ? error.response.data : error.message
