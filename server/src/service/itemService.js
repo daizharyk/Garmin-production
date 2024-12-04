@@ -11,10 +11,10 @@ const uploadImagesToImgbb = async (files) => {
       const formData = new FormData();
 
       console.log("file---", file);
-      console.log("file.buffer", file.buffer.toString("base64"));
+
 
       formData.append("image", file.buffer.toString("base64"));
-
+      console.log("file.buffer", file.buffer.toString("base64"));
       console.log(
         "IBB API",
         `https://api.imgbb.com/1/upload?key=${process.env.IMGBB_API_KEY}`
