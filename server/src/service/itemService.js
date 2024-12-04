@@ -2,46 +2,50 @@ const NotImplementedError = require("../infrastructure/errors/NotImplementedErro
 const itemRepository = require("../repository/itemRepository");
 const axios = require("axios");
 const FormData = require("form-data");
+
 const uploadImagesToImgbb = async (files) => {
   try {
     const uploadedUrls = [];
     const deleteUrls = [];
-    const apiKey = process.env.IMGBB_API_KEY;
 
-    if (!apiKey) {
-      throw new Error("IMGBB_API_KEY is not defined");
-    }
-
-    // Перебор всех файлов
-    for (const file of files) {
+    const uploadPromises = files.map(async (file) => {
       const formData = new FormData();
+      formData.append("image", file.buffer.toString("base64"));
 
-      // Добавление файла в formData
-      formData.append("image", file.buffer, file.originalname); // Передаем файл как buffer
+      const apiKey = process.env.IMGBB_API_KEY;
+      if (!apiKey) {
+        throw new Error("IMGBB_API_KEY is not defined");
+      }
 
-      // Отправка POST-запроса
       const response = await axios.post(
         `https://api.imgbb.com/1/upload?key=${apiKey}`,
         formData,
         {
-          headers: formData.getHeaders(),
+          headers: {
+            ...formData.getHeaders(),
+          },
         }
       );
 
-      console.log("Ответ от ImgBB:", response.data);
       if (response.data && response.data.data) {
         const { url, delete_url } = response.data.data;
-        uploadedUrls.push(url);
-        deleteUrls.push(delete_url);
+        return { url, delete_url };
       } else {
         throw new Error("Не удалось получить URL изображения");
       }
-    }
+    });
+
+    const results = await Promise.all(uploadPromises);
+
+    results.forEach(({ url, delete_url }) => {
+      uploadedUrls.push(url);
+      deleteUrls.push(delete_url);
+    });
 
     return { uploadedUrls, deleteUrls };
   } catch (error) {
-    console.error("Ошибка загрузки изображений:", error.message);
-    throw error;
+    console.error("Ошибка при отправке изображения на imgbb:", error.message);
+    throw new NotImplementedError("Ошибка при загрузке изображения на imgbb");
   }
 };
 
@@ -277,14 +281,14 @@ module.exports = {
       throw new NotImplementedError("Item not found");
     }
     let carouselImageUrls = item.carousel_images || [];
-    let carouselDeleteUrls = Array.isArray(item.delete_urls)
-      ? item.delete_urls
+    let carouselDeleteUrls = Array.isArray(item.delete_urls.carouselDeleteUrls)
+      ? item.delete_urls.carouselDeleteUrls
       : [];
 
-    // Убедимся, что carouselImages является массивом
     if (carouselImages.length > 0) {
       const { uploadedUrls, deleteUrls } =
         await uploadImagesToImgbb(carouselImages);
+
       carouselImageUrls = [...carouselImageUrls, ...uploadedUrls];
       carouselDeleteUrls = [...carouselDeleteUrls, ...deleteUrls];
     }
