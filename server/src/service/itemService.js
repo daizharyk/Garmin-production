@@ -38,7 +38,10 @@ const uploadImagesToImgbb = async (files) => {
 
     return { uploadedUrls, deleteUrls };
   } catch (error) {
-    console.error(JSON.stringify(error, null, 2));
+    console.error(
+      "JSON.stringify(error, null, 2)",
+      JSON.stringify(error, null, 2)
+    );
     console.error(
       "Ошибка при отправке изображения на imgbb:",
       error.response ? error.response.data : error.message
