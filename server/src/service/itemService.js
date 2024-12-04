@@ -10,6 +10,9 @@ const uploadImagesToImgbb = async (files) => {
     for (const file of files) {
       const formData = new FormData();
 
+      console.log("file---", file);
+      console.log("file.buffer", file.buffer.toString("base64"));
+
       formData.append("image", file.buffer.toString("base64"));
 
       console.log(
