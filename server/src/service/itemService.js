@@ -3,56 +3,44 @@ const itemRepository = require("../repository/itemRepository");
 const axios = require("axios");
 const FormData = require("form-data");
 
+
+
 const uploadImagesToImgbb = async (files) => {
   try {
-    const uploadedUrls = [];
-    const deleteUrls = [];
-    for (const file of files) {
+    const apiKey = process.env.IMGBB_API_KEY;
+    if (!apiKey) {
+      throw new Error("IMGBB_API_KEY is not defined");
+    }
+
+    // Параллельная загрузка файлов
+    const uploadPromises = files.map(async (file) => {
       const formData = new FormData();
-
-      console.log("Processing file:", file.originalname);
-      console.log("File buffer length:", file.buffer.length);
-
       formData.append("image", file.buffer.toString("base64"));
-      console.log("Base64 image size:", file.buffer.toString("base64").length);
-
-      const apiKey = process.env.IMGBB_API_KEY;
-      if (!apiKey) {
-        throw new Error("IMGBB_API_KEY is not defined");
-      }
-
-      console.log(
-        "Sending request to:",
-        `https://api.imgbb.com/1/upload?key=${apiKey}`
-      );
 
       const response = await axios.post(
-        `https://api.imgbb.com/1/upload?key=${process.env.IMGBB_API_KEY}`,
+        `https://api.imgbb.com/1/upload?key=${apiKey}`,
         formData,
-        {
-          headers: {
-            ...formData.getHeaders(),
-          },
-        }
+        { headers: formData.getHeaders() }
       );
-      console.log("Ответ от imgbb:", response.data);
-      if (response.data && response.data.data) {
-        const { url, delete_url } = response.data.data;
-        uploadedUrls.push(url);
-        deleteUrls.push(delete_url);
-      } else {
-        throw new NotImplementedError("Не удалось получить URL изображения");
+
+      const { url, delete_url } = response.data.data || {};
+      if (!url || !delete_url) {
+        throw new Error("Не удалось получить URL изображения");
       }
-    }
+
+      return { url, delete_url };
+    });
+
+    // Ожидаем завершения всех загрузок
+    const results = await Promise.all(uploadPromises);
+
+    const uploadedUrls = results.map((result) => result.url);
+    const deleteUrls = results.map((result) => result.delete_url);
 
     return { uploadedUrls, deleteUrls };
   } catch (error) {
-    
-    console.error(
-      "Ошибка при отправке изображения на imgbb:",
-      error.response ? error.response.data : error.message
-    );
-    throw new NotImplementedError("Ошибка при загрузке изображения на imgbb");
+    console.error("Ошибка загрузки изображений:", error.message);
+    throw error; // Бросаем ошибку дальше
   }
 };
 
