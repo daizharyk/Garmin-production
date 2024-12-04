@@ -58,7 +58,6 @@ module.exports = {
         (file) => file.fieldname === "mainImage"
       );
       const watchFeatures = [];
-
       if (req.body.watch_features && Array.isArray(req.body.watch_features)) {
         req.files.forEach((file) => {
           const match = file.fieldname.match(/watch_features_image_(\d+)/);

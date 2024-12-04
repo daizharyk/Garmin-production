@@ -12,6 +12,11 @@ const uploadImagesToImgbb = async (files) => {
 
       formData.append("image", file.buffer.toString("base64"));
 
+      console.log(
+        "IBB API",
+        `https://api.imgbb.com/1/upload?key=${process.env.IMGBB_API_KEY}`
+      );
+
       const response = await axios.post(
         `https://api.imgbb.com/1/upload?key=${process.env.IMGBB_API_KEY}`,
         formData,
@@ -30,9 +35,10 @@ const uploadImagesToImgbb = async (files) => {
         throw new NotImplementedError("Не удалось получить URL изображения");
       }
     }
-    
+
     return { uploadedUrls, deleteUrls };
   } catch (error) {
+    console.error(JSON.stringify(error, null, 2));
     console.error(
       "Ошибка при отправке изображения на imgbb:",
       error.response ? error.response.data : error.message
@@ -392,7 +398,6 @@ module.exports = {
           try {
             const {
               uploadedUrls: [uploadedImageUrl],
-
             } = await uploadImagesToImgbb([{ buffer: feature.image.buffer }]);
             imageUrl = uploadedImageUrl;
           } catch (error) {
