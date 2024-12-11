@@ -44,11 +44,11 @@ function checkFormValidity() {
     : "";
   const recoverPasswordBtn = document.getElementById("recoverPasswordBtn");
   if (signInBtn) {
-    signInBtn.disabled = !(email && password); // Деактивируем кнопку логина, если поля пусты
+    signInBtn.disabled = !(email && password); 
   }
 
   if (recoverPasswordBtn) {
-    recoverPasswordBtn.disabled = !resetEmail; // Деактивируем кнопку восстановления пароля, если email не введен
+    recoverPasswordBtn.disabled = !resetEmail; 
   }
 }
 

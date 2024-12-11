@@ -1,4 +1,5 @@
 const path = require("path");
+const fs = require("fs");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
@@ -6,7 +7,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 module.exports = {
-  mode: "development", // Измените на 'production' для финальной сборки
+  mode: "development",
   entry: {
     main: path.resolve(__dirname, "src/js/index.js"),
     animation: path.resolve(__dirname, "src/js/animation.js"),
@@ -16,7 +17,8 @@ module.exports = {
     signIn: path.resolve(__dirname, "src/js/signIn.js"),
     login: path.resolve(__dirname, "src/js/login.js"),
     register: path.resolve(__dirname, "src/js/register.js"),
-    registration: path.resolve(__dirname , "src/js/registration.js")
+    registration: path.resolve(__dirname, "src/js/registration.js"),
+    authState: path.resolve(__dirname, "src/js/authState.js"),
   },
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -33,8 +35,8 @@ module.exports = {
     hot: false,
     proxy: [
       {
-        context: ["/api"], 
-        target: "http://localhost:3005", 
+        context: ["/api"],
+        target: "http://localhost:3005",
         changeOrigin: true,
         logLevel: "info",
       },
@@ -46,7 +48,7 @@ module.exports = {
         test: /\.(png|svg|jpg|jpeg|webp)$/i,
         type: "asset/resource",
         generator: {
-          filename: "img/[name][ext]", // Обновлено для правильного расположения изображений
+          filename: "img/[name][ext]",
         },
       },
       {
@@ -73,19 +75,37 @@ module.exports = {
       title: "Garmin",
       filename: "index.html",
       template: "src/index.html",
-      chunks: ["animation", "main"],
+      chunks: ["animation", "main", "authState"],
+      templateParameters: {
+        footer: fs.readFileSync(
+          path.resolve(__dirname, "src/pages/components/footer.html"),
+          "utf-8"
+        ),
+      },
     }),
     new HtmlWebpackPlugin({
       title: "Product Page",
       filename: "pages/itempage.html",
       template: "src/pages/itempage.html",
-      chunks: ["itempage", "animation"],
+      chunks: ["itempage", "animation","authState"],
+      templateParameters: {
+        footer: fs.readFileSync(
+          path.resolve(__dirname, "src/pages/components/footer.html"),
+          "utf-8"
+        ),
+      },
     }),
     new HtmlWebpackPlugin({
       title: "Shipping",
       filename: "pages/shipping.html",
       template: "src/pages/shipping.html",
-      chunks: ["animation"],
+      chunks: ["animation","authState"],
+      templateParameters: {
+        footer: fs.readFileSync(
+          path.resolve(__dirname, "src/pages/components/footer.html"),
+          "utf-8"
+        ),
+      },
     }),
     new HtmlWebpackPlugin({
       title: "Login Page",
@@ -99,9 +119,21 @@ module.exports = {
       template: "src/pages/registration.html",
       chunks: ["register", "registration"],
     }),
+    new HtmlWebpackPlugin({
+      title: "Account | Profile",
+      filename: "pages/accountProfile.html",
+      template: "src/pages/accountProfile.html",
+      chunks: ["main", "animation", "authState"],
+      templateParameters: {
+        footer: fs.readFileSync(
+          path.resolve(__dirname, "src/pages/components/footer.html"),
+          "utf-8"
+        ),
+      },
+    }),
+
     new CopyWebpackPlugin({
       patterns: [{ from: "src/img", to: "img" }],
     }),
   ],
 };
-

@@ -114,14 +114,14 @@
   font-family: Roboto, sans-serif, Microsoft JhengHei;
   font-size: 9pt;
   display: inline-flex;
-  /* Позволяет элементу подстраиваться под размер содержимого */
+
   justify-content: center;
   align-items: center;
   border: #6DCFF6 solid 6pt;
   padding: 5px;
-  /* Добавьте отступы, если это необходимо */
+
   box-sizing: border-box;
-  /* Чтобы padding и border учитывались в размерах */
+
 }
 
 .product-price {
@@ -366,15 +366,15 @@ button:disabled {
 .nav-bar {
   background: #e6e6e6;
   height: 80px;
-  /* Высота навбара */
+
   display: flex;
   justify-content: center;
-  /* Центрируем содержимое */
+
   align-items: center;
-  /* Вертикальное выравнивание по центру */
+
   width: 100%;
   position: relative;
-  /* Для липкости при прокрутке */
+
   transition: all 0.3s ease;
   z-index: 1000;
 }

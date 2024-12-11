@@ -1,5 +1,6 @@
 import "../style/signin_login.css";
 
+
 document
   .getElementById("registerForm")
   .addEventListener("submit", async function (event) {
@@ -19,7 +20,6 @@ document
 
     try {
       const response = await fetch("/api/users", {
-        // Здесь вы отправляете запрос на ваш роут регистрации
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -32,10 +32,10 @@ document
       loadingSpinner.style.display = "none";
       createAccountBtn.disabled = false;
       document.getElementById("createAccountBtn").style.color = "#000";
+
       if (response.ok) {
-        // Успешная регистрация
         alert("User registered successfully");
-        window.location.href = "../index.html"; // Перенаправление после успешной регистрации
+        window.location.href = "../index.html"; 
       } else {
         loginError.innerHTML = `
         ${data.message}
@@ -47,7 +47,7 @@ document
       console.error("Error during registration:", error);
       alert("An error occurred. Please try again later.");
     } finally {
-      createAccountBtn.disabled = false; // Включаем кнопку обратно
+      createAccountBtn.disabled = false;
     }
 
     document

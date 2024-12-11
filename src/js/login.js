@@ -1,3 +1,15 @@
+document.addEventListener("DOMContentLoaded", function () {
+  const email = localStorage.getItem("email");
+  const password = localStorage.getItem("password");
+
+  if (email) {
+    document.getElementById("email").value = email;
+  }
+  if (password) {
+    document.getElementById("password").value = password;
+  }
+});
+
 document
   .getElementById("loginForm")
   .addEventListener("submit", async function (event) {
@@ -9,12 +21,13 @@ document
     const signInBtn = document.getElementById("signInBtn");
     const loadingSpinner = document.getElementById("loadingSpinner");
 
-    // Очищаем ошибки перед новым запросом
     loginError.style.display = "none";
 
     loadingSpinner.style.display = "inline-block";
     document.getElementById("signInBtn").style.color = "#ddd";
-    signInBtn.disabled = true;
+  
+   
+
     try {
       const response = await fetch("/api/users/login", {
         method: "POST",
@@ -25,17 +38,19 @@ document
       });
       const data = await response.json();
 
-      
       loadingSpinner.style.display = "none";
       document.getElementById("signInBtn").style.color = "#000";
-      signInBtn.disabled = false;
+
 
       if (response.ok) {
         const rememberMe = document.getElementById("rememberMe").checked;
 
         if (rememberMe) {
-          localStorage.setItem("email", email);
-          localStorage.setItem("password", password);
+          localStorage.setItem("isAuthenticated", "true");
+          localStorage.setItem("user", JSON.stringify(data));
+        } else {
+          sessionStorage.setItem("isAuthenticated", "true");
+          sessionStorage.setItem("user", JSON.stringify(data));
         }
         window.location.href = "../index.html";
       } else {
@@ -49,7 +64,7 @@ document
       }
     } catch (error) {
       loadingSpinner.style.display = "none";
-      signInBtn.disabled = false;
+      // signInBtn.disabled = false;
       loginError.textContent = "An error occurred. Please try again later.";
       loginError.style.display = "block";
     }

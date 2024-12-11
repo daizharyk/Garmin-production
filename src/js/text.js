@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", function() {
-  // Обработчик события для навигационного элемента
+
 
   document.getElementById("burgerButton").addEventListener("click", function() {
     const navMenu = document.getElementById("navMenu");
-    this.classList.toggle("active"); // Переключение класса для анимации
+    this.classList.toggle("active"); 
     navMenu.style.display = navMenu.style.display === "block" ? "none" : "block"; // Скрыть или показать меню
   });
 
@@ -13,14 +13,13 @@ document.addEventListener("DOMContentLoaded", function() {
       const dropdownClass = this.getAttribute('data-dropdown'); // Получаем класс дропдауна
       const dropdown = document.querySelector(`.${dropdownClass}`);
 
-      if (dropdown) { // Проверяем, существует ли дропдаун
-        // Переключаем видимость дропдауна
+      if (dropdown) {
         dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
 
-        // Скрытие всех подменю
+
         const subMenus = dropdown.querySelectorAll(".sub-menu");
         subMenus.forEach(subMenu => {
-          subMenu.style.display = "none"; // Скрыть все подменю при открытии dropdown
+          subMenu.style.display = "none"; 
         });
       } else {
         console.error(`Dropdown with class "${dropdownClass}" not found.`);

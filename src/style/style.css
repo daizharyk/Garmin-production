@@ -1,11 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100..900&display=swap');
 
+body {
+  font-family: "Roboto", sans-serif;
+}
 
 * {
   padding: 0;
   margin: 0;
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
   box-sizing: border-box;
 }
 
@@ -53,7 +57,7 @@
 .svg-container {
   display: inline-flex;
   justify-content: center;
-  /* Центрируем содержимое по горизонтали */
+
   align-items: center;
   height: 100%;
   width: 30px;
@@ -122,7 +126,7 @@
 
 
 .logo a {
-  font-family: 'Roboto';
+  font-family: "Roboto", sans-serif;
   text-decoration: none;
   font-size: 1.5rem;
   font-weight: 700;
@@ -200,7 +204,7 @@ text-align: left;
 }
 
 .sub-menu li {
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
   font-size: 0.8rem;
   letter-spacing: .05rem;
   margin-bottom: 10px;
@@ -378,7 +382,7 @@ text-align: left;
 }
 
 .card h3 {
-  font-family: "Oswald", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
   letter-spacing: .05rem;
@@ -388,7 +392,7 @@ text-align: left;
 }
 
 .card a {
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
   color: #000;
   text-decoration: none;
   font-size: 15px;
@@ -472,7 +476,7 @@ text-align: left;
 .overlay a {
 
   color: #ffffff;
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
   font-size: 0.875rem;
   font-weight: 500;
   border: solid 1px #ffffff;
@@ -515,7 +519,7 @@ text-align: left;
 }
 
 .content {
-  font-size: "Roboto";
+  font-family: "Roboto", sans-serif;
   text-align: center;
   padding: 40px;
   color: #fff;
@@ -532,7 +536,7 @@ text-align: left;
 }
 
 .content p {
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
   font-size: 1.125rem;
   line-height: 1.5;
   font-weight: 400;
@@ -540,7 +544,7 @@ text-align: left;
 }
 
 .content a {
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
   color: #ffffff;
   margin: 2rem;
   border: solid 1px #fff;
@@ -629,7 +633,7 @@ text-align: left;
 
 .feature-list input[type="checkbox"]:checked {
   background-color: #000;
-  /* Черный фон для отмеченного чекбокса */
+
 }
 
 .feature-list input[type="checkbox"]:checked::after {
@@ -645,7 +649,7 @@ text-align: left;
 
 .feature-list label {
   flex: 1;
-  /* Расширяем label на доступное пространство */
+
   cursor: pointer;
 }
 
@@ -654,7 +658,7 @@ text-align: left;
 
 .toggle-checkbox {
   display: none;
-  /* Скрываем чекбокс */
+
 }
 
 .hidden {
@@ -747,7 +751,7 @@ text-align: left;
   background: #000;
   width: 120px;
   height: 40px;
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
   color: #fff;
   transition: .2s;
   outline: none;
@@ -775,7 +779,7 @@ text-align: left;
   font-weight: 550;
   font-size: 0.875rem;
   text-align: left;
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
 }
 
 .select-option select {
@@ -851,7 +855,7 @@ text-align: left;
 }
 
 .product-description {
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
   line-height: 1.5;
   text-align: left;
@@ -863,7 +867,7 @@ text-align: left;
 
 
 .price-text {
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
   font-weight: 700;
   font-size: 15px;
 }
@@ -1058,7 +1062,7 @@ footer {
 }
 
 .nav-list-li {
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
   position: relative;
   font-size: 0.8rem;
   font-weight: 400;
@@ -1076,7 +1080,7 @@ footer {
 
 .socialmediafooter h4 {
   color: #fff;
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
   font-size: 0.9rem;
   cursor: pointer;
   font-weight: 500;
@@ -1115,7 +1119,7 @@ footer {
 
 
 .foter_nav {
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
   font-size: .8rem;
   display: flex;
   width: 100%;
@@ -1160,6 +1164,7 @@ footer {
 .product-filter_dropdown {
   display: none;
 }
+
 
 .cards-content {
   margin-right: 20px;
@@ -1210,36 +1215,36 @@ footer {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* Центрируем линии */
+
     align-items: center;
-    /* Центрируем линии */
+
     height: 40px;
-    /* Высота кнопки */
+
     width: 40px;
-    /* Ширина кнопки */
+
   }
 
   .burger-line {
     width: 20px;
-    /* Ширина полосы */
+
     height: 4px;
-    /* Высота полосы */
+
     background-color: #333;
     margin: 4px 0;
-    /* Отступ между полосами */
+
     transition: all 0.5s ease;
-    /* Плавный переход */
+
   }
 
-  /* Анимация для "X" */
+
   .burger-button.active .burger-line.line1 {
     transform: rotate(45deg) translateY(7px);
-    /* Сдвиг вниз и поворот */
+
   }
 
   .burger-button.active .burger-line.line2 {
     transform: rotate(-45deg) translateY(-7px);
-    /* Сдвиг вверх и поворот */
+
   }
 
   .nav-item-section {
@@ -1249,7 +1254,7 @@ footer {
     width: 100%;
     height: fit-content;
     top: 50px;
-    /* Позиционируем меню под кнопкой */
+
     left: 0;
     background-color: #fff;
     z-index: 10;
@@ -1309,30 +1314,30 @@ footer {
     padding: 20px 40px;
     border: 2px solid #ccc;
     margin: 15px 15px 0 15px;
-    /* Отступ слева от SVG */
+
   }
 
   .search-input:focus {
     border-radius: 0;
-    /* Радиус при фокусе равен 0 */
+
     outline: none;
-    /* Убираем стандартное обрамление */
+
     border: 2px solid #000;
-    /* Цвет границы при фокусе */
+
   }
 
   .search-icon {
     position: absolute;
     left: 30px;
     width: 25px;
-    /* Ширина SVG */
+
   }
 
 
-  /* Стиль для отображения меню */
+
   .nav-item-section.active {
     display: block;
-    /* Показываем меню */
+
   }
 
   .dropdown-container {
@@ -1433,9 +1438,9 @@ footer {
 
 
   .nav-section {
-    display: flex; /* Используем flexbox */
-    justify-content: space-between; /* Распределяем элементы по краям */
-    align-items: center; /* Центрируем по вертикали */
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
     position: relative; 
   }
 
@@ -1518,7 +1523,7 @@ footer {
   }
 
   .product-filter_dropdown p {
-    font-family: "Roboto";
+    font-family: "Roboto", sans-serif;
     color: #000;
     font-weight: 500;
     font-size: 1rem;
@@ -1546,7 +1551,7 @@ footer {
 
   .nav-list-item.active .nav-list-li {
     display: block;
-    /* Показать при активном состоянии */
+
     padding-bottom: 20px;
   }
 
@@ -1760,7 +1765,7 @@ footer {
     font-weight: 550;
     font-size: 0.775rem;
     text-align: left;
-    font-family: "Roboto";
+    font-family: "Roboto", sans-serif;
   }
 
   .select-option select {

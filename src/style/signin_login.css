@@ -1,10 +1,15 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100..900&display=swap');
+
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
 }
-
 
 main {
   min-height: 100vh;
@@ -21,7 +26,6 @@ main {
   padding: 20px;
 }
 
-
 .foter_nav {
   box-sizing: border-box;
   width: 100%;
@@ -36,20 +40,25 @@ main {
 }
 
 .foter_nav_li {
-
   display: flex;
   text-decoration: none;
   list-style: none;
   gap: 15px;
 }
 
+.success-message {
+  color: green;
+  margin-bottom: 15px;
+  font-size: 16px;
+}
 
 .foter_nav_li a:hover {
   text-decoration: underline;
 }
 
 body {
-  background: url('https://i.ibb.co.com/YQhX97k/jonatan-pie-3l3-Rw-Qd-HRHg-unsplash-11zon-1.jpg') no-repeat center center fixed;
+  background: url("https://i.ibb.co.com/YQhX97k/jonatan-pie-3l3-Rw-Qd-HRHg-unsplash-11zon-1.jpg")
+    no-repeat center center fixed;
   background-size: cover;
   height: 100vh;
   display: block;
@@ -80,7 +89,7 @@ h1 {
 }
 
 h2 {
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
   text-align: left;
   border-bottom: 1px solid #000;
@@ -101,7 +110,9 @@ label {
   font-weight: 500;
 }
 
-input[type="email"], input[type="password"], input[type="text"] {
+input[type="email"],
+input[type="password"],
+input[type="text"] {
   width: 100%;
   padding: 15px;
   border: 1px solid #ccc;
@@ -129,7 +140,7 @@ input[type="text"]:focus {
   margin-bottom: 20px;
   font-size: 17px;
   appearance: none;
-  background: url('../img/svg/down.svg') no-repeat 95% center;
+  background: url("../img/svg/down.svg") no-repeat 95% center;
   background-size: 25px 25px;
 }
 
@@ -153,10 +164,8 @@ input[type="checkbox"] {
   padding-left: 30px;
 }
 
-
-
 .privacy-text {
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
   font-size: 16px;
   margin: 10px 0;
 }
@@ -170,7 +179,7 @@ input[type="checkbox"]:checked {
 }
 
 input[type="checkbox"]:checked::after {
-  content: '\2713';
+  content: "\2713";
   position: absolute;
   top: 40%;
   left: 50%;
@@ -191,7 +200,7 @@ input[type="checkbox"]:focus {
 }
 
 .label-checkbox p {
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 17px;
 }
@@ -215,12 +224,10 @@ input[type="checkbox"]:focus {
   display: none;
 }
 
-
 .password-container {
   position: relative;
   display: flex;
   align-items: center;
-
 }
 
 .password-container input {
@@ -269,24 +276,21 @@ input.error {
 }
 
 .remember-forgot {
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
-
 }
 
 .remember-forgot a {
   font-size: 16px;
   color: #000;
-
 }
 
 .remember-label {
   display: flex;
   align-items: center;
-
 }
 
 .remember-forgot a:hover {
@@ -306,11 +310,12 @@ input.error {
   border: none;
   font-size: 16px;
   cursor: pointer;
-  transition: 0.2s, color 0.3s;
+  transition:
+    0.2s,
+    color 0.3s;
   font-weight: 500;
   margin: 35px 0;
   box-sizing: border-box;
-
 }
 
 .sign-in-btn:disabled {
@@ -330,18 +335,17 @@ input.error {
   color: #000;
 }
 
-
 label .required {
   color: #960303;
 }
 
 .label_text {
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
   font-weight: 500;
 }
 
 .goBack-btn {
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
   display: block;
   text-decoration: none;
   text-align: center;
@@ -350,7 +354,7 @@ label .required {
 }
 
 .forget-desctiption {
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
   font-size: 1.1rem;
   padding-bottom: 30px;
 }
@@ -365,13 +369,11 @@ label .required {
 
 .create-account a {
   color: #000;
-
 }
 
 .create-account a:hover {
   text-decoration: none;
 }
-
 
 .remember-forgot input[type="checkbox"] {
   -webkit-appearance: none;
@@ -387,12 +389,8 @@ label .required {
   outline: none;
 }
 
-
-
-
-
 .remember-forgot input[type="checkbox"]:checked::after {
-  content: '\2713';
+  content: "\2713";
   position: absolute;
   top: 50%;
   left: 50%;
@@ -405,7 +403,6 @@ label .required {
 .foter_nav_items a {
   color: #fff;
   text-decoration: none;
-
 }
 
 .error_message {
@@ -413,7 +410,8 @@ label .required {
   top: 0;
   left: 0;
   width: 100%;
-  font-family: "Superscripts-Roboto", "Roboto", "Noto Sans TC", "Noto Sans SC", "Noto Sans JP", "Noto Sans KR", "Prompt", sans-serif;
+  font-family: "Superscripts-Roboto", "Roboto", "Noto Sans TC", "Noto Sans SC",
+    "Noto Sans JP", "Noto Sans KR", "Prompt", sans-serif;
   font-size: 15px;
   background-color: #920000;
   padding: 15px;
@@ -423,7 +421,6 @@ label .required {
 }
 
 .close-btn {
-
   font-size: 30px;
   position: absolute;
   right: 40px;
@@ -435,7 +432,6 @@ label .required {
   font-weight: 100;
   cursor: pointer;
   margin-left: 10px;
-
 }
 
 .spinner {
@@ -451,7 +447,6 @@ label .required {
   transform: translate(-50%, -50%);
 }
 
-
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -462,21 +457,42 @@ label .required {
   }
 }
 
-@media (max-width:450px){
- .foter_nav{
-  display: block;
-justify-content: center;
-align-items: center;
-  text-align: center;
-  height: auto;
-  padding: 20px;
- }
- .foter_nav_li{
-  justify-content: center;
- }
+@media (max-width: 450px) {
+  .foter_nav {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: auto;
+    padding: 20px;
+  }
+  .foter_nav_li {
+    justify-content: center;
+  }
 
- .login-box{
-  width: 350px;
- }
+  .login-box {
+    width: 350px;
+  }
 }
 
+.custom-alert {
+  display: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.alert-content {
+  background-color: white;
+  text-align: center;
+  width: 300px;
+}
+
+#alertMessage {
+  font-size: 16px;
+  color: rgb(52, 165, 76);
+}

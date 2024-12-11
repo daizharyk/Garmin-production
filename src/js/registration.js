@@ -93,8 +93,7 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
       passwordRequirements.classList.remove("error");
     }
-  
-    // Проверяем совпадение паролей при изменении поля password
+
     checkPasswordsMatch();
   });
   

@@ -109,7 +109,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   init();
 
-  // Обработчик события для навигационного элемента
   const burgerButton = document.getElementById("burgerButton");
   const navMenu = document.getElementById("navMenu");
 
@@ -226,7 +225,6 @@ resetDropdowns();
 
   // Следим за изменением размера экрана
   window.addEventListener("resize", handleResize);
-  // Обработчик для column-title
 
   function taggleSing() {
     document.querySelectorAll(".nav-item, .column-title").forEach((title) => {

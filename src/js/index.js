@@ -1,7 +1,14 @@
 import { fetchData } from "./itemService.js";
+
+import { initDropdown } from "./accountProfile.js";
 import "../style/style.css";
 import "../style/shipping.css";
 import "../style/itempage.css";
+import "../style/accountProfile.css";
+
+document.addEventListener("DOMContentLoaded", () => {
+  initDropdown();
+});
 
 async function loadModule() {
   try {
@@ -12,7 +19,8 @@ async function loadModule() {
     const module = await import(
       /* webpackChunkName: "html-module" */ "./htmlBuilder.js"
     );
-    const { createCards, scrollToItems, createNewCards,setupFilterToggle } = module;
+    const { createCards, scrollToItems, createNewCards, setupFilterToggle } =
+      module;
     createNewCards();
     createCards(data);
     scrollToItems();
@@ -23,5 +31,4 @@ async function loadModule() {
 }
 
 loadModule();
-
 
