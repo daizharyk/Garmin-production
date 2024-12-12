@@ -635,210 +635,334 @@
         </div>
       </aside>
       <main>
-        <section class="account-details">
-          <h2>ACCOUNT DETAILS</h2>
-          <div class="details-wrapper">
-            <div class="details-info">
-              <p>Name: Didar</p>
-              <p>Email: aizharyk76@gmail.com</p>
-              <p>Location: Kazakhstan</p>
-              <p>Language: English (United States)</p>
-              <p>Password: ********</p>
-            </div>
-            <div class="details-actions">
-              <button class="action-btn">EDIT</button>
-              <button class="action-btn">UPDATE PASSWORD</button>
-              <button class="action-btn">EDIT SIGN IN SETTINGS</button>
-            </div>
-          </div>
-          <div class="img-wrapper">
-            <div class="img-info">
-              <div class="img-text">
-                <h1>HOLIDAY SALE</h1>
-                <p>Save big on great holiday gifts</p>
-              </div>
-              <div class="img-btn">
-                <button>shop</button>
-              </div>
-            </div>
-            <img
-              class="full-img"
-              src="https://i.ibb.co.com/rmGbmnF/72617-HOLIDAY-SALE-DESKTOP.webp"
-              alt="sale image"
-            />
-            <img
-              class="adaptive-img"
-              src="https://i.ibb.co.com/jTDtw11/72617-HOLIDAY-SALE-MOBILE.webp"
-              alt="sale image"
-            />
-          </div>
-          <div class="shipping-wrapper">
-            <h2>
-              Shipping Addresses
-              <span class="question-mark" title="Click for more info">?</span>
-            </h2>
-            <p class="question-mark-text shipping-text">
-              Garmin collects addresses when you place an order while signed in
-              to your account and when you submit a return. An address is
-              required for processing credit card payments and shipping
-              products. Garmin takes your privacy seriously and will not share
-              your address without your knowledge. You can correct or delete
-              your address at any time. Learn More
-            </p>
-            <div class="addressess info-card">
-              <div class="address-info">
-                <p id="name">didar sdfdfsdf</p>
-                <p>3000 S ADAMS ST #1116</p>
-                <p>TALLAHASSEE, FL</p>
-                <p>32301-6946</p>
-              </div>
-              <div class="btn-section">
-                <div class="address-edit-btns">
-                  <button class="address-edit-btn">Edit</button>
-                  <button>Delete</button>
+        <div class="account-details-container">
+          <section class="account-details">
+            <h1>Profile</h1>
+            <h2>ACCOUNT DETAILS</h2>
+            <div class="details-wrapper">
+              <div class="account-detail-wrapper">
+                <div class="details-info">
+                  <p>Name: Didar</p>
+                  <p>Email: aizharyk76@gmail.com</p>
+                  <p>Location: Kazakhstan</p>
+                  <p>Language: English (United States)</p>
+                  <p>Password: ********</p>
                 </div>
-                <div class="primary">
-                  <span>primary</span>
+                <div class="details-actions">
+                  <button class="action-btn account-edit-btn">EDIT</button>
+                  <button class="action-btn update-password-btn" >UPDATE PASSWORD</button>
+                  <button class="action-btn">EDIT SIGN IN SETTINGS</button>
                 </div>
               </div>
-            </div>
-            <form class="shipping-form shipping-form-address">
-              <div class="first-lastname">
-                <div class="form-group">
-                  <label for="firstName">First Name *</label>
-                  <input type="text" id="firstName" name="firstName" required />
-                </div>
-                <div class="form-group">
-                  <label for="lastName">Last Name *</label>
-                  <input type="text" id="lastName" name="lastName" required />
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label for="location">Location *</label>
-                <select id="location" name="location" required>
-                  <option value="United States">United States</option>
-                  <option value="Russian Federation">Russian Federation</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="addressLine1">Address Line 1 *</label>
-                <input
-                  type="text"
-                  id="addressLine1"
-                  name="addressLine1"
-                  required
-                />
-                <small class="error-message"
-                  >Address Line appears to be invalid</small
-                >
-              </div>
-
-              <div class="form-group">
-                <label for="postalCode">ZIP/Postal Code *</label>
-                <input type="text" id="postalCode" name="postalCode" required />
-              </div>
-              <div class="form-group">
-                <label for="city">City *</label>
-                <input type="text" id="city" name="city" required />
-              </div>
-              <div class="form-group">
-                <label for="state">State/Province *</label>
-                <select id="state" name="state" required>
-                  <option value="Florida">Florida</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="phoneLocation">Location *</label>
-                <select id="phoneLocation" name="phoneLocation" required>
-                  <option value="+7">Kazakhstan (+7)</option>
-                  <option value="+1">United States (+1)</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="phone">Phone *</label>
-                <input type="tel" id="phone" name="phone" required />
-              </div>
-              <div class="form-actions">
-                <button type="submit" class="save-btn">Save</button>
-                <button type="button" class="cancel-btn">Cancel</button>
-              </div>
-            </form>
-          </div>
-          <div class="shipping-wrapper">
-            <h2>
-              Phone Number
-              <span class="question-mark-phone" title="Click for more info"
-                >?</span
-              >
-            </h2>
-            <p class="question-mark-text-phone">
-              Garmin may collect your phone number in several places throughout
-              our web site. Your phone number is required when placing an order
-              on our Web site as our delivery suppliers require a phone number
-              to process a shipment. Garmin may also collect your phone number
-              during an interaction with our product support team to quickly
-              pull up your account details should you contact us in the future.
-              To help you keep your phone number(s) current, we've conveniently
-              listed them in one central place.
-            </p>
-            <div class="phone-number-container info-card">
-              <div class="address-info">
-                <p id="phoneNumber">+7708 600 50 50</p>
-              </div>
-              <div class="btn-section">
-                <div class="address-edit-btns">
-                  <button class="number-edt-btn">Edit</button>
-                  <button class="number-delete-btn">Delete</button>
-                </div>
-                <div class="primary">
-                  <span>primary</span>
-                </div>
-              </div>
-            </div>
-            <form class="shipping-form phone-number-form" >
-              <div class="first-lastname">
-                <div class="form-group">
+              <div class="account-detail-form">
+                <form class="shipping-form">
                   <div class="form-group">
-                    <label for="phoneLocation">Location *</label>
-                    <select id="phoneLocation" name="phoneLocation" required>
-                      <option value="+7">Kazakhstan (+7)</option>
-                      <option value="+1">United States (+1)</option>
+                    <label for="firstName">Name *</label>
+                    <input
+                      type="text"
+                      id="firstName"
+                      name="firstName"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="firstName">Email *</label>
+                    <input type="email" id="email" name="email" required />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="location">Location *</label>
+                    <select id="location" name="location" required>
+                      <option value="United States">United States</option>
+                      <option value="Russian Federation">Kazakhstan</option>
                     </select>
                   </div>
-                </div>
-                <div class="form-group">
-                  <label for="lastName">Area code</label>
-                  <input type="text" id="lastName" name="lastName" required />
-                </div>
-              </div>
+                  <div class="form-group">
+                    <label for="language">Language *</label>
+                    <select id="language" name="language" required>
+                      <option value="English">English</option>
+                      <option value="Kazakh">Kazakh</option>
+                      <option value="Spanish">Spanish</option>
+                      <option value="Chinese">Chinese</option>
+                      <option value="French">French</option>
+                      <option value="German">German</option>
+                      <option value="Japanese">Japanese</option>
+                      <option value="Arabic">Arabic</option>
+                      <option value="Hindi">Hindi</option>
+                    </select>
+                  </div>
 
-              <div class="form-group">
-                <label for="phone">Phone</label>
-                <input type="tel" id="phone" name="phone" required />
+                  <div class="form-actions">
+                    <button type="submit" class="save-btn">Save</button>
+                    <button
+                      type="button"
+                      class="cancel-btn account-edit-cancel"
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </form>
               </div>
-              <div class="form-actions">
-                <button type="submit" class="save-btn phone-number-save">Save</button>
-                <button type="button" class="cancel-btn phone-number-cancel">Cancel</button>
-              </div>
-            </form>
-          </div>
-          <div class="shipping-wrapper">
-            <div class="data-management">
-              <h2>Data Management</h2>
-              <div class="data-management-text">
-                <p>
-                  View the information Garmin maintains about your account,
-                  registered devices, mobile apps and more. You can request a
-                  copy of it or ask us to delete it.
-                </p>
-              </div>
-              <div class="data-managment-btn">
-                <button class="action-btn">Manage your data</button>
+              <div class="update-password-form">
+                <form class="shipping-form">
+                  <div class="form-group">
+                    <label for="firstName">Name *</label>
+                    <input
+                      type="text"
+                      id="firstName"
+                      name="firstName"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="currentPassword">Current Password *</label>
+                    <input
+                      type="password"
+                      id="currentPassword"
+                      name="currentPassword"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="newPassword">New Password *</label>
+                    <input
+                      type="password"
+                      id="newPassword"
+                      name="newPassword"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="confirmNewPassword"
+                      >Confirm New Password *</label
+                    >
+                    <input
+                      type="password"
+                      id="confirmNewPassword"
+                      name="confirmNewPassword"
+                      required
+                    />
+                  </div>
+                  <div class="form-actions">
+                    <button type="submit" class="save-btn">Update</button>
+                    <button
+                      type="button"
+                      class="cancel-btn password-edit-cancel"
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </form>
               </div>
             </div>
-          </div>
-        </section>
+
+            <div class="img-wrapper">
+              <div class="img-info">
+                <div class="img-text">
+                  <h1>HOLIDAY SALE</h1>
+                  <p>Save big on great holiday gifts</p>
+                </div>
+                <div class="img-btn">
+                  <button>shop</button>
+                </div>
+              </div>
+              <img
+                class="full-img"
+                src="https://i.ibb.co.com/rmGbmnF/72617-HOLIDAY-SALE-DESKTOP.webp"
+                alt="sale image"
+              />
+              <img
+                class="adaptive-img"
+                src="https://i.ibb.co.com/jTDtw11/72617-HOLIDAY-SALE-MOBILE.webp"
+                alt="sale image"
+              />
+            </div>
+            <div class="shipping-wrapper">
+              <h2>
+                Shipping Addresses
+                <span class="question-mark" title="Click for more info">?</span>
+              </h2>
+              <p class="question-mark-text shipping-text">
+                Garmin collects addresses when you place an order while signed
+                in to your account and when you submit a return. An address is
+                required for processing credit card payments and shipping
+                products. Garmin takes your privacy seriously and will not share
+                your address without your knowledge. You can correct or delete
+                your address at any time. Learn More
+              </p>
+              <div class="addressess info-card">
+                <div class="address-info">
+                  <p id="name">didar sdfdfsdf</p>
+                  <p>3000 S ADAMS ST #1116</p>
+                  <p>TALLAHASSEE, FL</p>
+                  <p>32301-6946</p>
+                </div>
+                <div class="btn-section">
+                  <div class="address-edit-btns">
+                    <button class="address-edit-btn">Edit</button>
+                    <button>Delete</button>
+                  </div>
+                  <div class="primary">
+                    <span>primary</span>
+                  </div>
+                </div>
+              </div>
+              <form class="shipping-form shipping-form-address">
+                <div class="first-lastname">
+                  <div class="form-group">
+                    <label for="firstName">First Name *</label>
+                    <input
+                      type="text"
+                      id="firstName"
+                      name="firstName"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="lastName">Last Name *</label>
+                    <input type="text" id="lastName" name="lastName" required />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="location">Location *</label>
+                  <select id="location" name="location" required>
+                    <option value="United States">United States</option>
+                    <option value="Russian Federation">
+                      Russian Federation
+                    </option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="addressLine1">Address Line 1 *</label>
+                  <input
+                    type="text"
+                    id="addressLine1"
+                    name="addressLine1"
+                    required
+                  />
+                  <small class="error-message"
+                    >Address Line appears to be invalid</small
+                  >
+                </div>
+
+                <div class="form-group">
+                  <label for="postalCode">ZIP/Postal Code *</label>
+                  <input
+                    type="text"
+                    id="postalCode"
+                    name="postalCode"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="city">City *</label>
+                  <input type="text" id="city" name="city" required />
+                </div>
+                <div class="form-group">
+                  <label for="state">State/Province *</label>
+                  <select id="state" name="state" required>
+                    <option value="Florida">Florida</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="phoneLocation">Location *</label>
+                  <select id="phoneLocation" name="phoneLocation" required>
+                    <option value="+7">Kazakhstan (+7)</option>
+                    <option value="+1">United States (+1)</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="phone">Phone *</label>
+                  <input type="tel" id="phone" name="phone" required />
+                </div>
+                <div class="form-actions">
+                  <button type="submit" class="save-btn">Save</button>
+                  <button type="button" class="cancel-btn address-form-cancel">
+                    Cancel
+                  </button>
+                </div>
+              </form>
+            </div>
+            <div class="shipping-wrapper">
+              <h2>
+                Phone Number
+                <span class="question-mark-phone" title="Click for more info"
+                  >?</span
+                >
+              </h2>
+              <p class="question-mark-text-phone">
+                Garmin may collect your phone number in several places
+                throughout our web site. Your phone number is required when
+                placing an order on our Web site as our delivery suppliers
+                require a phone number to process a shipment. Garmin may also
+                collect your phone number during an interaction with our product
+                support team to quickly pull up your account details should you
+                contact us in the future. To help you keep your phone number(s)
+                current, we've conveniently listed them in one central place.
+              </p>
+              <div class="phone-number-container info-card">
+                <div class="address-info">
+                  <p id="phoneNumber">+7708 600 50 50</p>
+                </div>
+                <div class="btn-section">
+                  <div class="address-edit-btns">
+                    <button class="number-edt-btn">Edit</button>
+                    <button class="number-delete-btn">Delete</button>
+                  </div>
+                  <div class="primary">
+                    <span>primary</span>
+                  </div>
+                </div>
+              </div>
+              <form class="shipping-form phone-number-form">
+                <div class="first-lastname">
+                  <div class="form-group">
+                    <div class="form-group">
+                      <label for="phoneLocation">Location *</label>
+                      <select id="phoneLocation" name="phoneLocation" required>
+                        <option value="+7">Kazakhstan (+7)</option>
+                        <option value="+1">United States (+1)</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="lastName">Area code</label>
+                    <input type="text" id="lastName" name="lastName" required />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="phone">Phone</label>
+                  <input type="tel" id="phone" name="phone" required />
+                </div>
+                <div class="form-actions">
+                  <button type="submit" class="save-btn phone-number-save">
+                    Save
+                  </button>
+                  <button type="button" class="cancel-btn phone-number-cancel">
+                    Cancel
+                  </button>
+                </div>
+              </form>
+            </div>
+            <div class="shipping-wrapper">
+              <div class="data-management">
+                <h2>Data Management</h2>
+                <div class="data-management-text">
+                  <p>
+                    View the information Garmin maintains about your account,
+                    registered devices, mobile apps and more. You can request a
+                    copy of it or ask us to delete it.
+                  </p>
+                </div>
+                <div class="data-managment-btn">
+                  <button class="action-btn">Manage your data</button>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
       </main>
     </div>
 

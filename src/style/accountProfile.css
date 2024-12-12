@@ -5,6 +5,16 @@
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
 }
+main {
+  width: 100vw;
+}
+h1 {
+  font-family: "Oswald", "Roboto Condensed", "Roboto", "Noto Sans TC",
+    "Noto Sans SC", "Noto Sans JP", "Noto Sans KR", "Prompt", sans-serif;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  font-weight: 400;
+}
 body {
   font-family:
     Superscripts-Roboto,
@@ -19,7 +29,7 @@ body {
 .account-nav {
   position: relative;
   display: flex;
-  margin: 20px;
+  margin: 10px;
   text-align: center;
   justify-content: center;
 }
@@ -27,7 +37,12 @@ body {
 .account-nav a {
   text-decoration: none;
 }
-
+.account-details-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  border-left: 1px solid #d9d9d9;
+}
 .shipping-wrapper {
   margin: 30px 0;
 }
@@ -52,11 +67,7 @@ h2 {
 }
 
 .details-wrapper {
-  display: flex;
-  justify-content: left;
   margin: 1rem 0;
-  align-items: flex-start;
-  gap: 2rem;
 }
 
 .details-info p {
@@ -292,9 +303,11 @@ h2 {
 
 .profile__content {
   display: flex;
+  align-items: flex-start;
   border-top: 1px solid #d9d9d9;
 }
 .category {
+  width: 300px;
   display: flex;
   align-items: center;
   padding: 0 20px;
@@ -320,10 +333,10 @@ h2 {
   margin-right: 10px;
   font-size: 18px;
 }
-.sidebar-account {
-  border-right: 1px solid #d9d9d9;
-  width: 310px;
-  flex-shrink: 0;
+.account-details {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 .category:last-child {
   border-bottom: none;
@@ -335,7 +348,9 @@ h2 {
   margin-top: 2rem;
   display: block;
 }
-
+.shipping-form {
+  margin-top: 1rem;
+}
 .shipping-form .form-group {
   margin-bottom: 2rem;
   width: 100%;
@@ -420,6 +435,25 @@ input:invalid + .error-message {
   display: none;
 }
 
+.account-detail-wrapper {
+  display: flex;
+  gap: 4rem;
+}
+.account-detail-form {
+  display: none;
+}
+.account-detail-form.visible {
+  display: block;
+}
+.update-password-form {
+  display: none;
+}
+.update-password-form.visible {
+  display: block;
+}
+.sidebar-account {
+  width: 300px;
+}
 @media (max-width: 1024px) {
   .sidebar-account {
     display: none;
