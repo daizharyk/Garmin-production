@@ -1,6 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
 
 body {
   font-family: "Roboto", sans-serif;
@@ -32,7 +33,6 @@ body {
   align-items: center;
   justify-content: center;
   height: 100%;
-
 }
 
 .user-menu {
@@ -49,7 +49,6 @@ body {
 }
 
 .svg-container svg {
-
   width: 100%;
   height: 100%;
 }
@@ -68,7 +67,6 @@ body {
   border-bottom: 4px solid #000;
 }
 
-
 .dropdown-user {
   opacity: 0;
   visibility: hidden;
@@ -82,8 +80,10 @@ body {
   width: 150px;
   box-sizing: border-box;
   transform: translateY(-10px);
-  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
-
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease,
+    visibility 0.2s;
 }
 
 .dropdown-user.show {
@@ -98,7 +98,7 @@ body {
 
 .dropdown-user a {
   text-align: left;
-  font-size: 0.830rem;
+  font-size: 0.83rem;
   display: block;
   margin: 10px 20px 10px 10px;
   text-decoration: none;
@@ -107,10 +107,10 @@ body {
 
 .dropdown-user a:hover {
   text-decoration: underline;
-  transition: .2s, color 0.2s;
+  transition:
+    0.2s,
+    color 0.2s;
 }
-
-
 
 .nav-section {
   position: relative;
@@ -121,9 +121,7 @@ body {
   height: 60px;
   padding: 0 20px;
   width: 100%;
-
 }
-
 
 .logo a {
   font-family: "Roboto", sans-serif;
@@ -148,12 +146,14 @@ body {
 }
 
 .nav-item {
-  font-family: Superscripts-Oswald, Oswald, "Roboto Condensed", Roboto, "Noto Sans TC", "Noto Sans SC", "Noto Sans JP", "Noto Sans KR", Prompt, sans-serif;
+  font-family: Superscripts-Oswald, Oswald, "Roboto Condensed", Roboto,
+    "Noto Sans TC", "Noto Sans SC", "Noto Sans JP", "Noto Sans KR", Prompt,
+    sans-serif;
 
   cursor: pointer;
   font-size: 1rem;
   cursor: pointer;
-  letter-spacing: .04rem;
+  letter-spacing: 0.04rem;
   font-weight: 400;
 }
 
@@ -162,8 +162,8 @@ body {
   display: none;
   justify-content: center;
   position: absolute;
-  
-  left: 0;           
+
+  left: 0;
   right: 0;
   top: 100%;
   width: 100%;
@@ -171,18 +171,16 @@ body {
   padding: 35px 0 35px 0;
   gap: 20px;
   z-index: 1005;
-  border: 1px solid  #cccc;
+  border: 1px solid #cccc;
 }
 
 .dropdown-column {
   padding-right: 80px;
 }
 
-
 .dropdown-container {
   display: flex;
-text-align: left;
-
+  text-align: left;
 }
 
 .nav-item:hover .dropdown {
@@ -190,7 +188,6 @@ text-align: left;
 }
 
 /* Стили для колонки в выпадающем меню */
-
 
 .sub-menu {
   list-style-type: none;
@@ -206,7 +203,7 @@ text-align: left;
 .sub-menu li {
   font-family: "Roboto", sans-serif;
   font-size: 0.8rem;
-  letter-spacing: .05rem;
+  letter-spacing: 0.05rem;
   margin-bottom: 10px;
   text-decoration: none;
   color: #000;
@@ -217,13 +214,12 @@ text-align: left;
 }
 
 .column-title {
-  font-family: Superscripts-Oswald, Oswald, "Roboto Condensed", Roboto, "Noto Sans TC", "Noto Sans SC", "Noto Sans JP", "Noto Sans KR", Prompt, sans-serif;
+  font-family: Superscripts-Oswald, Oswald, "Roboto Condensed", Roboto,
+    "Noto Sans TC", "Noto Sans SC", "Noto Sans JP", "Noto Sans KR", Prompt,
+    sans-serif;
   margin: 20px 0 15px 0;
   border-bottom: 1px solid #d9d9d9;
 }
-
-
-
 
 .nav-item-section {
   display: flex;
@@ -247,7 +243,6 @@ text-align: left;
   text-decoration: none;
 }
 
-
 .new-card img {
   width: 220px;
   margin: 10px;
@@ -261,12 +256,11 @@ text-align: left;
   font-family: "Oswald";
   font-size: 1.2rem;
   font-weight: 400;
-  letter-spacing: .05rem;
+  letter-spacing: 0.05rem;
   color: #000000;
   margin-bottom: 10px;
   margin-top: 0;
 }
-
 
 .trademark-dropdown {
   font-size: 0.6em;
@@ -286,17 +280,16 @@ text-align: left;
   text-align: center;
   background-color: #000;
   padding: 0.2rem 0 0.2rem 0;
-  font-size: .8rem;
+  font-size: 0.8rem;
   box-sizing: border-box;
 }
-
 
 .freeground a {
   color: #fff !important;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  letter-spacing: .05rem;
+  letter-spacing: 0.05rem;
   line-height: 2;
   text-decoration: none;
 }
@@ -308,15 +301,13 @@ text-align: left;
   padding: 16px;
 }
 
-
 .sport_fitness a {
   color: #000;
   text-decoration: none;
   font-optical-sizing: auto;
   font-size: 0.95rem;
-  letter-spacing: .05rem;
+  letter-spacing: 0.05rem;
 }
-
 
 .banner {
   position: relative;
@@ -329,7 +320,6 @@ text-align: left;
 }
 
 .banner-text {
-
   align-items: center;
   color: #fff;
   position: absolute;
@@ -361,17 +351,13 @@ text-align: left;
   padding-top: 20px;
 }
 
-
 .card {
   background: #fff;
   padding: 32px 16px;
   text-align: center;
   max-width: 900px;
   margin: 0 auto;
-
-
 }
-
 
 .card p {
   font-size: 1.125rem;
@@ -385,7 +371,7 @@ text-align: left;
   font-family: "Roboto", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
-  letter-spacing: .05rem;
+  letter-spacing: 0.05rem;
   line-height: 1.25;
   margin: 1.5rem 0;
   font-size: 35px;
@@ -399,7 +385,9 @@ text-align: left;
   font-weight: 500;
   padding: 14px 30px;
   border: 1px solid #000;
-  transition: .2s, color 0.2s;
+  transition:
+    0.2s,
+    color 0.2s;
   text-transform: uppercase;
 }
 
@@ -409,13 +397,11 @@ text-align: left;
   color: #fff;
 }
 
-
 .shopall {
   padding: 50px;
 }
 
 #every_runner {
-
   margin: 50px;
   text-align: center;
 }
@@ -426,10 +412,8 @@ text-align: left;
   font-weight: 400;
   font-size: 2rem;
   color: #000;
-  letter-spacing: .05rem;
+  letter-spacing: 0.05rem;
 }
-
-
 
 .container {
   display: flex;
@@ -458,7 +442,6 @@ text-align: left;
   filter: brightness(50%);
 }
 
-
 .overlay {
   position: absolute;
   bottom: 50px;
@@ -471,10 +454,7 @@ text-align: left;
   color: #ffffff;
 }
 
-
-
 .overlay a {
-
   color: #ffffff;
   font-family: "Roboto", sans-serif;
   font-size: 0.875rem;
@@ -484,10 +464,11 @@ text-align: left;
   white-space: nowrap;
   padding: 0.5rem 1.5rem;
   line-height: 1.15;
-  transition: .2s, color 0.2s;
+  transition:
+    0.2s,
+    color 0.2s;
   color: #fff;
 }
-
 
 .overlay a:hover {
   border: 1px solid #ffffff;
@@ -502,17 +483,15 @@ text-align: left;
   color: #ffffff;
   bottom: 30px;
   font-family: "Oswald";
-  letter-spacing: .05rem;
+  letter-spacing: 0.05rem;
   font-weight: 400;
   font-size: 1.5rem;
-
 }
 
 .video_content iframe {
   width: 100%;
   height: 600px;
 }
-
 
 .black-card {
   background: #000;
@@ -548,9 +527,9 @@ text-align: left;
   color: #ffffff;
   margin: 2rem;
   border: solid 1px #fff;
-  transition: .2s;
+  transition: 0.2s;
   font-weight: 500;
-  padding: .75rem 1.5rem;
+  padding: 0.75rem 1.5rem;
   display: inline-block;
   font-size: 1rem;
   text-decoration: none;
@@ -578,8 +557,6 @@ text-align: left;
   line-height: 1.25;
 }
 
-
-
 .container-items {
   border-top: 1px solid #d9d9d9;
   display: flex;
@@ -600,14 +577,12 @@ text-align: left;
   line-height: 1.5;
 }
 
-
 .feature-list {
   font-size: 0.875rem;
   list-style: none;
 
   margin: 0;
 }
-
 
 .feature-list li {
   display: flex;
@@ -628,16 +603,14 @@ text-align: left;
   background-color: #fff;
   border: 2px solid #000;
   margin-right: 0.5rem;
-
 }
 
 .feature-list input[type="checkbox"]:checked {
   background-color: #000;
-
 }
 
 .feature-list input[type="checkbox"]:checked::after {
-  content: '\2713';
+  content: "\2713";
   position: absolute;
   top: 40%;
   left: 50%;
@@ -653,20 +626,15 @@ text-align: left;
   cursor: pointer;
 }
 
-
-
-
 .toggle-checkbox {
   display: none;
-
 }
 
 .hidden {
   display: none;
 }
 
-
-.toggle-checkbox:checked+.toggle-label+#connectivity-features {
+.toggle-checkbox:checked + .toggle-label + #connectivity-features {
   display: block;
   padding: 0;
 }
@@ -702,23 +670,19 @@ text-align: left;
   transition: 0.4s ease;
 }
 
-.toggle-checkbox:checked+.toggle-label .arrow {
+.toggle-checkbox:checked + .toggle-label .arrow {
   transform: rotate(-135deg);
 }
-
-
 
 .sidebar h3 {
   font-weight: 450;
   font-size: 0.875rem;
   line-height: 1.5;
-
 }
 
 #connectivity-features {
   margin-top: 1.3rem;
 }
-
 
 .select-option {
   display: flex;
@@ -728,20 +692,15 @@ text-align: left;
   box-sizing: border-box;
 }
 
-
-
 .grid__options {
   display: flex;
   flex-direction: row;
-
 
   align-items: center;
   box-sizing: inherit;
   margin: 20px 0 20px 16px;
   box-sizing: border-box;
 }
-
-
 
 .compare-buttom {
   cursor: pointer;
@@ -753,7 +712,7 @@ text-align: left;
   height: 40px;
   font-family: "Roboto", sans-serif;
   color: #fff;
-  transition: .2s;
+  transition: 0.2s;
   outline: none;
   text-transform: uppercase;
   font-weight: 500;
@@ -764,15 +723,12 @@ text-align: left;
   text-decoration: none;
 }
 
-
 .compare-buttom a:hover {
   background: #fff;
   color: #000;
   border: solid 1px #000;
   outline: none;
 }
-
-
 
 .select-option p {
   margin-right: 1rem;
@@ -789,10 +745,7 @@ text-align: left;
   border: 1px solid #d9d9d9;
 
   padding: 0.875rem 7em 0.875rem 0.875rem;
-
 }
-
-
 
 .select-option select:focus {
   outline: 1px solid #000;
@@ -806,9 +759,7 @@ text-align: left;
 .cards {
   display: flex;
   flex-wrap: wrap;
-
 }
-
 
 .card-link {
   display: flex;
@@ -847,7 +798,7 @@ text-align: left;
   font-family: "Oswald";
   font-size: 1.7rem;
   font-weight: 400;
-  letter-spacing: .05rem;
+  letter-spacing: 0.05rem;
   line-height: 1.25;
   text-align: left;
   color: #000000;
@@ -864,14 +815,11 @@ text-align: left;
   flex-grow: 1;
 }
 
-
-
 .price-text {
   font-family: "Roboto", sans-serif;
   font-weight: 700;
   font-size: 15px;
 }
-
 
 .tm-symbol {
   font-size: 0.7em;
@@ -880,7 +828,6 @@ text-align: left;
   color: #000;
   margin-left: 4px;
 }
-
 
 .tile-container {
   display: flex;
@@ -918,11 +865,10 @@ text-align: left;
   color: #ffffff;
   bottom: 30px;
   font-family: "Oswald";
-  letter-spacing: .05rem;
+  letter-spacing: 0.05rem;
   font-weight: 400;
   font-size: 2rem;
 }
-
 
 .tile-card-bg {
   position: absolute;
@@ -930,7 +876,11 @@ text-align: left;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.5) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
   filter: blur(10px);
   z-index: 1;
 }
@@ -949,7 +899,7 @@ text-align: left;
 .signup-content h2 {
   color: #000;
   font-family: "Oswald";
-  letter-spacing: .05rem;
+  letter-spacing: 0.05rem;
   font-weight: 400;
   font-size: 1.5rem;
   padding-bottom: 20px;
@@ -964,10 +914,10 @@ text-align: left;
   font-size: 0.7rem;
 }
 
-.email-form input[type="email"], .email-form button {
+.email-form input[type="email"],
+.email-form button {
   height: 44px;
   /* Убедитесь, что высота одинаковая */
-
 }
 
 .email-form {
@@ -983,7 +933,6 @@ text-align: left;
   font-size: 16px;
   border: 1px solid #ccc;
   border-right: none;
-
 }
 
 .email-form button {
@@ -997,7 +946,9 @@ text-align: left;
   width: 44px;
   border: none;
 
-  transition: 0.2s, color 0.3s;
+  transition:
+    0.2s,
+    color 0.3s;
 }
 
 .email-form span {
@@ -1011,9 +962,6 @@ text-align: left;
   border: 1px solid;
 }
 
-
-
-
 footer {
   background: #000;
   display: flex;
@@ -1024,15 +972,11 @@ footer {
   width: 100%;
 }
 
-
-
 .nav_list {
   display: flex;
   justify-content: space-between;
   padding: 30px;
 }
-
-
 
 .nav_list a {
   font-weight: 400;
@@ -1050,15 +994,16 @@ footer {
 }
 
 .nav-list-item span {
-  font-family: Superscripts-Oswald, Oswald, "Roboto Condensed", Roboto, "Noto Sans TC", "Noto Sans SC", "Noto Sans JP", "Noto Sans KR", Prompt, sans-serif;
+  font-family: Superscripts-Oswald, Oswald, "Roboto Condensed", Roboto,
+    "Noto Sans TC", "Noto Sans SC", "Noto Sans JP", "Noto Sans KR", Prompt,
+    sans-serif;
   font-weight: 400;
-  letter-spacing: .05rem;
+  letter-spacing: 0.05rem;
   color: #fff;
   line-height: 2rem;
   font-size: 1.3rem;
   cursor: pointer;
   text-align: left;
-
 }
 
 .nav-list-li {
@@ -1073,7 +1018,6 @@ footer {
   line-height: 1.5rem;
 }
 
-
 .nav-list-li a:hover {
   text-decoration: underline;
 }
@@ -1086,7 +1030,6 @@ footer {
   font-weight: 500;
   margin: 1rem 0 0 0;
 }
-
 
 .socialmediafooter h4:hover {
   text-decoration: underline;
@@ -1117,10 +1060,9 @@ footer {
   border-bottom: 4px solid #fff;
 }
 
-
 .foter_nav {
   font-family: "Roboto", sans-serif;
-  font-size: .8rem;
+  font-size: 0.8rem;
   display: flex;
   width: 100%;
   margin: 10px 30px 10px 30px;
@@ -1130,8 +1072,6 @@ footer {
   align-items: center;
   color: #fff;
 }
-
-
 
 .foter_nav_li {
   display: flex;
@@ -1160,26 +1100,23 @@ footer {
   display: none;
 }
 
-
 .product-filter_dropdown {
   display: none;
 }
-
 
 .cards-content {
   margin-right: 20px;
 }
 
-@media (max-width:1100px) {
+@media (max-width: 1100px) {
+  #garmin-logo {
+    display: flex;
+    position: relative;
 
-#garmin-logo{
-  display: flex;
- position: relative;
-
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
   .nav-section {
     position: relative;
     padding: 0;
@@ -1187,18 +1124,16 @@ footer {
     justify-content: space-between;
   }
 
-
   .logo {
-    position: absolute; 
+    position: absolute;
     left: 50%;
-    transform: translateX(-50%); 
-    font-size: 24px; 
+    transform: translateX(-50%);
+    font-size: 24px;
 
     order: 2;
   }
 
   .burger-menu {
-
     order: 1;
   }
 
@@ -1221,7 +1156,6 @@ footer {
     height: 40px;
 
     width: 40px;
-
   }
 
   .burger-line {
@@ -1233,23 +1167,19 @@ footer {
     margin: 4px 0;
 
     transition: all 0.5s ease;
-
   }
-
 
   .burger-button.active .burger-line.line1 {
     transform: rotate(45deg) translateY(7px);
-
   }
 
   .burger-button.active .burger-line.line2 {
     transform: rotate(-45deg) translateY(-7px);
-
   }
 
   .nav-item-section {
     display: none;
-    
+
     position: absolute;
     width: 100%;
     height: fit-content;
@@ -1274,14 +1204,12 @@ footer {
     box-sizing: border-box;
   }
 
-
   .dropdown-user a {
     text-align: center;
     margin: 0;
     padding: 10px 25px;
   }
   .nav-menu {
-
     list-style: none;
     padding: 0;
     margin: 0;
@@ -1291,30 +1219,25 @@ footer {
     padding: 0;
   }
 
-
-
   .nav-item.active {
     border-bottom: 1px solid #000;
   }
-
 
   .search-container {
     width: 100%;
     display: flex;
     position: relative;
     align-items: center;
-
   }
-.user-menu{
-  position: static;
-}
+  .user-menu {
+    position: static;
+  }
   .search-input {
     width: 100%;
 
     padding: 20px 40px;
     border: 2px solid #ccc;
     margin: 15px 15px 0 15px;
-
   }
 
   .search-input:focus {
@@ -1323,21 +1246,16 @@ footer {
     outline: none;
 
     border: 2px solid #000;
-
   }
 
   .search-icon {
     position: absolute;
     left: 30px;
     width: 25px;
-
   }
-
-
 
   .nav-item-section.active {
     display: block;
-
   }
 
   .dropdown-container {
@@ -1358,14 +1276,12 @@ footer {
     list-style: none;
     font-family: "Roboto";
     font-size: 0.8rem;
-    letter-spacing: .05rem;
-
-
+    letter-spacing: 0.05rem;
   }
 
-.new-cards-container{
-  display: none;
-}
+  .new-cards-container {
+    display: none;
+  }
 
   .sub-menu li {
     padding: 14px 40px;
@@ -1408,7 +1324,6 @@ footer {
     padding: 20px 0;
     cursor: pointer;
     border-bottom: 1px solid #ccc;
-
   }
 
   .toggle-sign {
@@ -1423,29 +1338,19 @@ footer {
   .nav-menu:hover {
     border-bottom: none;
   }
-
 }
 
-@media (max-width:1000px) {
-
-
-
-
+@media (max-width: 1000px) {
   .logo {
     flex: 1;
-
   }
-
 
   .nav-section {
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-    position: relative; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
   }
-
-
-
 
   #girl-running-full {
     display: none;
@@ -1478,8 +1383,6 @@ footer {
     font-size: 1.9rem;
   }
 
-
-
   .banner-p {
     display: flex;
     justify-content: center;
@@ -1505,13 +1408,10 @@ footer {
     font-family: "roboto";
   }
 
-
-
   .cards {
     display: flex;
     flex-wrap: wrap;
   }
-
 
   .product-filter_dropdown .arrow {
     transition: 0.3s ease;
@@ -1519,7 +1419,6 @@ footer {
 
   .product-filter_dropdown.active .arrow {
     transform: rotate(-135deg);
-
   }
 
   .product-filter_dropdown p {
@@ -1542,7 +1441,6 @@ footer {
   .nav-list-item {
     width: 100%;
     padding: 0 20px 0 20px;
-
   }
 
   .nav-list-li li {
@@ -1575,13 +1473,11 @@ footer {
 
   .nav-list-item.active a {
     color: #000;
-
   }
 
   .nav_list {
     padding: 30px 0 30px 0;
   }
-
 
   .socialmediafooter {
     display: flex;
@@ -1599,7 +1495,6 @@ footer {
     flex-direction: column-reverse;
     align-items: center;
     justify-content: center;
-
   }
 
   .foter_nav_li {
@@ -1608,14 +1503,8 @@ footer {
     justify-content: center;
     width: 100%;
     padding: 15px 0 50px 0;
-
   }
-
 }
-
-
-
-
 
 @media (max-width: 1200px) {
   .cards .card-link {
@@ -1623,7 +1512,6 @@ footer {
     /* Две карточки в ряд */
   }
 }
-
 
 @media (max-width: 755px) {
   .container {
@@ -1640,12 +1528,11 @@ footer {
     height: 1150px;
   }
 
-
   .product-card-description h2 {
     font-family: "Oswald";
     font-size: 1.2rem;
     font-weight: 400;
-    letter-spacing: .05rem;
+    letter-spacing: 0.05rem;
     line-height: 1.25;
     text-align: left;
     color: #000000;
@@ -1661,8 +1548,6 @@ footer {
     margin: 0 0 1rem;
     flex-grow: 1;
   }
-
-
 
   .card-link {
     display: flex;
@@ -1714,9 +1599,6 @@ footer {
     text-align: center;
   }
 
-
-
-
   #supportSvg {
     display: none;
   }
@@ -1733,7 +1615,6 @@ footer {
     text-decoration: none;
     list-style-type: none;
   }
-
 
   .head-nav {
     position: relative;
@@ -1752,7 +1633,6 @@ footer {
     width: 100vw;
     box-sizing: border-box;
   }
-
 
   .dropdown-user a {
     text-align: center;
@@ -1776,14 +1656,10 @@ footer {
     border: 1px solid #d9d9d9;
     margin: 0;
     padding: 0.875rem;
-
   }
-
-
 
   .user-menu {
     position: static;
-
   }
 
   .content h2 {

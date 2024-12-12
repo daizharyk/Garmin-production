@@ -583,72 +583,265 @@
         </nav>
       </div>
     </header>
-    <main>
-      <div class="account-container">
-        <span>ACCOUNT /</span>
-        <span class="account-link" id="accountLink">
-          PROFILE
-          <span id="arroww" class="arroww"></span>
-        </span>
-        <div class="dropdown-menu" id="dropdownMenu">
-          <a href="#">ORDERS</a>
-          <a href="#">SECURITY CENTER</a>
-        </div>
+    <header>
+      <div class="account-nav">
+        <a href="">ACCOUNT</a>
       </div>
-      <section class="account-details">
-        <h1>ACCOUNT DETAILS</h1>
-        <div class="details-wrapper">
-          <div class="details-info">
-            <p>Name: Didar</p>
-            <p>Email: aizharyk76@gmail.com</p>
-            <p>Location: Kazakhstan</p>
-            <p>Language: English (United States)</p>
-            <p>Password: ********</p>
-          </div>
-          <div class="details-actions">
-            <button class="action-btn">EDIT</button>
-            <button class="action-btn">UPDATE PASSWORD</button>
-            <button class="action-btn">EDIT SIGN IN SETTINGS</button>
-          </div>
+    </header>
+    <div class="profile__content">
+      <aside></aside>
+      <aside class="sidebar-account">
+        <div class="category">
+          <a href="/pages/accountProfile.html">
+            <span class="icon">👤</span>
+            <span>Profile</span>
+          </a>
         </div>
-        <div class="img-wrapper">
-          <div class="img-info">
-            <div class="img-text">
-              <h1>HOLIDAY SALE</h1>
-              <p>Save big on great holiday gifts</p>
+        <div class="category">
+          <a href="#">
+            <span class="icon">🛒</span>
+            <span>Orders</span>
+          </a>
+        </div>
+        <div class="category">
+          <a href="#">
+            <span class="icon">📄</span>
+            <span>Subscription & Service Plans</span>
+          </a>
+        </div>
+        <div class="category">
+          <a href="#">
+            <span class="icon">📦</span>
+            <span>Products</span>
+          </a>
+        </div>
+        <div class="category">
+          <a href="#">
+            <span class="icon">✉️</span>
+            <span>Email Preferences</span>
+          </a>
+        </div>
+        <div class="category">
+          <a href="#">
+            <span class="icon">🛡️</span>
+            <span>Security Center</span>
+          </a>
+        </div>
+        <div class="category">
+          <a href="#">
+            <span class="icon">📁</span>
+            <span>Data Management</span>
+          </a>
+        </div>
+      </aside>
+      <main>
+        <section class="account-details">
+          <h2>ACCOUNT DETAILS</h2>
+          <div class="details-wrapper">
+            <div class="details-info">
+              <p>Name: Didar</p>
+              <p>Email: aizharyk76@gmail.com</p>
+              <p>Location: Kazakhstan</p>
+              <p>Language: English (United States)</p>
+              <p>Password: ********</p>
             </div>
-            <div class="img-btn">
-              <button>shop</button>
+            <div class="details-actions">
+              <button class="action-btn">EDIT</button>
+              <button class="action-btn">UPDATE PASSWORD</button>
+              <button class="action-btn">EDIT SIGN IN SETTINGS</button>
             </div>
           </div>
-          <img
-            class="full-img"
-            src="https://i.ibb.co.com/rmGbmnF/72617-HOLIDAY-SALE-DESKTOP.webp"
-            alt="sale image"
-          />
-          <img
-            class="adaptive-img"
-            src="https://i.ibb.co.com/jTDtw11/72617-HOLIDAY-SALE-MOBILE.webp"
-            alt="sale image"
-          />
-        </div>
-        <div class="account-details">
-          <h1>Shipping Addresses</h1>
-          <div class="addressess">
-            <div class="address-info">
-              <p>didar sdfdfsdf</p>
-              <p>3000 S ADAMS ST #1116</p>
-              <p>TALLAHASSEE, FL</p>
-              <p>32301-6946</p>
+          <div class="img-wrapper">
+            <div class="img-info">
+              <div class="img-text">
+                <h1>HOLIDAY SALE</h1>
+                <p>Save big on great holiday gifts</p>
+              </div>
+              <div class="img-btn">
+                <button>shop</button>
+              </div>
             </div>
-            <div class="address-edit-btn">
-              <button>Edit</button>
-              <button>Delete</button>
+            <img
+              class="full-img"
+              src="https://i.ibb.co.com/rmGbmnF/72617-HOLIDAY-SALE-DESKTOP.webp"
+              alt="sale image"
+            />
+            <img
+              class="adaptive-img"
+              src="https://i.ibb.co.com/jTDtw11/72617-HOLIDAY-SALE-MOBILE.webp"
+              alt="sale image"
+            />
+          </div>
+          <div class="shipping-wrapper">
+            <h2>
+              Shipping Addresses
+              <span class="question-mark" title="Click for more info">?</span>
+            </h2>
+            <p class="question-mark-text shipping-text">
+              Garmin collects addresses when you place an order while signed in
+              to your account and when you submit a return. An address is
+              required for processing credit card payments and shipping
+              products. Garmin takes your privacy seriously and will not share
+              your address without your knowledge. You can correct or delete
+              your address at any time. Learn More
+            </p>
+            <div class="addressess info-card">
+              <div class="address-info">
+                <p id="name">didar sdfdfsdf</p>
+                <p>3000 S ADAMS ST #1116</p>
+                <p>TALLAHASSEE, FL</p>
+                <p>32301-6946</p>
+              </div>
+              <div class="btn-section">
+                <div class="address-edit-btns">
+                  <button class="address-edit-btn">Edit</button>
+                  <button>Delete</button>
+                </div>
+                <div class="primary">
+                  <span>primary</span>
+                </div>
+              </div>
+            </div>
+            <form class="shipping-form shipping-form-address">
+              <div class="first-lastname">
+                <div class="form-group">
+                  <label for="firstName">First Name *</label>
+                  <input type="text" id="firstName" name="firstName" required />
+                </div>
+                <div class="form-group">
+                  <label for="lastName">Last Name *</label>
+                  <input type="text" id="lastName" name="lastName" required />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="location">Location *</label>
+                <select id="location" name="location" required>
+                  <option value="United States">United States</option>
+                  <option value="Russian Federation">Russian Federation</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="addressLine1">Address Line 1 *</label>
+                <input
+                  type="text"
+                  id="addressLine1"
+                  name="addressLine1"
+                  required
+                />
+                <small class="error-message"
+                  >Address Line appears to be invalid</small
+                >
+              </div>
+
+              <div class="form-group">
+                <label for="postalCode">ZIP/Postal Code *</label>
+                <input type="text" id="postalCode" name="postalCode" required />
+              </div>
+              <div class="form-group">
+                <label for="city">City *</label>
+                <input type="text" id="city" name="city" required />
+              </div>
+              <div class="form-group">
+                <label for="state">State/Province *</label>
+                <select id="state" name="state" required>
+                  <option value="Florida">Florida</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="phoneLocation">Location *</label>
+                <select id="phoneLocation" name="phoneLocation" required>
+                  <option value="+7">Kazakhstan (+7)</option>
+                  <option value="+1">United States (+1)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone *</label>
+                <input type="tel" id="phone" name="phone" required />
+              </div>
+              <div class="form-actions">
+                <button type="submit" class="save-btn">Save</button>
+                <button type="button" class="cancel-btn">Cancel</button>
+              </div>
+            </form>
+          </div>
+          <div class="shipping-wrapper">
+            <h2>
+              Phone Number
+              <span class="question-mark-phone" title="Click for more info"
+                >?</span
+              >
+            </h2>
+            <p class="question-mark-text-phone">
+              Garmin may collect your phone number in several places throughout
+              our web site. Your phone number is required when placing an order
+              on our Web site as our delivery suppliers require a phone number
+              to process a shipment. Garmin may also collect your phone number
+              during an interaction with our product support team to quickly
+              pull up your account details should you contact us in the future.
+              To help you keep your phone number(s) current, we've conveniently
+              listed them in one central place.
+            </p>
+            <div class="phone-number-container info-card">
+              <div class="address-info">
+                <p id="phoneNumber">+7708 600 50 50</p>
+              </div>
+              <div class="btn-section">
+                <div class="address-edit-btns">
+                  <button class="number-edt-btn">Edit</button>
+                  <button class="number-delete-btn">Delete</button>
+                </div>
+                <div class="primary">
+                  <span>primary</span>
+                </div>
+              </div>
+            </div>
+            <form class="shipping-form phone-number-form" >
+              <div class="first-lastname">
+                <div class="form-group">
+                  <div class="form-group">
+                    <label for="phoneLocation">Location *</label>
+                    <select id="phoneLocation" name="phoneLocation" required>
+                      <option value="+7">Kazakhstan (+7)</option>
+                      <option value="+1">United States (+1)</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="lastName">Area code</label>
+                  <input type="text" id="lastName" name="lastName" required />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone" required />
+              </div>
+              <div class="form-actions">
+                <button type="submit" class="save-btn phone-number-save">Save</button>
+                <button type="button" class="cancel-btn phone-number-cancel">Cancel</button>
+              </div>
+            </form>
+          </div>
+          <div class="shipping-wrapper">
+            <div class="data-management">
+              <h2>Data Management</h2>
+              <div class="data-management-text">
+                <p>
+                  View the information Garmin maintains about your account,
+                  registered devices, mobile apps and more. You can request a
+                  copy of it or ask us to delete it.
+                </p>
+              </div>
+              <div class="data-managment-btn">
+                <button class="action-btn">Manage your data</button>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
-    </main>
+        </section>
+      </main>
+    </div>
+
     <footer>
       <% if (htmlWebpackPlugin.options.templateParameters.footer) { %> <%=
       htmlWebpackPlugin.options.templateParameters.footer %> <% } %>

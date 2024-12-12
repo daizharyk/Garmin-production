@@ -19,6 +19,7 @@ module.exports = {
     register: path.resolve(__dirname, "src/js/register.js"),
     registration: path.resolve(__dirname, "src/js/registration.js"),
     authState: path.resolve(__dirname, "src/js/authState.js"),
+    accountProfile: path.resolve(__dirname, "src/js/accountProfile.js"),
   },
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -46,6 +47,30 @@ module.exports = {
     rules: [
       {
         test: /\.(png|svg|jpg|jpeg|webp)$/i,
+        use: [
+          {
+            loader: "image-webpack-loader",
+            options: {
+              mozjpeg: {
+                progressive: true,
+                quality: 65,
+              },
+              optipng: {
+                enabled: false,
+              },
+              pngquant: {
+                quality: [0.65, 0.9],
+                speed: 4,
+              },
+              gifsicle: {
+                interlaced: false,
+              },
+              webp: {
+                quality: 75,
+              },
+            },
+          },
+        ],
         type: "asset/resource",
         generator: {
           filename: "img/[name][ext]",
@@ -87,7 +112,7 @@ module.exports = {
       title: "Product Page",
       filename: "pages/itempage.html",
       template: "src/pages/itempage.html",
-      chunks: ["itempage", "animation","authState"],
+      chunks: ["itempage", "animation", "authState"],
       templateParameters: {
         footer: fs.readFileSync(
           path.resolve(__dirname, "src/pages/components/footer.html"),
@@ -99,7 +124,7 @@ module.exports = {
       title: "Shipping",
       filename: "pages/shipping.html",
       template: "src/pages/shipping.html",
-      chunks: ["animation","authState"],
+      chunks: ["animation", "authState"],
       templateParameters: {
         footer: fs.readFileSync(
           path.resolve(__dirname, "src/pages/components/footer.html"),
@@ -123,7 +148,7 @@ module.exports = {
       title: "Account | Profile",
       filename: "pages/accountProfile.html",
       template: "src/pages/accountProfile.html",
-      chunks: ["main", "animation", "authState"],
+      chunks: ["main", "animation", "authState", "accountProfile"],
       templateParameters: {
         footer: fs.readFileSync(
           path.resolve(__dirname, "src/pages/components/footer.html"),
@@ -131,7 +156,6 @@ module.exports = {
         ),
       },
     }),
-
     new CopyWebpackPlugin({
       patterns: [{ from: "src/img", to: "img" }],
     }),
