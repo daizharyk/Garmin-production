@@ -2,6 +2,7 @@ const jwt = require("jsonwebtoken");
 const userRepository = require("../repository/userRepository");
 const InvalidDataError = require("../infrastructure/errors/InvalidDataError");
 const NotImplementedError = require("../infrastructure/errors/NotImplementedError");
+
 module.exports = {
   auth: async (req, res, next) => {
     try {
@@ -9,7 +10,6 @@ module.exports = {
       if (token) {
         const decoded = jwt.verify(token, process.env.JWT_KEY);
 
-        
         req.user = await userRepository.findUser(decoded.userId);
       }
       next();
@@ -25,5 +25,3 @@ module.exports = {
     next();
   },
 };
-
-

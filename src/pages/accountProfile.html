@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
-  <body>
+  <body class="hide-content">
     <header>
       <div class="head-nav">
         <nav>
           <div class="nav-section">
             <div class="logo">
-              <a href="../index.html"
+              <a href="/index.html"
                 ><svg
                   id="garmin-logo"
                   width="161px"
@@ -69,14 +69,12 @@
                       />
                     </g>
                   </svg>
-
                   <input
                     type="text"
                     class="search-input"
                     placeholder="Search..."
                   />
                 </div>
-
                 <ul class="nav-menu smartwatches">
                   <li class="nav-item" data-dropdown="smartwatches-dropdown">
                     SMARTWATCHES <span class="toggle-sign">+</span>
@@ -537,9 +535,9 @@
                     </g>
                   </svg>
                   <div class="dropdown-user">
-                    <a href="/pages/accountProfile.html">Account</a>
+                    <a id="accountLink" href="">Account</a>
                     <a href="#orders">Orders</a>
-                    <a id="authLink" href="/signIn.html">Sign In</a>
+                    <a id="authLink" href="">Sign In</a>
                   </div>
                 </div>
               </div>
@@ -593,43 +591,43 @@
       <aside class="sidebar-account">
         <div class="category">
           <a href="/pages/accountProfile.html">
-            <span class="icon">👤</span>
+            <span class="icon"></span>
             <span>Profile</span>
           </a>
         </div>
         <div class="category">
           <a href="#">
-            <span class="icon">🛒</span>
+            <span class="icon"></span>
             <span>Orders</span>
           </a>
         </div>
         <div class="category">
           <a href="#">
-            <span class="icon">📄</span>
+            <span class="icon"></span>
             <span>Subscription & Service Plans</span>
           </a>
         </div>
         <div class="category">
           <a href="#">
-            <span class="icon">📦</span>
+            <span class="icon"></span>
             <span>Products</span>
           </a>
         </div>
         <div class="category">
           <a href="#">
-            <span class="icon">✉️</span>
+            <span class="icon"></span>
             <span>Email Preferences</span>
           </a>
         </div>
         <div class="category">
           <a href="#">
-            <span class="icon">🛡️</span>
+            <span class="icon"></span>
             <span>Security Center</span>
           </a>
         </div>
         <div class="category">
           <a href="#">
-            <span class="icon">📁</span>
+            <span class="icon"></span>
             <span>Data Management</span>
           </a>
         </div>
@@ -650,7 +648,9 @@
                 </div>
                 <div class="details-actions">
                   <button class="action-btn account-edit-btn">EDIT</button>
-                  <button class="action-btn update-password-btn" >UPDATE PASSWORD</button>
+                  <button class="action-btn update-password-btn">
+                    UPDATE PASSWORD
+                  </button>
                   <button class="action-btn">EDIT SIGN IN SETTINGS</button>
                 </div>
               </div>
@@ -706,15 +706,6 @@
               <div class="update-password-form">
                 <form class="shipping-form">
                   <div class="form-group">
-                    <label for="firstName">Name *</label>
-                    <input
-                      type="text"
-                      id="firstName"
-                      name="firstName"
-                      required
-                    />
-                  </div>
-                  <div class="form-group">
                     <label for="currentPassword">Current Password *</label>
                     <input
                       type="password"
@@ -754,6 +745,7 @@
                   </div>
                 </form>
               </div>
+              <div class="sigin-settings-container"></div>
             </div>
 
             <div class="img-wrapper">

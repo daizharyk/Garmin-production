@@ -4,7 +4,6 @@ import "../style/shipping.css";
 import "../style/itempage.css";
 import "../style/accountProfile.css";
 
-
 async function loadModule() {
   try {
     const data = await fetchData();
@@ -24,6 +23,20 @@ async function loadModule() {
     console.error("Ошибка при загрузке модуля:", error);
   }
 }
-
 loadModule();
 
+document.addEventListener("DOMContentLoaded", function () {
+  const currentPage = window.location.pathname;
+
+  const protectedPages = ["/pages/accountProfile.html"];
+
+  if (protectedPages.includes(currentPage)) {
+    import("./auth.js")
+      .then((module) => {
+        module.checkAuthorization();
+      })
+      .catch((err) => {
+        console.error("Ошибка при подгрузке модуля авторизации", err);
+      });
+  }
+});

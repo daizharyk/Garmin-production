@@ -454,6 +454,8 @@ body {
   color: #ffffff;
 }
 
+
+
 .overlay a {
   color: #ffffff;
   font-family: "Roboto", sans-serif;
@@ -478,7 +480,7 @@ body {
 
 .overlay h2 {
   display: flex;
-  justify-content: center;
+  text-align: center;
   position: relative;
   color: #ffffff;
   bottom: 30px;
@@ -498,6 +500,10 @@ body {
 }
 
 .content {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
   font-family: "Roboto", sans-serif;
   text-align: center;
   padding: 40px;
@@ -568,13 +574,6 @@ body {
   border-right: 1px solid #d9d9d9;
   width: 310px;
   flex-shrink: 0;
-}
-
-.sidebar h2 {
-  font-weight: 600;
-  padding: 1em 0;
-  font-size: 0.8rem;
-  line-height: 1.5;
 }
 
 .feature-list {
@@ -678,6 +677,7 @@ body {
   font-weight: 450;
   font-size: 0.875rem;
   line-height: 1.5;
+  padding-bottom: 0.5rem;
 }
 
 #connectivity-features {
@@ -868,6 +868,7 @@ body {
   letter-spacing: 0.05rem;
   font-weight: 400;
   font-size: 2rem;
+  text-align: center;
 }
 
 .tile-card-bg {
@@ -893,6 +894,9 @@ body {
 }
 
 .signup-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 20px;
 }
 

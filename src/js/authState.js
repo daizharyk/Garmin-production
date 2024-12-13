@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   const authLink = document.getElementById("authLink");
   const user = sessionStorage.getItem("user");
+  const accountLink = document.getElementById("accountLink");
 
   if (user) {
     authLink.textContent = "Sign Out";
@@ -16,6 +17,14 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   } else {
     authLink.textContent = "Sign In";
-    authLink.setAttribute("href", "./pages/signIn.html");
   }
+  accountLink.addEventListener("click", function () {
+    
+    if (!user || user === "null" || user === "undefined") {
+      sessionStorage.setItem("redirectAfterLogin", "account");
+      window.location.href = "/pages/signIn.html";
+    } else {
+      window.location.href = "/pages/accountProfile.html";
+    }
+  });
 });

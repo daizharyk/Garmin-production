@@ -537,7 +537,7 @@
                     </g>
                   </svg>
                   <div class="dropdown-user">
-                    <a href="./pages/accountProfile.html">Account</a>
+                    <a id="accountLink" href="#">Account</a>
                     <a href="">Orders</a>
                     <a id="authLink" href="./pages/signIn.html">Sign In</a>
                   </div>
@@ -696,7 +696,7 @@
 
       <div class="container-items">
         <aside class="sidebar" id="sidebar">
-          <h2>Shop by Feature</h2>
+          <h3>Shop by Feature</h3>
           <ul class="feature-list">
             <li>
               <input type="checkbox" id="new-forerunners" />
@@ -877,9 +877,8 @@
       </div>
     </main>
     <footer>
-      <% if (htmlWebpackPlugin.options.templateParameters.footer) { %>
-        <%= htmlWebpackPlugin.options.templateParameters.footer %>
-      <% } %>
+      <% if (htmlWebpackPlugin.options.templateParameters.footer) { %> <%=
+      htmlWebpackPlugin.options.templateParameters.footer %> <% } %>
     </footer>
   </body>
 </html>
