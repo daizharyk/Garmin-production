@@ -43,8 +43,10 @@ document.addEventListener("DOMContentLoaded", function () {
           const rememberMe = document.getElementById("rememberMe").checked;
 
           if (rememberMe) {
+            localStorage.setItem("user", JSON.stringify(data));
             localStorage.setItem("email", email);
             localStorage.setItem("password", password);
+            sessionStorage.setItem("user", JSON.stringify(data));
           } else {
             sessionStorage.setItem("user", JSON.stringify(data));
           }

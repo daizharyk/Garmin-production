@@ -48,10 +48,11 @@ module.exports = {
 
   updateUser: async (req, res, next) => {
     try {
+      console.log("req-from controller", req.body);
+      console.log("req-user from controller", req.user);
       const data = req.body;
       const userId = req.user._id;
-console.log("UserId", userId);
-
+      console.log("UserId", userId);
       const updatedUser = await userService.updateUser(userId, data);
       res.send(updatedUser);
     } catch (error) {

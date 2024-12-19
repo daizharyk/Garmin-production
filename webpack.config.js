@@ -6,6 +6,8 @@ const TerserPlugin = require("terser-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const webpack = require("webpack");
+const dotenv = require("dotenv").config();
 module.exports = {
   mode: "development",
   entry: {
@@ -36,7 +38,7 @@ module.exports = {
     hot: false,
     proxy: [
       {
-        context: ["/api"],
+        context: "/api",
         target: "http://localhost:3005",
         changeOrigin: true,
         logLevel: "info",
@@ -92,10 +94,15 @@ module.exports = {
     ],
   },
   plugins: [
-    // new CleanWebpackPlugin(),
+    new webpack.DefinePlugin({
+      "process.env.SERVER_API_URL": JSON.stringify(
+        process.env.SERVER_API_URL || "http://localhost:3005/api/"
+      ),
+    }),
     new MiniCssExtractPlugin({
       filename: "[name].[contenthash].css",
     }),
+
     new HtmlWebpackPlugin({
       title: "Garmin",
       filename: "index.html",

@@ -23,6 +23,7 @@ async function loadModule() {
     console.error("Ошибка при загрузке модуля:", error);
   }
 }
+
 loadModule();
 
 document.addEventListener("DOMContentLoaded", function () {

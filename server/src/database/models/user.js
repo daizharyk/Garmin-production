@@ -14,9 +14,16 @@ const userSchema = mongoose.Schema(
     password: {
       type: String,
       require: true,
-  
     },
     country: {
+      type: String,
+      required: false,
+    },
+    location: {
+      type: String,
+      required: false,
+    },
+    language: {
       type: String,
       required: false,
     },
@@ -25,7 +32,7 @@ const userSchema = mongoose.Schema(
       default: false,
     },
   },
-  
+
   {
     timestamps: true,
     toJSON: { virtuals: true },
@@ -50,4 +57,11 @@ userSchema.pre("save", async function (next) {
 userSchema.methods.matchPasswords = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
 };
+userSchema.pre("save", function (next) {
+  if (this.isModified("email")) {
+    this.email = this.email.toLowerCase();
+  }
+  next();
+});
+
 module.exports = mongoose.model("User", userSchema);

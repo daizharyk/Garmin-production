@@ -35,6 +35,7 @@ module.exports = {
   updateUser: async (userId, userData) => {
     const updatedUser = await User.findByIdAndUpdate(userId, userData, {
       new: true,
+      runValidators: true,
     });
     return updatedUser;
   },
@@ -51,4 +52,3 @@ module.exports = {
     return;
   },
 };
-

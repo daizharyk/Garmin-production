@@ -412,6 +412,10 @@ input:invalid + .error-message {
 }
 
 .save-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
   background-color: #6dcff6;
   color: #000;
   border: 1px solid #6dcff6;
@@ -454,6 +458,56 @@ input:invalid + .error-message {
 .sidebar-account {
   width: 300px;
 }
+
+#custom-alert {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: opacity 0.5s ease;
+}
+
+#custom-alert.hidden {
+  opacity: 1;
+  pointer-events: none;
+}
+
+.custom-alert-content {
+  background: #d8f3dc;
+  margin-bottom: 10px;
+  padding: 10px;
+  text-align: center;
+}
+
+.custom-alert-content p {
+  margin: 0;
+  font-size: 16px;
+  color: #333333;
+}
+
+.spinnerr {
+    width: 20px;
+    height: 20px;
+    border: 3px solid transparent;
+    border-top: 5px solid #000;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  position: absolute;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+  
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
 @media (max-width: 1024px) {
   .sidebar-account {
     display: none;

@@ -1,9 +1,11 @@
+import { update } from "../service/userService";
+
 document.addEventListener("DOMContentLoaded", () => {
   const questionMark = document.querySelector(".question-mark");
   const questionMarkPhone = document.querySelector(".question-mark-phone");
   const text = document.querySelector(".question-mark-text");
   const phoneText = document.querySelector(".question-mark-text-phone");
-
+  const loadingSpinner = document.getElementById("loadingSpinner");
   questionMark.addEventListener("click", function () {
     text.classList.toggle("visible");
   });
@@ -31,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const updatePasswordForm = document.querySelector(".update-password-form");
   const updatePasswordBtn = document.querySelector(".update-password-btn");
   const passwordEditCancel = document.querySelector(".password-edit-cancel");
-
+  const saveBtn = document.querySelector(".save-btn");
   updatePasswordBtn.addEventListener("click", function () {
     updatePasswordForm.classList.toggle("visible");
     accountDetailWrapper.classList.add("hidden");
@@ -68,4 +70,40 @@ document.addEventListener("DOMContentLoaded", () => {
     shippingForm.classList.remove("visible");
     infoCard.classList.remove("hidden");
   });
+
+  loadingSpinner.style.display = "none";
+
+  document
+    .querySelector(".account-edit-form")
+    .addEventListener("submit", async function (event) {
+      event.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const location = document.getElementById("location").value;
+      const language = document.getElementById("language").value;
+
+      const formData = {
+        name,
+        email,
+        location,
+        language,
+      };
+      saveBtn.disabled = true;
+      saveBtn.style.color = "#6dcff6";
+      loadingSpinner.style.display = "inline-block";
+      try {
+        await update(formData);
+
+        accountDetailForm.classList.remove("visible");
+        accountDetailWrapper.classList.remove("hidden");
+      } catch (error) {
+        console.error("Error sending data:", error);
+        alert(error.message || "Error sending data");
+      } finally {
+        saveBtn.style.color = "";
+        saveBtn.disabled = false;
+        loadingSpinner.style.display = "none";
+      }
+    });
 });
