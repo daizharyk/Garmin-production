@@ -1,10 +1,9 @@
 import "../style/signin_login.css";
 
-
 document
   .getElementById("registerForm")
   .addEventListener("submit", async function (event) {
-    event.preventDefault(); // Предотвращаем стандартное поведение формы
+    event.preventDefault();
     const loginError = document.getElementById("loginError");
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
@@ -34,14 +33,28 @@ document
       document.getElementById("createAccountBtn").style.color = "#000";
 
       if (response.ok) {
-        alert("User registered successfully");
-        window.location.href = "../index.html"; 
-      } else {
-        loginError.innerHTML = `
-        ${data.message}
-        <button class="close-btn" id="closeError">&#215</button>
-      `;
-        loginError.style.display = "block";
+        const loginResponse = await fetch("/api/users/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, password }),
+        });
+
+        const loginData = await loginResponse.json();
+
+        if (loginResponse.ok) {
+          localStorage.setItem("user", JSON.stringify(loginData));
+
+          alert("User registered and logged in successfully");
+          window.location.href = "../index.html";
+        } else {
+          loginError.innerHTML = `
+            ${loginData.message}
+            <button class="close-btn" id="closeError">&#215</button>
+          `;
+          loginError.style.display = "block";
+        }
       }
     } catch (error) {
       console.error("Error during registration:", error);
@@ -50,9 +63,13 @@ document
       createAccountBtn.disabled = false;
     }
 
-    document
-      .getElementById("closeError")
-      .addEventListener("click", function () {
-        loginError.style.display = "none";
+    const closeErrorButton = document.getElementById("closeError");
+    if (closeErrorButton) {
+      closeErrorButton.addEventListener("click", function () {
+        const loginError = document.getElementById("loginError");
+        if (loginError) {
+          loginError.style.display = "none";
+        }
       });
+    }
   });

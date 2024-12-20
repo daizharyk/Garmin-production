@@ -2,21 +2,19 @@ const ExistingEntityError = require("../infrastructure/errors/ExistingEntityErro
 const InvalidDataError = require("../infrastructure/errors/InvalidDataError");
 const userRepository = require("../repository/userRepository");
 const { generateJWToken } = require("../utils/jwtWebToken");
-
+const bcrypt = require("bcryptjs");
 module.exports = {
   findAllUsers: async () => {
     const users = await userRepository.findAllUser();
     return users;
   },
   createNewUser: async (userData) => {
-    console.log("Received user data:", userData); // Логируем входящие данные
     const existingUser = await userRepository.findUserByEmail(userData.email);
-    console.log("Existing user:", existingUser); // Логируем результат поиска
+
     if (existingUser) {
       throw new ExistingEntityError("User with this email already exist");
     }
     const newUser = await userRepository.createUser(userData);
-    console.log("New user created:", newUser); // Логируем результат создания нового пользователя
     return newUser;
   },
 
@@ -45,14 +43,27 @@ module.exports = {
     return userWithItems;
   },
   updateUser: async (userId, userData) => {
-    const existingUser = await userRepository.findUserByEmail(userData.email);
-    console.log("existingUser", existingUser);
-
-    if (existingUser && existingUser._id.toString() !== userId.toString()) {
-      throw new ExistingEntityError("This email is already used");
+    if (userData.email !== undefined) {
+      const existingUser = await userRepository.findUserByEmail(userData.email);
+      if (existingUser && existingUser._id.toString() !== userId.toString()) {
+        throw new ExistingEntityError("This email is already used");
+      }
     }
+
     const updateUser = await userRepository.updateUser(userId, userData);
     return updateUser;
+  },
+  updatePassword: async (userId, { currentPassword, newPassword }) => {
+    const user = await userRepository.findUser(userId);
+
+    if (!user) {
+      throw new Error("User not found");
+    }
+    const isMatch = await bcrypt.compare(currentPassword, user.password);
+    if (!isMatch) {
+      throw new InvalidDataError("Old password is incorrect");
+    }
+    await userRepository.updatePassword(userId, newPassword);
   },
   deleteUser: async (userIdFromParams, userIdFromToken) => {
     if (userIdFromParams !== userIdFromToken.toString()) {

@@ -16,7 +16,7 @@ module.exports = {
     const user = await User.findOne({
       _id: userId,
       isDeleted: { $ne: true },
-    }).select("-password");
+    });
     return user;
   },
   findUserWithItems: async (userId) => {
@@ -38,6 +38,12 @@ module.exports = {
       runValidators: true,
     });
     return updatedUser;
+  },
+  updatePassword: async (userId, newPassword) => {
+    const user = await User.findById(userId);
+    user.password = newPassword;
+    await user.save();
+    return user;
   },
   deleteUser: async (userId) => {
     await User.findByIdAndUpdate(userId, {

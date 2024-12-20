@@ -1,11 +1,10 @@
-import { update } from "../service/userService";
+import { update, updatePassword, userinfo } from "../service/userService";
 
 document.addEventListener("DOMContentLoaded", () => {
   const questionMark = document.querySelector(".question-mark");
   const questionMarkPhone = document.querySelector(".question-mark-phone");
   const text = document.querySelector(".question-mark-text");
   const phoneText = document.querySelector(".question-mark-text-phone");
-  const loadingSpinner = document.getElementById("loadingSpinner");
   questionMark.addEventListener("click", function () {
     text.classList.toggle("visible");
   });
@@ -13,7 +12,9 @@ document.addEventListener("DOMContentLoaded", () => {
   questionMarkPhone.addEventListener("click", function () {
     phoneText.classList.toggle("visible");
   });
-
+  const currentPassword = document.getElementById("currentPassword");
+  const newPassword = document.getElementById("newPassword");
+  const confirmNewPassword = document.getElementById("confirmNewPassword");
   const shippingForm = document.querySelector(".shipping-form-address");
   const editBtn = document.querySelector(".address-edit-btn");
   const infoCard = document.querySelector(".info-card");
@@ -33,12 +34,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const updatePasswordForm = document.querySelector(".update-password-form");
   const updatePasswordBtn = document.querySelector(".update-password-btn");
   const passwordEditCancel = document.querySelector(".password-edit-cancel");
-  const saveBtn = document.querySelector(".save-btn");
+  const saveBtns = document.querySelectorAll(".save-btn");
+  const loadingSpinner = document.querySelectorAll(".loadingSpinner");
+
   updatePasswordBtn.addEventListener("click", function () {
     updatePasswordForm.classList.toggle("visible");
     accountDetailWrapper.classList.add("hidden");
   });
   passwordEditCancel.addEventListener("click", function () {
+    currentPassword.value = "";
+    newPassword.value = "";
+    confirmNewPassword.value = "";
     updatePasswordForm.classList.remove("visible");
     accountDetailWrapper.classList.remove("hidden");
   });
@@ -47,6 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
     accountDetailForm.classList.toggle("visible");
     accountDetailWrapper.classList.add("hidden");
   });
+
   accountEditCancel.addEventListener("click", function () {
     accountDetailForm.classList.remove("visible");
     accountDetailWrapper.classList.remove("hidden");
@@ -56,10 +63,12 @@ document.addEventListener("DOMContentLoaded", () => {
     phoneNumberForm.classList.toggle("visible");
     phoneNumberContainer.classList.add("hidden");
   });
+
   phoneEditCancel.addEventListener("click", function () {
     phoneNumberForm.classList.remove("visible");
     phoneNumberContainer.classList.remove("hidden");
   });
+
   editBtn.addEventListener("click", function () {
     shippingForm.classList.toggle("visible");
     infoCard.classList.add("hidden");
@@ -71,39 +80,114 @@ document.addEventListener("DOMContentLoaded", () => {
     infoCard.classList.remove("hidden");
   });
 
-  loadingSpinner.style.display = "none";
+  async function displayUserDetails() {
+    try {
+      const userDetails = await userinfo();
+
+      if (userDetails) {
+        document.getElementById("name").innerText = userDetails.name;
+        document.getElementById("userName").innerText =
+          `Name: ${userDetails.name}`;
+        document.getElementById("userEmail").innerText =
+          `Email: ${userDetails.email}`;
+        document.getElementById("userLocation").innerText =
+          `Location: ${userDetails.location}`;
+        document.getElementById("userLanguage").innerText =
+          `Language: ${userDetails.language}`;
+      } else {
+        console.error("No user details received");
+      }
+    } catch (error) {
+      console.error("Error fetching user details:", error);
+      alert("Failed to load user details.");
+    }
+  }
+  displayUserDetails();
+  loadingSpinner.forEach((spinner) => {
+    spinner.style.display = "none";
+  });
 
   document
     .querySelector(".account-edit-form")
     .addEventListener("submit", async function (event) {
       event.preventDefault();
 
-      const name = document.getElementById("name").value;
-      const email = document.getElementById("email").value;
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
       const location = document.getElementById("location").value;
       const language = document.getElementById("language").value;
 
-      const formData = {
-        name,
-        email,
-        location,
-        language,
-      };
-      saveBtn.disabled = true;
-      saveBtn.style.color = "#6dcff6";
-      loadingSpinner.style.display = "inline-block";
+      const formData = {};
+
+      if (name) formData.name = name;
+      if (email) formData.email = email;
+      if (location) formData.location = location;
+      if (language) formData.language = language;
+
+      saveBtns.forEach((saveBtn) => {
+        saveBtn.disabled = true;
+        saveBtn.style.color = "#6dcff6";
+      });
+      loadingSpinner.forEach((spinner) => {
+        spinner.style.display = "inline-block";
+      });
       try {
         await update(formData);
 
         accountDetailForm.classList.remove("visible");
         accountDetailWrapper.classList.remove("hidden");
+        displayUserDetails();
       } catch (error) {
         console.error("Error sending data:", error);
         alert(error.message || "Error sending data");
       } finally {
-        saveBtn.style.color = "";
-        saveBtn.disabled = false;
-        loadingSpinner.style.display = "none";
+        saveBtns.forEach((saveBtn) => {
+          saveBtn.style.color = "";
+          saveBtn.disabled = false;
+        });
+        loadingSpinner.forEach((spinner) => {
+          spinner.style.display = "none";
+        });
+      }
+    });
+
+  document
+    .querySelector(".password-update-form")
+    .addEventListener("submit", async function (event) {
+      event.preventDefault();
+
+      const formData = {
+        currentPassword: currentPassword.value,
+        newPassword: newPassword.value,
+      };
+      saveBtns.forEach((saveBtn) => {
+        saveBtn.disabled = true;
+        saveBtn.style.color = "#6dcff6";
+      });
+      loadingSpinner.forEach((spinner) => {
+        spinner.style.display = "inline-block";
+      });
+
+      try {
+        await updatePassword(formData);
+        updatePasswordForm.classList.remove("visible");
+        accountDetailWrapper.classList.remove("hidden");
+
+        currentPassword.value = "";
+        newPassword.value = "";
+        confirmNewPassword.value = "";
+        displayUserDetails();
+      } catch (error) {
+        console.error("Error sending data:", error);
+        alert(error.message || "Error sending data");
+      } finally {
+        saveBtns.forEach((saveBtn) => {
+          saveBtn.style.color = "";
+          saveBtn.disabled = false;
+        });
+        loadingSpinner.forEach((spinner) => {
+          spinner.style.display = "none";
+        });
       }
     });
 });

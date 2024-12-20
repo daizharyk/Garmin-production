@@ -640,11 +640,10 @@
             <div class="details-wrapper">
               <div class="account-detail-wrapper">
                 <div class="details-info">
-                  <p>Name: Didar</p>
-                  <p>Email: aizharyk76@gmail.com</p>
-                  <p>Location: Kazakhstan</p>
-                  <p>Language: English (United States)</p>
-                  <p>Password: ********</p>
+                  <p id="userName"></p>
+                  <p id="userEmail"></p>
+                  <p id="userLocation"></p>
+                  <p id="userLanguage"></p>
                 </div>
                 <div class="details-actions">
                   <button class="action-btn account-edit-btn">EDIT</button>
@@ -689,11 +688,10 @@
                   <div class="form-actions">
                     <button type="submit" class="save-btn">
                       <span
-                        id="loadingSpinner"
                         style="display: block"
-                        class="spinnerr"
+                        class="spinnerr loadingSpinner"
                       ></span
-                      >Save
+                      >Update
                     </button>
                     <button
                       type="button"
@@ -705,7 +703,7 @@
                 </form>
               </div>
               <div class="update-password-form">
-                <form class="shipping-form">
+                <form class="shipping-form password-update-form">
                   <div class="form-group">
                     <label for="currentPassword">Current Password *</label>
                     <input
@@ -736,7 +734,13 @@
                     />
                   </div>
                   <div class="form-actions">
-                    <button type="submit" class="save-btn">Update</button>
+                    <button type="submit" class="save-btn">
+                      <span
+                        style="display: block"
+                        class="spinnerr loadingSpinner"
+                      ></span
+                      >Update
+                    </button>
                     <button
                       type="button"
                       class="cancel-btn password-edit-cancel"

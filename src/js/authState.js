@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   const authLink = document.getElementById("authLink");
-  const user = sessionStorage.getItem("user");
+  const user = sessionStorage.getItem("user") || localStorage.getItem("user");
   const accountLink = document.getElementById("accountLink");
 
   if (user) {
@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     authLink.addEventListener("click", function (event) {
       event.preventDefault();
-
+      localStorage.removeItem("user");
       sessionStorage.removeItem("user");
 
       window.location.href = "./index.html";
@@ -19,7 +19,6 @@ document.addEventListener("DOMContentLoaded", function () {
     authLink.textContent = "Sign In";
   }
   accountLink.addEventListener("click", function () {
-    
     if (!user || user === "null" || user === "undefined") {
       sessionStorage.setItem("redirectAfterLogin", "account");
       window.location.href = "/pages/signIn.html";

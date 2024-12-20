@@ -13,7 +13,9 @@ module.exports = {
     try {
       const userData = req.body;
       const newUser = await userService.createNewUser(userData);
-      res.send(newUser);
+      res
+        .status(201)
+        .json({ message: "User registered successfully", user: newUser });
     } catch (error) {
       next(error);
     }
@@ -48,13 +50,24 @@ module.exports = {
 
   updateUser: async (req, res, next) => {
     try {
-      console.log("req-from controller", req.body);
-      console.log("req-user from controller", req.user);
       const data = req.body;
       const userId = req.user._id;
-      console.log("UserId", userId);
+
       const updatedUser = await userService.updateUser(userId, data);
       res.send(updatedUser);
+    } catch (error) {
+      next(error);
+    }
+  },
+  updatePassword: async (req, res, next) => {
+    try {
+      const userId = req.user._id;
+      const { currentPassword, newPassword } = req.body;
+      await userService.updatePassword(userId, {
+        currentPassword,
+        newPassword,
+      });
+      res.send({ message: "Password updated successfully" });
     } catch (error) {
       next(error);
     }

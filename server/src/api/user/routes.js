@@ -1,6 +1,5 @@
-
 const { Router } = require("express");
-const {protected}  = require("../../middlewares/auth")
+const { protected } = require("../../middlewares/auth");
 const {
   getAllUsers,
   deleteUser,
@@ -9,24 +8,25 @@ const {
   registerUser,
   loginUser,
   getMe,
+  updatePassword,
 } = require("./controller");
 
 const router = Router();
 
-router.get("/",protected, getAllUsers);
+router.get("/", protected, getAllUsers);
 
-router.get("/me",protected, getMe);
+router.get("/me", protected, getMe);
 
-router.put("/", updateUser);
+router.put("/", protected, updateUser);
 
-router.patch("/:id",protected, deleteUser);
+router.put("/update-password", protected, updatePassword);
 
-router.delete("/force/:id",protected, deleteUserForce);
+router.patch("/:id", protected, deleteUser);
+
+router.delete("/force/:id", protected, deleteUserForce);
 
 router.post("/", registerUser);
 
 router.post("/login", loginUser);
 
-
 module.exports = router;
-
