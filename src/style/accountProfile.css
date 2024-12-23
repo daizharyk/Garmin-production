@@ -598,6 +598,14 @@ input:invalid + .error-message {
 input:checked + .slider {
   background-color: #000;
 }
+.buttons{
+    gap: 20px;
+    padding: 15px 0;
+}
+.next-verification-btn , .back-verification-btn {
+    margin-right: 15px;
+    padding: 15px 30px;
+}
 
 input:checked + .slider:before {
   transform: translateX(20px);

@@ -620,7 +620,7 @@
           </a>
         </div>
         <div class="category">
-          <a href="pages/securityCenter.html">
+          <a href="/pages/securityCenter.html">
             <span class="icon"></span>
             <span>Security Center</span>
           </a>
@@ -635,71 +635,127 @@
       <main>
         <div class="two-step-verification">
           <div class="verification-container">
+            <div class="verification-container-basic">
+              <h1>Two-Step Verification Settings</h1>
+              <div class="two-step-text-first">
+                <p>
+                  Protect your account with two-step verification. Two-step
+                  verification adds an extra layer of protection to your
+                  account. Whenever you sign in to any Garmin website or app —
+                  or sign in to make a purchase on garmin.com — you’ll be
+                  prompted to enter both your password and a security code that
+                  we will send you in an email or text message.
+                </p>
+              </div>
+              <div class="two-step-text">
+                <p>
+                  The email address for two-step verification can only be the
+                  primary email on this account.
+                </p>
+                <p>
+                  Press NEXT to continue the verification process to use
+                  aizharyk76@gmail.com for verification on this account.
+                </p>
+                <p>
+                  If you wish to use a different email address, you will need to
+                  update the email address of your account. To update the email
+                  address of your account click
+                  <a href="./accountProfile.html">here</a>.
+                </p>
+                <div class="buttons">
+                  <button class="action-btn back-verification-btn">
+                    GO BACK
+                  </button>
+                  <button class="action-btn next-verification-btn">NEXT</button>
+                </div>
+              </div>
+              <div class="verification-method">
+                <div class="method-info">
+                  <p class="method-title">E-mail</p>
+                  <p class="method-description">
+                    We will send a code to aizharyk76@gmail.com.
+                    <a href="./accountProfile.html" class="update-email-link"
+                      >Update email</a
+                    >
+                  </p>
+                </div>
+                <div class="method-toggle">
+                  <p>Off</p>
+                  <label class="switch">
+                    <input type="checkbox" id="emailToggle" />
+                    <span class="slider"></span>
+                  </label>
+                  <p>On</p>
+                </div>
+              </div>
+              <div class="verification-method">
+                <div class="method-info">
+                  <p class="method-title">SMS</p>
+                  <p class="method-description">
+                    We will send a code to a phone number you verify.
+                  </p>
+                </div>
+                <div class="method-toggle">
+                  <p>Off</p>
+                  <label class="switch">
+                    <input type="checkbox" id="smsToggle" />
+                    <span class="slider"></span>
+                  </label>
+                  <p>On</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="phone-verification-container">
             <h1>Two-Step Verification Settings</h1>
-            <div class="two-step-text-first" >
             <p>
-              Protect your account with two-step verification. Two-step
-              verification adds an extra layer of protection to your account.
-              Whenever you sign in to any Garmin website or app — or sign in to
-              make a purchase on garmin.com — you’ll be prompted to enter both
-              your password and a security code that we will send you in an
-              email or text message.
+              Enter the phone number that you would like to use for two-step
+              verification. We will send you a code to validate this number.
             </p>
-            </div>
-            <div class="two-step-text" >
-              <p>
-                The email address for two-step verification can only be the
-                primary email on this account.
-              </p>
-              <p>
-                Press NEXT to continue the verification process to use
-                aizharyk76@gmail.com for verification on this account.
-              </p>
-              <p>
-                If you wish to use a different email address, you will need to
-                update the email address of your account. To update the email
-                address of your account click
-                <a href="./accountProfile.html">here</a>.
-              </p>
-              <div class="buttons">
-                <button class="action-btn back-verification-btn">GO BACK</button>
-                <button class="action-btn next-verification-btn">NEXT</button>
+            <div class="form-group-wrapper">
+              <div class="form-group">
+                <label for="location">Location</label>
+                <select id="location" name="location">
+                  <option value="us">United States (+1)</option>
+                  <option value="uk">United Kingdom (+44)</option>
+                  <option value="ca">Canada (+1)</option>
+                  <option value="kz">Kazakhstan (+7)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="area-code">Area Code</label>
+                <input
+                  type="text"
+                  id="area-code"
+                  name="area-code"
+                  placeholder="Area Code"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="phone-number">Phone Number *</label>
+                <input
+                  type="text"
+                  id="phone-number"
+                  name="phone-number"
+                  placeholder="Phone Number"
+                  required
+                />
               </div>
             </div>
-            <div class="verification-method">
-              <div class="method-info">
-                <p class="method-title">E-mail</p>
-                <p class="method-description">
-                  We will send a code to aizharyk76@gmail.com.
-                  <a href="./accountProfile.html" class="update-email-link"
-                    >Update email</a
-                  >
-                </p>
-              </div>
-              <div class="method-toggle">
-                <p>Off</p>
-                <label class="switch">
-                  <input type="checkbox" id="emailToggle" />
-                  <span class="slider"></span>
-                </label>
-                <p>On</p>
-              </div>
-            </div>
-            <div class="verification-method">
-              <div class="method-info">
-                <p class="method-title">SMS</p>
-                <p class="method-description">
-                  We will send a code to a phone number you verify.
-                </p>
-              </div>
-              <div class="method-toggle">
-                <p>Off</p>
-                <label class="switch">
-                  <input type="checkbox" id="smsToggle" />
-                  <span class="slider"></span>
-                </label>
-                <p>On</p>
-              </div>
+            <p class="form-text">
+              By accepting this request, you agree to receive text messages at
+              the phone number provided above. You can reply to these text
+              messages with HELP for help or STOP to stop receiving messages at
+              any time. Message and data rates may apply. Message frequency may
+              vary. View our <a href="#">Privacy Policy</a> and
+              <a href="#">Terms of Use</a>.
+            </p>
+
+            <div class="buttons">
+              <button class="decline" type="button">DECLINE</button>
+              <button class="accept" type="button">ACCEPT & CONTINUE</button>
             </div>
           </div>
         </div>
