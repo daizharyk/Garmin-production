@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
   questionMarkPhone.addEventListener("click", function () {
     phoneText.classList.toggle("visible");
   });
+
   const currentPassword = document.getElementById("currentPassword");
   const newPassword = document.getElementById("newPassword");
   const confirmNewPassword = document.getElementById("confirmNewPassword");
@@ -36,6 +37,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const passwordEditCancel = document.querySelector(".password-edit-cancel");
   const saveBtns = document.querySelectorAll(".save-btn");
   const loadingSpinner = document.querySelectorAll(".loadingSpinner");
+  const nameInput = document.getElementById("name");
+  const emailInput = document.getElementById("email");
 
   updatePasswordBtn.addEventListener("click", function () {
     updatePasswordForm.classList.toggle("visible");
@@ -49,9 +52,12 @@ document.addEventListener("DOMContentLoaded", () => {
     accountDetailWrapper.classList.remove("hidden");
   });
 
-  accountEditBtn.addEventListener("click", function () {
+  accountEditBtn.addEventListener("click", async function () {
     accountDetailForm.classList.toggle("visible");
     accountDetailWrapper.classList.add("hidden");
+    const userDetails = await userinfo();
+    nameInput.value = userDetails.name;
+    emailInput.value = userDetails.email;
   });
 
   accountEditCancel.addEventListener("click", function () {
@@ -80,20 +86,35 @@ document.addEventListener("DOMContentLoaded", () => {
     infoCard.classList.remove("hidden");
   });
 
+  const categories = document.querySelectorAll(".category");
+
+  const currentPath = window.location.pathname.replace(/^\//, ""); // Убираем ведущий слэш
+  console.log("Current Path:", window.location.pathname);
+
+  categories.forEach((category) => {
+    const link = category.querySelector("a");
+    if (link) {
+      const linkPath = link.getAttribute("href").replace(/^\//, ""); // Убираем ведущий слэш у href
+      if (linkPath === currentPath) {
+        category.classList.add("active");
+        link.style.color = "#fff";
+      }
+    }
+  });
+
   async function displayUserDetails() {
     try {
       const userDetails = await userinfo();
 
       if (userDetails) {
-        document.getElementById("name").innerText = userDetails.name;
         document.getElementById("userName").innerText =
           `Name: ${userDetails.name}`;
         document.getElementById("userEmail").innerText =
           `Email: ${userDetails.email}`;
         document.getElementById("userLocation").innerText =
-          `Location: ${userDetails.location}`;
+          `Location: ${userDetails.location || ""}`;
         document.getElementById("userLanguage").innerText =
-          `Language: ${userDetails.language}`;
+          `Language: ${userDetails.language || ""}`;
       } else {
         console.error("No user details received");
       }
@@ -103,6 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
   displayUserDetails();
+  
   loadingSpinner.forEach((spinner) => {
     spinner.style.display = "none";
   });

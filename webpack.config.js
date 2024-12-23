@@ -22,6 +22,7 @@ module.exports = {
     registration: path.resolve(__dirname, "src/js/registration.js"),
     authState: path.resolve(__dirname, "src/js/authState.js"),
     accountProfile: path.resolve(__dirname, "src/js/accountProfile.js"),
+    securityCenter: path.resolve(__dirname, "src/js/securityCenter.js")
   },
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -152,16 +153,22 @@ module.exports = {
       chunks: ["register", "registration"],
     }),
     new HtmlWebpackPlugin({
-      title: "Account | Profile",
-      filename: "pages/accountProfile.html",
-      template: "src/pages/accountProfile.html",
-      chunks: ["main", "animation", "authState", "accountProfile"],
+      title: "Data Management",
+      filename: "pages/securityCenter.html",
+      template: "src/pages/securityCenter.html",
+      chunks: ["main", "animation", "authState", "securityCenter"],
       templateParameters: {
         footer: fs.readFileSync(
           path.resolve(__dirname, "src/pages/components/footer.html"),
           "utf-8"
         ),
       },
+    }),
+    new HtmlWebpackPlugin({
+      title: "Account | Profile",
+      filename: "pages/accountProfile.html",
+      template: "src/pages/accountProfile.html",
+      chunks: ["main", "animation", "authState", "accountProfile"],
     }),
     new CopyWebpackPlugin({
       patterns: [{ from: "src/img", to: "img" }],

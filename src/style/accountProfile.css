@@ -304,6 +304,7 @@ h2 {
 .profile__content {
   display: flex;
   align-items: flex-start;
+  margin-bottom: 50px;
   border-top: 1px solid #d9d9d9;
 }
 .category {
@@ -324,11 +325,9 @@ h2 {
 }
 
 .category:hover {
-  background-color: #000;
+  text-decoration: underline;
 }
-.category a:hover {
-  color: #fff;
-}
+
 .icon {
   margin-right: 10px;
   font-size: 18px;
@@ -412,10 +411,10 @@ input:invalid + .error-message {
 }
 
 .save-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
   background-color: #6dcff6;
   color: #000;
   border: 1px solid #6dcff6;
@@ -489,25 +488,129 @@ input:invalid + .error-message {
 }
 
 .spinnerr {
-    width: 20px;
-    height: 20px;
-    border: 3px solid transparent;
-    border-top: 5px solid #000;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
+  width: 20px;
+  height: 20px;
+  border: 3px solid transparent;
+  border-top: 5px solid #000;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
   position: absolute;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
   }
-  
-  @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-  
-    100% {
-      transform: rotate(360deg);
-    }
+
+  100% {
+    transform: rotate(360deg);
   }
-  
+}
+.two-step-verification h1 {
+  margin-bottom: 10px;
+}
+.two-step-verification {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+  border-left: 1px solid #ccc;
+  padding: 20px;
+  background-color: #fff;
+}
+.verification-container {
+  max-width: 800px;
+}
+.category.active {
+  color: #fff;
+  background: #000;
+}
+
+.two-step-verification p {
+  color: #000;
+  line-height: 1.6;
+}
+.verification-method {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+  padding: 10px 0;
+}
+
+.update-email-link:hover {
+  text-decoration: none;
+}
+
+.method-title {
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+.method-toggle {
+  display: flex;
+  align-items: center;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 20px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+.two-step-text{
+    display: flex;
+    flex-direction: column;
+}
+.two-step-text p {
+    margin-bottom: 10px;
+}
+input:checked + .slider {
+  background-color: #000;
+}
+
+input:checked + .slider:before {
+  transform: translateX(20px);
+}
+.method-toggle p {
+  font-family: Roboto, sans-serif;
+
+  margin: 5px;
+}
+
+.two-step-text {
+  display: none;
+}
 @media (max-width: 1024px) {
   .sidebar-account {
     display: none;
