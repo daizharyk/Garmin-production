@@ -19,15 +19,15 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Функция для обработки выпадающих меню
+
   function setupDropdownMenus() {
-    const isLargeScreen = window.innerWidth >= 1100; // Изменено на 1120px
+    const isLargeScreen = window.innerWidth >= 1100; 
     document.querySelectorAll(".nav-menu").forEach((menu) => {
       const dropdownClass = `${menu.classList[1]}-dropdown`;
       const dropdown = document.querySelector(`.${dropdownClass}`);
 
       if (isLargeScreen) {
-        // Показываем дропдаун при наведении на меню или на дропдаун
+   
         menu.onmouseover = () => toggleDropdown(menu, true);
         menu.onmouseout = (event) => {
           if (!isMouseOverDropdown(event, dropdown)) {
@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
         };
 
         if (dropdown) {
-          // Не скрываем дропдаун, если мышка над ним
+        
           dropdown.onmouseover = () => toggleDropdown(menu, true);
           dropdown.onmouseout = (event) => {
             if (!isMouseOverDropdown(event, dropdown)) {
@@ -45,14 +45,14 @@ document.addEventListener("DOMContentLoaded", function () {
           };
         }
       } else {
-        // Очищаем обработчики для мобильной версии
+  
         menu.onmouseover = null;
         menu.onmouseout = null;
 
         if (dropdown) {
           dropdown.onmouseover = null;
           dropdown.onmouseout = null;
-          dropdown.style.display = ""; // Сбрасываем стиль display
+          dropdown.style.display = ""; 
         }
       }
     });
@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Проверка, находится ли мышка над дропдауном
+
   function isMouseOverDropdown(event, dropdown) {
     const relatedTarget = event.relatedTarget;
     return dropdown.contains(relatedTarget);
@@ -114,18 +114,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (burgerButton && navMenu) {
     burgerButton.addEventListener("click", function () {
-      this.classList.toggle("active"); // Переключение класса для анимации
+      this.classList.toggle("active"); 
       navMenu.style.display =
-        navMenu.style.display === "block" ? "none" : "block"; // Скрыть или показать меню
+        navMenu.style.display === "block" ? "none" : "block"; 
     });
     function handleResize4() {
       const windowWidth = window.innerWidth;
 
-      // Если ширина экрана 1100px или больше, сбросить классы и стили
+     
       if (windowWidth >= 1100) {
         if (burgerButton && navMenu) {
-          burgerButton.classList.remove("active"); // Удалить класс активности у кнопки
-          navMenu.style.display = ""; // Сбросить стиль display у меню
+          burgerButton.classList.remove("active");
+          navMenu.style.display = ""; 
         }
       }
     }
@@ -136,7 +136,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function setupDropdowns() {
     document.querySelectorAll(".nav-item").forEach((item) => {
       item.addEventListener("click", function () {
-        const dropdownClass = this.getAttribute("data-dropdown"); // Получаем класс дропдауна
+        const dropdownClass = this.getAttribute("data-dropdown"); 
         const dropdown = document.querySelector(`.${dropdownClass}`);
 
         if (dropdown) {

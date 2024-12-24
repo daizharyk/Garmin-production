@@ -699,97 +699,59 @@
           <h3>Shop by Feature</h3>
           <ul class="feature-list">
             <li>
-              <input type="checkbox" id="new-forerunners" />
-              <label for="new-forerunners">New Forerunners</label>
-              <span class="count">(55)</span>
+              <input type="checkbox" id="touchscreen" />
+              <label for="touchscreen">Touchscreen</label>
+              <span class="count" id="touchscreen_count"></span>
             </li>
             <li>
-              <input type="checkbox" id="buttons" />
-              <label for="buttons">Buttons</label>
-              <span class="count"></span>
+              <input type="checkbox" id="new_forerunners" />
+              <label for="new_forerunners">New Forerunners</label>
+              <span class="count" id="new_forerunners_count"></span>
             </li>
             <li>
-              <input type="checkbox" id="touchscreen-buttons" />
-              <label for="touchscreen-buttons">Touchscreen & buttons</label>
-              <span class="count"></span>
+              <input type="checkbox" id="entry_level_running" />
+              <label for="entry_level_running">Entry Level Running</label>
+              <span class="count" id="entry_level_running_count"></span>
             </li>
             <li>
-              <input type="checkbox" id="color-screen" />
-              <label for="color-screen">Color screen</label>
-              <span class="count"></span>
+              <input type="checkbox" id="advanced_running" />
+              <label for="advanced_running">Advanced Running</label>
+              <span class="count" id="advanced_running_count"></span>
             </li>
             <li>
-              <input type="checkbox" id="amoled-display" />
-              <label for="amoled-display">AMOLED Display</label>
-              <span class="count"></span>
+              <input type="checkbox" id="elite_running" />
+              <label for="elite_running">Elite Running</label>
+              <span class="count" id="elite_running_count"></span>
+            </li>
+            <li>
+              <input type="checkbox" id="color_screen" />
+              <label for="color_screen">Color screen</label>
+              <span class="count" id="color_screen_count"></span>
+            </li>
+            <li>
+              <input type="checkbox" id="solar_charging" />
+              <label for="solar_charging">Solar charging</label>
+              <span class="count" id="solar_charging_count"></span>
             </li>
             <li>
               <input type="checkbox" id="flashlight" />
               <label for="flashlight">Flashlight</label>
-              <span class="count"></span>
+              <span class="count" id="flashlight_count"></span>
             </li>
             <li>
-              <input type="checkbox" id="entry-level-running" />
-              <label for="entry-level-running">Entry Level Running</label>
-              <span class="count"></span>
+              <input type="checkbox" id="buttons" />
+              <label for="buttons">Buttons</label>
+              <span class="count" id="buttons_count"></span>
             </li>
             <li>
-              <input type="checkbox" id="advanced-running" />
-              <label for="advanced-running">Advanced Running</label>
-              <span class="count"></span>
+              <input type="checkbox" id="amoled_display" />
+              <label for="amoled_display">AMOLED Display</label>
+              <span class="count" id="amoled_display_count"></span>
             </li>
             <li>
-              <input type="checkbox" id="elite-running" />
-              <label for="elite-running">Elite Running</label>
-              <span class="count"></span>
-            </li>
-            <li>
-              <input type="checkbox" id="solar-charging" />
-              <label for="solar-charging">Solar charging</label>
-              <span class="count"></span>
-            </li>
-            <li>
-              <input type="checkbox" id="ultratrac-mode" />
-              <label for="ultratrac-mode">UltraTrac mode</label>
-              <span class="count"></span>
-            </li>
-            <li>
-              <input type="checkbox" id="heart-rate-monitors" />
-              <label for="heart-rate-monitors">Heart Rate Monitors</label>
-              <span class="count"></span>
-            </li>
-          </ul>
-          <input
-            type="checkbox"
-            id="toggle-connectivity"
-            class="toggle-checkbox"
-          />
-          <label for="toggle-connectivity" class="toggle-label">
-            <h3>Connectivity Features</h3>
-            <span class="arrow"></span>
-          </label>
-          <ul class="feature-list hidden" id="connectivity-features">
-            <li>
-              <input type="checkbox" id="multi-band-gps" />
-              <label for="multi-band-gps">Multi-band GPS</label>
-              <span class="count"></span>
-            </li>
-            <li>
-              <input type="checkbox" id="garmin-pay" />
-              <label for="garmin-pay">Garmin Pay</label>
-              <span class="count"></span>
-            </li>
-            <li>
-              <input type="checkbox" id="music-storage" />
-              <label for="music-storage">Music storage on watch</label>
-              <span class="count"></span>
-            </li>
-            <li>
-              <input type="checkbox" id="notifications" />
-              <label for="notifications"
-                >Notifications from your smartphone</label
-              >
-              <span class="count"></span>
+              <input type="checkbox" id="heart_rate_monitors" />
+              <label for="heart_rate_monitors">Heart Rate Monitors</label>
+              <span class="count" id="heart_rate_monitors_count"></span>
             </li>
           </ul>
         </aside>
@@ -805,10 +767,10 @@
               <label for="sort">
                 <select name="test" id="sort">
                   <option value="">Feature Products</option>
-                  <option value="">A to Z</option>
-                  <option value="">Z to A</option>
-                  <option value="">Price: Low to High</option>
-                  <option value="">Price: High to Low</option>
+                  <option value="a_to_z">A to Z</option>
+                  <option value="z_to_a">Z to A</option>
+                  <option value="price_low_high">Price: Low to High</option>
+                  <option value="price_high_low">Price: High to Low</option>
                 </select>
               </label>
             </div>

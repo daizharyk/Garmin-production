@@ -1,12 +1,10 @@
-import { fetchData } from "./itemService.js";
 import "../style/style.css";
 import "../style/shipping.css";
 import "../style/itempage.css";
 
-
 export function createCards(data) {
   const container = document.getElementById("cards-container");
-
+  container.innerHTML = "";
   data.forEach((item) => {
     const link = document.createElement("a");
     link.href = `pages/itempage.html?id=${item._id}`;
@@ -46,53 +44,9 @@ export function createCards(data) {
   });
 }
 
-export async function createNewCards() {
-  const items = await fetchData();
-
-  const newCardsContainer = document.querySelector(".new-cards-container");
-
-  newCardsContainer.innerHTML = "";
-
-  function createCard(item) {
-    const newCard = document.createElement("div");
-
-    const cardLink = document.createElement("a");
-    cardLink.href = `/pages/itempage.html?id=${item._id}`;
-    cardLink.classList.add("card-link-dropdownmenu");
-
-    newCard.classList.add("new-card");
-
-    const img = document.createElement("img");
-    img.src = item.carousel_images[2];
-    img.alt = item.name;
-
-    const newCardDescription = document.createElement("div");
-    newCardDescription.classList.add("new-card-discription");
-
-    const h2 = document.createElement("h2");
-    h2.textContent = item.name;
-
-    newCardDescription.appendChild(h2);
-    newCard.appendChild(img);
-    newCard.appendChild(newCardDescription);
-    cardLink.appendChild(newCard);
-
-    return cardLink;
-  }
-
-  const idsToCreate = ["6702db1c66b48142a2e0bdc9", "6702db1c66b48142a2e0bdc8"];
-  idsToCreate.forEach((id) => {
-    const item = items.find((i) => i._id === id);
-    if (item) {
-      const card = createCard(item);
-      newCardsContainer.appendChild(card);
-    }
-  });
-}
-
 export function scrollToItems() {
   let shopall = document.getElementById("shopall");
-  let cardsContent = document.querySelector(".cards-content");
+  let cardsContent = document.getElementById("cards-container");
 
   let scrollIntoElement = (el) => {
     el.scrollIntoView({ behavior: "smooth" });
@@ -118,4 +72,100 @@ export function setupFilterToggle() {
     });
 }
 
+export function updateCounts(items) {
+  const featureCounts = {};
+  items.forEach((item) => {
+    for (const feature in item.features) {
+      if (item.features[feature]) {
+        featureCounts[feature] = (featureCounts[feature] || 0) + 1;
+      }
+    }
+  });
 
+  document
+    .querySelectorAll('.feature-list input[type="checkbox"]')
+    .forEach((checkbox) => {
+      const featureId = checkbox.id;
+      const countElement = document.getElementById(`${checkbox.id}_count`);
+      countElement.textContent = `(${featureCounts[checkbox.id] || 0})`;
+      const count = featureCounts[featureId] || 0;
+
+      countElement.textContent = `(${count})`;
+
+      if (count === 0) {
+        checkbox.closest("li").style.display = "none";
+      } else {
+        checkbox.closest("li").style.display = "block";
+      }
+    });
+}
+
+function handleFilterChange(data) {
+  const checkboxes = document.querySelectorAll(
+    '.feature-list input[type="checkbox"]'
+  );
+
+  const selectedFilters = Array.from(checkboxes)
+    .filter((checkbox) => checkbox.checked)
+    .map((checkbox) => checkbox.id);
+
+  const filteredItems =
+    selectedFilters.length > 0
+      ? data.filter((item) => {
+          if (!item.features) return false;
+
+          return selectedFilters.every(
+            (filter) => item.features[filter] === true
+          );
+        })
+      : data;
+
+  createCards(filteredItems);
+  updateCounts(filteredItems);
+}
+
+export function initializeFilters(
+  data,
+  checkboxSelector = '.feature-list input[type="checkbox"]'
+) {
+  const checkboxes = document.querySelectorAll(checkboxSelector);
+
+  checkboxes.forEach((checkbox) => {
+    checkbox.addEventListener("change", () => handleFilterChange(data));
+  });
+}
+function sortProducts(items, criteria) {
+  const sortedItems = [...items];
+  switch (criteria) {
+    case "a_to_z":
+      sortedItems.sort((a, b) => a.name.localeCompare(b.name));
+      break;
+    case "z_to_a":
+      sortedItems.sort((a, b) => b.name.localeCompare(a.name));
+      break;
+    case "price_low_high":
+      sortedItems.sort((a, b) => a.price - b.price);
+      break;
+    case "price_high_low":
+      sortedItems.sort((a, b) => b.price - a.price);
+      break;
+    default:
+      return items;
+  }
+
+  return sortedItems;
+}
+
+
+function handleSortChange(event, items) {
+  const sortCriteria = event.target.value;
+  const sortedItems = sortProducts(items, sortCriteria);
+  createCards(sortedItems);
+}
+
+export function initializeSort(data) {
+  const sortSelect = document.getElementById("sort");
+  sortSelect.addEventListener("change", (event) =>
+    handleSortChange(event, data)
+  );
+}
