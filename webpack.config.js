@@ -15,14 +15,14 @@ module.exports = {
     animation: path.resolve(__dirname, "src/js/animation.js"),
     html: path.resolve(__dirname, "src/js/htmlBuilder.js"),
     itempage: path.resolve(__dirname, "src/js/itempage.js"),
-    itemService: path.resolve(__dirname, "src/js/itemService.js"),
+
     signIn: path.resolve(__dirname, "src/js/signIn.js"),
     login: path.resolve(__dirname, "src/js/login.js"),
     register: path.resolve(__dirname, "src/js/register.js"),
     registration: path.resolve(__dirname, "src/js/registration.js"),
     authState: path.resolve(__dirname, "src/js/authState.js"),
     accountProfile: path.resolve(__dirname, "src/js/accountProfile.js"),
-    securityCenter: path.resolve(__dirname, "src/js/securityCenter.js")
+    securityCenter: path.resolve(__dirname, "src/js/securityCenter.js"),
   },
   output: {
     path: path.resolve(__dirname, "dist"),

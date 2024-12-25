@@ -1,3 +1,5 @@
+import { login } from "../service/userService";
+
 document.addEventListener("DOMContentLoaded", function () {
   const email = localStorage.getItem("email");
   const password = localStorage.getItem("password");
@@ -27,19 +29,12 @@ document.addEventListener("DOMContentLoaded", function () {
       loadingSpinner.style.display = "inline-block";
 
       try {
-        const response = await fetch("/api/users/login", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ email, password }),
-        });
-        const data = await response.json();
+        const data = await login({ email, password });
 
         loadingSpinner.style.display = "none";
-        document.getElementById("signInBtn").style.color = "#000";
+        signInBtn.style.color = "#000";
 
-        if (response.ok) {
+        if (data.success) {
           const rememberMe = document.getElementById("rememberMe").checked;
 
           if (rememberMe) {

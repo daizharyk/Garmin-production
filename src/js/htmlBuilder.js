@@ -4,6 +4,9 @@ import "../style/itempage.css";
 
 export function createCards(data) {
   const container = document.getElementById("cards-container");
+  if (!container) {
+    return;
+  }
   container.innerHTML = "";
   data.forEach((item) => {
     const link = document.createElement("a");
@@ -47,7 +50,9 @@ export function createCards(data) {
 export function scrollToItems() {
   let shopall = document.getElementById("shopall");
   let cardsContent = document.getElementById("cards-container");
-
+  if (!shopall || !cardsContent) {
+    return;
+  }
   let scrollIntoElement = (el) => {
     el.scrollIntoView({ behavior: "smooth" });
   };
@@ -58,18 +63,29 @@ export function scrollToItems() {
 }
 
 export function setupFilterToggle() {
-  document
-    .getElementById("filterSortToggle")
-    .addEventListener("click", function () {
-      const sidebar = document.getElementById("sidebar");
-      const filterDropdown = document.querySelector(".product-filter_dropdown");
+  const filterSortToggle = document.getElementById("filterSortToggle");
+  const sidebar = document.getElementById("sidebar");
+  const filterDropdown = document.querySelector(".product-filter_dropdown");
 
-      sidebar.style.display =
-        sidebar.style.display === "none" || sidebar.style.display === ""
-          ? "block"
-          : "none";
-      filterDropdown.classList.toggle("active");
-    });
+  if (!filterSortToggle) {
+    return;
+  }
+
+  if (!sidebar) {
+    return;
+  }
+
+  if (!filterDropdown) {
+    return;
+  }
+
+  filterSortToggle.addEventListener("click", function () {
+    sidebar.style.display =
+      sidebar.style.display === "none" || sidebar.style.display === ""
+        ? "block"
+        : "none";
+    filterDropdown.classList.toggle("active");
+  });
 }
 
 export function updateCounts(items) {
@@ -129,7 +145,9 @@ export function initializeFilters(
   checkboxSelector = '.feature-list input[type="checkbox"]'
 ) {
   const checkboxes = document.querySelectorAll(checkboxSelector);
-
+  if (checkboxes.length === 0) {
+    return;
+  }
   checkboxes.forEach((checkbox) => {
     checkbox.addEventListener("change", () => handleFilterChange(data));
   });
@@ -156,7 +174,6 @@ function sortProducts(items, criteria) {
   return sortedItems;
 }
 
-
 function handleSortChange(event, items) {
   const sortCriteria = event.target.value;
   const sortedItems = sortProducts(items, sortCriteria);
@@ -165,6 +182,9 @@ function handleSortChange(event, items) {
 
 export function initializeSort(data) {
   const sortSelect = document.getElementById("sort");
+  if (!sortSelect) {
+    return;
+  }
   sortSelect.addEventListener("change", (event) =>
     handleSortChange(event, data)
   );

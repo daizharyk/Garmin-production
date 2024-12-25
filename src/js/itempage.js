@@ -1,4 +1,4 @@
-import { loadItem } from "./itemService.js";
+import { getArticleById } from "../service/articleService";
 import "../style/style.css";
 import "../style/shipping.css";
 import "../style/itempage.css";
@@ -17,7 +17,7 @@ window.addEventListener("scroll", () => {
 
 document.addEventListener("DOMContentLoaded", async () => {
   const itemId = new URLSearchParams(location.search).get("id");
-  const item = await loadItem(itemId);
+  const item = await getArticleById(itemId);
   document.querySelector(".product-title").textContent = item.name;
   document.querySelector(".product-color").textContent = item.color;
   const saleBox = document.getElementById("sale-box");

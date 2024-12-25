@@ -1,14 +1,15 @@
-import { fetchData } from "./itemService.js";
+import { getAllArticles  } from "../service/articleService.js";
 
 import "../style/style.css";
 import "../style/shipping.css";
 import "../style/itempage.css";
+import "../style/accountProfile.css";
 
 let originalItems = [];
 
 async function loadModule() {
   try {
-    originalItems = await fetchData();
+    originalItems = await getAllArticles();
     if (!originalItems || !Array.isArray(originalItems)) {
       throw new Error("Данные не загружены или не в правильном формате");
     }
