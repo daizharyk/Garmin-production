@@ -40,10 +40,30 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector(".phone-verification-container").style.display =
       "flex";
   });
-  document.querySelector('.decline').addEventListener("click", function ( ){
+  document.querySelector(".decline").addEventListener("click", function () {
     document.querySelector(".verification-container-basic").style.display =
       "flex";
     document.querySelector(".phone-verification-container").style.display =
       "none";
-  })
+  });
+
+  const toggleMenuButton = document.getElementById("toggleMenu");
+  const sidebar = document.querySelector(".sidebar-account");
+  const arrow = document.getElementById("arrow-sidebar-account");
+
+  toggleMenuButton.addEventListener("click", function () {
+    sidebar.style.transform =
+      sidebar.style.transform === "translateX(0px)"
+        ? "translateX(-100%)"
+        : "translateX(0px)";
+    toggleMenuButton.classList.toggle("open");
+    console.log("arrow", arrow);
+  });
+  window.addEventListener("resize", function () {
+    if (window.innerWidth > 1024) {
+      sidebar.style.transform = ""; // Сбросить инлайновый стиль
+    } else {
+      sidebar.style.transform = "translateX(-100%)"; // Убедиться, что скрыто
+    }
+  });
 });

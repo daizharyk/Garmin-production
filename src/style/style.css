@@ -3,14 +3,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
 
-body {
-  font-family: "Roboto", sans-serif;
-}
+
 
 * {
   padding: 0;
   margin: 0;
-  font-family: "Roboto", sans-serif;
+
   box-sizing: border-box;
 }
 
@@ -201,9 +199,10 @@ body {
 }
 
 .sub-menu li {
+  line-height: 1.25;
   font-family: "Roboto", sans-serif;
-  font-size: 0.8rem;
-  letter-spacing: 0.05rem;
+  font-size: 0.875rem;
+  letter-spacing: 0.1rem;
   margin-bottom: 10px;
   text-decoration: none;
   color: #000;
@@ -1278,7 +1277,7 @@ footer {
     flex-direction: column;
     text-align: left;
     list-style: none;
-    font-family: "Roboto";
+    font-family: "Roboto", sans-serif;
     font-size: 0.8rem;
     letter-spacing: 0.05rem;
   }
@@ -1288,6 +1287,8 @@ footer {
   }
 
   .sub-menu li {
+    font-family: "Roboto", sans-serif;
+    font-size: 0.875rem;
     padding: 14px 40px;
     margin: 0;
   }
