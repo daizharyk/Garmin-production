@@ -132,7 +132,7 @@ module.exports = {
       title: "Shipping",
       filename: "pages/shipping.html",
       template: "src/pages/shipping.html",
-      chunks: ["animation", "authState"],
+      chunks: ["animation", "authState","main"],
       templateParameters: {
         footer: fs.readFileSync(
           path.resolve(__dirname, "src/pages/components/footer.html"),

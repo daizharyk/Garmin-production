@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const categories = document.querySelectorAll(".category");
 
   const currentPath = window.location.pathname.replace(/^\//, ""); // Убираем ведущий слэш
-  console.log("Current Path:", window.location.pathname);
+
 
   categories.forEach((category) => {
     const link = category.querySelector("a");
@@ -124,7 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
   displayUserDetails();
-  
+
   loadingSpinner.forEach((spinner) => {
     spinner.style.display = "none";
   });
