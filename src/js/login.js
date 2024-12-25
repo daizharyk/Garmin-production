@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
         loadingSpinner.style.display = "none";
         signInBtn.style.color = "#000";
 
-        if (data.success) {
+        if (data.token) {
           const rememberMe = document.getElementById("rememberMe").checked;
 
           if (rememberMe) {
@@ -44,11 +44,15 @@ document.addEventListener("DOMContentLoaded", function () {
             sessionStorage.setItem("user", JSON.stringify(data));
           } else {
             sessionStorage.setItem("user", JSON.stringify(data));
+            localStorage.setItem("user", JSON.stringify(data));
           }
           const redirectAfterLogin =
             sessionStorage.getItem("redirectAfterLogin");
           if (redirectAfterLogin === "account") {
             window.location.href = "/pages/accountProfile.html";
+          } else if (redirectAfterLogin) {
+            // Перенаправляем на сохраненную страницу
+            window.location.href = redirectAfterLogin;
           } else {
             window.location.href = "/index.html";
           }

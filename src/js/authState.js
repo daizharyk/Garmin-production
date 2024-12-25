@@ -10,14 +10,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
     authLink.addEventListener("click", function (event) {
       event.preventDefault();
+      const currentPage = window.location.href;
+
       localStorage.removeItem("user");
       sessionStorage.removeItem("user");
 
-      window.location.href = "./index.html";
+      if (currentPage.includes("account")) {
+        window.location.href = "/index.html";
+      } else {
+        window.location.href = currentPage;
+      }
     });
   } else {
     authLink.textContent = "Sign In";
   }
+
+  
   accountLink.addEventListener("click", function () {
     if (!user || user === "null" || user === "undefined") {
       sessionStorage.setItem("redirectAfterLogin", "account");
@@ -26,5 +34,9 @@ document.addEventListener("DOMContentLoaded", function () {
       window.location.href = "/pages/accountProfile.html";
     }
   });
+  if (!user) {
+    authLink.addEventListener("click", function () {
+      sessionStorage.setItem("redirectAfterLogin", window.location.href);
+    });
+  }
 });
-

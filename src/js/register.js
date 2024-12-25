@@ -1,3 +1,4 @@
+import { login, register } from "../service/userService";
 import "../style/signin_login.css";
 
 document
@@ -18,32 +19,16 @@ document
     loginError.style.display = "none";
 
     try {
-      const response = await fetch("/api/users", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ name, email, password, country }),
-      });
-
-      const data = await response.json();
+      const data = await register({ name, email, password, country });
 
       loadingSpinner.style.display = "none";
       createAccountBtn.disabled = false;
       document.getElementById("createAccountBtn").style.color = "#000";
 
-      if (response.ok) {
-        const loginResponse = await fetch("/api/users/login", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ email, password }),
-        });
+      if (data.success) {
+        const loginData = await login({ email, password });
 
-        const loginData = await loginResponse.json();
-
-        if (loginResponse.ok) {
+        if (loginData.success) {
           localStorage.setItem("user", JSON.stringify(loginData));
 
           alert("User registered and logged in successfully");
@@ -60,7 +45,9 @@ document
       console.error("Error during registration:", error);
       alert("An error occurred. Please try again later.");
     } finally {
+      loadingSpinner.style.display = "none";
       createAccountBtn.disabled = false;
+      document.getElementById("createAccountBtn").style.color = "#000";
     }
 
     const closeErrorButton = document.getElementById("closeError");

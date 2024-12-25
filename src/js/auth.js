@@ -6,3 +6,4 @@ export function checkAuthorization() {
     document.body.classList.remove("hide-content");
   }
 }
+
