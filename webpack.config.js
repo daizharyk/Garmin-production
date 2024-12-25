@@ -169,6 +169,12 @@ module.exports = {
       filename: "pages/accountProfile.html",
       template: "src/pages/accountProfile.html",
       chunks: ["main", "animation", "authState", "accountProfile"],
+      templateParameters: {
+        footer: fs.readFileSync(
+          path.resolve(__dirname, "src/pages/components/footer.html"),
+          "utf-8"
+        ),
+      },
     }),
     new CopyWebpackPlugin({
       patterns: [{ from: "src/img", to: "img" }],
