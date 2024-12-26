@@ -120,7 +120,7 @@ module.exports = {
       title: "Product Page",
       filename: "pages/itempage.html",
       template: "src/pages/itempage.html",
-      chunks: ["itempage", "animation", "authState"],
+      chunks: ["itempage", "animation", "authState","main"],
       templateParameters: {
         footer: fs.readFileSync(
           path.resolve(__dirname, "src/pages/components/footer.html"),

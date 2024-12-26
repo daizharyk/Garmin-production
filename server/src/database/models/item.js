@@ -11,7 +11,8 @@ const itemSchema = new mongoose.Schema(
     category: { type: String },
     product_title: { type: String },
     image: { type: String },
-
+    model: { type: String, required: true },
+    sase_size: { type: Number, required: true },
     text: { type: String },
     status: { type: String },
     folder_name: { type: String },

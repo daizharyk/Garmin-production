@@ -1,11 +1,7 @@
-
-
-
 .product {
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 
 .product-img-container {
@@ -30,15 +26,13 @@
   height: 500px;
   /* max-height: 500px; */
   margin-left: 200px;
-
-
 }
 
 .product-title {
   font-family: "Oswald";
   font-size: 2.3rem;
   font-weight: 400;
-  letter-spacing: .05rem;
+  letter-spacing: 0.05rem;
   line-height: 1.25;
   text-align: left;
   color: #000000;
@@ -50,13 +44,17 @@
   border: none;
   font-size: 15px;
   cursor: pointer;
-  transition: .2s, color 0.2s ease;
+  transition:
+    0.2s,
+    color 0.2s ease;
   margin: 3px 0 3px 0;
   background: #ccc;
 }
 
 .arrow-s {
-  transition: 0.1s, color 0.1s;
+  transition:
+    0.1s,
+    color 0.1s;
 }
 
 .carousel-control:hover {
@@ -75,7 +73,6 @@
   height: 400px;
   transition: 0.3s ease-in-out;
 }
-
 
 .carousel-box {
   width: 80px;
@@ -100,8 +97,11 @@
   border-color: #2c2b2b;
 }
 
-.carousel-img, #mainImage {
-  transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+.carousel-img,
+#mainImage {
+  transition:
+    transform 0.4s ease-in-out,
+    opacity 0.4s ease-in-out;
 }
 
 .product-img img {
@@ -109,25 +109,26 @@
 }
 
 .sale-box p {
-  background-color: #6DCFF6;
+  background-color: #6dcff6;
   font-weight: bold;
-  font-family: Roboto, sans-serif, Microsoft JhengHei;
+  font-family:
+    Roboto,
+    sans-serif,
+    Microsoft JhengHei;
   font-size: 9pt;
   display: inline-flex;
 
   justify-content: center;
   align-items: center;
-  border: #6DCFF6 solid 6pt;
+  border: #6dcff6 solid 6pt;
   padding: 5px;
 
   box-sizing: border-box;
-
 }
 
 .product-price {
   margin: 1rem 0 0 0;
   color: #0079be;
-
 }
 
 .currency-code {
@@ -143,8 +144,6 @@
   font-weight: bolder;
 }
 
-
-
 .currency {
   font-size: 0.7rem;
 }
@@ -154,8 +153,8 @@
   justify-content: center;
   align-items: center;
   color: #fff;
-  font-size: .78em;
-  letter-spacing: .1em;
+  font-size: 0.78em;
+  letter-spacing: 0.1em;
   font-weight: 700;
   line-height: 1rem;
   background: #2677b1;
@@ -164,7 +163,9 @@
   padding: 1em 3em;
   margin: 1em 0 1em;
   cursor: pointer;
-  transition: 0.2s, color 0.2s ease;
+  transition:
+    0.2s,
+    color 0.2s ease;
 }
 
 .add-cart:hover {
@@ -183,7 +184,6 @@
 }
 
 /* --------------------- */
-
 
 .product-img-container1 {
   position: relative;
@@ -247,29 +247,32 @@ button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
-
 .video-wrapper {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 0;
+  padding-top: 56.25%; 
   overflow: hidden;
 }
 
-
-
 .video-thumbnail {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 10;
 }
 
 #video-player {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  /* Ширина на весь экран */
   height: 100%;
-  /* Высота на весь экран */
 }
 
 .thumbnail-img {
@@ -280,15 +283,13 @@ button:disabled {
 
 .play-button {
   width: 80px;
-  /* Ширина кнопки */
   height: 80px;
-  /* Высота кнопки */
   font-size: 50px;
   color: white;
   background: rgba(0, 0, 0, 0.5);
   border: none;
   border-radius: 100%;
-  /* Круглая форма */
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -302,15 +303,13 @@ button:disabled {
 
 .play-button:hover {
   opacity: 0.9;
-  background: rgba(0, 0, 0, 0.8);
+  background: #fff;
+  color: #000;
 }
-
-
 
 .information_container {
   display: flex;
   flex-direction: column;
-
 }
 
 .walpapperinfo {
@@ -350,14 +349,23 @@ button:disabled {
 }
 
 .function-info-card h2 {
-  font-family: Oswald, Roboto Condensed, Roboto, Noto Sans TC, Noto Sans SC, Noto Sans JP, Noto Sans KR, Prompt, sans-serif;
+  font-family:
+    Oswald,
+    Roboto Condensed,
+    Roboto,
+    Noto Sans TC,
+    Noto Sans SC,
+    Noto Sans JP,
+    Noto Sans KR,
+    Prompt,
+    sans-serif;
   font-weight: 400;
-  letter-spacing: .05rem;
+  letter-spacing: 0.05rem;
   margin-bottom: 10px;
 }
 
 .function-info-card p {
-  font-size: .875rem;
+  font-size: 0.875rem;
   letter-spacing: 0;
   line-height: 19px;
   margin: 0;
@@ -392,13 +400,21 @@ button:disabled {
   align-items: center;
   height: 80px;
   margin: 0;
-
 }
 
 .banner-title {
-  font-family: Oswald, Roboto Condensed, Roboto, Noto Sans TC, Noto Sans SC, Noto Sans JP, Noto Sans KR, Prompt, sans-serif;
+  font-family:
+    Oswald,
+    Roboto Condensed,
+    Roboto,
+    Noto Sans TC,
+    Noto Sans SC,
+    Noto Sans JP,
+    Noto Sans KR,
+    Prompt,
+    sans-serif;
   font-weight: 400;
-  letter-spacing: .05rem;
+  letter-spacing: 0.05rem;
   line-height: 1.25;
   font-size: 3rem;
   margin: 1.5rem 0;
@@ -415,7 +431,6 @@ button:disabled {
 .registered {
   font-size: 60% !important;
   vertical-align: top;
-
 }
 
 .currency-sign {
@@ -433,11 +448,17 @@ button:disabled {
   display: block;
   width: 100%;
   height: auto;
-
 }
 
 .bannertext-container {
-  font-family: Roboto, Noto Sans TC, Noto Sans SC, Noto Sans JP, Noto Sans KR, Prompt, sans-serif;
+  font-family:
+    Roboto,
+    Noto Sans TC,
+    Noto Sans SC,
+    Noto Sans JP,
+    Noto Sans KR,
+    Prompt,
+    sans-serif;
   font-size: 100%;
   display: block;
   margin: 0;
@@ -453,8 +474,6 @@ button:disabled {
   width: 80%;
 }
 
-
-
 #bannerwithtext-adaptive {
   display: none;
 }
@@ -465,7 +484,7 @@ button:disabled {
   text-transform: uppercase;
   font-size: 0.875em;
   font-weight: 600;
-  letter-spacing: .02em;
+  letter-spacing: 0.02em;
   padding: 0 1.5em;
   text-decoration: none;
   display: flex;
@@ -498,7 +517,6 @@ button:disabled {
 }
 
 @media (max-width: 770px) {
-
   .function-info-card {
     width: 100%;
     align-items: center;
@@ -506,7 +524,6 @@ button:disabled {
 
   .function-info-card img {
     width: 350px !important;
-
   }
 
   .walpapperinfo {
@@ -517,7 +534,6 @@ button:disabled {
     display: block;
     justify-content: center;
     width: 100%;
-
   }
 
   #bannerwithtext {
@@ -535,8 +551,6 @@ button:disabled {
   .cards-container {
     margin: 10px 50px;
   }
-
-
 }
 
 @media (max-width: 1200px) {
@@ -564,12 +578,9 @@ button:disabled {
   .carousel {
     height: 350px;
   }
-
-
 }
 
 @media (max-width: 1000px) {
-
   .gallery-wrap {
     display: none;
   }
@@ -623,14 +634,9 @@ button:disabled {
   .nav-bar {
     display: none;
   }
-
-
-
-
 }
 
 @media (max-width: 510px) {
-
   .cards-container {
     margin: 10px 20px;
   }

@@ -537,9 +537,9 @@
                     </g>
                   </svg>
                   <div class="dropdown-user">
-                    <a href="#account">Account</a>
-                    <a href="#orders">Orders</a>
-                    <a href="./pages/signIn.html">Sign In</a>
+                    <a id="accountLink" href="#">Account</a>
+                    <a href="">Orders</a>
+                    <a id="authLink" href="/pages/signIn.html">Sign In</a>
                   </div>
                 </div>
               </div>
@@ -685,8 +685,7 @@
       </article>
     </main>
 
-      <% if (htmlWebpackPlugin.options.templateParameters.footer) { %> <%=
-      htmlWebpackPlugin.options.templateParameters.footer %> <% } %>
-
+    <% if (htmlWebpackPlugin.options.templateParameters.footer) { %> <%=
+    htmlWebpackPlugin.options.templateParameters.footer %> <% } %>
   </body>
 </html>
