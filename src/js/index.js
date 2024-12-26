@@ -1,4 +1,4 @@
-import { getAllArticles  } from "../service/articleService.js";
+import { getAllArticles } from "../service/articleService.js";
 
 import "../style/style.css";
 import "../style/shipping.css";
@@ -23,6 +23,7 @@ async function loadModule() {
       setupFilterToggle,
       initializeFilters,
       updateCounts,
+      initializeBoxClicks,
     } = module;
     createCards(originalItems);
     initializeFilters(originalItems);
@@ -30,6 +31,7 @@ async function loadModule() {
     setupFilterToggle(originalItems);
     initializeSort(originalItems);
     scrollToItems();
+    initializeBoxClicks(originalItems);
   } catch (error) {
     console.error("Ошибка при загрузке модуля:", error);
   }

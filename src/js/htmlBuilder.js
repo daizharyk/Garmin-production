@@ -152,6 +152,53 @@ export function initializeFilters(
     checkbox.addEventListener("change", () => handleFilterChange(data));
   });
 }
+export function initializeBoxClicks(
+  data,
+  boxSelector = ".box",
+  checkboxSelector = '.feature-list input[type="checkbox"]'
+) {
+  const boxes = document.querySelectorAll(boxSelector);
+  const checkboxes = document.querySelectorAll(checkboxSelector);
+  const cardsContent = document.getElementById("cards-container");
+  if (boxes.length === 0 || checkboxes.length === 0 || !cardsContent) {
+    return;
+  }
+
+  const scrollIntoElement = (el) => {
+    el.scrollIntoView({ behavior: "smooth" });
+  };
+
+  boxes.forEach((box) => {
+    box.addEventListener("click", () => {
+      if (event.target.tagName === "A") {
+        event.preventDefault();
+      }
+
+      scrollIntoElement(cardsContent);
+      const featureId = box.getAttribute("data-checkbox");
+      const checkbox = document.getElementById(featureId);
+
+      if (checkbox) {
+        const filteredItems = data.filter(
+          (item) => item.features && item.features[featureId]
+        );
+
+        if (filteredItems.length === 0) {
+          return;
+        }
+        checkboxes.forEach((cb) => {
+          if (cb.id !== featureId) {
+            cb.checked = false;
+          }
+        });
+        checkbox.checked = !checkbox.checked;
+
+        handleFilterChange(data);
+      }
+    });
+  });
+}
+
 function sortProducts(items, criteria) {
   const sortedItems = [...items];
   switch (criteria) {
