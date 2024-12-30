@@ -3,8 +3,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
 
-
-
 * {
   padding: 0;
   margin: 0;
@@ -200,9 +198,10 @@
 
 .sub-menu li {
   line-height: 1.25;
-  font-family: "Roboto", sans-serif;
+  font-family: Superscripts-Roboto, Roboto, "Noto Sans TC", "Noto Sans SC",
+    "Noto Sans JP", "Noto Sans KR", Prompt, sans-serif;
   font-size: 0.875rem;
-  letter-spacing: 0.1rem;
+  letter-spacing: 0.05rem;
   margin-bottom: 10px;
   text-decoration: none;
   color: #000;
@@ -452,8 +451,6 @@
   cursor: pointer;
   color: #ffffff;
 }
-
-
 
 .overlay a {
   color: #ffffff;

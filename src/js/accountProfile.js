@@ -222,7 +222,7 @@ document.addEventListener("DOMContentLoaded", () => {
         ? "translateX(-100%)"
         : "translateX(0px)";
         toggleMenuButton.classList.toggle("open"); 
-    console.log("arrow",arrow);
+
     
   });
   window.addEventListener("resize", function () {

@@ -9,6 +9,7 @@ const {
   createNewItem,
   getMyItems,
   restoreItem,
+  getSmartwatchModels,
 } = require("./controller");
 const { protected } = require("../../middlewares/auth");
 const router = Router();
@@ -33,5 +34,7 @@ router.patch("/:id", protected, deleteItem);
 router.patch("/:id/restore", protected , restoreItem)
 
 router.delete("/force/:id", protected, deleteItemForce);
+
+router.get("/smartwatch-models", getSmartwatchModels);
 
 module.exports = router;

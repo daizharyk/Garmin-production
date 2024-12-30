@@ -165,9 +165,6 @@ module.exports = {
       });
 
       data.watch_features = req.body.watch_features?.map((feature, index) => {
-  
-
-
         const imageData = watchFeatures[index]
           ? watchFeatures[index]
           : feature.image;
@@ -231,6 +228,14 @@ module.exports = {
       res.send("Item restored");
     } catch (error) {
       next(error);
+    }
+  },
+  getSmartwatchModels: async (req, res, next) => {
+    try {
+      const smartwatchModels = await itemService.getSmartwatchModels();
+      res.json(smartwatchModels); 
+    } catch (error) {
+      next(error); 
     }
   },
 };

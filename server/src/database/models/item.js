@@ -11,12 +11,19 @@ const itemSchema = new mongoose.Schema(
     category: { type: String },
     product_title: { type: String },
     image: { type: String },
-    model: { type: String, required: true },
     sase_size: { type: Number, required: true },
     text: { type: String },
     status: { type: String },
     folder_name: { type: String },
     carousel_images: [{ type: String }],
+    case_size: [
+      {
+        size: { type: String, required: true },
+        available: { type: Boolean, default: true },
+      },
+    ],
+    model: { type: String, required: true },
+    model_version: { type: String, required: true },
     banner_text: {
       title: { type: String },
       text: { type: String },
@@ -42,6 +49,7 @@ const itemSchema = new mongoose.Schema(
       },
     ],
     features: {
+      ultraTrac_mode: { type: Boolean, default: false },
       touchscreen: { type: Boolean, default: false },
       new_forerunners: { type: Boolean, default: false },
       entry_level_running: { type: Boolean, default: false },

@@ -508,4 +508,11 @@ module.exports = {
     }
     await itemRepository.restoreItem(itemId);
   },
+  getSmartwatchModels: async () => {
+    const models = await itemRepository.getSmartwatchModelsFromRepo();
+    if (!models) {
+      throw new NotImplementedError("Modls not found");
+    }
+    return models;
+  },
 };
