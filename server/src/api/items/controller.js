@@ -230,12 +230,4 @@ module.exports = {
       next(error);
     }
   },
-  getSmartwatchModels: async (req, res, next) => {
-    try {
-      const smartwatchModels = await itemService.getSmartwatchModels();
-      res.json(smartwatchModels); 
-    } catch (error) {
-      next(error); 
-    }
-  },
 };

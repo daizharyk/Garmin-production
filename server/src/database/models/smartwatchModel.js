@@ -8,4 +8,4 @@ const SmartwatchModelSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("SmartwatchModel", SmartwatchModelSchema);
+module.exports = mongoose.model("Smartwatch_models", SmartwatchModelSchema);

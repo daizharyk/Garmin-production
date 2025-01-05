@@ -1,5 +1,4 @@
 const { Item } = require("../database/models");
-const { SmartwatchModel } = require("../database/models");
 
 module.exports = {
   createItem: async (item) => {
@@ -58,10 +57,5 @@ module.exports = {
   restoreItem: async (itemId) => {
     await Item.findByIdAndUpdate(itemId, { isDeleted: false });
   },
-  getSmartwatchModelsFromRepo: async (modelNames) => {
-    const models = await SmartwatchModel.find({
-      name: { $in: modelNames },
-    });
-    return models;
-  },
+  
 };

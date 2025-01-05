@@ -9,7 +9,6 @@ const {
   createNewItem,
   getMyItems,
   restoreItem,
-  getSmartwatchModels,
 } = require("./controller");
 const { protected } = require("../../middlewares/auth");
 const router = Router();
@@ -23,7 +22,6 @@ router.post("/", protected, upload.any(), createNewItem);
 router.get("/:id", getItem);
 
 router.put("/:id", protected, upload.any(), (req, res, next) => {
-
   console.log("req.files:", req.files);
 
   updateItem(req, res, next);
@@ -31,10 +29,8 @@ router.put("/:id", protected, upload.any(), (req, res, next) => {
 
 router.patch("/:id", protected, deleteItem);
 
-router.patch("/:id/restore", protected , restoreItem)
+router.patch("/:id/restore", protected, restoreItem);
 
 router.delete("/force/:id", protected, deleteItemForce);
-
-router.get("/smartwatch-models", getSmartwatchModels);
 
 module.exports = router;
