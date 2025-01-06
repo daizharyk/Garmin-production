@@ -74,9 +74,6 @@ module.exports = {
           }
         });
 
-        console.log("watchFeaturesto save:", watchFeatures);
-
-        // Проверка, если в body есть watch_features, тогда обрабатываем их
         if (req.body.watch_features.length > 0) {
           data.watch_features = req.body.watch_features.map(
             (feature, index) => ({

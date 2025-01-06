@@ -14,4 +14,14 @@ module.exports = {
       throw error;
     }
   },
+  addSmartwatchModel: async (modelName) => {
+    try {
+      const newModel =
+        await smartWatchRepository.addSmartwatchModelToRepo(modelName);
+      return newModel;
+    } catch (error) {
+      console.error("Ошибка при добавлении новой модели в сервисе:", error);
+      throw error;
+    }
+  },
 };

@@ -10,4 +10,14 @@ module.exports = {
       next(error);
     }
   },
+
+  addSmartwatchModel: async (req, res, next) => {
+    try {
+      const { name } = req.body;
+      const newModel = await smartWatchModelsService.addSmartwatchModel(name);
+      res.send(newModel);
+    } catch (error) {
+      next(error);
+    }
+  },
 };

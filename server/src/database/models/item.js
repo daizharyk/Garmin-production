@@ -11,19 +11,12 @@ const itemSchema = new mongoose.Schema(
     category: { type: String },
     product_title: { type: String },
     image: { type: String },
-    sase_size: { type: Number, required: true },
+    case_size: { type: Number },
     text: { type: String },
     status: { type: String },
-    folder_name: { type: String },
     carousel_images: [{ type: String }],
-    case_size: [
-      {
-        size: { type: String, required: true },
-        available: { type: Boolean, default: true },
-      },
-    ],
-    model: { type: String, required: true },
-    model_version: { type: String, required: true },
+    model: { type: String },
+    model_version: { type: String },
     banner_text: {
       title: { type: String },
       text: { type: String },
