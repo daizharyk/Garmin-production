@@ -24,4 +24,13 @@ module.exports = {
       throw error;
     }
   },
+  getModelById: async (id) => {
+    try {
+      const model = await smartWatchRepository.getModelById(id);
+      return model;
+    } catch (error) {
+      console.error("Model not found");
+      throw error;
+    }
+  },
 };

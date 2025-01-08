@@ -8,4 +8,7 @@ module.exports = {
     const newModel = new Smartwatch_models({ name: modelName });
     return await newModel.save();
   },
+  getModelById: async (id) => {
+    return Smartwatch_models.findById(id);
+  },
 };

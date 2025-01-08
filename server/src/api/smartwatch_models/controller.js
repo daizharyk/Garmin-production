@@ -4,7 +4,7 @@ module.exports = {
     try {
       const smartwatchModels =
         await smartWatchModelsService.getSmartwatchModels();
-      console.log(smartwatchModels);
+
       res.json(smartwatchModels);
     } catch (error) {
       next(error);
@@ -16,6 +16,17 @@ module.exports = {
       const { name } = req.body;
       const newModel = await smartWatchModelsService.addSmartwatchModel(name);
       res.send(newModel);
+    } catch (error) {
+      next(error);
+    }
+  },
+  gethModelById: async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      console.log("id", id);
+      const model = await smartWatchModelsService.getModelById(id);
+      console.log("model", model);
+      res.send(model);
     } catch (error) {
       next(error);
     }
