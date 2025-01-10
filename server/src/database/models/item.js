@@ -17,6 +17,7 @@ const itemSchema = new mongoose.Schema(
     carousel_images: [{ type: String }],
     model: { type: String },
     model_version: { type: String },
+    model_edition: { type: String },
     banner_text: {
       title: { type: String },
       text: { type: String },

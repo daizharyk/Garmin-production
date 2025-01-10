@@ -24,6 +24,25 @@ module.exports = {
       throw error;
     }
   },
+  addModelEdition: async (modelId, editionName) => {
+    try {
+      return await smartWatchRepository.addModelEdition(modelId, editionName);
+    } catch (error) {
+      console.error("Ошибка при добавлении издания в сервисе:", error);
+      throw error;
+    }
+  },
+  addModelVersion: async (modelId, versionName) => {
+    try {
+      return await smartWatchRepository.addModelVersionToRepo(
+        modelId,
+        versionName
+      );
+    } catch (error) {
+      console.error("Ошибка при добавлении издания в сервисе:", error);
+      throw error;
+    }
+  },
   getModelById: async (id) => {
     try {
       const model = await smartWatchRepository.getModelById(id);
