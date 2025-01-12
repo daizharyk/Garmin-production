@@ -14,7 +14,6 @@ module.exports = {
   addSmartwatchModel: async (req, res, next) => {
     try {
       const { name } = req.body;
-      console.log("name", name);
 
       const newModel = await smartWatchModelsService.addSmartwatchModel(name);
       res.send(newModel);
@@ -25,25 +24,22 @@ module.exports = {
   gethModelById: async (req, res, next) => {
     try {
       const { id } = req.params;
-      console.log("id", id);
+
       const model = await smartWatchModelsService.getModelById(id);
-      console.log("model", model);
+
       res.send(model);
     } catch (error) {
       next(error);
     }
   },
   addModelEdition: async (req, res, next) => {
-    console.log("edition name", req.body.name);
-
     try {
       const { modelId, name } = req.body;
-      console.log("editionName", name);
-
       const updatedModel = await smartWatchModelsService.addModelEdition(
         modelId,
         name
       );
+
       res.json(updatedModel);
     } catch (error) {
       next(error);

@@ -10,9 +10,14 @@ module.exports = {
   },
   addModelEdition: async (modelId, editionName) => {
     const model = await Smartwatch_models.findById(modelId);
+    const newEdition = { name: editionName };
+   
 
-    model.editions.push({ name: editionName });
-    return await model.save();
+    model.editions.push(newEdition);
+    await model.save();
+    const lastEdition = model.editions[model.editions.length - 1];
+  
+    return lastEdition;
   },
   addModelVersionToRepo: async (modelId, versionName) => {
     const model = await Smartwatch_models.findById(modelId);
