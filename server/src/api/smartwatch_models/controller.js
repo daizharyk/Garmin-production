@@ -1,3 +1,4 @@
+const { pluginName } = require("mini-css-extract-plugin");
 const smartWatchModelsService = require("../../service/smartWatchModelsService");
 module.exports = {
   getSmartwatchModels: async (req, res, next) => {
@@ -47,10 +48,10 @@ module.exports = {
   },
   addModelVersion: async (req, res, next) => {
     try {
-      const { modelId, versionName } = req.body;
+      const { modelId, name } = req.body;
       const updatedModel = await smartWatchModelsService.addModelVersion(
         modelId,
-        versionName
+        name
       );
       res.json(updatedModel);
     } catch (error) {

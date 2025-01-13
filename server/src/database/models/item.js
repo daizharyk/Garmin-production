@@ -12,6 +12,8 @@ const itemSchema = new mongoose.Schema(
     product_title: { type: String },
     image: { type: String },
     case_size: { type: Number },
+    music:{type: Boolean},
+    solar:{type: Boolean},
     text: { type: String },
     status: { type: String },
     carousel_images: [{ type: String }],
@@ -43,6 +45,8 @@ const itemSchema = new mongoose.Schema(
       },
     ],
     features: {
+      music_storage_on_watch: { type: Boolean, default: false },
+      ultraTrac_mode: { type: Boolean, default: false },
       ultraTrac_mode: { type: Boolean, default: false },
       touchscreen: { type: Boolean, default: false },
       new_forerunners: { type: Boolean, default: false },
