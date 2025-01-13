@@ -12,8 +12,7 @@ const itemSchema = new mongoose.Schema(
     product_title: { type: String },
     image: { type: String },
     case_size: { type: Number },
-    music:{type: Boolean},
-    solar:{type: Boolean},
+
     text: { type: String },
     status: { type: String },
     carousel_images: [{ type: String }],

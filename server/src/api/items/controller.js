@@ -9,6 +9,19 @@ module.exports = {
       next(error);
     }
   },
+  getItemsByModel: async (req, res, next) => {
+    try {
+      const { id: model } = req.params;
+
+      const items = await itemService.getItemsByModel(model);
+   
+      
+      res.send(items);
+    } catch (error) {
+      next(error);
+    }
+  },
+
   getMyItems: async (req, res, next) => {
     try {
       const user = req.user;

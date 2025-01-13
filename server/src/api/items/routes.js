@@ -9,6 +9,7 @@ const {
   createNewItem,
   getMyItems,
   restoreItem,
+  getItemsByModel,
 } = require("./controller");
 const { protected } = require("../../middlewares/auth");
 const router = Router();
@@ -20,6 +21,8 @@ router.get("/my", protected, getMyItems);
 router.post("/", protected, upload.any(), createNewItem);
 
 router.get("/:id", getItem);
+
+router.get("/models/:id", getItemsByModel);
 
 router.put("/:id", protected, upload.any(), (req, res, next) => {
   console.log("req.files:", req.files);

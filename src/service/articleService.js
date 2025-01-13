@@ -1,4 +1,10 @@
-import { deleteRequest, getRequest, patchRequest, postRequest, putRequest } from "./service";
+import {
+  deleteRequest,
+  getRequest,
+  patchRequest,
+  postRequest,
+  putRequest,
+} from "./service";
 
 const API_URL = "items";
 
@@ -35,4 +41,9 @@ export async function deleteForceArticle(id) {
   const article = await deleteRequest(`${API_URL}/force/${id}`);
   return article;
 }
-
+export async function getItemsByModel(modelId) {
+  console.log("modelId",modelId);
+  
+  const items = await getRequest(`${API_URL}/models/${modelId}`);
+  return items;
+}

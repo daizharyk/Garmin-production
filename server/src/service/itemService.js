@@ -58,6 +58,15 @@ module.exports = {
     const myItems = await itemRepository.findUsersItems(userId);
     return myItems;
   },
+  getItemsByModel: async (modelId) => {
+    try {
+      const items = await itemRepository.findItemsByModelId(modelId);
+
+      return items;
+    } catch (error) {
+      throw new NotImplementedError("");
+    }
+  },
   createNewItem: async (itemData, carouselImages, bannerImages) => {
     const { uploadedUrls, deleteUrls } =
       await uploadImagesToImgbb(carouselImages);

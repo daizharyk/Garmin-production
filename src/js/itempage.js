@@ -1,4 +1,4 @@
-import { getArticleById } from "../service/articleService";
+import { getArticleById, getItemsByModel } from "../service/articleService";
 import "../style/style.css";
 import "../style/shipping.css";
 import "../style/itempage.css";
@@ -18,11 +18,38 @@ window.addEventListener("scroll", () => {
 document.addEventListener("DOMContentLoaded", async () => {
   const itemId = new URLSearchParams(location.search).get("id");
   const item = await getArticleById(itemId);
+  console.log("get item by id data", item);
+
   document.querySelector(".product-title").textContent = item.name;
   document.querySelector(".product-color").textContent = item.color;
   const saleBox = document.getElementById("sale-box");
   document.title = item.product_title;
   saleBox.style.display = saleBox.textContent.trim() ? "inline-flex" : "none";
+
+  const similarItems = await getItemsByModel(item.model);
+  console.log("similarItems", similarItems);
+
+  const similarItemsContainer = document.querySelector(
+    ".similar-items-container"
+  );
+  const itemsList = similarItemsContainer.querySelector(".items-list");
+
+  similarItems.forEach((similarItem) => {
+    const link = document.createElement("a");
+    link.href = `/pages/itempage.html?id=${similarItem._id}`;
+    link.classList.add("similar-item-card-link");
+
+    const card = document.createElement("div");
+    card.classList.add("similar-item-card");
+
+    const img = document.createElement("img");
+    img.src = similarItem.image;
+    img.alt = similarItem.name;
+    card.appendChild(img);
+    link.appendChild(card);
+
+    itemsList.appendChild(link);
+  });
 
   document.getElementById("product-price").textContent = item.price.toFixed(2);
   const carousel = document.querySelector(".carousel");
@@ -64,8 +91,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     item.banner_text.banner_images.alt;
 
   const videoThumbnail = document.querySelector(".video-thumbnail");
-  videoThumbnail.querySelector("img").src =
-    item.video_section.thumbnail;
+  videoThumbnail.querySelector("img").src = item.video_section.thumbnail;
   document.querySelector(".thumbnail-img").alt = item.video_section.thumbnail;
   document.getElementById("video-player").src = item.video_section.video_url;
 
@@ -118,16 +144,14 @@ function initCarousel() {
   let currentIndex = 0;
 
   const updateCarousel = () => {
-    // Обновление горизонтального каруселя
-    const offset = -currentIndex * 100; // 100% ширины одного элемента
+    const offset = -currentIndex * 100;
     carouselHorizontal.style.transform = `translateX(${offset}%)`;
 
     carouselLeft.style.display = currentIndex === 0 ? "none" : "flex";
     carouselRight.style.display =
       currentIndex === carouselItemsHorizontal.length - 1 ? "none" : "flex";
 
-    // Обновление вертикального каруселя
-    const verticalOffset = currentIndex * 80; // Высота элемента в пикселях
+    const verticalOffset = currentIndex * 80;
     carouselVertical.scrollTo({
       top: verticalOffset,
       behavior: "smooth",

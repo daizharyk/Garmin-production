@@ -16,6 +16,11 @@ module.exports = {
     const item = await Item.findOne({ _id: itemid, isDeleted: { $ne: true } });
     return item;
   },
+  findItemsByModelId: async (modelId) => {
+    const items = await Item.find({ model: modelId });
+
+    return items;
+  },
   findUsersItems: async (userId) => {
     const items = await Item.find({
       user: userId,
@@ -57,5 +62,4 @@ module.exports = {
   restoreItem: async (itemId) => {
     await Item.findByIdAndUpdate(itemId, { isDeleted: false });
   },
-  
 };
