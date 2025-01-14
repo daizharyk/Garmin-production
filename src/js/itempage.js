@@ -18,6 +18,16 @@ window.addEventListener("scroll", () => {
 document.addEventListener("DOMContentLoaded", async () => {
   const itemId = new URLSearchParams(location.search).get("id");
   const item = await getArticleById(itemId);
+  const solarCharging = item.features.solar_charging;
+  const musicStorage = item.features.music_storage_on_watch;
+  const yesButton = document.getElementById("filter-yes");
+  const noButton = document.getElementById("filter-no");
+  const musicYesButton = document.querySelector(
+    '[data-filter="music"] .size-option[data-value="Yes"]'
+  );
+  const musicNoButton = document.querySelector(
+    '[data-filter="music"] .size-option[data-value="No"]'
+  );
   console.log("get item by id data", item);
 
   document.querySelector(".product-title").textContent = item.name;
@@ -26,29 +36,71 @@ document.addEventListener("DOMContentLoaded", async () => {
   document.title = item.product_title;
   saleBox.style.display = saleBox.textContent.trim() ? "inline-flex" : "none";
 
+  function updateButtonStyles(selectedButton, buttons) {
+    [yesButton, noButton].forEach((button) => {
+      button.style.backgroundColor = "#fff";
+      button.style.color = "#000";
+    });
+
+    selectedButton.style.backgroundColor = "#000";
+    selectedButton.style.color = "#fff";
+    selectedButton.style.border = "1px solid #ccc";
+  }
+  if (solarCharging) {
+    updateButtonStyles(yesButton);
+  } else {
+    updateButtonStyles(noButton);
+  }
+
   const similarItems = await getItemsByModel(item.model);
   console.log("similarItems", similarItems);
 
   const similarItemsContainer = document.querySelector(
     ".similar-items-container"
   );
+
   const itemsList = similarItemsContainer.querySelector(".items-list");
 
-  similarItems.forEach((similarItem) => {
-    const link = document.createElement("a");
-    link.href = `/pages/itempage.html?id=${similarItem._id}`;
-    link.classList.add("similar-item-card-link");
+  itemsList.innerHTML = "";
 
-    const card = document.createElement("div");
-    card.classList.add("similar-item-card");
+  function renderCards(filter) {
+    itemsList.innerHTML = "";
 
-    const img = document.createElement("img");
-    img.src = similarItem.image;
-    img.alt = similarItem.name;
-    card.appendChild(img);
-    link.appendChild(card);
+    similarItems.forEach((similarItem) => {
+      const link = document.createElement("a");
+      link.href = `/pages/itempage.html?id=${similarItem._id}`;
+      link.classList.add("similar-item-card-link");
 
-    itemsList.appendChild(link);
+      const card = document.createElement("div");
+      card.classList.add("similar-item-card");
+
+      // Применяем фильтр
+      if (filter === "Yes" && !similarItem.features.solar_charging) {
+        card.style.opacity = "0.4";
+      } else if (filter === "No" && similarItem.features.solar_charging) {
+        card.style.opacity = "0.4";
+      }
+
+      const img = document.createElement("img");
+      img.src = similarItem.image;
+      img.alt = similarItem.name;
+      card.appendChild(img);
+
+      link.appendChild(card);
+      itemsList.appendChild(link);
+    });
+  }
+
+  renderCards(solarCharging ? "Yes" : "No");
+
+  yesButton.addEventListener("click", () => {
+    updateButtonStyles(yesButton);
+    renderCards("Yes");
+  });
+
+  noButton.addEventListener("click", () => {
+    updateButtonStyles(noButton);
+    renderCards("No");
   });
 
   document.getElementById("product-price").textContent = item.price.toFixed(2);
@@ -228,7 +280,6 @@ function initCarousel() {
   const upButton = document.getElementById("carouselUp");
   const downButton = document.getElementById("carouselDown");
 
-  // Функция для обновления состояния кнопок
   function updateButtonState() {
     if (carouselVertical.scrollTop <= 0) {
       upButton.disabled = true;
@@ -245,13 +296,13 @@ function initCarousel() {
       downButton.disabled = false;
     }
   }
-
+  carouselVertical.addEventListener("scroll", updateButtonState);
   upButton.addEventListener("click", () => {
     carouselVertical.scrollBy({
       top: -80,
       behavior: "smooth",
     });
-    setTimeout(updateButtonState, 500);
+    updateButtonState();
   });
 
   downButton.addEventListener("click", () => {
@@ -259,6 +310,6 @@ function initCarousel() {
       top: 80,
       behavior: "smooth",
     });
-    setTimeout(updateButtonState, 500);
+    updateButtonState();
   });
 }
