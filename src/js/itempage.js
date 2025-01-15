@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const item = await getArticleById(itemId);
   const solarCharging = item.features.solar_charging;
   const musicStorage = item.features.music_storage_on_watch;
+  const caseSize = item.case_size;
   const yesButton = document.getElementById("filter-yes");
   const noButton = document.getElementById("filter-no");
   const musicYesButton = document.querySelector(
@@ -30,14 +31,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   );
   console.log("get item by id data", item);
 
-  document.querySelector(".product-title").textContent = item.name;
-  document.querySelector(".product-color").textContent = item.color;
-  const saleBox = document.getElementById("sale-box");
-  document.title = item.product_title;
-  saleBox.style.display = saleBox.textContent.trim() ? "inline-flex" : "none";
-
-  function updateButtonStyles(selectedButton, buttons) {
-    [yesButton, noButton].forEach((button) => {
+  function updateFilterButtonStyles(selectedButton, buttons) {
+    buttons.forEach((button) => {
       button.style.backgroundColor = "#fff";
       button.style.color = "#000";
     });
@@ -45,11 +40,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     selectedButton.style.backgroundColor = "#000";
     selectedButton.style.color = "#fff";
     selectedButton.style.border = "1px solid #ccc";
-  }
-  if (solarCharging) {
-    updateButtonStyles(yesButton);
-  } else {
-    updateButtonStyles(noButton);
   }
 
   const similarItems = await getItemsByModel(item.model);
@@ -61,12 +51,43 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const itemsList = similarItemsContainer.querySelector(".items-list");
 
-  itemsList.innerHTML = "";
+  renderFilteredCards();
 
-  function renderCards(filter) {
+  function renderFilteredCards(filter, featureKey, caseSizeFilter) {
     itemsList.innerHTML = "";
 
-    similarItems.forEach((similarItem) => {
+    if (similarItems.length <= 1) {
+      similarItemsContainer.style.display = "none";
+      return;
+    }
+    const sortedItems = similarItems.sort((a, b) => {
+      const aHasMusic = a.features.music_storage_on_watch || false;
+      const aHasSolar = a.features.solar_charging || false;
+  
+      const bHasMusic = b.features.music_storage_on_watch || false;
+      const bHasSolar = b.features.solar_charging || false;
+  
+      const aCaseSize = a.case_size || 0;
+      const bCaseSize = b.case_size || 0;
+      if (aCaseSize !== bCaseSize) {
+        return aCaseSize - bCaseSize; 
+      }
+      const aScore = (aHasMusic ? 1 : 0) + (aHasSolar ? 1 : 0);
+      const bScore = (bHasMusic ? 1 : 0) + (bHasSolar ? 1 : 0);
+  
+     
+      if (aScore !== bScore) {
+        return bScore - aScore;
+      }
+  
+      if (aHasMusic !== bHasMusic) {
+        return bHasMusic - aHasMusic;
+      }
+      return 0;
+    });
+
+    
+    sortedItems.forEach((similarItem) => {
       const link = document.createElement("a");
       link.href = `/pages/itempage.html?id=${similarItem._id}`;
       link.classList.add("similar-item-card-link");
@@ -74,10 +95,15 @@ document.addEventListener("DOMContentLoaded", async () => {
       const card = document.createElement("div");
       card.classList.add("similar-item-card");
 
-      // Применяем фильтр
-      if (filter === "Yes" && !similarItem.features.solar_charging) {
+      const featureValue = similarItem.features[featureKey];
+      const caseSizeValue = similarItem.case_size;
+      const matchesSize = caseSizeFilter
+        ? caseSizeValue === caseSizeFilter
+        : true;
+
+      if ((filter === "Yes" && !featureValue) || !matchesSize) {
         card.style.opacity = "0.4";
-      } else if (filter === "No" && similarItem.features.solar_charging) {
+      } else if ((filter === "No" && featureValue) || !matchesSize) {
         card.style.opacity = "0.4";
       }
 
@@ -91,17 +117,119 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   }
 
-  renderCards(solarCharging ? "Yes" : "No");
+  function createCaseSizeFilter() {
+    const caseSizeFilterContainer = document.querySelector(
+      ".caseSizeFilterContainer"
+    );
 
-  yesButton.addEventListener("click", () => {
-    updateButtonStyles(yesButton);
-    renderCards("Yes");
-  });
+    caseSizeFilterContainer.innerHTML = "";
+    const heading = document.createElement("h3");
+    heading.textContent = "Case Size";
+    caseSizeFilterContainer.appendChild(heading);
 
-  noButton.addEventListener("click", () => {
-    updateButtonStyles(noButton);
-    renderCards("No");
-  });
+    const caseSizeWrapper = document.createElement("div");
+    caseSizeWrapper.classList.add("caseSizeWrapper");
+    caseSizeWrapper.classList.add("size-options");
+    caseSizeFilterContainer.appendChild(caseSizeWrapper);
+    const caseSizes = new Set();
+
+    similarItems.forEach((similarItem) => {
+      const caseSize = similarItem.case_size;
+      if (caseSize) caseSizes.add(caseSize);
+    });
+    const buttons = [];
+
+    caseSizes.forEach((size) => {
+      const sizeButton = document.createElement("div");
+      sizeButton.classList.add("size-option");
+      sizeButton.textContent = `${size} mm`;
+
+      sizeButton.addEventListener("click", () => {
+        updateFilterButtonStyles(sizeButton, buttons);
+        renderFilteredCards("None", "", size);
+      });
+      caseSizeWrapper.appendChild(sizeButton);
+      buttons.push(sizeButton);
+      if (size === caseSize) {
+        updateFilterButtonStyles(sizeButton, buttons);
+        renderFilteredCards("None", "", size); 
+      }
+    });
+  }
+
+  function initializeFilter(filterButtons, initialValue, featureKey) {
+    const [yesButton, noButton] = filterButtons;
+
+    updateFilterButtonStyles(
+      initialValue ? yesButton : noButton,
+      filterButtons
+    );
+
+    renderFilteredCards(initialValue ? "Yes" : "No", featureKey);
+
+    yesButton.addEventListener("click", () => {
+      updateFilterButtonStyles(yesButton, filterButtons);
+      renderFilteredCards("Yes", featureKey);
+    });
+
+    noButton.addEventListener("click", () => {
+      updateFilterButtonStyles(noButton, filterButtons);
+      renderFilteredCards("No", featureKey);
+    });
+  }
+  createCaseSizeFilter();
+
+  const hasSolarFeature = similarItems.some(
+    (similarItem) => similarItem.features.solar_charging
+  );
+  const hasMusicFeature = similarItems.some(
+    (similarItem) => similarItem.features.music_storage_on_watch
+  );
+  const hasCaseSize= similarItems.some(
+    (similarItem) => similarItem.case_size
+  );
+
+  if (hasSolarFeature && similarItems.length > 1) {
+    initializeFilter([yesButton, noButton], solarCharging, "solar_charging");
+  } else {
+    const solarFilterContainer = document.querySelector(
+      ".solarFilterContainer"
+    );
+    if (solarFilterContainer) {
+      solarFilterContainer.style.display = "none";
+    }
+  }
+
+  if (hasMusicFeature && similarItems.length > 1) {
+    initializeFilter(
+      [musicYesButton, musicNoButton],
+      musicStorage,
+      "music_storage_on_watch"
+    );
+  } else {
+    const musicFilterContainer = document.querySelector(
+      ".musicFilterContainer"
+    );
+    if (musicFilterContainer) {
+      musicFilterContainer.style.display = "none";
+    }
+  }
+  if (hasCaseSize && similarItems.length > 1) {
+    createCaseSizeFilter();
+  } else {
+    const caseSizeFilterContainer = document.querySelector(
+      ".caseSizeFilterContainer"
+    );
+    if (caseSizeFilterContainer) {
+      caseSizeFilterContainer.style.display = "none";
+    }
+  }
+
+  document.querySelector(".product-title").textContent = item.name;
+  document.querySelector(".product-color").textContent = item.color;
+  const saleBox = document.getElementById("sale-box");
+  document.title = item.product_title;
+  saleBox.style.display = saleBox.textContent.trim() ? "inline-flex" : "none";
 
   document.getElementById("product-price").textContent = item.price.toFixed(2);
   const carousel = document.querySelector(".carousel");
