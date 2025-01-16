@@ -408,7 +408,7 @@ button:disabled {
 }
 
 .walpapperinfo {
-  margin: 50px 0;
+  margin-bottom: 30px;
   width: 100%;
 }
 
@@ -499,6 +499,7 @@ button:disabled {
   justify-content: center;
   margin: 0;
   padding: 0;
+  
 }
 
 .subnav li {
@@ -544,7 +545,7 @@ button:disabled {
 }
 
 .trademark2 {
-  font-size: 80% !important;
+  font-size: 60% !important;
   vertical-align: top;
 }
 
@@ -595,10 +596,11 @@ button:disabled {
   display: flex;
   align-items: center;
   color: #000;
+  border: 4px 0 solid transparent;
 }
 
 .subnav a:hover {
-  border-bottom: 4px solid #000;
+  border-bottom: 4px  solid #000;
 }
 
 .walpapperinfo-adaptive {

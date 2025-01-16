@@ -24,11 +24,12 @@
 
 .login-section {
   display: flex;
-  gap: 15px;
+  gap: 10px;
   justify-content: space-around;
   align-items: center;
   justify-content: center;
   height: 100%;
+  margin-right: 10px;
 }
 
 .user-menu {
@@ -55,8 +56,9 @@
 
   align-items: center;
   height: 100%;
-  width: 30px;
-  border-bottom: 4px solid #fff;
+  width: 1.7rem;
+  border: 4px 0 solid transparent; 
+
 }
 
 .svg-container:hover {
