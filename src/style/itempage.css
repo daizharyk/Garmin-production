@@ -499,7 +499,6 @@ button:disabled {
   justify-content: center;
   margin: 0;
   padding: 0;
-  
 }
 
 .subnav li {
@@ -600,12 +599,18 @@ button:disabled {
 }
 
 .subnav a:hover {
-  border-bottom: 4px  solid #000;
+  border-bottom: 4px solid #000;
+}
+.filters {
+  display: none;
 }
 
 .walpapperinfo-adaptive {
   display: none;
   margin: 30px 0;
+}
+.filtered-out {
+  opacity: 0.4;
 }
 
 .sticky {

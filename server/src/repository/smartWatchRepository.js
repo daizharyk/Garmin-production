@@ -25,11 +25,14 @@ module.exports = {
     model.versions.push(newVersion);
     await model.save();
     const lastVersion = model.versions[model.versions.length - 1];
-    console.log("lastVersion",lastVersion);
-    
+    console.log("lastVersion", lastVersion);
+
     return lastVersion;
   },
   getModelById: async (id) => {
     return Smartwatch_models.findById(id);
+  },
+  getEditionsName: async (ModelId) => {
+    return Smartwatch_models.findById(ModelId).select("editions");
   },
 };

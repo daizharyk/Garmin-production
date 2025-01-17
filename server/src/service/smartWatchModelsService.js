@@ -48,7 +48,16 @@ module.exports = {
       const model = await smartWatchRepository.getModelById(id);
       return model;
     } catch (error) {
-      console.error("Model not found");
+      console.error("Model not found", error);
+      throw error;
+    }
+  },
+  getEditionsName: async (ModelId) => {
+    try {
+      const edition = await smartWatchRepository.getEditionsName(ModelId);
+      return edition;
+    } catch (error) {
+      console.error("Editons not found", error);
       throw error;
     }
   },

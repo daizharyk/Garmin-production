@@ -42,7 +42,7 @@ export async function deleteForceArticle(id) {
   return article;
 }
 export async function getItemsByModel(modelId) {
-  console.log("modelId",modelId);
+
   
   const items = await getRequest(`${API_URL}/models/${modelId}`);
   return items;

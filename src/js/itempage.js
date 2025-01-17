@@ -2,6 +2,7 @@ import { getArticleById, getItemsByModel } from "../service/articleService";
 import "../style/style.css";
 import "../style/shipping.css";
 import "../style/itempage.css";
+import { getEditionsByModelId } from "../service/smartWatchService";
 
 const navBar = document.querySelector(".nav-bar");
 const navBarOffsetTop = navBar.offsetTop;
@@ -20,17 +21,21 @@ document.addEventListener("DOMContentLoaded", async () => {
   const item = await getArticleById(itemId);
   const solarCharging = item.features.solar_charging;
   const musicStorage = item.features.music_storage_on_watch;
-  const caseSize = item.case_size;
-  const yesButton = document.getElementById("filter-yes");
-  const noButton = document.getElementById("filter-no");
+  const musicFilterContainer = document.querySelector(".musicFilterContainer");
+
   const musicYesButton = document.querySelector(
     '[data-filter="music"] .size-option[data-value="Yes"]'
+  );
+  const solarYesButton = document.querySelector(
+    '[data-filter="solar"] .size-option[data-value="Yes"]'
   );
   const musicNoButton = document.querySelector(
     '[data-filter="music"] .size-option[data-value="No"]'
   );
+  const solarNoButton = document.querySelector(
+    '[data-filter="solar"] .size-option[data-value="No"]'
+  );
   console.log("get item by id data", item);
-
 
   function updateFilterButtonStyles(selectedButton, buttons) {
     buttons.forEach((button) => {
@@ -46,117 +51,85 @@ document.addEventListener("DOMContentLoaded", async () => {
   const similarItems = await getItemsByModel(item.model);
   console.log("similarItems", similarItems);
 
+  const hasMusicStorage = similarItems.some(
+    (item) => item.features.music_storage_on_watch
+  );
+
+  if (!hasMusicStorage) {
+    musicFilterContainer.style.display = "none";
+  }
+
   const similarItemsContainer = document.querySelector(
     ".similar-items-container"
   );
 
   const itemsList = similarItemsContainer.querySelector(".items-list");
 
+  const activeFilters = {
+    solar: null,
+    music: null,
+    caseSize: null,
+    edition: null,
+  };
+
   renderFilteredCards();
 
-  function renderFilteredCards(filter, featureKey, caseSizeFilter) {
+  function renderFilteredCards() {
     itemsList.innerHTML = "";
 
     if (similarItems.length <= 1) {
       similarItemsContainer.style.display = "none";
       return;
     }
-    const sortedItems = similarItems.sort((a, b) => {
-      const aHasMusic = a.features.music_storage_on_watch || false;
-      const aHasSolar = a.features.solar_charging || false;
 
-      const bHasMusic = b.features.music_storage_on_watch || false;
-      const bHasSolar = b.features.solar_charging || false;
-
-      const aCaseSize = a.case_size || 0;
-      const bCaseSize = b.case_size || 0;
-      if (aCaseSize !== bCaseSize) {
-        return aCaseSize - bCaseSize;
-      }
-      const aScore = (aHasMusic ? 1 : 0) + (aHasSolar ? 1 : 0);
-      const bScore = (bHasMusic ? 1 : 0) + (bHasSolar ? 1 : 0);
-
-      if (aScore !== bScore) {
-        return bScore - aScore;
-      }
-
-      if (aHasMusic !== bHasMusic) {
-        return bHasMusic - aHasMusic;
-      }
-      return 0;
-    });
-
-    sortedItems.forEach((similarItem) => {
+    similarItems.forEach((item) => {
       const link = document.createElement("a");
-      link.href = `/pages/itempage.html?id=${similarItem._id}`;
+      link.href = `/pages/itempage.html?id=${item._id}`;
       link.classList.add("similar-item-card-link");
 
       const card = document.createElement("div");
       card.classList.add("similar-item-card");
 
-      const featureValue = similarItem.features[featureKey];
-      const caseSizeValue = similarItem.case_size;
-      const matchesSize = caseSizeFilter
-        ? caseSizeValue === caseSizeFilter
-        : true;
-
-      if ((filter === "Yes" && !featureValue) || !matchesSize) {
-        card.style.opacity = "0.4";
-      } else if ((filter === "No" && featureValue) || !matchesSize) {
-        card.style.opacity = "0.4";
-      }
-
       const img = document.createElement("img");
-      img.src = similarItem.image;
-      img.alt = similarItem.name;
+      img.src = item.image;
+      img.alt = item.name;
       card.appendChild(img);
 
       link.appendChild(card);
       itemsList.appendChild(link);
-    });
-  }
 
-  function createCaseSizeFilter() {
-    const caseSizeFilterContainer = document.querySelector(
-      ".caseSizeFilterContainer"
-    );
+      const matchesSolar =
+        activeFilters.solar === null ||
+        (activeFilters.solar === "Yes" && item.features.solar_charging) ||
+        (activeFilters.solar === "No" && !item.features.solar_charging);
 
-    caseSizeFilterContainer.innerHTML = "";
-    const heading = document.createElement("h3");
-    heading.textContent = "Case Size";
-    caseSizeFilterContainer.appendChild(heading);
+      const matchesMusic =
+        activeFilters.music === null ||
+        (activeFilters.music === "Yes" &&
+          item.features.music_storage_on_watch) ||
+        (activeFilters.music === "No" && !item.features.music_storage_on_watch);
 
-    const caseSizeWrapper = document.createElement("div");
-    caseSizeWrapper.classList.add("caseSizeWrapper");
-    caseSizeWrapper.classList.add("size-options");
-    caseSizeFilterContainer.appendChild(caseSizeWrapper);
-    const caseSizes = new Set();
+      const matchesCaseSize =
+        activeFilters.caseSize === null ||
+        item.case_size === activeFilters.caseSize;
 
-    similarItems.forEach((similarItem) => {
-      const caseSize = similarItem.case_size;
-      if (caseSize) caseSizes.add(caseSize);
-    });
-    const buttons = [];
+      const matchesEdition =
+        activeFilters.edition === null ||
+        item.model_edition === activeFilters.edition;
 
-    caseSizes.forEach((size) => {
-      const sizeButton = document.createElement("div");
-      sizeButton.classList.add("size-option");
-      sizeButton.textContent = `${size} mm`;
-
-      sizeButton.addEventListener("click", () => {
-        updateFilterButtonStyles(sizeButton, buttons);
-        renderFilteredCards("None", "", size);
-      });
-      caseSizeWrapper.appendChild(sizeButton);
-      buttons.push(sizeButton);
-      if (size === caseSize) {
-        updateFilterButtonStyles(sizeButton, buttons);
-        renderFilteredCards("None", "", size);
+      if (
+        !(matchesSolar && matchesMusic && matchesCaseSize && matchesEdition)
+      ) {
+        card.style.opacity = "0.4";
+        card.style.pointerEvents = "none";
+      } else {
+        card.style.opacity = "1";
+        card.style.pointerEvents = "auto";
       }
     });
   }
 
-  function initializeFilter(filterButtons, initialValue, featureKey) {
+  function initializeFilter(filterButtons, initialValue, filterKey) {
     const [yesButton, noButton] = filterButtons;
 
     updateFilterButtonStyles(
@@ -164,64 +137,90 @@ document.addEventListener("DOMContentLoaded", async () => {
       filterButtons
     );
 
-    renderFilteredCards(initialValue ? "Yes" : "No", featureKey);
+    activeFilters[filterKey] = initialValue ? "Yes" : "No";
+    renderFilteredCards();
 
     yesButton.addEventListener("click", () => {
       updateFilterButtonStyles(yesButton, filterButtons);
-      renderFilteredCards("Yes", featureKey);
+      activeFilters[filterKey] = "Yes";
+      renderFilteredCards();
     });
 
     noButton.addEventListener("click", () => {
       updateFilterButtonStyles(noButton, filterButtons);
-      renderFilteredCards("No", featureKey);
+      activeFilters[filterKey] = "No";
+      renderFilteredCards();
     });
   }
-  createCaseSizeFilter();
 
-  const hasSolarFeature = similarItems.some(
-    (similarItem) => similarItem.features.solar_charging
-  );
-  const hasMusicFeature = similarItems.some(
-    (similarItem) => similarItem.features.music_storage_on_watch
-  );
-  const hasCaseSize = similarItems.some((similarItem) => similarItem.case_size);
+  function initializeCaseSizeFilter() {
+    const caseSizeButtons = []; // Хранить кнопки для обновления стилей
+    const caseSizeWrapper = document.querySelector(".caseSizeWrapper");
 
-  if (hasSolarFeature && similarItems.length > 1) {
-    initializeFilter([yesButton, noButton], solarCharging, "solar_charging");
-  } else {
-    const solarFilterContainer = document.querySelector(
-      ".solarFilterContainer"
-    );
-    if (solarFilterContainer) {
-      solarFilterContainer.style.display = "none";
-    }
+    similarItems.forEach((item) => {
+      if (!item.case_size) return;
+
+      const button = document.createElement("div");
+      button.classList.add("size-option");
+      button.textContent = `${item.case_size} mm`;
+
+      button.addEventListener("click", () => {
+        updateFilterButtonStyles(button, caseSizeButtons);
+        activeFilters.caseSize = item.case_size;
+        renderFilteredCards();
+      });
+
+      caseSizeWrapper.appendChild(button);
+      caseSizeButtons.push(button);
+    });
   }
 
-  if (hasMusicFeature && similarItems.length > 1) {
-    initializeFilter(
-      [musicYesButton, musicNoButton],
-      musicStorage,
-      "music_storage_on_watch"
-    );
-  } else {
-    const musicFilterContainer = document.querySelector(
-      ".musicFilterContainer"
-    );
-    if (musicFilterContainer) {
-      musicFilterContainer.style.display = "none";
+  async function initializeEditionFilter() {
+    const editionButtons = [];
+    const editionContainer = document.querySelector(".editionConatainer");
+    const editionTitle = document.createElement("h3");
+    editionTitle.textContent = "Edition";
+
+    const editionWrapper = document.createElement("div");
+    editionWrapper.classList.add("size-options");
+    editionContainer.appendChild(editionTitle);
+    editionContainer.appendChild(editionWrapper);
+    const modelId = similarItems[0]?.model;
+    console.log("modelId", modelId);
+
+    const editionRes = await getEditionsByModelId(modelId);
+    console.log("editionRes", editionRes);
+    const editions = editionRes.editions;
+    console.log("editions", editions);
+
+    if (!Array.isArray(activeFilters.edition)) {
+      activeFilters.edition = [];
     }
-  }
-  if (hasCaseSize && similarItems.length > 1) {
-    createCaseSizeFilter();
-  } else {
-    const caseSizeFilterContainer = document.querySelector(
-      ".caseSizeFilterContainer"
-    );
-    if (caseSizeFilterContainer) {
-      caseSizeFilterContainer.style.display = "none";
-    }
+    editions.forEach((item) => {
+      const button = document.createElement("div");
+      button.classList.add("size-option");
+      button.textContent = item.name || "Unknown Edition";
+      editionWrapper.appendChild(button);
+      button.addEventListener("click", () => {
+        updateFilterButtonStyles(button, editionButtons);
+        activeFilters.edition = item._id;
+        renderFilteredCards();
+      });
+
+      if (activeFilters.edition === item._id) {
+        updateFilterButtonStyles(button, editionButtons);
+      }
+
+      editionButtons.push(button);
+    });
   }
 
+  initializeFilter([solarYesButton, solarNoButton], solarCharging, "solar");
+  initializeFilter([musicYesButton, musicNoButton], musicStorage, "music");
+  initializeCaseSizeFilter();
+  initializeEditionFilter();
+  const filtersContainer = document.querySelector(".filters");
+  filtersContainer.style.display = "block";
   document.querySelector(".product-title").textContent = item.name;
   document.querySelector(".product-color").textContent = item.color;
   const saleBox = document.getElementById("sale-box");

@@ -1,4 +1,3 @@
-
 const smartWatchModelsService = require("../../service/smartWatchModelsService");
 module.exports = {
   getSmartwatchModels: async (req, res, next) => {
@@ -33,6 +32,19 @@ module.exports = {
       next(error);
     }
   },
+  getEditionsByModelId: async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      console.log("ModelId", id);
+
+      const editions = await smartWatchModelsService.getEditionsName(id);
+
+      res.send(editions);
+    } catch (error) {
+      next(error);
+    }
+  },
+
   addModelEdition: async (req, res, next) => {
     try {
       const { modelId, name } = req.body;
