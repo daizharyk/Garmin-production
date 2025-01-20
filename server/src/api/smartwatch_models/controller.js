@@ -35,11 +35,21 @@ module.exports = {
   getEditionsByModelId: async (req, res, next) => {
     try {
       const { id } = req.params;
-    
 
       const editions = await smartWatchModelsService.getEditionsName(id);
 
       res.send(editions);
+    } catch (error) {
+      next(error);
+    }
+  },
+  getVersionsByModelId: async (req, res, next) => {
+    try {
+      const { id } = req.params;
+
+      const version = await smartWatchModelsService.getVersionsName(id);
+
+      res.send(version);
     } catch (error) {
       next(error);
     }

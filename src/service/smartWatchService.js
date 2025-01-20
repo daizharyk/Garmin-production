@@ -43,6 +43,7 @@ export async function getVersionsByModelId(modelId) {
     const modelVersions = await getRequest(
       `${API_URL}/models/version/${modelId}`
     );
+console.log("modelVersions",modelVersions);
 
     return modelVersions;
   } catch (error) {

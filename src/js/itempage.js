@@ -2,7 +2,10 @@ import { getArticleById, getItemsByModel } from "../service/articleService";
 import "../style/style.css";
 import "../style/shipping.css";
 import "../style/itempage.css";
-import { getEditionsByModelId } from "../service/smartWatchService";
+import {
+  getEditionsByModelId,
+  getVersionsByModelId,
+} from "../service/smartWatchService";
 
 const navBar = document.querySelector(".nav-bar");
 const navBarOffsetTop = navBar.offsetTop;
@@ -24,6 +27,11 @@ document.addEventListener("DOMContentLoaded", async () => {
   const musicFilterContainer = document.querySelector(".musicFilterContainer");
   const solarFilterContainer = document.querySelector(".solarFilterContainer");
   const editionContainer = document.querySelector(".editionContainer");
+  const versionContainer = document.querySelector(".versionContainer");
+
+  const caseSizeFilterContainer = document.querySelector(
+    ".caseSizeFilterContainer"
+  );
   const musicYesButton = document.querySelector(
     '[data-filter="music"] .size-option[data-value="Yes"]'
   );
@@ -36,7 +44,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   const solarNoButton = document.querySelector(
     '[data-filter="solar"] .size-option[data-value="No"]'
   );
-  console.log("get item by id data", item);
 
   function updateFilterButtonStyles(selectedButton, buttons) {
     buttons.forEach((button) => {
@@ -67,6 +74,13 @@ document.addEventListener("DOMContentLoaded", async () => {
   if (!hasMoreThanOneItem) {
     editionContainer.style.display = "none";
   }
+  if (!hasMoreThanOneItem) {
+    caseSizeFilterContainer.style.display = "none";
+  }
+  if (!hasMoreThanOneItem) {
+    versionContainer.style.display = "none";
+  }
+
   const similarItemsContainer = document.querySelector(
     ".similar-items-container"
   );
@@ -78,6 +92,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     music: null,
     caseSize: null,
     edition: null,
+    version: null,
   };
 
   renderFilteredCards();
@@ -120,14 +135,22 @@ document.addEventListener("DOMContentLoaded", async () => {
       const matchesCaseSize =
         activeFilters.caseSize === null ||
         item.case_size === activeFilters.caseSize;
-      console.log("matchesCaseSize", matchesCaseSize);
 
       const matchesEdition =
         activeFilters.edition === null ||
         item.model_edition === activeFilters.edition;
+      const matchesVersion =
+        activeFilters.version === null ||
+        item.model_version === activeFilters.version;
 
       if (
-        !(matchesSolar && matchesMusic && matchesCaseSize && matchesEdition)
+        !(
+          matchesSolar &&
+          matchesMusic &&
+          matchesCaseSize &&
+          matchesEdition &&
+          matchesVersion
+        )
       ) {
         card.style.opacity = "0.4";
         card.style.pointerEvents = "none";
@@ -172,9 +195,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       return;
     }
     const caseSizeButtons = [];
-    const caseSizeFilterContainer = document.querySelector(
-      ".caseSizeFilterContainer"
-    );
+
     const caseSizeTitle = document.createElement("h3");
     caseSizeTitle.innerText = "Case Size";
 
@@ -211,7 +232,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       caseSizeButtons.push(button);
     });
-    console.log("uniqueCaseSizes", uniqueCaseSizes);
 
     if (caseSizeButtons.length > 0) {
       caseSizeFilterContainer.appendChild(caseSizeTitle);
@@ -230,15 +250,20 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const editionWrapper = document.createElement("div");
     editionWrapper.classList.add("size-options");
-    editionContainer.appendChild(editionTitle);
-    editionContainer.appendChild(editionWrapper);
+
     const modelId = item?.model;
-    console.log("modelId", modelId);
 
     const editionRes = await getEditionsByModelId(modelId);
-    console.log("editionRes", editionRes);
+
     const editions = editionRes.editions;
-    console.log("editions", editions);
+
+    const uniqueEditions = new Set(editions.map((edition) => edition._id));
+    if (uniqueEditions.size <= 1) {
+      return;
+    }
+
+    editionContainer.appendChild(editionTitle);
+    editionContainer.appendChild(editionWrapper);
 
     if (!Array.isArray(activeFilters.edition)) {
       activeFilters.edition = [];
@@ -246,8 +271,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     activeFilters.edition = item.model_edition;
 
     editions.forEach((item) => {
-      console.log("item", item);
-
       const button = document.createElement("div");
       button.classList.add("size-option");
       button.textContent = item.name || "Unknown Edition";
@@ -267,11 +290,62 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   }
 
+  async function initializeVersionFilter() {
+    if (!item.model_version || item.model_version === "undefined") {
+      return;
+    }
+    const versionButtons = [];
+
+    const versionTitle = document.createElement("h3");
+    versionTitle.textContent = "Edition";
+
+    const versionWrapper = document.createElement("div");
+    versionWrapper.classList.add("size-options");
+
+    const modelId = item?.model;
+
+    const versionRes = await getVersionsByModelId(modelId);
+
+    const versions = versionRes.versions;
+
+    const uniqueEditions = new Set(versions.map((version) => version._id));
+    if (uniqueEditions.size <= 1) {
+      return;
+    }
+
+    versionContainer.appendChild(versionTitle);
+    versionContainer.appendChild(versionWrapper);
+
+    if (!Array.isArray(activeFilters.version)) {
+      activeFilters.version = [];
+    }
+    activeFilters.version = item.model_version;
+
+    versions.forEach((item) => {
+      const button = document.createElement("div");
+      button.classList.add("size-option");
+      button.textContent = item.name || "Unknown Edition";
+      button.setAttribute("data-id", item._id);
+      versionWrapper.appendChild(button);
+
+      if (activeFilters.version === item._id) {
+        updateFilterButtonStyles(button, versionButtons);
+      }
+
+      button.addEventListener("click", () => {
+        updateFilterButtonStyles(button, versionButtons);
+        activeFilters.version = item._id;
+        renderFilteredCards();
+      });
+      versionButtons.push(button);
+    });
+  }
+
   initializeFilter([solarYesButton, solarNoButton], solarCharging, "solar");
   initializeFilter([musicYesButton, musicNoButton], musicStorage, "music");
   initializeCaseSizeFilter();
   initializeEditionFilter();
-
+  initializeVersionFilter();
   const filtersContainer = document.querySelector(".filters");
   filtersContainer.style.display = "block";
 
@@ -320,11 +394,21 @@ document.addEventListener("DOMContentLoaded", async () => {
   document.getElementById("bannerwithtext-adaptive").alt =
     item.banner_text.banner_images.alt;
 
-  const videoThumbnail = document.querySelector(".video-thumbnail");
-  videoThumbnail.querySelector("img").src = item.video_section.thumbnail;
-  document.querySelector(".thumbnail-img").alt = item.video_section.thumbnail;
-  document.getElementById("video-player").src = item.video_section.video_url;
+  const videoWrapper = document.querySelector(".video-wrapper");
 
+  if (
+    !item.video_section ||
+    !item.video_section.thumbnail ||
+    !item.video_section.video_url
+  ) {
+    videoWrapper.style.display = "none";
+  } else {
+    const videoThumbnail = document.querySelector(".video-thumbnail");
+    videoThumbnail.querySelector("img").src = item.video_section.thumbnail;
+    document.querySelector(".thumbnail-img").alt = item.video_section.thumbnail;
+    document.getElementById("video-player").src = item.video_section.video_url;
+    videoWrapper.style.display = "flex";
+  }
   document.querySelector(".walpapperinfo").src =
     item.additional_images.main_image;
   document.querySelector(".walpapperinfo-adaptive").src =

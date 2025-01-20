@@ -35,4 +35,7 @@ module.exports = {
   getEditionsName: async (ModelId) => {
     return Smartwatch_models.findById(ModelId).select("editions");
   },
+  getVersionsName: async (ModelId) => {
+    return Smartwatch_models.findById(ModelId).select("versions");
+  },
 };

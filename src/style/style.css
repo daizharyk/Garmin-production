@@ -903,7 +903,7 @@
   font-family: "Oswald";
   letter-spacing: 0.05rem;
   font-weight: 400;
-  font-size: 1.5rem;
+  font-size:2rem;
   padding-bottom: 20px;
 }
 
@@ -919,20 +919,20 @@
 .email-form input[type="email"],
 .email-form button {
   height: 44px;
-  /* Убедитесь, что высота одинаковая */
+ 
 }
 
 .email-form {
   display: flex;
   align-items: center;
-  max-width: 400px;
+  width: 400px;
   margin: 0 auto;
 }
 
 .email-form input[type="email"] {
   flex: 1;
   padding: 10px;
-  font-size: 16px;
+  font-size: 1rem;
   border: 1px solid #ccc;
   border-right: none;
 }
@@ -942,7 +942,7 @@
   display: flex;
   justify-content: center;
 
-  background-color: #000;
+  background-color: #161616;
   color: #fff;
   cursor: pointer;
   width: 44px;
@@ -963,6 +963,7 @@
   color: #000;
   border: 1px solid;
 }
+
 
 footer {
   background: #000;

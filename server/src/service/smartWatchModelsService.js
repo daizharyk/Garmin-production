@@ -61,4 +61,13 @@ module.exports = {
       throw error;
     }
   },
+  getVersionsName: async (ModelId) => {
+    try {
+      const version = await smartWatchRepository.getVersionsName(ModelId);
+      return version;
+    } catch (error) {
+      console.error("Editons not found", error);
+      throw error;
+    }
+  },
 };
