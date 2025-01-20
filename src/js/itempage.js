@@ -22,7 +22,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   const solarCharging = item.features.solar_charging;
   const musicStorage = item.features.music_storage_on_watch;
   const musicFilterContainer = document.querySelector(".musicFilterContainer");
-
+  const solarFilterContainer = document.querySelector(".solarFilterContainer");
+  const editionContainer = document.querySelector(".editionContainer");
   const musicYesButton = document.querySelector(
     '[data-filter="music"] .size-option[data-value="Yes"]'
   );
@@ -54,11 +55,18 @@ document.addEventListener("DOMContentLoaded", async () => {
   const hasMusicStorage = similarItems.some(
     (item) => item.features.music_storage_on_watch
   );
+  const hasSolar = similarItems.some((item) => item.features.solar_charging);
+  const hasMoreThanOneItem = similarItems.length > 1;
 
-  if (!hasMusicStorage) {
+  if (!(hasMusicStorage && hasMoreThanOneItem)) {
     musicFilterContainer.style.display = "none";
   }
-
+  if (!(hasSolar && hasMoreThanOneItem)) {
+    solarFilterContainer.style.display = "none";
+  }
+  if (!hasMoreThanOneItem) {
+    editionContainer.style.display = "none";
+  }
   const similarItemsContainer = document.querySelector(
     ".similar-items-container"
   );
@@ -112,6 +120,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       const matchesCaseSize =
         activeFilters.caseSize === null ||
         item.case_size === activeFilters.caseSize;
+      console.log("matchesCaseSize", matchesCaseSize);
 
       const matchesEdition =
         activeFilters.edition === null ||
@@ -154,30 +163,68 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   function initializeCaseSizeFilter() {
-    const caseSizeButtons = []; // Хранить кнопки для обновления стилей
-    const caseSizeWrapper = document.querySelector(".caseSizeWrapper");
+    if (
+      !item.case_size ||
+      item.case_size === "undefined" ||
+      item.case_size === "" ||
+      item.case_size === "null"
+    ) {
+      return;
+    }
+    const caseSizeButtons = [];
+    const caseSizeFilterContainer = document.querySelector(
+      ".caseSizeFilterContainer"
+    );
+    const caseSizeTitle = document.createElement("h3");
+    caseSizeTitle.innerText = "Case Size";
+
+    const divCaseSizeWrapper = document.createElement("div");
+    divCaseSizeWrapper.classList.add("caseSizeWrapper");
+    divCaseSizeWrapper.classList.add("size-options");
+
+    const uniqueCaseSizes = new Set();
+
+    activeFilters.caseSize = item.case_size;
 
     similarItems.forEach((item) => {
-      if (!item.case_size) return;
+      if (item.case_size) {
+        uniqueCaseSizes.add(item.case_size);
+      }
+    });
 
+    uniqueCaseSizes.forEach((item) => {
       const button = document.createElement("div");
       button.classList.add("size-option");
-      button.textContent = `${item.case_size} mm`;
+      button.textContent = `${item} mm`;
 
       button.addEventListener("click", () => {
         updateFilterButtonStyles(button, caseSizeButtons);
-        activeFilters.caseSize = item.case_size;
+        activeFilters.caseSize = item;
         renderFilteredCards();
       });
 
-      caseSizeWrapper.appendChild(button);
+      if (activeFilters.caseSize === item) {
+        updateFilterButtonStyles(button, caseSizeButtons);
+      }
+
+      divCaseSizeWrapper.appendChild(button);
+
       caseSizeButtons.push(button);
     });
+    console.log("uniqueCaseSizes", uniqueCaseSizes);
+
+    if (caseSizeButtons.length > 0) {
+      caseSizeFilterContainer.appendChild(caseSizeTitle);
+      caseSizeFilterContainer.appendChild(divCaseSizeWrapper);
+    }
   }
 
   async function initializeEditionFilter() {
+    if (!item.model_edition || item.model_edition === "undefined") {
+      return;
+    }
     const editionButtons = [];
-    const editionContainer = document.querySelector(".editionConatainer");
+
     const editionTitle = document.createElement("h3");
     editionTitle.textContent = "Edition";
 
@@ -185,7 +232,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     editionWrapper.classList.add("size-options");
     editionContainer.appendChild(editionTitle);
     editionContainer.appendChild(editionWrapper);
-    const modelId = similarItems[0]?.model;
+    const modelId = item?.model;
     console.log("modelId", modelId);
 
     const editionRes = await getEditionsByModelId(modelId);
@@ -196,21 +243,26 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (!Array.isArray(activeFilters.edition)) {
       activeFilters.edition = [];
     }
+    activeFilters.edition = item.model_edition;
+
     editions.forEach((item) => {
+      console.log("item", item);
+
       const button = document.createElement("div");
       button.classList.add("size-option");
       button.textContent = item.name || "Unknown Edition";
+      button.setAttribute("data-id", item._id);
       editionWrapper.appendChild(button);
-      button.addEventListener("click", () => {
-        updateFilterButtonStyles(button, editionButtons);
-        activeFilters.edition = item._id;
-        renderFilteredCards();
-      });
 
       if (activeFilters.edition === item._id) {
         updateFilterButtonStyles(button, editionButtons);
       }
 
+      button.addEventListener("click", () => {
+        updateFilterButtonStyles(button, editionButtons);
+        activeFilters.edition = item._id;
+        renderFilteredCards();
+      });
       editionButtons.push(button);
     });
   }
@@ -219,8 +271,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   initializeFilter([musicYesButton, musicNoButton], musicStorage, "music");
   initializeCaseSizeFilter();
   initializeEditionFilter();
+
   const filtersContainer = document.querySelector(".filters");
   filtersContainer.style.display = "block";
+
   document.querySelector(".product-title").textContent = item.name;
   document.querySelector(".product-color").textContent = item.color;
   const saleBox = document.getElementById("sale-box");

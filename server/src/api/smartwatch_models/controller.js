@@ -35,7 +35,7 @@ module.exports = {
   getEditionsByModelId: async (req, res, next) => {
     try {
       const { id } = req.params;
-      console.log("ModelId", id);
+    
 
       const editions = await smartWatchModelsService.getEditionsName(id);
 
