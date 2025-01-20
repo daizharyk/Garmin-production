@@ -3,7 +3,6 @@ import "../style/shipping.css";
 import "../style/itempage.css";
 
 document.addEventListener("DOMContentLoaded", function () {
-  //Футер
   function setupActiveClass() {
     document.querySelectorAll(".nav-list-item").forEach((item) => {
       item.addEventListener("click", () => {
@@ -19,15 +18,13 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-
   function setupDropdownMenus() {
-    const isLargeScreen = window.innerWidth >= 1100; 
+    const isLargeScreen = window.innerWidth >= 1100;
     document.querySelectorAll(".nav-menu").forEach((menu) => {
       const dropdownClass = `${menu.classList[1]}-dropdown`;
       const dropdown = document.querySelector(`.${dropdownClass}`);
 
       if (isLargeScreen) {
-   
         menu.onmouseover = () => toggleDropdown(menu, true);
         menu.onmouseout = (event) => {
           if (!isMouseOverDropdown(event, dropdown)) {
@@ -36,7 +33,6 @@ document.addEventListener("DOMContentLoaded", function () {
         };
 
         if (dropdown) {
-        
           dropdown.onmouseover = () => toggleDropdown(menu, true);
           dropdown.onmouseout = (event) => {
             if (!isMouseOverDropdown(event, dropdown)) {
@@ -45,39 +41,34 @@ document.addEventListener("DOMContentLoaded", function () {
           };
         }
       } else {
-  
         menu.onmouseover = null;
         menu.onmouseout = null;
 
         if (dropdown) {
           dropdown.onmouseover = null;
           dropdown.onmouseout = null;
-          dropdown.style.display = ""; 
+          dropdown.style.display = "";
         }
       }
     });
-    
-  function toggleDropdown(menu, show) {
-    const dropdownClass = `${menu.classList[1]}-dropdown`;
-    const dropdown = document.querySelector(`.${dropdownClass}`);
-    if (dropdown) {
-      dropdown.style.display = show ? "flex" : "none";
+
+    function toggleDropdown(menu, show) {
+      const dropdownClass = `${menu.classList[1]}-dropdown`;
+      const dropdown = document.querySelector(`.${dropdownClass}`);
+      if (dropdown) {
+        dropdown.style.display = show ? "flex" : "none";
+      }
+    }
+
+    function isMouseOverDropdown(event, dropdown) {
+      const relatedTarget = event.relatedTarget;
+      return dropdown.contains(relatedTarget);
     }
   }
 
-
-  function isMouseOverDropdown(event, dropdown) {
-    const relatedTarget = event.relatedTarget;
-    return dropdown.contains(relatedTarget);
-  }
-  }
-
-
-  // Инициализация
   setupDropdownMenus();
   window.addEventListener("resize", setupDropdownMenus);
 
-  // Функция для обработки меню пользователя
   function setupUserMenu() {
     const userMenu = document.querySelector(".user-menu");
     const dropdown = document.querySelector(".dropdown-user");
@@ -114,18 +105,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (burgerButton && navMenu) {
     burgerButton.addEventListener("click", function () {
-      this.classList.toggle("active"); 
+      this.classList.toggle("active");
       navMenu.style.display =
-        navMenu.style.display === "block" ? "none" : "block"; 
+        navMenu.style.display === "block" ? "none" : "block";
     });
     function handleResize4() {
       const windowWidth = window.innerWidth;
 
-     
       if (windowWidth >= 1100) {
         if (burgerButton && navMenu) {
           burgerButton.classList.remove("active");
-          navMenu.style.display = ""; 
+          navMenu.style.display = "";
         }
       }
     }
@@ -136,18 +126,17 @@ document.addEventListener("DOMContentLoaded", function () {
   function setupDropdowns() {
     document.querySelectorAll(".nav-item").forEach((item) => {
       item.addEventListener("click", function () {
-        const dropdownClass = this.getAttribute("data-dropdown"); 
+        const dropdownClass = this.getAttribute("data-dropdown");
         const dropdown = document.querySelector(`.${dropdownClass}`);
 
         if (dropdown) {
-          // Переключаем видимость дропдауна
           dropdown.style.display =
             dropdown.style.display === "block" ? "none" : "block";
 
           // Скрытие всех подменю
           const subMenus = dropdown.querySelectorAll(".sub-menu");
           subMenus.forEach((subMenu) => {
-            subMenu.style.display = "none"; // Скрыть все подменю при открытии dropdown
+            subMenu.style.display = "none";
           });
         }
       });
@@ -155,30 +144,35 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function resetDropdowns() {
-    // Скрыть все dropdown'ы
     document.querySelectorAll(".dropdown").forEach((dropdown) => {
       dropdown.style.display = "none";
     });
   }
 
-  // Инициализация dropdown'ов
   setupDropdowns();
 
- let activeDropdown = null;
+  let activeDropdown = null;
 
-// Обработчик изменения размера окна
-window.addEventListener("resize", function () {
-  if (activeDropdown) {
-    // Сбросить состояние dropdown'ов при изменении размера, если есть активный dropdown
-    resetDropdowns();
-    // Скрыть только текущий активный dropdown
-    activeDropdown.style.display = "none";
-    activeDropdown = null; // Сбросить активный dropdown
-  }
-});
+  window.addEventListener("resize", function () {
+    if (activeDropdown) {
+      resetDropdowns();
 
-// Начальный вызов
-resetDropdowns();
+      activeDropdown.style.display = "none";
+      activeDropdown = null;
+    }
+  });
+
+  let burgerMenuOpen = false;
+
+  burgerButton.addEventListener("click", function () {
+    burgerMenuOpen = !burgerMenuOpen;
+  });
+
+  window.addEventListener("resize", function () {
+    if (!burgerMenuOpen) {
+      handleResize();
+    }
+  });
 
   function resetSubMenus() {
     document
@@ -206,8 +200,8 @@ resetDropdowns();
     const windowWidth = window.innerWidth;
 
     if (windowWidth >= 1100) {
-      resetSubMenus(); // Сбросить стили всех подменю
-      // Удаляем обработчики событий, если они есть
+      resetSubMenus();
+
       document.querySelectorAll(".dropdown-container").forEach((container) => {
         const title = container.querySelector(".column-title");
         if (title) {
@@ -216,14 +210,12 @@ resetDropdowns();
         }
       });
     } else {
-      setupDropdown(); 
+      setupDropdown();
     }
   }
 
-  // Проверяем размер экрана при загрузке страницы
   handleResize();
 
-  // Следим за изменением размера экрана
   window.addEventListener("resize", handleResize);
 
   function taggleSing() {
