@@ -195,7 +195,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
   }
-
+  setupDropdown()
   function handleResize() {
     const windowWidth = window.innerWidth;
 
@@ -214,7 +214,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  handleResize();
+ 
 
   window.addEventListener("resize", handleResize);
 
