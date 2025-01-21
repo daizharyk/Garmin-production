@@ -176,7 +176,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function resetSubMenus() {
     document
-      .querySelectorAll(".dropdown-container .sub-menu")
+      .querySelectorAll(".dropdown-container .sub-menu ")
       .forEach((subMenu) => {
         subMenu.style.display = "";
       });
@@ -195,7 +195,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
   }
-  setupDropdown()
+  setupDropdown();
   function handleResize() {
     const windowWidth = window.innerWidth;
 
@@ -214,18 +214,43 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
- 
-
   window.addEventListener("resize", handleResize);
 
   function taggleSing() {
-    document.querySelectorAll(".nav-item, .column-title").forEach((title) => {
+    const titles = document.querySelectorAll(".nav-item, .column-title");
+
+    titles.forEach((title) => {
       const toggleSign = title.querySelector(".toggle-sign");
       if (toggleSign) {
         toggleSign.textContent = "+";
+
         title.addEventListener("click", function () {
-          this.classList.toggle("active");
-          toggleSign.textContent = toggleSign.textContent === "+" ? "-" : "+";
+          if (title.classList.contains("column-title")) {
+            document
+              .querySelectorAll(".column-title.active")
+              .forEach((activeTitle) => {
+                if (activeTitle !== this) {
+                  activeTitle.classList.remove("active");
+                  const activeToggleSign =
+                    activeTitle.querySelector(".toggle-sign");
+                  if (activeToggleSign) activeToggleSign.textContent = "+";
+                }
+              });
+
+            this.classList.toggle("active");
+            toggleSign.textContent = toggleSign.textContent === "+" ? "-" : "+";
+          }
+
+          if (title.classList.contains("nav-item")) {
+            document
+              .querySelectorAll(".column-title")
+              .forEach((columnTitle) => {
+                columnTitle.classList.remove("active");
+                const columnToggleSign =
+                  columnTitle.querySelector(".toggle-sign");
+                if (columnToggleSign) columnToggleSign.textContent = "+";
+              });
+          }
         });
       }
     });
