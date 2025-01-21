@@ -8,9 +8,12 @@ export function createCards(data) {
     return;
   }
   container.innerHTML = "";
+
+  const isSearchPage = window.location.pathname.includes("searchingPage");
+
   data.forEach((item) => {
     const link = document.createElement("a");
-    link.href = `pages/itempage.html?id=${item._id}`;
+    link.href = `/pages/itempage.html?id=${item._id}`;
     link.classList.add("card-link");
 
     const cardImg = document.createElement("div");
@@ -35,6 +38,10 @@ export function createCards(data) {
     const price = document.createElement("p");
     price.classList.add("price-text");
     price.textContent = `$${item.price?.toFixed(2) || "0.00"} USD`;
+
+    if (isSearchPage) {
+      price.style.display = "none";
+    }
 
     cardDesc.appendChild(title);
     cardDesc.appendChild(description);

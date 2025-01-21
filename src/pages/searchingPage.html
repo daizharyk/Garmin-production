@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= htmlWebpackPlugin.options.title %></title>
+    <title>GPS Running Watches | Running Watches for Every Runner</title>
   </head>
   <body>
     <header>
@@ -11,7 +11,7 @@
         <nav>
           <div class="nav-section">
             <div class="logo">
-              <a href="index.html"
+              <a href="../index.html"
                 ><svg
                   id="garmin-logo"
                   width="161px"
@@ -489,7 +489,6 @@
                   </g>
                 </svg>
               </div>
-
               <div class="svg-container">
                 <div class="user-menu">
                   <svg
@@ -573,279 +572,33 @@
                 </svg>
               </div>
             </div>
-            <div class="search-container2" id="searchBox" style="display: none">
-              <div class="input-wrapper">
-                <input type="text" placeholder="Search..." id="searchInput" />
-                <button id="closeSearch">&#10006;</button>
-              </div>
-            </div>
           </div>
         </nav>
       </div>
       <div>
         <nav class="freeground">
-          <a href="./pages/shipping.html"
+          <a href="./shipping.html"
             >FREE GROUND SHIPPING ON ORDERS $25 AND UP</a
           >
         </nav>
         <nav class="sport_fitness">
-          <a href="./index.html">SPORTS & FITNESS / RUNNING</a>
+          <a href="">SPORTS & FITNESS / RUNNING</a>
         </nav>
       </div>
-    </header>
-    <main>
-      <div class="banner">
-        <img
-          id="girl-running-adaptive"
-          src="https://i.ibb.co.com/NV3pHxf/girl-running-adaptive.webp"
-          alt="girl-running-adaptive"
-        />
-        <img
-          id="girl-running-full"
-          src="https://i.ibb.co.com/yPQ5W1V/girl-running.webp"
-          alt="girl-running"
-        />
-        <header class="banner-text">
-          <h1>FORERUNNER<sup class="registered-symbol1">®</sup> 165 SERIES</h1>
-          <p>
-            Train brilliantly with running smartwatches with AMOLED displays.
-          </p>
-        </header>
-      </div>
-      <div class="card">
-        <h3>RUNNING SMARTWATCHES</h3>
-        <p>
-          It’s no secret — we were in the running watch game long before there
-          were smartwatches. So we know that no two runners are the same, and
-          that’s exactly why we have running watches for everyone. From
-          easy-to-use GPS watches to triathlon-ready powerhouses, we have a
-          running partner designed just for you.
-        </p>
-        <p>All of our running watches come with these great features:</p>
-        <div class="shopall">
-          <a id="shopall" href="">SHOP All</a>
-        </div>
-      </div>
-      <div id="every_runner">
-        <p>A WATCH FOR EVERY RUNNER</p>
-      </div>
-
-      <div class="container">
-        <div class="box" data-checkbox="advanced_running">
-          <img
-            src="https://i.ibb.co.com/M2vJHz4/advanced-running.webp"
-            alt="Image 1"
+      <main>
+        <div class="search-page-section">
+          <input
+            type="text"
+            id="searchPageInput"
+            placeholder="Search products..."
           />
-          <div class="overlay">
-            <h2>ADVANCED RUNNING</h2>
-            <a href="#">SHOP ADVANCED</a>
-            <!-- Добавлено href -->
-          </div>
+          <span id="clearSearch" class="clear-search">✖</span>
         </div>
-        <div class="box" data-checkbox="elite_running">
-          <img
-            src="https://i.ibb.co.com/s2605fZ/elite-running-955.webp"
-            alt="Image 2"
-          />
-          <div class="overlay">
-            <h2>ELITE RUNNING</h2>
-            <a href="#">SHOP ELITE</a>
-            <!-- Добавлено href -->
-          </div>
-        </div>
-        <div class="box" data-checkbox="entry_level_running">
-          <img
-            src="https://i.ibb.co.com/gwXRc4j/entry-level-running.webp"
-            alt="Image 3"
-          />
-          <div class="overlay">
-            <h2>ENTRY-LEVEL RUNNING</h2>
-            <a href="#">SHOP ENTRY LEVEL</a>
-            <!-- Добавлено href -->
-          </div>
-        </div>
-      </div>
-
-      <div class="video_content">
-        <iframe
-          width="560"
-          height="315"
-          src="https://www.youtube.com/embed/uzAcbl_kGP8?si=8pAJyiuEY-H-rp2H"
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
-    gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allowfullscreen
-        >
-        </iframe>
-      </div>
-
-      <div class="black-card">
-        <div class="content">
-          <h2>HAVING A HARD TIME DECIDING?</h2>
-          <p>
-            So, you're a runner, Eh? Nice, nice, we like runners. But, which
-            type of runner are you?
-          </p>
-          <a href="#">FIND THE PERFECT WATCH</a>
-        </div>
-      </div>
-
-      <div class="white-card">
-        <h2>RUNNING WATCHES</h2>
-      </div>
-
-      <div class="product-filter_dropdown" id="filterSortToggle">
-        <p>FILTER</p>
-        <span class="arrow"></span>
-      </div>
-
-      <div class="container-items">
-        <aside class="sidebar" id="sidebar">
-          <h3>Shop by Feature</h3>
-          <ul class="feature-list">
-            <li>
-              <input type="checkbox" id="touchscreen" />
-              <label for="touchscreen">Touchscreen</label>
-              <span class="count" id="touchscreen_count"></span>
-            </li>
-            <li>
-              <input type="checkbox" id="new_forerunners" />
-              <label for="new_forerunners">New Forerunners</label>
-              <span class="count" id="new_forerunners_count"></span>
-            </li>
-            <li>
-              <input type="checkbox" id="entry_level_running" />
-              <label for="entry_level_running">Entry Level Running</label>
-              <span class="count" id="entry_level_running_count"></span>
-            </li>
-            <li>
-              <input type="checkbox" id="advanced_running" />
-              <label for="advanced_running">Advanced Running</label>
-              <span class="count" id="advanced_running_count"></span>
-            </li>
-            <li>
-              <input type="checkbox" id="elite_running" />
-              <label for="elite_running">Elite Running</label>
-              <span class="count" id="elite_running_count"></span>
-            </li>
-            <li>
-              <input type="checkbox" id="color_screen" />
-              <label for="color_screen">Color screen</label>
-              <span class="count" id="color_screen_count"></span>
-            </li>
-            <li>
-              <input type="checkbox" id="solar_charging" />
-              <label for="solar_charging">Solar charging</label>
-              <span class="count" id="solar_charging_count"></span>
-            </li>
-            <li>
-              <input type="checkbox" id="flashlight" />
-              <label for="flashlight">Flashlight</label>
-              <span class="count" id="flashlight_count"></span>
-            </li>
-            <li>
-              <input type="checkbox" id="buttons" />
-              <label for="buttons">Buttons</label>
-              <span class="count" id="buttons_count"></span>
-            </li>
-            <li>
-              <input type="checkbox" id="amoled_display" />
-              <label for="amoled_display">AMOLED Display</label>
-              <span class="count" id="amoled_display_count"></span>
-            </li>
-            <li>
-              <input type="checkbox" id="heart_rate_monitors" />
-              <label for="heart_rate_monitors">Heart Rate Monitors</label>
-              <span class="count" id="heart_rate_monitors_count"></span>
-            </li>
-          </ul>
-        </aside>
-        <section class="cards-content">
-          <div class="grid__options">
-            <div class="compare-buttom">
-              <a href="#">COMPARE</a>
-            </div>
-            <div class="select-option">
-              <div>
-                <p>Sort By</p>
-              </div>
-              <label for="sort">
-                <select name="test" id="sort">
-                  <option value="">Feature Products</option>
-                  <option value="a_to_z">A to Z</option>
-                  <option value="z_to_a">Z to A</option>
-                  <option value="price_low_high">Price: Low to High</option>
-                  <option value="price_high_low">Price: High to Low</option>
-                </select>
-              </label>
-            </div>
-          </div>
+        <div class="cards-wrapper-serch">
           <div class="cards" id="cards-container"></div>
-        </section>
-      </div>
-      <div class="tile-container">
-        <div class="tile-card">
-          <div class="tile-card-bg"></div>
-          <img
-            src="https://i.ibb.co.com/m0H2JyB/GAR-RUN-IG-BOX-M.jpg"
-            alt="girl-running"
-          />
-          <div class="tile-card_discription">
-            <h2>FOLLOW US ON THE @GARMINRUNNING INSTAGRAM® CHANNEL</h2>
-            <p>Run with the best</p>
-          </div>
         </div>
-        <div class="tile-card">
-          <div class="tile-card-bg"></div>
-          <img
-            src="https://i.ibb.co.com/9VPSYRZ/family-connect.webp"
-            alt="phone screen"
-          />
-          <div class="tile-card_discription">
-            <h2>VISIT THE GARMIN CONNECT™ APP</h2>
-            <p>Track, analyze and share your data</p>
-          </div>
-        </div>
-        <div class="tile-card">
-          <div class="tile-card-bg"></div>
-          <img
-            src="https://i.ibb.co.com/F8qp4P6/50946.webp"
-            alt="girl-running"
-          />
-          <div class="tile-card_discription">
-            <h2>LEARN HOW WE MEASURE YOUR TRAINING</h2>
-            <p>See the science</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="singup">
-        <div class="signup-content">
-          <h2>SIGN UP FOR NEWS</h2>
-          <form action="" method="post" class="email-form">
-            <label for="email"></label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="didar@example.com"
-              required
-            />
-            <button type="submit">
-              <span>&#8250;</span>
-            </button>
-          </form>
-          <p>
-            Get product news and promotions based on your preferences and
-            registered devices.
-          </p>
-          <a href="#">Learn about email privacy.</a>
-        </div>
-      </div>
-    </main>
-
+      </main>
+    </header>
     <% if (htmlWebpackPlugin.options.templateParameters.footer) { %> <%=
     htmlWebpackPlugin.options.templateParameters.footer %> <% } %>
   </body>

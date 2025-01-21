@@ -25,11 +25,11 @@
 .login-section {
   display: flex;
   gap: 10px;
-  justify-content: space-around;
-  align-items: center;
-  justify-content: center;
+  width: 200px;
+
+  align-items: end;
+  justify-content: end;
   height: 100%;
-  margin-right: 10px;
 }
 
 .user-menu {
@@ -57,8 +57,7 @@
   align-items: center;
   height: 100%;
   width: 1.7rem;
-  border: 4px 0 solid transparent; 
-
+  border: 4px 0 solid transparent;
 }
 
 .svg-container:hover {
@@ -307,6 +306,84 @@
   font-optical-sizing: auto;
   font-size: 0.95rem;
   letter-spacing: 0.05rem;
+}
+.search-container2 {
+  display: flex;
+  width: 200px;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+}
+.input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.search-page-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 50px 80px 50px;
+  justify-content: center;
+  position: relative;
+}
+
+#searchPageInput {
+  width: 100%;
+  padding: 10px;
+  font-size: 1.8rem;
+  border: 0;
+  padding-right: 30px;
+}
+
+#searchPageInput:focus {
+  outline: none;
+  border-radius: 0;
+}
+.cards-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  margin: 20px;
+}
+.clear-search {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  cursor: pointer;
+  font-size: 18px;
+  color: #999;
+}
+
+.clear-search:hover {
+  color: #333;
+}
+
+#searchInput {
+  width: 100%;
+  padding: 10px;
+  font-size: 0.875rem;
+  padding-right: 40px;
+  border: 1px solid #ccc;
+}
+#searchInput:focus {
+  outline: none;
+  border: 1px solid #000;
+  border-radius: 0;
+}
+#closeSearch {
+  position: absolute;
+  top: 50%;
+  right: 5px;
+  padding: 10px;
+  transform: translateY(-50%);
+  background: none;
+  color: #000;
+  border: none;
+  cursor: pointer;
 }
 
 .banner {
@@ -757,6 +834,18 @@
 .cards {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+}
+.searching-page .card-link {
+  width: calc(25% - 2rem);
+  font-size: 0.9rem;
+  height: auto;
+  margin: 20px;
+}
+
+.cards-wrapper-serch {
+  justify-content: center;
+  align-items: center;
 }
 
 .card-link {
@@ -789,13 +878,35 @@
 }
 
 .product-card-description p {
-  margin-bottom: 16px;
+  margin-bottom: 1rem;
+}
+.searching-page .product-card-description p {
+  font-family:
+    Superscripts-Roboto,
+    Roboto,
+    Noto Sans TC,
+    Noto Sans SC,
+    Noto Sans JP,
+    Noto Sans KR,
+    Prompt,
+    sans-serif;
+  margin-bottom: 0.9rem;
 }
 
 .product-card-description h2 {
   font-family: "Oswald";
   font-size: 1.7rem;
   font-weight: 400;
+  letter-spacing: 0.05rem;
+  line-height: 1.25;
+  text-align: left;
+  color: #000000;
+  margin-bottom: 16px;
+}
+.searching-page .product-card-description h2 {
+  font-family: "Oswald";
+  font-size: 0.9rem;
+  font-weight: 500;
   letter-spacing: 0.05rem;
   line-height: 1.25;
   text-align: left;
@@ -903,7 +1014,7 @@
   font-family: "Oswald";
   letter-spacing: 0.05rem;
   font-weight: 400;
-  font-size:2rem;
+  font-size: 2rem;
   padding-bottom: 20px;
 }
 
@@ -919,7 +1030,6 @@
 .email-form input[type="email"],
 .email-form button {
   height: 44px;
- 
 }
 
 .email-form {
@@ -963,7 +1073,6 @@
   color: #000;
   border: 1px solid;
 }
-
 
 footer {
   background: #000;
@@ -1349,11 +1458,11 @@ footer {
   .logo {
     flex: 1;
   }
-.product {
-  display: flex;
+  .product {
+    display: flex;
 
-  align-items: center;
-}
+    align-items: center;
+  }
   .nav-section {
     display: flex;
     justify-content: space-between;

@@ -18,6 +18,67 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  const searchingSvg = document.getElementById("searchingSvg");
+  const searchBox = document.getElementById("searchBox");
+  const closeSearch = document.getElementById("closeSearch");
+  const loginSection = document.querySelector(".login-section");
+  const inputWrapper = document.querySelector(".input-wrapper");
+  const searchInput = document.getElementById("searchInput");
+
+  if (searchingSvg && searchBox && loginSection) {
+    searchingSvg.addEventListener("click", () => {
+      if (loginSection) loginSection.style.display = "none";
+      if (searchBox) searchBox.style.display = "flex";
+    });
+
+    function toggleSearchingSvg() {
+      if (window.innerWidth <= 1100) {
+        if (searchingSvg) searchingSvg.style.display = "none";
+
+        if (searchBox && searchBox.style.display === "flex") {
+          searchBox.style.display = "none";
+          if (searchInput) searchInput.value = ""; // Сброс значения
+          if (loginSection) loginSection.style.display = "flex"; // Возвращаем loginSection
+        }
+      } else {
+        if (searchingSvg) searchingSvg.style.display = "block";
+      }
+    }
+
+    function isDesktopDevice() {
+      return !("ontouchstart" in window || navigator.maxTouchPoints > 0);
+    }
+
+    if (isDesktopDevice()) {
+      let resizeTimeout;
+
+      window.addEventListener("resize", () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+          toggleSearchingSvg();
+        }, 50);
+      });
+    }
+
+    toggleSearchingSvg();
+  }
+
+  if (closeSearch && searchBox && loginSection && searchInput) {
+    closeSearch.addEventListener("click", () => {
+      if (searchBox) searchBox.style.display = "none";
+      if (loginSection) loginSection.style.display = "flex";
+      if (searchInput) searchInput.value = "";
+    });
+  }
+
+  if (closeSearch) {
+    closeSearch.addEventListener("click", () => {
+      searchBox.style.display = "none";
+      loginSection.style.display = "flex";
+      searchInput.value = "";
+    });
+  }
+
   function setupDropdownMenus() {
     const isLargeScreen = window.innerWidth >= 1100;
     document.querySelectorAll(".nav-menu").forEach((menu) => {

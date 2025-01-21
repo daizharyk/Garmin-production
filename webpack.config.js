@@ -15,7 +15,7 @@ module.exports = {
     animation: path.resolve(__dirname, "src/js/animation.js"),
     html: path.resolve(__dirname, "src/js/htmlBuilder.js"),
     itempage: path.resolve(__dirname, "src/js/itempage.js"),
-
+    searchingPage: path.resolve(__dirname, "src/js/searchingPage.js"),
     signIn: path.resolve(__dirname, "src/js/signIn.js"),
     login: path.resolve(__dirname, "src/js/login.js"),
     register: path.resolve(__dirname, "src/js/register.js"),
@@ -120,7 +120,7 @@ module.exports = {
       title: "Product Page",
       filename: "pages/itempage.html",
       template: "src/pages/itempage.html",
-      chunks: ["itempage", "animation", "authState","main"],
+      chunks: ["itempage", "animation", "authState", "main"],
       templateParameters: {
         footer: fs.readFileSync(
           path.resolve(__dirname, "src/pages/components/footer.html"),
@@ -132,7 +132,7 @@ module.exports = {
       title: "Shipping",
       filename: "pages/shipping.html",
       template: "src/pages/shipping.html",
-      chunks: ["animation", "authState","main"],
+      chunks: ["animation", "authState", "main"],
       templateParameters: {
         footer: fs.readFileSync(
           path.resolve(__dirname, "src/pages/components/footer.html"),
@@ -169,6 +169,18 @@ module.exports = {
       filename: "pages/accountProfile.html",
       template: "src/pages/accountProfile.html",
       chunks: ["main", "animation", "authState", "accountProfile"],
+      templateParameters: {
+        footer: fs.readFileSync(
+          path.resolve(__dirname, "src/pages/components/footer.html"),
+          "utf-8"
+        ),
+      },
+    }),
+    new HtmlWebpackPlugin({
+      title: "Serching ...",
+      filename: "pages/searchingPage.html",
+      template: "src/pages/searchingPage.html",
+      chunks: ["main", "animation", "authState", "searchingPage"],
       templateParameters: {
         footer: fs.readFileSync(
           path.resolve(__dirname, "src/pages/components/footer.html"),
