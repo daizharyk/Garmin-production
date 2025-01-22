@@ -21,7 +21,9 @@
 .burger-button {
   display: none;
 }
-
+#queryText {
+  font-weight: 500;
+}
 .login-section {
   display: flex;
   gap: 10px;
@@ -321,18 +323,20 @@
 
 .search-page-section {
   display: flex;
+
   justify-content: center;
   align-items: center;
   gap: 10px;
-  margin: 20px 50px 80px 50px;
+  margin: 20px;
   justify-content: center;
   position: relative;
 }
 
 #searchPageInput {
   width: 100%;
+  max-width: 1200px;
   padding: 10px;
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   border: 0;
   padding-right: 30px;
 }
@@ -341,18 +345,36 @@
   outline: none;
   border-radius: 0;
 }
-.cards-grid {
-  display: grid;
-  gap: 20px;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  margin: 20px;
+.card-link.skeleton {
+  background: linear-gradient(-45deg, #dddddd 25%, #f7f7f7 50%, #dddddd 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+  height: 500px;
+  min-height: 500px;
+  display: flex;
+  flex: 1 1 30%;
+  max-width: 30%;
+
+  width: 500px;
+}
+.skeleton-loader {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 0 20px;
+  margin: 0 20px;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }
 .clear-search {
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-
+  right: 350px;
   cursor: pointer;
   font-size: 18px;
   color: #999;
@@ -388,10 +410,16 @@
 
 .banner {
   position: relative;
+  display: none;
+  transition: opacity 1s ease-in-out;
 }
 
+.banner.active {
+  display: block;
+}
 .banner img {
   max-width: 100%;
+  width: 100%;
   height: auto;
   object-fit: cover;
 }
@@ -615,6 +643,73 @@
   font-size: 1rem;
   text-decoration: none;
 }
+.bannersContainer {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+/* Контейнер для кнопок управления */
+.slider-controls {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+}
+
+/* Кнопка Play/Pause */
+.play-pause-btn {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Иконки Play и Pause */
+.play-icon,
+.pause-icon {
+  position: absolute;
+  font-size: 20px;
+  color: #fff;
+  display: none;
+}
+
+/* Отображение активной иконки */
+.play-icon.active {
+  display: block;
+}
+
+.pause-icon.active {
+  display: block;
+}
+
+/* Таймер-круг */
+.timer-circle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: rotate(-90deg); /* Начало рисования сверху */
+}
+.circle-bg {
+  fill: none;
+  stroke: #cccccc5d;
+  stroke-width: 2;
+}
+
+.circle-progress {
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 2;
+  stroke-dasharray: 138; /* Длина окружности (2 * π * r) для r = 22 */
+  stroke-dashoffset: 138; /* Начальная длина линии - пустой круг */
+  transition: stroke-dashoffset 7s linear;
+}
+
 
 .content a:hover {
   background: #fff;
@@ -836,20 +931,28 @@
   flex-wrap: wrap;
   justify-content: center;
 }
-.searching-page .card-link {
-  width: calc(25% - 2rem);
-  font-size: 0.9rem;
-  height: auto;
-  margin: 20px;
+.searching-page .cards {
+  justify-content: flex-start;
+  max-width: 1200px;
+  flex-wrap: wrap;
 }
+.searching-page .card-link {
+  max-width: 1200px;
+  width: calc(25% - 2rem);
 
-.cards-wrapper-serch {
+  margin: 15px;
+}
+.searching-page .cards-wrapper-serch {
+  display: flex;
   justify-content: center;
+  background-color: #eee;
   align-items: center;
+  padding: 50px 0;
 }
 
 .card-link {
   display: flex;
+  background-color: #fff;
   flex-direction: column;
   width: calc(33.333% - 17px);
   margin: 16px 0px 0px 16px;
@@ -891,6 +994,7 @@
     Prompt,
     sans-serif;
   margin-bottom: 0.9rem;
+  font-size: 0.8rem;
 }
 
 .product-card-description h2 {
@@ -1208,7 +1312,7 @@ footer {
   text-decoration: underline;
 }
 
-#girl-running-adaptive {
+.main-banner-adaptive {
   display: none;
 }
 
@@ -1463,6 +1567,7 @@ footer {
 
     align-items: center;
   }
+
   .nav-section {
     display: flex;
     justify-content: space-between;
@@ -1470,11 +1575,11 @@ footer {
     position: relative;
   }
 
-  #girl-running-full {
+  .main-banner-full {
     display: none;
   }
 
-  #girl-running-adaptive {
+  .main-banner-adaptive {
     display: flex;
   }
 
@@ -1629,6 +1734,10 @@ footer {
     flex: 1 1 calc(50% - 20px);
     /* Две карточки в ряд */
   }
+  .card-link.skeleton {
+    flex: 1 1 45%;
+    max-width: 45%;
+  }
 }
 
 @media (max-width: 755px) {
@@ -1703,13 +1812,20 @@ footer {
     flex: 1 1 calc(100% - 20px);
     margin: 10px 0 10px 0;
   }
-
+  .searching-page .cards-wrapper-serch {
+    padding: 20px;
+  }
+  .card-link.skeleton {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
   .login-section {
     display: flex;
     justify-content: center;
     text-align: center;
     align-items: center;
     position: static;
+    width: auto;
   }
 
   .logo {

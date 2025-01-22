@@ -594,24 +594,85 @@
       </div>
     </header>
     <main>
-      <div class="banner">
-        <img
-          id="girl-running-adaptive"
-          src="https://i.ibb.co.com/NV3pHxf/girl-running-adaptive.webp"
-          alt="girl-running-adaptive"
-        />
-        <img
-          id="girl-running-full"
-          src="https://i.ibb.co.com/yPQ5W1V/girl-running.webp"
-          alt="girl-running"
-        />
-        <header class="banner-text">
-          <h1>FORERUNNER<sup class="registered-symbol1">®</sup> 165 SERIES</h1>
-          <p>
-            Train brilliantly with running smartwatches with AMOLED displays.
-          </p>
-        </header>
+      <div class="bannersContainer">
+        <div class="banner">
+          <img
+            class="main-banner-adaptive"
+            src="https://i.ibb.co.com/NV3pHxf/girl-running-adaptive.webp"
+            alt="girl-running-adaptive"
+          />
+          <img
+            class="main-banner-full"
+            src="https://i.ibb.co.com/yPQ5W1V/girl-running.webp"
+            alt="girl-running"
+          />
+          <header class="banner-text">
+            <h1>
+              FORERUNNER<sup class="registered-symbol1">®</sup> 165 SERIES
+            </h1>
+            <p>
+              Train brilliantly with running smartwatches with AMOLED displays.
+            </p>
+          </header>
+        </div>
+        <div class="banner">
+          <img
+            class="main-banner-adaptive"
+            src="https://i.ibb.co.com/K9SHyc3/265-2-T.webp"
+            alt="man-running"
+          />
+          <img
+            class="main-banner-full"
+            src="https://i.ibb.co.com/hyj84Mr/265-1-D.webp"
+            alt="girl-running"
+          />
+          <header class="banner-text">
+            <h1>
+              FORERUNNER<sup class="registered-symbol1">®</sup> 265 SERIES
+            </h1>
+            <p>
+              Advanced running smartwatch with training and recovery features.
+            </p>
+          </header>
+        </div>
+        <div class="banner">
+          <img
+            class="main-banner-adaptive"
+            src="https://i.ibb.co.com/WGMCk0x/965-2-T.webp"
+            alt="man-running"
+          />
+          <img
+            class="main-banner-full"
+            src="https://i.ibb.co.com/0sJv7DY/965-1-D.webp"
+            alt="man-running"
+          />
+          <header class="banner-text">
+            <h1>
+              FORERUNNER<sup class="registered-symbol1">®</sup> 965 SERIES
+            </h1>
+            <p>
+              Premium running and triathlon smartwatch with advanced features
+              and maps.
+            </p>
+          </header>
+        </div>
+        <div class="slider-controls">
+          <button id="playPauseBtn" class="play-pause-btn">
+            <svg
+              class="timer-circle"
+              width="50"
+              height="50"
+              viewBox="0 0 50 50"
+            >
+              <circle class="circle-bg" cx="25" cy="25" r="22"></circle>
+              <circle class="circle-progress" cx="25" cy="25" r="22"></circle>
+            </svg>
+            <span class="play-icon active">&#9658;</span>
+            <span class="pause-icon">&#10074;&#10074;</span>
+          </button>
+        </div>
       </div>
+
       <div class="card">
         <h3>RUNNING SMARTWATCHES</h3>
         <p>
@@ -782,7 +843,16 @@
               </label>
             </div>
           </div>
-          <div class="cards" id="cards-container"></div>
+          <div class="cards" id="cards-container">
+            <div class="skeleton-loader" id="skeletonLoader">
+              <div class="card-link skeleton"></div>
+              <div class="card-link skeleton"></div>
+              <div class="card-link skeleton"></div>
+              <div class="card-link skeleton"></div>
+              <div class="card-link skeleton"></div>
+              <div class="card-link skeleton"></div>
+            </div>
+          </div>
         </section>
       </div>
       <div class="tile-container">

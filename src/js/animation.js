@@ -3,6 +3,85 @@ import "../style/shipping.css";
 import "../style/itempage.css";
 
 document.addEventListener("DOMContentLoaded", function () {
+  const banners = document.querySelectorAll(".bannersContainer .banner");
+  const playPauseBtn = document.getElementById("playPauseBtn");
+  const circleProgress = playPauseBtn.querySelector(".circle-progress");
+  console.log(circleProgress);
+  const playIcon = playPauseBtn.querySelector(".play-icon");
+  const pauseIcon = playPauseBtn.querySelector(".pause-icon");
+
+  let currentIndex = 0;
+  let isPlaying = true;
+  let sliderInterval;
+  function resetCircleAnimation() {
+    circleProgress.style.transition = "none";
+    circleProgress.style.strokeDashoffset = "138";
+    setTimeout(() => {
+      circleProgress.style.transition = "stroke-dashoffset 7s linear";
+    }, 10);
+  }
+
+  function startCircleAnimation() {
+    resetCircleAnimation();
+    setTimeout(() => {
+      circleProgress.style.strokeDashoffset = "0";
+    }, 10);
+  }
+
+  // Остановка анимации круга
+  function stopCircleAnimation() {
+    const computedStyle = getComputedStyle(circleProgress);
+    const dashOffset = computedStyle.getPropertyValue("stroke-dashoffset");
+    circleProgress.style.transition = "none";
+    circleProgress.style.strokeDashoffset = dashOffset;
+  }
+
+  // Показать активный баннер
+  function showBanner(index) {
+    console.log("Showing banner", index);
+    banners.forEach((banner, i) => {
+      banner.classList.toggle("active", i === index);
+    });
+  }
+
+  // Запуск слайдера
+  function startSlider() {
+    showBanner(currentIndex);
+    startCircleAnimation();
+    sliderInterval = setInterval(() => {
+      currentIndex = (currentIndex + 1) % banners.length;
+      showBanner(currentIndex);
+      resetCircleAnimation();
+      startCircleAnimation();
+    }, 7000);
+    playIcon.classList.remove("active");
+    pauseIcon.classList.add("active");
+    isPlaying = true;
+  }
+
+  // Остановка слайдера
+  function stopSlider() {
+    clearInterval(sliderInterval);
+    stopCircleAnimation();
+    playIcon.classList.add("active");
+    pauseIcon.classList.remove("active");
+    isPlaying = false;
+  }
+
+  // Обработчик нажатия на кнопку
+  playPauseBtn.addEventListener("click", () => {
+    if (isPlaying) {
+      stopSlider();
+    } else {
+      startSlider();
+    }
+  });
+
+  // Инициализация
+
+  showBanner(currentIndex);
+  startSlider();
+
   function setupActiveClass() {
     document.querySelectorAll(".nav-list-item").forEach((item) => {
       item.addEventListener("click", () => {
@@ -62,6 +141,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     toggleSearchingSvg();
   }
+  searchInput.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      const query = searchInput.value.trim();
+      console.log("query", query);
+
+      if (query) {
+        window.location.href = `/pages/searchingPage.html?query=${encodeURIComponent(query)}`;
+      }
+    }
+  });
 
   if (closeSearch && searchBox && loginSection && searchInput) {
     closeSearch.addEventListener("click", () => {
