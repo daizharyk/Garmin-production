@@ -3,84 +3,95 @@ import "../style/shipping.css";
 import "../style/itempage.css";
 
 document.addEventListener("DOMContentLoaded", function () {
-  const banners = document.querySelectorAll(".bannersContainer .banner");
-  const playPauseBtn = document.getElementById("playPauseBtn");
-  const circleProgress = playPauseBtn.querySelector(".circle-progress");
-  console.log(circleProgress);
-  const playIcon = playPauseBtn.querySelector(".play-icon");
-  const pauseIcon = playPauseBtn.querySelector(".pause-icon");
+  function initBannerSlider() {
+    const banners = document.querySelectorAll(".bannersContainer .banner");
+    const playPauseBtn = document.getElementById("playPauseBtn");
 
-  let currentIndex = 0;
-  let isPlaying = true;
-  let sliderInterval;
-  function resetCircleAnimation() {
-    circleProgress.style.transition = "none";
-    circleProgress.style.strokeDashoffset = "138";
-    setTimeout(() => {
-      circleProgress.style.transition = "stroke-dashoffset 7s linear";
-    }, 10);
-  }
-
-  function startCircleAnimation() {
-    resetCircleAnimation();
-    setTimeout(() => {
-      circleProgress.style.strokeDashoffset = "0";
-    }, 10);
-  }
-
-  // Остановка анимации круга
-  function stopCircleAnimation() {
-    const computedStyle = getComputedStyle(circleProgress);
-    const dashOffset = computedStyle.getPropertyValue("stroke-dashoffset");
-    circleProgress.style.transition = "none";
-    circleProgress.style.strokeDashoffset = dashOffset;
-  }
-
-  // Показать активный баннер
-  function showBanner(index) {
-    console.log("Showing banner", index);
-    banners.forEach((banner, i) => {
-      banner.classList.toggle("active", i === index);
-    });
-  }
-
-  // Запуск слайдера
-  function startSlider() {
-    showBanner(currentIndex);
-    startCircleAnimation();
-    sliderInterval = setInterval(() => {
-      currentIndex = (currentIndex + 1) % banners.length;
-      showBanner(currentIndex);
-      resetCircleAnimation();
-      startCircleAnimation();
-    }, 7000);
-    playIcon.classList.remove("active");
-    pauseIcon.classList.add("active");
-    isPlaying = true;
-  }
-
-  // Остановка слайдера
-  function stopSlider() {
-    clearInterval(sliderInterval);
-    stopCircleAnimation();
-    playIcon.classList.add("active");
-    pauseIcon.classList.remove("active");
-    isPlaying = false;
-  }
-
-  // Обработчик нажатия на кнопку
-  playPauseBtn.addEventListener("click", () => {
-    if (isPlaying) {
-      stopSlider();
-    } else {
-      startSlider();
+    if (banners.length === 0 || !playPauseBtn) {
+      return;
     }
-  });
 
-  // Инициализация
+    const circleProgress = playPauseBtn.querySelector(".circle-progress");
+    const playIcon = playPauseBtn.querySelector(".play-icon");
+    const pauseIcon = playPauseBtn.querySelector(".pause-icon");
 
-  showBanner(currentIndex);
-  startSlider();
+    if (!circleProgress || !playIcon || !pauseIcon) {
+      return;
+    }
+
+    let currentIndex = 0;
+    let isPlaying = true;
+    let sliderInterval;
+    let currentDashOffset = 138;
+
+    function resetCircleAnimation() {
+      circleProgress.style.transition = "none";
+      circleProgress.style.strokeDashoffset = "138";
+
+      setTimeout(() => {
+        circleProgress.style.transition = "stroke-dashoffset 7s linear";
+      }, 10);
+    }
+
+    function startCircleAnimation() {
+      resetCircleAnimation();
+      setTimeout(() => {
+        circleProgress.style.strokeDashoffset = "0";
+      }, 10);
+    }
+
+    function stopCircleAnimation() {
+      const computedStyle = getComputedStyle(circleProgress);
+      currentDashOffset = parseFloat(
+        computedStyle.getPropertyValue("stroke-dashoffset")
+      );
+
+      circleProgress.style.transition = "none";
+      circleProgress.style.strokeDashoffset = currentDashOffset;
+    }
+
+    function showBanner(index) {
+      banners.forEach((banner, i) => {
+        banner.classList.toggle("active", i === index);
+      });
+    }
+
+    function startSlider() {
+      showBanner(currentIndex);
+      startCircleAnimation();
+      sliderInterval = setInterval(() => {
+        currentIndex = (currentIndex + 1) % banners.length;
+        showBanner(currentIndex);
+        resetCircleAnimation();
+        startCircleAnimation();
+      }, 7000);
+      playIcon.classList.remove("active");
+      pauseIcon.classList.add("active");
+      isPlaying = true;
+    }
+
+    function stopSlider() {
+      clearInterval(sliderInterval);
+      stopCircleAnimation();
+      playIcon.classList.add("active");
+      pauseIcon.classList.remove("active");
+      isPlaying = false;
+    }
+
+    playPauseBtn.addEventListener("click", () => {
+      if (isPlaying) {
+        stopSlider();
+      } else {
+        startSlider();
+      }
+    });
+
+    showBanner(currentIndex);
+    startSlider();
+    resetCircleAnimation();
+  }
+
+  initBannerSlider();
 
   function setupActiveClass() {
     document.querySelectorAll(".nav-list-item").forEach((item) => {
@@ -101,8 +112,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const searchBox = document.getElementById("searchBox");
   const closeSearch = document.getElementById("closeSearch");
   const loginSection = document.querySelector(".login-section");
-  const inputWrapper = document.querySelector(".input-wrapper");
+
   const searchInput = document.getElementById("searchInput");
+  console.log("test");
 
   if (searchingSvg && searchBox && loginSection) {
     searchingSvg.addEventListener("click", () => {

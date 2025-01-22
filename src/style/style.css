@@ -670,16 +670,15 @@
   justify-content: center;
 }
 
-/* Иконки Play и Pause */
 .play-icon,
 .pause-icon {
   position: absolute;
-  font-size: 20px;
+  font-size: 14px;
+
   color: #fff;
   display: none;
 }
 
-/* Отображение активной иконки */
 .play-icon.active {
   display: block;
 }
@@ -688,28 +687,24 @@
   display: block;
 }
 
-/* Таймер-круг */
 .timer-circle {
   position: absolute;
   top: 0;
   left: 0;
-  transform: rotate(-90deg); /* Начало рисования сверху */
+  transform: rotate(-90deg);
 }
 .circle-bg {
   fill: none;
-  stroke: #cccccc5d;
-  stroke-width: 2;
 }
 
 .circle-progress {
   fill: none;
   stroke: #ffffff;
-  stroke-width: 2;
-  stroke-dasharray: 138; /* Длина окружности (2 * π * r) для r = 22 */
-  stroke-dashoffset: 138; /* Начальная длина линии - пустой круг */
+  stroke-width: 1;
+  stroke-dasharray: 138;
+  stroke-dashoffset: 138;
   transition: stroke-dashoffset 7s linear;
 }
-
 
 .content a:hover {
   background: #fff;
@@ -929,7 +924,7 @@
 .cards {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
 }
 .searching-page .cards {
   justify-content: flex-start;
@@ -1083,7 +1078,39 @@
   font-size: 2rem;
   text-align: center;
 }
-
+.pagination-container {
+  margin: 40px 0;
+  gap: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pagination-btn {
+  color: #000;
+  font-family: "Roboto", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: solid 1px #000;
+  cursor: pointer;
+  text-decoration: none;
+  background: #fff;
+  white-space: nowrap;
+  padding: 0.5rem 1.5rem;
+  line-height: 1.15;
+  transition:
+    0.2s,
+    color 0.2s;
+}
+.pagination-btn:hover {
+  border: 1px solid #000;
+  background: #000;
+  color: #fff;
+}
+.pagination-btn.active {
+  border: 1px solid #000;
+  background-color: #000;
+  color: #fff;
+}
 .tile-card-bg {
   position: absolute;
   top: 0;
@@ -1584,7 +1611,6 @@ footer {
   }
 
   .banner {
-    display: flex;
     flex-direction: column;
   }
 
@@ -1827,7 +1853,9 @@ footer {
     position: static;
     width: auto;
   }
-
+  .email-form {
+    width: auto;
+  }
   .logo {
     flex: 1;
     text-align: center;
