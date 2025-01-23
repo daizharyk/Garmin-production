@@ -31,6 +31,8 @@ const userSchema = mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    resetToken: String, 
+    resetTokenExpiration: Date,
   },
 
   {
@@ -46,11 +48,9 @@ userSchema.virtual("items", {
 });
 
 userSchema.pre("save", async function (next) {
-
   if (this.isModified("email")) {
     this.email = this.email.toLowerCase();
   }
-
 
   if (this.isModified("password")) {
     const salt = await bcrypt.genSalt(10);

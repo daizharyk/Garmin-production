@@ -23,6 +23,7 @@ module.exports = {
     authState: path.resolve(__dirname, "src/js/authState.js"),
     accountProfile: path.resolve(__dirname, "src/js/accountProfile.js"),
     securityCenter: path.resolve(__dirname, "src/js/securityCenter.js"),
+    resetPassword: path.resolve(__dirname, "src/js/reset-password..js"),
   },
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -144,6 +145,12 @@ module.exports = {
       title: "Login Page",
       filename: "pages/signIn.html",
       template: "src/pages/signIn.html",
+      chunks: ["signIn", "login"],
+    }),
+    new HtmlWebpackPlugin({
+      title: "Resset password",
+      filename: "pages/reset-password.html",
+      template: "src/pages/reset-password.html",
       chunks: ["signIn", "login"],
     }),
     new HtmlWebpackPlugin({

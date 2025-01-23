@@ -4,13 +4,13 @@ module.exports.sendRecoveryEmail = async (email, resetLink) => {
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: "your-email@gmail.com",
-      pass: "your-email-password",
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS,
     },
   });
 
   const mailOptions = {
-    from: "your-email@gmail.com",
+    from: process.env.EMAIL_USER,
     to: email,
     subject: "Password Recovery",
     text: `To reset your password, please click the following link: ${resetLink}`,

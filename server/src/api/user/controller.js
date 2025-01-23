@@ -78,23 +78,29 @@ module.exports = {
   },
   recoverPassword: async (req, res, next) => {
     const { email } = req.body;
+    console.log("email-from controler", email);
 
     try {
       const user = await userRepository.findUserByEmail(email);
+      console.log("user from controler", user);
+
       if (!user) {
         return res
           .status(400)
           .send({ message: "User with this email does not exist" });
       }
+      
 
       const resetToken = crypto.randomBytes(32).toString("hex");
-      user.resetToken = resetToken;
-      user.resetTokenExpiration = Date.now() + 3600000; // Токен действителен 1 час
-      await user.save();
+    
 
+      user.resetToken = resetToken;
+      user.resetTokenExpiration = Date.now() + 3600000;
+      await user.save();
+      console.log("user from controler--2", user);
       const resetLink = `http://your-site.com/reset-password?token=${resetToken}`;
 
-      // Отправка email
+
       const transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
