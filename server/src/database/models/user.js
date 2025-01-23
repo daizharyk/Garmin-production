@@ -46,22 +46,22 @@ userSchema.virtual("items", {
 });
 
 userSchema.pre("save", async function (next) {
-  if (!this.isModified("password")) {
-    next();
+
+  if (this.isModified("email")) {
+    this.email = this.email.toLowerCase();
   }
-  const salt = await bcrypt.genSalt(10);
-  this.password = await bcrypt.hash(this.password, salt);
+
+
+  if (this.isModified("password")) {
+    const salt = await bcrypt.genSalt(10);
+    this.password = await bcrypt.hash(this.password, salt);
+  }
+
   next();
 });
 
 userSchema.methods.matchPasswords = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
 };
-userSchema.pre("save", function (next) {
-  if (this.isModified("email")) {
-    this.email = this.email.toLowerCase();
-  }
-  next();
-});
 
 module.exports = mongoose.model("User", userSchema);

@@ -1,6 +1,8 @@
 const ExistingEntityError = require("../infrastructure/errors/ExistingEntityError");
 const InvalidDataError = require("../infrastructure/errors/InvalidDataError");
 const userRepository = require("../repository/userRepository");
+const { sendRecoveryEmail } = require("../utils/emailRecovery");
+
 const { generateJWToken } = require("../utils/jwtWebToken");
 const bcrypt = require("bcryptjs");
 module.exports = {
@@ -33,6 +35,22 @@ module.exports = {
     } else {
       throw new InvalidDataError("Email or password is wrong!");
     }
+  },
+  requestPasswordReset: async (email) => {
+    const user = await userRepository.findUserByEmail(email);
+    if (!user) {
+      throw new InvalidDataError("User with this email does not exist");
+    }
+
+    // Генерируем токен для восстановления
+    const resetToken = await userRepository.createPasswordResetToken(user._id);
+
+    const resetLink = `http://localhost:3000/reset-password?token=${resetToken}`;
+    await sendRecoveryEmail(user.email, resetLink);
+  },
+  resetPassword: async (userId, token, newPassword) => {
+    await userRepository.validatePasswordResetToken(userId, token);
+    await userRepository.updatePassword(userId, newPassword);
   },
   findUser: async (userId) => {
     const user = await userRepository.findUser(userId);

@@ -1,3 +1,4 @@
+import { recoveryPassword } from "../service/userService";
 import "../style/signin_login.css";
 const signInBtn = document.getElementById("signInBtn");
 
@@ -18,23 +19,22 @@ document
   .querySelector(".show-password")
   .addEventListener("click", togglePassword);
 
-  const fields = ["email", "resetEmail", "password"];
+const fields = ["email", "resetEmail", "password"];
 
-  fields.forEach(field => {
-    const input = document.getElementById(field);
-    const errorElement = document.getElementById(`${field}Error`);
-  
-    input.addEventListener("blur", function () {
-      if (this.value.trim() === "") {
-        this.classList.add("error");
-        errorElement.style.display = "block";
-      } else {
-        this.classList.remove("error");
-        errorElement.style.display = "none";
-      }
-    });
+fields.forEach((field) => {
+  const input = document.getElementById(field);
+  const errorElement = document.getElementById(`${field}Error`);
+
+  input.addEventListener("blur", function () {
+    if (this.value.trim() === "") {
+      this.classList.add("error");
+      errorElement.style.display = "block";
+    } else {
+      this.classList.remove("error");
+      errorElement.style.display = "none";
+    }
   });
-  
+});
 
 function checkFormValidity() {
   const email = document.getElementById("email").value.trim();
@@ -44,11 +44,11 @@ function checkFormValidity() {
     : "";
   const recoverPasswordBtn = document.getElementById("recoverPasswordBtn");
   if (signInBtn) {
-    signInBtn.disabled = !(email && password); 
+    signInBtn.disabled = !(email && password);
   }
 
   if (recoverPasswordBtn) {
-    recoverPasswordBtn.disabled = !resetEmail; 
+    recoverPasswordBtn.disabled = !resetEmail;
   }
 }
 
@@ -82,4 +82,34 @@ document
     document.getElementById("forgotPasswordForm").style.display = "none";
     document.getElementById("signInTitle").style.display = "block";
     document.getElementById("loginForm").style.display = "block";
+  });
+
+document
+  .getElementById("forgotPasswordForm")
+  .addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const email = document.getElementById("resetEmail").value;
+    const messageContainer = document.getElementById("recoverPasswordMessage");
+
+
+    messageContainer.textContent = "";
+
+    try {
+      const recoveryResponse = await recoveryPassword(email);
+
+
+      if (recoveryResponse.status === "success") {
+        messageContainer.style.color = "green";
+        messageContainer.textContent =
+          "Password reset email sent. Please check your inbox.";
+      } else {
+        messageContainer.style.color = "red";
+        messageContainer.textContent =
+          recoveryResponse.message || "Something went wrong. Please try again.";
+      }
+    } catch (error) {
+      messageContainer.style.color = "red";
+      messageContainer.textContent = "An error occurred. Please try again.";
+    }
   });

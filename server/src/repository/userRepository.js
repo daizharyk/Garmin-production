@@ -1,5 +1,5 @@
 const { User } = require("../database/models");
-
+const crypto = require("crypto");
 module.exports = {
   createUser: async (user) => {
     const newUser = new User(user);
@@ -39,6 +39,29 @@ module.exports = {
     });
     return updatedUser;
   },
+  createPasswordResetToken: async (userId) => {
+    const resetToken = crypto.randomBytes(32).toString("hex");
+    const resetTokenExpire = Date.now() + 3600000; // 1 час
+
+    await User.findByIdAndUpdate(userId, {
+      passwordResetToken: resetToken,
+      passwordResetTokenExpire: resetTokenExpire,
+    });
+
+    return resetToken;
+  },
+  validatePasswordResetToken: async (userId, token) => {
+    const user = await User.findById(userId);
+    if (
+      !user ||
+      user.passwordResetToken !== token ||
+      user.passwordResetTokenExpire < Date.now()
+    ) {
+      throw new Error("Invalid or expired reset token");
+    }
+    return true;
+  },
+
   updatePassword: async (userId, newPassword) => {
     const user = await User.findById(userId);
     user.password = newPassword;

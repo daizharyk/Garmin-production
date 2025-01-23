@@ -1,4 +1,8 @@
 const userService = require("../../service/userService");
+const crypto = require("crypto");
+const nodemailer = require("nodemailer");
+const bcrypt = require("bcryptjs");
+const userRepository = require("../../repository/userRepository");
 
 module.exports = {
   getAllUsers: async (req, res, next) => {
@@ -68,6 +72,71 @@ module.exports = {
         newPassword,
       });
       res.send({ message: "Password updated successfully" });
+    } catch (error) {
+      next(error);
+    }
+  },
+  recoverPassword: async (req, res, next) => {
+    const { email } = req.body;
+
+    try {
+      const user = await userRepository.findUserByEmail(email);
+      if (!user) {
+        return res
+          .status(400)
+          .send({ message: "User with this email does not exist" });
+      }
+
+      const resetToken = crypto.randomBytes(32).toString("hex");
+      user.resetToken = resetToken;
+      user.resetTokenExpiration = Date.now() + 3600000; // Токен действителен 1 час
+      await user.save();
+
+      const resetLink = `http://your-site.com/reset-password?token=${resetToken}`;
+
+      // Отправка email
+      const transporter = nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+          user: "your-email@gmail.com",
+          pass: "your-email-password",
+        },
+      });
+
+      await transporter.sendMail({
+        to: user.email,
+        subject: "Password Reset Request",
+        html: `
+          <h2>Password Reset Request</h2>
+          <p>Click <a href="${resetLink}">here</a> to reset your password.</p>
+          <p>If you did not request a password reset, please ignore this email.</p>
+        `,
+      });
+
+      res.status(200).send({ message: "Password reset email sent" });
+    } catch (error) {
+      next(error);
+    }
+  },
+
+  // Новый метод для сброса пароля
+  resetPassword: async (req, res, next) => {
+    const { token, newPassword } = req.body;
+
+    try {
+      const user = await userService.findUserByResetToken(token);
+      if (!user || user.resetTokenExpiration < Date.now()) {
+        return res.status(400).send({ message: "Invalid or expired token" });
+      }
+
+      // Хэшируем новый пароль
+      const hashedPassword = await bcrypt.hash(newPassword, 12);
+      user.password = hashedPassword;
+      user.resetToken = undefined; // Удаляем токен
+      user.resetTokenExpiration = undefined; // Удаляем срок действия токена
+      await user.save();
+
+      res.status(200).send({ message: "Password has been reset successfully" });
     } catch (error) {
       next(error);
     }
