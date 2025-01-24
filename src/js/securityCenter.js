@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   categories.forEach((category) => {
     const link = category.querySelector("a");
     if (link) {
-      const linkPath = link.getAttribute("href").replace(/^\//, ""); // Убираем ведущий слэш у href
+      const linkPath = link.getAttribute("href").replace(/^\//, ""); 
       if (linkPath === currentPath) {
         category.classList.add("active");
         link.style.color = "#fff";
@@ -61,9 +61,9 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   window.addEventListener("resize", function () {
     if (window.innerWidth > 1024) {
-      sidebar.style.transform = ""; // Сбросить инлайновый стиль
+      sidebar.style.transform = ""; 
     } else {
-      sidebar.style.transform = "translateX(-100%)"; // Убедиться, что скрыто
+      sidebar.style.transform = "translateX(-100%)";
     }
   });
 });

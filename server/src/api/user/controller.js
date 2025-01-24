@@ -3,6 +3,7 @@ const crypto = require("crypto");
 const nodemailer = require("nodemailer");
 const bcrypt = require("bcryptjs");
 const userRepository = require("../../repository/userRepository");
+const { sendRecoveryEmail } = require("../../utils/emailRecovery");
 
 module.exports = {
   getAllUsers: async (req, res, next) => {
@@ -89,35 +90,16 @@ module.exports = {
           .status(400)
           .send({ message: "User with this email does not exist" });
       }
-      
 
       const resetToken = crypto.randomBytes(32).toString("hex");
-    
 
       user.resetToken = resetToken;
       user.resetTokenExpiration = Date.now() + 3600000;
       await user.save();
       console.log("user from controler--2", user);
-      const resetLink = `http://your-site.com/reset-password?token=${resetToken}`;
+      const resetLink = `http://localhost:3002/pages/reset-password.html?token=${resetToken}`;
 
-
-      const transporter = nodemailer.createTransport({
-        service: "gmail",
-        auth: {
-          user: "your-email@gmail.com",
-          pass: "your-email-password",
-        },
-      });
-
-      await transporter.sendMail({
-        to: user.email,
-        subject: "Password Reset Request",
-        html: `
-          <h2>Password Reset Request</h2>
-          <p>Click <a href="${resetLink}">here</a> to reset your password.</p>
-          <p>If you did not request a password reset, please ignore this email.</p>
-        `,
-      });
+      await sendRecoveryEmail(user.email, resetLink);
 
       res.status(200).send({ message: "Password reset email sent" });
     } catch (error) {

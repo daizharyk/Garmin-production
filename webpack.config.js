@@ -151,7 +151,7 @@ module.exports = {
       title: "Resset password",
       filename: "pages/reset-password.html",
       template: "src/pages/reset-password.html",
-      chunks: ["signIn", "resetPassword"],
+      chunks: ["resetPassword", "main"],
     }),
     new HtmlWebpackPlugin({
       title: "Registration Page",

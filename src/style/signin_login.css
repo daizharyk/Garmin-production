@@ -1,8 +1,6 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100..900&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100..900&display=swap");
 
 * {
   margin: 0;
@@ -121,7 +119,43 @@ input[type="text"] {
   transition: border-color 0.3s ease;
   margin-bottom: 20px;
 }
-
+.new-password-save-btn {
+  width: 100%;
+  background-color: #6dcff6;
+  border: 0;
+  position: relative;
+  padding: 15px;
+  cursor: pointer;
+  font-size: 1rem;
+  text-transform: uppercase;
+  margin-top: 20px;
+  font-weight: 500;
+  color: #000;
+  transition: 0.2s all;
+  border: 1px solid #6dcff6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.new-password-save-btn:disabled {
+  background-color: #e0e0e0;
+  cursor: not-allowed;
+  color: #a0a0a0;
+  border: 1px solid #e0e0e0; 
+}
+.new-password-save-btn:hover {
+  background-color: #fff;
+  border: 1px solid #6dcff6;
+}
+.new-password-save-btn:disabled:hover {
+  background-color: #e0e0e0; 
+  border: 1px solid #e0e0e0; 
+}
+#resetPasswordForm h3 {
+  font-size: 1rem;
+  margin-bottom: 30px;
+  font-weight: 400;
+}
 input[type="email"]:focus,
 input[type="password"]:focus,
 input[type="text"]:focus {
@@ -214,6 +248,7 @@ input[type="checkbox"]:focus {
 .password-requirements {
   font-size: 11px;
   padding-bottom: 20px;
+  transition: color 0.3s ease;
 }
 
 .password-requirements.error {
@@ -263,9 +298,7 @@ input[type="checkbox"]:focus {
 
 .error-message {
   color: #920000;
-  /* Цвет сообщения об ошибке */
   font-size: 12px;
-  /* Размер шрифта */
   margin-bottom: 20px;
   display: none;
 }
@@ -433,18 +466,30 @@ label .required {
   cursor: pointer;
   margin-left: 10px;
 }
+.spinnera {
+  border: 4px solid #000; 
+  border-top: 4px solid #fff; 
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  animation: spin 1s linear infinite;
+  position: absolute;
+}
+
+
 
 .spinner {
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
   border: 3px solid transparent;
   border-top: 5px solid #000;
   border-radius: 50%;
   animation: spin 1s linear infinite;
   position: absolute;
-  top: 30%;
-  left: 48%;
-  transform: translate(-50%, -50%);
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  pointer-events: none;
 }
 
 @keyframes spin {
