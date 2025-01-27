@@ -88,12 +88,7 @@
               SIGN IN
             </button>
           </form>
-          <form
-            id="forgotPasswordForm"
-            action="/recover-password"
-            method="POST"
-            style="display: none"
-          >
+          <form id="forgotPasswordForm" style="display: none">
             <h2>FORGOT PASSWORD</h2>
             <p class="forget-desctiption">
               Enter the email address associated with your account.
@@ -107,11 +102,12 @@
             </div>
             <div id="recoverPasswordMessage" class="message"></div>
             <button type="submit" class="sign-in-btn" id="recoverPasswordBtn">
-              Recover Password
+              <span id="spinnera" class="spinnera" style="display: none"></span
+              >Recover Password
             </button>
             <a href="#" id="backToLoginLink" class="goBack-btn">GO BACK</a>
           </form>
-        
+
           <div class="create-account">
             <p>
               Don't have an account?

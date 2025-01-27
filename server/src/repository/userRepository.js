@@ -52,6 +52,8 @@ module.exports = {
   },
   validatePasswordResetToken: async (userId, token) => {
     const user = await User.findById(userId);
+    console.log("user from repos", user);
+
     if (
       !user ||
       user.passwordResetToken !== token ||
@@ -65,6 +67,10 @@ module.exports = {
   updatePassword: async (userId, newPassword) => {
     const user = await User.findById(userId);
     user.password = newPassword;
+
+    user.resetToken = undefined;
+    user.resetTokenExpiration = undefined;
+
     await user.save();
     return user;
   },

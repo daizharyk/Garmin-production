@@ -84,32 +84,49 @@ document
     document.getElementById("loginForm").style.display = "block";
   });
 
-document
-  .getElementById("forgotPasswordForm")
-  .addEventListener("submit", async function (e) {
-    e.preventDefault();
+document.addEventListener("DOMContentLoaded", function () {
+  document
+    .getElementById("forgotPasswordForm")
+    .addEventListener("submit", async function (e) {
+      e.preventDefault();
 
-    const email = document.getElementById("resetEmail").value;
-    const messageContainer = document.getElementById("recoverPasswordMessage");
+      const email = document.getElementById("resetEmail").value.trim();
+      const errorMessage = document.getElementById("resetEmailError");
+      const messageDiv = document.getElementById("recoverPasswordMessage");
+      const recoverPasswordBtn = document.getElementById("recoverPasswordBtn");
 
+      errorMessage.style.display = "none";
+      messageDiv.textContent = "";
+      recoverPasswordBtn.disabled = true;
+      recoverPasswordBtn.textContent = "Please wait...";
 
-    messageContainer.textContent = "";
+      try {
+        const response = await recoveryPassword(email); // Предполагается, что это вызов axios
 
-    try {
-      const recoveryResponse = await recoveryPassword(email);
-
-
-      if (recoveryResponse.status === "success") {
-        messageContainer.style.color = "green";
-        messageContainer.textContent =
-          "Password reset email sent. Please check your inbox.";
-      } else {
-        messageContainer.style.color = "red";
-        messageContainer.textContent =
-          recoveryResponse.message || "Something went wrong. Please try again.";
+        messageDiv.textContent =
+          "If this email is associated with an account, you will receive a recovery email shortly.";
+        messageDiv.style.color = "green";
+        setTimeout(() => {
+          window.location.href = "/pages/signIn.html"; // Перенаправление через 2 секунды
+        }, 500);
+      } catch (error) {
+        if (error) {
+          const errorMessage =
+            error.message || "Failed to send recovery email.";
+          messageDiv.textContent = errorMessage;
+          messageDiv.style.color = "red";
+        } else if (error.request) {
+          console.error("No response from server:", error.request);
+          messageDiv.textContent = "Network error. Please try again.";
+          messageDiv.style.color = "red";
+        } else {
+          messageDiv.textContent =
+            "An unexpected error occurred. Please try again.";
+          messageDiv.style.color = "red";
+        }
+      } finally {
+        recoverPasswordBtn.disabled = false;
+        recoverPasswordBtn.textContent = "Recover Password";
       }
-    } catch (error) {
-      messageContainer.style.color = "red";
-      messageContainer.textContent = "An error occurred. Please try again.";
-    }
-  });
+    });
+});

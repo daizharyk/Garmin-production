@@ -1,4 +1,4 @@
-import { recoveryPassword } from "../service/userService";
+import { resetPassword } from "../service/userService";
 import "../style/signin_login.css";
 
 document.querySelectorAll(".show-password").forEach((button) => {
@@ -91,10 +91,9 @@ function validatePassword(password) {
 }
 
 const urlParams = new URLSearchParams(window.location.search);
-console.log("urlparams", urlParams);
 
 const token = urlParams.get("token");
-console.log("token", token);
+
 document.getElementById("token").value = token;
 
 document
@@ -103,29 +102,38 @@ document
     event.preventDefault();
 
     const password = document.getElementById("password").value.trim();
-
-    // Получение токена из URL
+    const newPasswordSaveBtn = document.querySelector(".new-password-save-btn");
+    const messageDiv = document.getElementById("resetPasswordMessage");
     const urlParams = new URLSearchParams(window.location.search);
     const token = urlParams.get("token");
 
     if (!token) {
-      alert("Token is missing!");
+      messageDiv.textContent = "Token is missing!";
+      messageDiv.style.color = "red";
       return;
     }
 
-    const spinner = document.getElementById("spinner");
+    const spinner = document.getElementById("spinnera");
+
+    newPasswordSaveBtn.disabled = true;
     spinner.style.display = "inline-block";
 
     try {
-      const recoveryPass = await recoveryPassword(password); 
-      if (recoveryPass && recoveryPass.message) {
-        window.location.href = "/index.html"; 
+      const resetPasswordResponse = await resetPassword(token, password);
+      if (resetPasswordResponse && resetPasswordResponse.status === "success") {
+        window.location.href = "/pages/signIn.html";
       } else {
-        alert("Что-то пошло не так при восстановлении пароля.");
+        messageDiv.textContent =
+          "Failed to reset the password. Please try again.";
+        messageDiv.style.color = "red";
       }
     } catch (error) {
-      alert("Произошла ошибка при сбросе пароля.");
+      console.error("Error resetting password:", error);
+      messageDiv.textContent =
+        "An error occurred while resetting the password. Please try again.";
+      messageDiv.style.color = "red";
     } finally {
       spinner.style.display = "none";
+      newPasswordSaveBtn.disabled = false;
     }
   });

@@ -10,6 +10,7 @@ const {
   getMe,
   updatePassword,
   recoverPassword,
+  resetPassword,
 } = require("./controller");
 
 const router = Router();
@@ -19,6 +20,8 @@ router.post("/", registerUser);
 router.post("/login", loginUser);
 
 router.post("/recover-password", recoverPassword);
+
+router.post("/reset-password", resetPassword);
 
 router.get("/", protected, getAllUsers);
 

@@ -26,11 +26,17 @@ export async function userinfo(data) {
   const userInfo = await getRequest(`${API_URL}me`, data);
   return userInfo;
 }
-export async function recoveryPassword(password) {
+export async function recoveryPassword(email) {
   const recoveryPass = await postRequest(`${API_URL}recover-password`, {
-    password,
+    email,
   });
-  console.log("recoveryPass", recoveryPass);
-
   return recoveryPass;
+}
+export async function resetPassword(token, newPassword) {
+  const resetPassword = await postRequest(`${API_URL}reset-password`, {
+    token,
+    newPassword,
+    userId,
+  });
+  return resetPassword;
 }

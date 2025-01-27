@@ -1,9 +1,8 @@
 const userService = require("../../service/userService");
-const crypto = require("crypto");
-const nodemailer = require("nodemailer");
 const bcrypt = require("bcryptjs");
-const userRepository = require("../../repository/userRepository");
 const { sendRecoveryEmail } = require("../../utils/emailRecovery");
+const InvalidDataError = require("../../infrastructure/errors/InvalidDataError");
+const ExistingEntityError = require("../../infrastructure/errors/ExistingEntityError");
 
 module.exports = {
   getAllUsers: async (req, res, next) => {
@@ -79,51 +78,27 @@ module.exports = {
   },
   recoverPassword: async (req, res, next) => {
     const { email } = req.body;
-    console.log("email-from controler", email);
-
     try {
-      const user = await userRepository.findUserByEmail(email);
-      console.log("user from controler", user);
-
-      if (!user) {
-        return res
-          .status(400)
-          .send({ message: "User with this email does not exist" });
-      }
-
-      const resetToken = crypto.randomBytes(32).toString("hex");
-
-      user.resetToken = resetToken;
-      user.resetTokenExpiration = Date.now() + 3600000;
-      await user.save();
-      console.log("user from controler--2", user);
-      const resetLink = `http://localhost:3002/pages/reset-password.html?token=${resetToken}`;
-
-      await sendRecoveryEmail(user.email, resetLink);
-
-      res.status(200).send({ message: "Password reset email sent" });
+      await userService.requestPasswordReset(email);
+      res.status(200).json({
+        message:
+          "If this email is associated with an account, you will receive a recovery email shortly.",
+      });
     } catch (error) {
+      console.error("Error in recoverPassword:", error);
+      if (error instanceof ExistingEntityError) {
+        return res.status(400).json({ message: error.message });
+      }
       next(error);
     }
   },
-
-  // Новый метод для сброса пароля
   resetPassword: async (req, res, next) => {
     const { token, newPassword } = req.body;
+    console.log("token, newPassword ", token, newPassword);
+    console.log("req userid from controler", req);
 
     try {
-      const user = await userService.findUserByResetToken(token);
-      if (!user || user.resetTokenExpiration < Date.now()) {
-        return res.status(400).send({ message: "Invalid or expired token" });
-      }
-
-      // Хэшируем новый пароль
-      const hashedPassword = await bcrypt.hash(newPassword, 12);
-      user.password = hashedPassword;
-      user.resetToken = undefined; // Удаляем токен
-      user.resetTokenExpiration = undefined; // Удаляем срок действия токена
-      await user.save();
-
+      await userService.resetPassword(req.userId, token, newPassword);
       res.status(200).send({ message: "Password has been reset successfully" });
     } catch (error) {
       next(error);

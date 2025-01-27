@@ -39,18 +39,20 @@ module.exports = {
   requestPasswordReset: async (email) => {
     const user = await userRepository.findUserByEmail(email);
     if (!user) {
-      throw new InvalidDataError("User with this email does not exist");
+      throw new ExistingEntityError("User with this email does not exist");
     }
 
-    // Генерируем токен для восстановления
     const resetToken = await userRepository.createPasswordResetToken(user._id);
 
-    const resetLink = `http://localhost:3000/reset-password?token=${resetToken}`;
+    const resetLink = `${window.location.origin}/pages/reset-password.html?token=${resetToken}`;
+
     await sendRecoveryEmail(user.email, resetLink);
   },
   resetPassword: async (userId, token, newPassword) => {
     await userRepository.validatePasswordResetToken(userId, token);
     await userRepository.updatePassword(userId, newPassword);
+
+    return true;
   },
   findUser: async (userId) => {
     const user = await userRepository.findUser(userId);

@@ -217,12 +217,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Дополнительная проверка на blur для retypeEmail
+
   retypeEmailInput.addEventListener("blur", function () {
     checkEmailsMatch();
   });
 
-  // Функция валидации формы
+
   function validateForm() {
     const email = document.getElementById("email").value.trim();
     const retypeEmail = document.getElementById("retypeEmail").value.trim();
