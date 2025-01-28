@@ -398,6 +398,7 @@ input:invalid + .error-message {
   gap: 10px;
 }
 
+
 .save-btn,
 .cancel-btn {
   padding: 1rem 2rem;
@@ -409,7 +410,11 @@ input:invalid + .error-message {
   transition:
     background 0.2s,
     color 0.2s;
+  font-family: "Roboto", "Noto Sans TC", "Noto Sans SC", "Noto Sans JP",
+    "Noto Sans KR", "Prompt", sans-serif;
 }
+
+
 
 .save-btn {
   display: flex;
@@ -721,10 +726,23 @@ input:checked + .slider:before {
     text-decoration: none;
     font-size: 0.875rem;
   }
+  .info-card {
+    width: 100%;
+  }
   .account-details {
     padding: 0;
   }
   .account-details-container {
     padding: 1rem;
+  }
+  .details-info {
+    width: 100%;
+  }
+  .action-btn {
+    width: 100%;
+    text-align: center;
+  }
+  .form-actions {
+    flex-direction: column;
   }
 }

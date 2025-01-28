@@ -398,6 +398,7 @@
 }
 #closeSearch {
   position: absolute;
+  font-size: 1rem;
   top: 50%;
   right: 5px;
   padding: 10px;
