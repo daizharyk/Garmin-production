@@ -120,7 +120,11 @@ document
 
     try {
       const resetPasswordResponse = await resetPassword(token, password);
-      if (resetPasswordResponse && resetPasswordResponse.status === "success") {
+      if (resetPasswordResponse) {
+        localStorage.setItem(
+          "resetMessage",
+          "The password has been successfully changed. Login to your account"
+        );
         window.location.href = "/pages/signIn.html";
       } else {
         messageDiv.textContent =

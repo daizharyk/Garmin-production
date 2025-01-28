@@ -36,7 +36,6 @@ export async function resetPassword(token, newPassword) {
   const resetPassword = await postRequest(`${API_URL}reset-password`, {
     token,
     newPassword,
-    userId,
   });
   return resetPassword;
 }

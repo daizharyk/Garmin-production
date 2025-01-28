@@ -1,7 +1,5 @@
 const userService = require("../../service/userService");
-const bcrypt = require("bcryptjs");
-const { sendRecoveryEmail } = require("../../utils/emailRecovery");
-const InvalidDataError = require("../../infrastructure/errors/InvalidDataError");
+
 const ExistingEntityError = require("../../infrastructure/errors/ExistingEntityError");
 
 module.exports = {
@@ -78,6 +76,8 @@ module.exports = {
   },
   recoverPassword: async (req, res, next) => {
     const { email } = req.body;
+    console.log("email", email);
+
     try {
       await userService.requestPasswordReset(email);
       res.status(200).json({
@@ -94,12 +94,10 @@ module.exports = {
   },
   resetPassword: async (req, res, next) => {
     const { token, newPassword } = req.body;
-    console.log("token, newPassword ", token, newPassword);
-    console.log("req userid from controler", req);
 
     try {
-      await userService.resetPassword(req.userId, token, newPassword);
-      res.status(200).send({ message: "Password has been reset successfully" });
+      await userService.resetPassword(token, newPassword);
+      res.status(200).send({  message: "Password has been reset successfully" });
     } catch (error) {
       next(error);
     }

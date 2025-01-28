@@ -2,6 +2,7 @@ const ExistingEntityError = require("../infrastructure/errors/ExistingEntityErro
 const InvalidDataError = require("../infrastructure/errors/InvalidDataError");
 const userRepository = require("../repository/userRepository");
 const { sendRecoveryEmail } = require("../utils/emailRecovery");
+const jwt = require("jsonwebtoken");
 
 const { generateJWToken } = require("../utils/jwtWebToken");
 const bcrypt = require("bcryptjs");
@@ -44,11 +45,17 @@ module.exports = {
 
     const resetToken = await userRepository.createPasswordResetToken(user._id);
 
-    const resetLink = `${window.location.origin}/pages/reset-password.html?token=${resetToken}`;
+    const baseUrl = "http://localhost:3002" || process.env.BASE_URL;
+    const resetLink = `${baseUrl}/pages/reset-password.html?token=${resetToken}`;
 
     await sendRecoveryEmail(user.email, resetLink);
   },
-  resetPassword: async (userId, token, newPassword) => {
+  resetPassword: async (token, newPassword) => {
+    const decoded = jwt.verify(token, process.env.JWT_KEY);
+    console.log("decoded from service", decoded);
+
+    const userId = decoded.userId;
+  
     await userRepository.validatePasswordResetToken(userId, token);
     await userRepository.updatePassword(userId, newPassword);
 

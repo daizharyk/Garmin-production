@@ -1,5 +1,5 @@
 const { User } = require("../database/models");
-const crypto = require("crypto");
+const jwtWebToken = require("../utils/jwtWebToken");
 module.exports = {
   createUser: async (user) => {
     const newUser = new User(user);
@@ -40,12 +40,12 @@ module.exports = {
     return updatedUser;
   },
   createPasswordResetToken: async (userId) => {
-    const resetToken = crypto.randomBytes(32).toString("hex");
-    const resetTokenExpire = Date.now() + 3600000; // 1 час
+    const resetToken = jwtWebToken.generateJWToken(userId);
+    const resetTokenExpire = Date.now() + 3600000;
 
     await User.findByIdAndUpdate(userId, {
-      passwordResetToken: resetToken,
-      passwordResetTokenExpire: resetTokenExpire,
+      resetToken: resetToken,
+      resetTokenExpiration: resetTokenExpire,
     });
 
     return resetToken;
@@ -56,8 +56,8 @@ module.exports = {
 
     if (
       !user ||
-      user.passwordResetToken !== token ||
-      user.passwordResetTokenExpire < Date.now()
+      user.resetToken !== token ||
+      user.resetTokenExpiration < Date.now()
     ) {
       throw new Error("Invalid or expired reset token");
     }

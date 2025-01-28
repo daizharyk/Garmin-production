@@ -1354,7 +1354,6 @@ footer {
 @media (max-width: 1100px) {
   #garmin-logo {
     display: flex;
-    position: relative;
 
     justify-content: center;
     align-items: center;

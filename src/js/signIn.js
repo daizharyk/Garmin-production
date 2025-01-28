@@ -85,6 +85,29 @@ document
   });
 
 document.addEventListener("DOMContentLoaded", function () {
+  const message = localStorage.getItem("resetMessage");
+  const successMessage = document.querySelector(".successMessage");
+
+  if (message && successMessage) {
+    successMessage.style.display = "block";
+    const messageParagraph = document.createElement("p");
+    messageParagraph.textContent = message;
+
+    successMessage.appendChild(messageParagraph);
+
+    const closeButton = document.createElement("button");
+    closeButton.classList.add("closeButton");
+    closeButton.innerHTML = "&times;";
+
+    successMessage.appendChild(closeButton);
+
+    closeButton.addEventListener("click", () => {
+      successMessage.style.display = "none";
+    });
+
+    localStorage.removeItem("resetMessage");
+  }
+
   document
     .getElementById("forgotPasswordForm")
     .addEventListener("submit", async function (e) {
@@ -101,14 +124,14 @@ document.addEventListener("DOMContentLoaded", function () {
       recoverPasswordBtn.textContent = "Please wait...";
 
       try {
-        const response = await recoveryPassword(email); // Предполагается, что это вызов axios
-
-        messageDiv.textContent =
-          "If this email is associated with an account, you will receive a recovery email shortly.";
-        messageDiv.style.color = "green";
-        setTimeout(() => {
-          window.location.href = "/pages/signIn.html"; // Перенаправление через 2 секунды
-        }, 500);
+        const response = await recoveryPassword(email);
+        if (response) {
+          localStorage.setItem(
+            "resetMessage",
+            "If the email address you entered matches one we have on file, we will send you a temporary password to access your account."
+          );
+          window.location.href = "/pages/signIn.html";
+        }
       } catch (error) {
         if (error) {
           const errorMessage =
