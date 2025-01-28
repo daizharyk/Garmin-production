@@ -22,48 +22,39 @@ document.addEventListener("DOMContentLoaded", function () {
     let currentIndex = 0;
     let isPlaying = true;
     let sliderInterval;
-    let animationStartTime;
     const totalDuration = 7000;
 
     function resetCircleAnimation() {
       circleProgress.style.transition = "none";
       circleProgress.style.strokeDashoffset = "138";
-      animationStartTime = null;
+
+      setTimeout(() => {
+        circleProgress.style.transition = `stroke-dashoffset ${totalDuration / 1000}s linear`;
+        circleProgress.style.strokeDashoffset = "0";
+      }, 50);
     }
 
     function startCircleAnimation() {
       resetCircleAnimation();
-      requestAnimationFrame(() => {
-        animationStartTime = performance.now();
-        circleProgress.style.transition = `stroke-dashoffset ${totalDuration / 1000}s linear`;
-        circleProgress.style.strokeDashoffset = "0";
-      });
     }
 
     function stopCircleAnimation() {
-      if (!animationStartTime) return;
-
-      const elapsed = performance.now() - animationStartTime;
-      const progress = Math.min(elapsed / totalDuration, 1);
-      const remainingOffset = 138 * (1 - progress);
-
       circleProgress.style.transition = "none";
-      circleProgress.style.strokeDashoffset = remainingOffset;
     }
 
     function showBanner(index) {
       banners.forEach((banner, i) => {
         banner.classList.toggle("active", i === index);
       });
+      resetCircleAnimation();
+      startCircleAnimation();
     }
 
     function startSlider() {
       showBanner(currentIndex);
-      startCircleAnimation();
       sliderInterval = setInterval(() => {
         currentIndex = (currentIndex + 1) % banners.length;
         showBanner(currentIndex);
-        startCircleAnimation();
       }, totalDuration);
       playIcon.classList.remove("active");
       pauseIcon.classList.add("active");
@@ -89,7 +80,9 @@ document.addEventListener("DOMContentLoaded", function () {
     showBanner(currentIndex);
     startSlider();
   }
+
   initBannerSlider();
+
   function setupActiveClass() {
     document.querySelectorAll(".nav-list-item").forEach((item) => {
       item.addEventListener("click", () => {
