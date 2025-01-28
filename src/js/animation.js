@@ -28,24 +28,18 @@ document.addEventListener("DOMContentLoaded", function () {
       circleProgress.style.transition = "none";
       circleProgress.style.strokeDashoffset = "138";
 
-      setTimeout(() => {
-        circleProgress.style.transition = "stroke-dashoffset 7s linear";
-      }, 10);
+      circleProgress.style.transition = "stroke-dashoffset 7s linear";
     }
 
     function startCircleAnimation() {
       resetCircleAnimation();
+
       setTimeout(() => {
         circleProgress.style.strokeDashoffset = "0";
-      }, 10);
+      }, 0);
     }
 
     function stopCircleAnimation() {
-      const computedStyle = getComputedStyle(circleProgress);
-      currentDashOffset = parseFloat(
-        computedStyle.getPropertyValue("stroke-dashoffset")
-      );
-
       circleProgress.style.transition = "none";
       circleProgress.style.strokeDashoffset = currentDashOffset;
     }
