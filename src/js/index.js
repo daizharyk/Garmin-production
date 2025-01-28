@@ -14,7 +14,7 @@ async function loadModule() {
       throw new Error("Данные не загружены или не в правильном формате");
     }
     const currentPage = window.location.pathname;
-    console.log("currentPage", currentPage);
+
 
     if (currentPage !== "/pages/searchingPage.html") {
       const module = await import(

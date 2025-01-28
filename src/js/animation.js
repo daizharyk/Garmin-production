@@ -102,9 +102,11 @@ document.addEventListener("DOMContentLoaded", function () {
   const searchBox = document.getElementById("searchBox");
   const closeSearch = document.getElementById("closeSearch");
   const loginSection = document.querySelector(".login-section");
-
+  const searchInputs = [
+    document.getElementById("searchInput"),
+    document.getElementById("searchInputMobile"),
+  ];
   const searchInput = document.getElementById("searchInput");
-  console.log("test");
 
   if (searchingSvg && searchBox && loginSection) {
     searchingSvg.addEventListener("click", () => {
@@ -118,7 +120,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (searchBox && searchBox.style.display === "flex") {
           searchBox.style.display = "none";
-          if (searchInput) searchInput.value = ""; // Сброс значения
+          if (searchInputs[0]) searchInputs[0].value = "";
           if (loginSection) loginSection.style.display = "flex"; // Возвращаем loginSection
         }
       } else {
@@ -143,22 +145,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
     toggleSearchingSvg();
   }
-  searchInput.addEventListener("keydown", (event) => {
-    if (event.key === "Enter") {
-      const query = searchInput.value.trim();
-      console.log("query", query);
+  if (searchInputs && searchInputs.length > 0) {
+    searchInputs.forEach((searchInput) => {
+      searchInput.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+          const query = searchInput.value.trim();
+          if (query) {
+            window.location.href = `/pages/searchingPage.html?query=${encodeURIComponent(query)}`;
+          }
+        }
+      });
+    });
+  }
 
-      if (query) {
-        window.location.href = `/pages/searchingPage.html?query=${encodeURIComponent(query)}`;
-      }
-    }
-  });
-
-  if (closeSearch && searchBox && loginSection && searchInput) {
+  if (closeSearch && searchBox && loginSection && searchInputs) {
     closeSearch.addEventListener("click", () => {
       if (searchBox) searchBox.style.display = "none";
       if (loginSection) loginSection.style.display = "flex";
-      if (searchInput) searchInput.value = "";
+      if (searchInputs && searchInputs[0]) searchInputs[0].value = "";
     });
   }
 
@@ -166,7 +170,7 @@ document.addEventListener("DOMContentLoaded", function () {
     closeSearch.addEventListener("click", () => {
       searchBox.style.display = "none";
       loginSection.style.display = "flex";
-      searchInput.value = "";
+      if (searchInputs && searchInputs[0]) searchInputs[0].value = "";
     });
   }
 
