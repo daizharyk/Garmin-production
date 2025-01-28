@@ -47,8 +47,8 @@ module.exports = {
 
     const baseUrl =
       process.env.NODE_ENV === "development"
-        ? "http://localhost:3002" 
-        : process.env.BASE_URL || "http://localhost:3002"; 
+        ? "http://localhost:3002"
+        : process.env.BASE_URL || "http://localhost:3002";
 
     const resetLink = `${baseUrl}/pages/reset-password.html?token=${resetToken}`;
 

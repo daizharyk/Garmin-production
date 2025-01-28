@@ -22,26 +22,33 @@ document.addEventListener("DOMContentLoaded", function () {
     let currentIndex = 0;
     let isPlaying = true;
     let sliderInterval;
-    let currentDashOffset = 138;
+    let animationStartTime;
+    const totalDuration = 7000;
 
     function resetCircleAnimation() {
       circleProgress.style.transition = "none";
       circleProgress.style.strokeDashoffset = "138";
-
-      circleProgress.style.transition = "stroke-dashoffset 7s linear";
+      animationStartTime = null;
     }
 
     function startCircleAnimation() {
       resetCircleAnimation();
-
-      setTimeout(() => {
+      requestAnimationFrame(() => {
+        animationStartTime = performance.now();
+        circleProgress.style.transition = `stroke-dashoffset ${totalDuration / 1000}s linear`;
         circleProgress.style.strokeDashoffset = "0";
-      }, 0);
+      });
     }
 
     function stopCircleAnimation() {
+      if (!animationStartTime) return;
+
+      const elapsed = performance.now() - animationStartTime;
+      const progress = Math.min(elapsed / totalDuration, 1);
+      const remainingOffset = 138 * (1 - progress);
+
       circleProgress.style.transition = "none";
-      circleProgress.style.strokeDashoffset = currentDashOffset;
+      circleProgress.style.strokeDashoffset = remainingOffset;
     }
 
     function showBanner(index) {
@@ -56,9 +63,8 @@ document.addEventListener("DOMContentLoaded", function () {
       sliderInterval = setInterval(() => {
         currentIndex = (currentIndex + 1) % banners.length;
         showBanner(currentIndex);
-        resetCircleAnimation();
         startCircleAnimation();
-      }, 7000);
+      }, totalDuration);
       playIcon.classList.remove("active");
       pauseIcon.classList.add("active");
       isPlaying = true;
@@ -82,11 +88,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     showBanner(currentIndex);
     startSlider();
-    resetCircleAnimation();
   }
-
   initBannerSlider();
-
   function setupActiveClass() {
     document.querySelectorAll(".nav-list-item").forEach((item) => {
       item.addEventListener("click", () => {

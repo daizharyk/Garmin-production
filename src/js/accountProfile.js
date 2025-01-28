@@ -102,6 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   async function displayUserDetails() {
+    const skeletonElements = document.querySelectorAll(".skeleton");
     try {
       const userDetails = await userinfo();
 
@@ -114,6 +115,10 @@ document.addEventListener("DOMContentLoaded", () => {
           `Location: ${userDetails.location || ""}`;
         document.getElementById("userLanguage").innerText =
           `Language: ${userDetails.language || ""}`;
+
+        skeletonElements.forEach((element) =>
+          element.classList.remove("skeleton")
+        );
       } else {
         console.error("No user details received");
       }
@@ -221,9 +226,7 @@ document.addEventListener("DOMContentLoaded", () => {
       sidebar.style.transform === "translateX(0px)"
         ? "translateX(-100%)"
         : "translateX(0px)";
-        toggleMenuButton.classList.toggle("open"); 
-
-    
+    toggleMenuButton.classList.toggle("open");
   });
   window.addEventListener("resize", function () {
     if (window.innerWidth > 1024) {

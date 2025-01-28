@@ -54,7 +54,9 @@ body {
 }
 .account-details {
   max-width: 800px;
-
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
   padding: 1.3rem;
 }
 
@@ -190,7 +192,8 @@ h2 {
     0 1px 3px 1px #4d4d4d29;
   padding: 30px 0 30px 30px;
   margin-top: 1.5rem;
-  width: 21.8rem;
+  width: 400px;
+  height: auto;
 }
 .info-card p {
   margin-bottom: 10px;
@@ -335,11 +338,7 @@ h2 {
   margin-right: 10px;
   font-size: 18px;
 }
-.account-details {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-}
+
 .category:last-child {
   border-bottom: none;
 }
@@ -491,6 +490,31 @@ input:invalid + .error-message {
   margin: 0;
   font-size: 16px;
   color: #333333;
+}
+.skeleton {
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  height: 16px;
+  width: 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.skeleton:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: 200px 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #d6d6d6 25%, #f8f8f8 50%, #d6d6d6 75%);
+  background-size: 200% 100%;
 }
 
 .spinnerr {
@@ -681,5 +705,26 @@ input:checked + .slider:before {
     display: block;
     width: 100%;
     height: auto;
+  }
+}
+
+@media (max-width: 450px) {
+  .account-detail-wrapper {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .details-actions a,
+  .details-actions button {
+    display: block;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    font-size: 0.875rem;
+  }
+  .account-details {
+    padding: 0;
+  }
+  .account-details-container {
+    padding: 1rem;
   }
 }
