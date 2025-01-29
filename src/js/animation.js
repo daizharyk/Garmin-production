@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
   }
-
+  setupActiveClass();
   const searchingSvg = document.getElementById("searchingSvg");
   const searchBox = document.getElementById("searchBox");
   const closeSearch = document.getElementById("closeSearch");

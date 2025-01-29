@@ -553,7 +553,7 @@
   outline: none;
   border-radius: 0;
 }
-.cart-item.skeletons{
+.cart-item.skeletons {
   width: 600px;
 }
 .skeletons {
@@ -567,7 +567,7 @@
   background-size: 200% 100%;
   animation: skeleton-loading 1.5s infinite;
   height: 500px;
-  min-height: 500px;
+  max-height: 500px;
   display: flex;
   flex: 1 1 30%;
   max-width: 30%;
@@ -1979,7 +1979,7 @@ footer {
   }
   .card-link.skeleton {
     flex: 1 1 45%;
-    max-width: 45%;
+    max-width: 40%;
   }
 }
 
@@ -2157,7 +2157,14 @@ footer {
   #every_runner {
     margin: 10px;
   }
-
+  .card-link.skeleton {
+    width: 80px;
+    height: 100px;
+  }
+  .skeleton-loader {
+    margin: 0;
+    padding: 0;
+  }
   #every_runner p {
     font-size: 1.5rem;
   }
