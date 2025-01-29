@@ -1710,6 +1710,7 @@ footer {
   .search-icon {
     position: absolute;
     left: 30px;
+    bottom: 15px;
     width: 25px;
   }
 
