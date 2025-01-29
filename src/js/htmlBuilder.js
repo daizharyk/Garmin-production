@@ -4,10 +4,10 @@ import "../style/itempage.css";
 
 export function createCards(data) {
   const container = document.getElementById("cards-container");
+  container.innerHTML = "";
   if (!container) {
     return;
   }
-  container.innerHTML = "";
 
   const isSearchPage = window.location.pathname.includes("searchingPage");
 
