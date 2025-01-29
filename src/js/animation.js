@@ -225,36 +225,27 @@ document.addEventListener("DOMContentLoaded", function () {
   setupDropdownMenus();
   window.addEventListener("resize", setupDropdownMenus);
 
-  function setupUserMenu() {
-    const userMenu = document.querySelector(".user-menu");
-    const dropdown = document.querySelector(".dropdown-user");
+  const userMenu = document.querySelector(".user-menu");
+  const dropdown = document.querySelector(".dropdown-user");
 
-    function handleMenuEvents() {
-      if (window.innerWidth >= 500) {
-        userMenu.addEventListener("mouseenter", function () {
-          dropdown.classList.add("show");
-        });
-
-        userMenu.addEventListener("mouseleave", function () {
-          dropdown.classList.remove("show");
-        });
-      }
-    }
-    window.addEventListener("resize", handleMenuEvents);
-
-    handleMenuEvents();
-
-    userMenu.addEventListener("click", function () {
+  if (userMenu && dropdown) {
+    userMenu.addEventListener("click", function (e) {
+      e.stopPropagation(); 
       dropdown.classList.toggle("show");
     });
-  }
+    document.addEventListener("click", function (e) {
+      if (!userMenu.contains(e.target) && !dropdown.contains(e.target)) {
+        dropdown.classList.remove("show");
+      }
+    });
 
-  function init() {
-    setupActiveClass();
-    setupUserMenu();
-  }
 
-  init();
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") {
+        dropdown.classList.remove("show");
+      }
+    });
+  }
 
   const burgerButton = document.getElementById("burgerButton");
   const navMenu = document.getElementById("navMenu");
@@ -426,9 +417,4 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("cartIcon").addEventListener("click", function () {
     window.location.href = "/pages/cart.html";
   });
-
-
-
-
-  
 });
