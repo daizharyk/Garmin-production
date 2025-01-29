@@ -46,12 +46,15 @@ function renderCart(item) {
   const cartInfo = document.createElement("div");
   cartInfo.classList.add("cart_info");
 
+  const titleLink = document.createElement("a");
+  titleLink.classList.add("title-link");
+  titleLink.href = "#";
   const title = document.createElement("h2");
-  title.textContent = item.product_title;
+  title.textContent = `${item.product_title}, ${item.color}`;
 
   const price = document.createElement("div");
   price.classList.add("cart__price");
-  price.textContent = `$${item.price.toFixed(2)}`;
+  price.textContent = `$${item.price.toFixed(2)} USD`;
 
   const divQuantityWrapper = document.createElement("div");
   divQuantityWrapper.classList.add("quantityWrapper");
@@ -79,16 +82,15 @@ function renderCart(item) {
 
   divQuantityWrapper.appendChild(quantityTitle);
   divQuantityWrapper.appendChild(quantitySelector);
-  cartInfo.appendChild(title);
+  titleLink.appendChild(title);
+  cartInfo.appendChild(titleLink);
   cartInfo.appendChild(price);
   cartInfo.appendChild(divQuantityWrapper);
 
   cartInfo.appendChild(deliveryText);
 
-
   cartItem.appendChild(cartImage);
   cartItem.appendChild(cartInfo);
-
 
   productsContainer.appendChild(cartItem);
 
@@ -96,6 +98,6 @@ function renderCart(item) {
 }
 
 function updateTotal(price) {
-  document.getElementById("subtotal").textContent = `$${price.toFixed(2)}`;
-  document.getElementById("total").textContent = `$${price.toFixed(2)}`;
+  document.getElementById("subtotal").textContent = `$${price.toFixed(2)} USD`;
+  document.getElementById("total").textContent = `$${price.toFixed(2)} USD`;
 }
