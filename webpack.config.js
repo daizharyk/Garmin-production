@@ -24,6 +24,7 @@ module.exports = {
     accountProfile: path.resolve(__dirname, "src/js/accountProfile.js"),
     securityCenter: path.resolve(__dirname, "src/js/securityCenter.js"),
     resetPassword: path.resolve(__dirname, "src/js/reset-password..js"),
+    cart: path.resolve(__dirname, "src/js/cart.js"),
   },
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -195,8 +196,17 @@ module.exports = {
         ),
       },
     }),
-    new CopyWebpackPlugin({
-      patterns: [{ from: "src/img", to: "img" }],
+    new HtmlWebpackPlugin({
+      title: "Garmin | Cart",
+      filename: "pages/cart.html",
+      template: "src/pages/cart.html",
+      chunks: ["main", "animation", "authState", "cart"],
+      templateParameters: {
+        footer: fs.readFileSync(
+          path.resolve(__dirname, "src/pages/components/footer.html"),
+          "utf-8"
+        ),
+      },
     }),
   ],
 };

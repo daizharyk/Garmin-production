@@ -50,8 +50,54 @@
 .svg-container svg {
   width: 100%;
   height: 100%;
+  cursor: pointer;
 }
-
+.cart {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 50px;
+}
+.cart h1 {
+  margin: 10px 0;
+  width: 100%;
+  text-align: center;
+}
+.cart__info {
+  display: flex;
+}
+.cart_info {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 10px;
+  justify-content: space-between;
+}
+.delivery-text {
+  margin-top: auto;
+  font-family: "Superscripts-Roboto", "Roboto", "Noto Sans TC", "Noto Sans SC",
+    "Noto Sans JP", "Noto Sans KR", "Prompt", sans-serif;
+  font-size: 0.875rem;
+}
+.cart-item {
+  display: flex;
+  box-shadow:
+    0 1px 1px #4d4d4d14,
+    0 1px 3px 1px #4d4d4d29;
+  flex-direction: row;
+  padding: 16px;
+  height: 100%;
+}
+.products-container {
+  margin: 10px;
+}
+.cart-image img {
+  max-width: 200px;
+}
+.sidebar-container {
+  margin: 10px;
+}
 .svg-container {
   display: inline-flex;
   justify-content: center;

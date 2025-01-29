@@ -422,4 +422,13 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("resize", function () {
     resetActiveClasses();
   });
+
+  document.getElementById("cartIcon").addEventListener("click", function () {
+    window.location.href = "/pages/cart.html";
+  });
+
+
+
+
+  
 });
