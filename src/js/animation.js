@@ -106,7 +106,6 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("searchInput"),
     document.getElementById("searchInputMobile"),
   ];
-  const searchInput = document.getElementById("searchInput");
 
   if (searchingSvg && searchBox && loginSection) {
     searchingSvg.addEventListener("click", () => {

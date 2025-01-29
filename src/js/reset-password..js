@@ -136,8 +136,5 @@ document
       messageDiv.textContent =
         "An error occurred while resetting the password. Please try again.";
       messageDiv.style.color = "red";
-    } finally {
-      spinner.style.display = "none";
-      newPasswordSaveBtn.disabled = false;
     }
   });
