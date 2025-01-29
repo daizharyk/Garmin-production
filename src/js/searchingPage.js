@@ -46,7 +46,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     searchInputt.addEventListener("input", () => {
       const searchQuery = searchInputt.value.trim().toLowerCase();
       if (searchQuery === "") {
-        createCards([]);
         toggleNoResultsMessage("", true);
         return;
       }
