@@ -229,22 +229,58 @@ document.addEventListener("DOMContentLoaded", function () {
   const dropdown = document.querySelector(".dropdown-user");
 
   if (userMenu && dropdown) {
-    userMenu.addEventListener("click", function (e) {
-      e.stopPropagation(); 
-      dropdown.classList.toggle("show");
-    });
-    document.addEventListener("click", function (e) {
+    let isMobile = window.innerWidth < 768;
+    let hoverEnabled = false;
+
+    // Функция для управления видимостью
+    const toggleDropdown = (show) => {
+      dropdown.classList.toggle("show", show);
+    };
+
+    // Обработчики ховера
+    const handleMouseEnter = () => hoverEnabled && toggleDropdown(true);
+    const handleMouseLeave = () => hoverEnabled && toggleDropdown(false);
+
+    // Обновление режима при изменении размера
+    const updateInteractionMode = () => {
+      isMobile = window.innerWidth < 768;
+      hoverEnabled = !isMobile;
+
+      // Удаляем все предыдущие обработчики
+      userMenu.removeEventListener("mouseenter", handleMouseEnter);
+      userMenu.removeEventListener("mouseleave", handleMouseLeave);
+
+      if (hoverEnabled) {
+        // Десктоп: добавляем ховер
+        userMenu.addEventListener("mouseenter", handleMouseEnter);
+        userMenu.addEventListener("mouseleave", handleMouseLeave);
+      } else {
+        // Мобилка: добавляем клик
+        userMenu.addEventListener("click", handleClick);
+      }
+    };
+
+    // Обработчик клика
+    const handleClick = (e) => {
+      e.stopPropagation();
+      toggleDropdown(!dropdown.classList.contains("show"));
+    };
+
+    // Закрытие при клике вне области
+    document.addEventListener("click", (e) => {
       if (!userMenu.contains(e.target) && !dropdown.contains(e.target)) {
-        dropdown.classList.remove("show");
+        toggleDropdown(false);
       }
     });
 
-
-    document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape") {
-        dropdown.classList.remove("show");
-      }
+    // Закрытие по Escape
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") toggleDropdown(false);
     });
+
+    // Инициализация
+    updateInteractionMode();
+    window.addEventListener("resize", updateInteractionMode);
   }
 
   const burgerButton = document.getElementById("burgerButton");
