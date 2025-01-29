@@ -497,6 +497,7 @@ input:invalid + .error-message {
   color: #333333;
 }
 .skeleton {
+  
   background-color: #e0e0e0;
   border-radius: 4px;
   height: 16px;

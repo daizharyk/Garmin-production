@@ -28,7 +28,7 @@ function renderCart(item) {
   const cartItem = document.createElement("div");
   cartItem.classList.add("cart-item");
 
-  // Создаём контейнер для изображения
+
   const cartImage = document.createElement("div");
   cartImage.classList.add("cart-image");
 
@@ -42,7 +42,7 @@ function renderCart(item) {
   link.appendChild(img);
   cartImage.appendChild(link);
 
-  // Создаём контейнер с информацией о товаре
+
   const cartInfo = document.createElement("div");
   cartInfo.classList.add("cart_info");
 
