@@ -9,18 +9,20 @@ let originalItems = [];
 console.log("Dsdadad");
 console.log("originalItems", originalItems);
 
+const currentPage = window.location.pathname.toLowerCase();
+console.log(currentPage);
+
+if (currentPage === "/pages/searchingpage") {
+  return;
+}
+
 async function loadModule() {
   try {
     originalItems = await getAllArticles();
     if (!originalItems || !Array.isArray(originalItems)) {
       throw new Error("Данные не загружены или не в правильном формате");
     }
-    const currentPage = window.location.pathname.toLowerCase();
-    console.log(currentPage);
 
-    if (currentPage === "/pages/searchingpage") {
-      return;
-    }
     const module = await import(
       /* webpackChunkName: "html-module" */ "./htmlBuilder.js"
     );
