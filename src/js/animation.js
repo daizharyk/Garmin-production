@@ -143,9 +143,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     toggleSearchingSvg();
   }
-  if (searchInputs.length > 0) {
+
+ 
     searchInputs.forEach((searchInput) => {
-      searchInput.addEventListener("input", (event) => {
+      searchInput.addEventListener("keyup", (event) => {
         if (event.key === "Enter") {
           const query = searchInput.value.trim();
           if (query) {
@@ -154,7 +155,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       });
     });
-  }
+  
 
   if (closeSearch && searchBox && loginSection) {
     closeSearch.addEventListener("click", () => {
