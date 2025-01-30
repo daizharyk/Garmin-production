@@ -13,7 +13,7 @@ module.exports = {
     animation: path.resolve(__dirname, "src/js/animation.js"),
     html: path.resolve(__dirname, "src/js/htmlBuilder.js"),
     itempage: path.resolve(__dirname, "src/js/itempage.js"),
-    searchingPage: path.resolve(__dirname, "src/js/searchingPage.js"),
+
     signIn: path.resolve(__dirname, "src/js/signIn.js"),
     login: path.resolve(__dirname, "src/js/login.js"),
     register: path.resolve(__dirname, "src/js/register.js"),
@@ -21,7 +21,8 @@ module.exports = {
     authState: path.resolve(__dirname, "src/js/authState.js"),
     accountProfile: path.resolve(__dirname, "src/js/accountProfile.js"),
     securityCenter: path.resolve(__dirname, "src/js/securityCenter.js"),
-    resetPassword: path.resolve(__dirname, "src/js/reset-password..js"),
+    resetPassword: path.resolve(__dirname, "src/js/reset-password.js"),
+    searchingpage: path.resolve(__dirname, "src/js/searchingPage.js"),
     cart: path.resolve(__dirname, "src/js/cart.js"),
   },
   output: {
@@ -186,7 +187,7 @@ module.exports = {
       title: "Serching ...",
       filename: "pages/searchingpage.html",
       template: "src/pages/searchingpage.html",
-      chunks: ["main", "animation", "authState", "searchingPage"],
+      chunks: ["main", "animation", "authState", "searchingpage"],
       templateParameters: {
         footer: fs.readFileSync(
           path.resolve(__dirname, "src/pages/components/footer.html"),
