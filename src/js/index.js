@@ -7,19 +7,20 @@ import "../style/accountProfile.css";
 
 let originalItems = [];
 
-
 async function loadModule() {
-  const currentPage = window.location.pathname();
-  console.log(currentPage);
-
-  if (currentPage === "/pages/searchingpage") {
-    return;
-  }
-
   try {
     originalItems = await getAllArticles();
     if (!originalItems || !Array.isArray(originalItems)) {
       throw new Error("Данные не загружены или не в правильном формате");
+    }
+
+    const currentPage = window.location.pathname;
+
+    if (
+      currentPage === "/pages/searchingpage.html" ||
+      currentPage === "/pages/searchingpage"
+    ) {
+      return;
     }
 
     const module = await import(
@@ -51,10 +52,7 @@ loadModule();
 document.addEventListener("DOMContentLoaded", function () {
   const currentPage = window.location.pathname;
 
-  const protectedPages = [
-    "/pages/accountProfile.html",
-    "/pages/searchingpage.html",
-  ];
+  const protectedPages = ["/pages/accountProfile.html", "/pages/cart.html"];
 
   if (protectedPages.includes(currentPage)) {
     import("./auth.js")
