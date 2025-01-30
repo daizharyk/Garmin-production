@@ -102,28 +102,27 @@ document.addEventListener("DOMContentLoaded", function () {
   const searchBox = document.getElementById("searchBox");
   const closeSearch = document.getElementById("closeSearch");
   const loginSection = document.querySelector(".login-section");
-  const searchInputs = [
-    document.getElementById("searchInput"),
-    document.getElementById("searchInputMobile"),
-  ];
+  const searchInputs = document.querySelectorAll(
+    "#searchInput, #searchInputMobile"
+  );
 
   if (searchingSvg && searchBox && loginSection) {
     searchingSvg.addEventListener("click", () => {
-      if (loginSection) loginSection.style.display = "none";
-      if (searchBox) searchBox.style.display = "flex";
+      loginSection.style.display = "none";
+      searchBox.style.display = "flex";
     });
 
     function toggleSearchingSvg() {
       if (window.innerWidth <= 1100) {
-        if (searchingSvg) searchingSvg.style.display = "none";
+        searchingSvg.style.display = "none";
 
-        if (searchBox && searchBox.style.display === "flex") {
+        if (searchBox.style.display === "flex") {
           searchBox.style.display = "none";
-          if (searchInputs[0]) searchInputs[0].value = "";
-          if (loginSection) loginSection.style.display = "flex"; // Возвращаем loginSection
+          if (searchInputs.length > 0) searchInputs[0].value = "";
+          loginSection.style.display = "flex";
         }
       } else {
-        if (searchingSvg) searchingSvg.style.display = "block";
+        searchingSvg.style.display = "block";
       }
     }
 
@@ -144,9 +143,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     toggleSearchingSvg();
   }
-  if (searchInputs && searchInputs.length > 0) {
+  if (searchInputs.length > 0) {
     searchInputs.forEach((searchInput) => {
-      searchInput.addEventListener("keydown", (event) => {
+      searchInput.addEventListener("keyup", (event) => {
         if (event.key === "Enter") {
           const query = searchInput.value.trim();
           if (query) {
@@ -157,19 +156,11 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  if (closeSearch && searchBox && loginSection && searchInputs) {
-    closeSearch.addEventListener("click", () => {
-      if (searchBox) searchBox.style.display = "none";
-      if (loginSection) loginSection.style.display = "flex";
-      if (searchInputs && searchInputs[0]) searchInputs[0].value = "";
-    });
-  }
-
-  if (closeSearch) {
+  if (closeSearch && searchBox && loginSection) {
     closeSearch.addEventListener("click", () => {
       searchBox.style.display = "none";
       loginSection.style.display = "flex";
-      if (searchInputs && searchInputs[0]) searchInputs[0].value = "";
+      if (searchInputs.length > 0) searchInputs[0].value = "";
     });
   }
 
