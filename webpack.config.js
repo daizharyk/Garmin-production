@@ -184,7 +184,18 @@ module.exports = {
         ),
       },
     }),
-
+    new HtmlWebpackPlugin({
+      title: "Serching ...",
+      filename: "pages/searchingpage.html",
+      template: "src/pages/searchingpage.html",
+      chunks: ["main", "animation", "authState", "searchingpage"],
+      templateParameters: {
+        footer: fs.readFileSync(
+          path.resolve(__dirname, "src/pages/components/footer.html"),
+          "utf-8"
+        ),
+      },
+    }),
     new HtmlWebpackPlugin({
       title: "Garmin | Cart",
       filename: "pages/cart.html",
