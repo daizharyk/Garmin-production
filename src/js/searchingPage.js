@@ -45,9 +45,12 @@ document.addEventListener("DOMContentLoaded", async () => {
   if (searchInputt) {
     searchInputt.addEventListener("input", () => {
       const searchQuery = searchInputt.value.trim().toLowerCase();
+
       if (searchQuery === "") {
-        createCards([]);
-        toggleNoResultsMessage("", true);
+        setTimeout(() => {
+          createCards([]); // Очищаем карточки
+          toggleNoResultsMessage("", true);
+        }, 10); // Даем браузеру немного времени
         return;
       }
 
