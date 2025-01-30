@@ -22,3 +22,8 @@ app.use(errorHandler);
 app.listen(PORT, () => {
   console.log(`Server started on ${PORT}`);
 });
+
+app.get("/pages/*", (req, res) => {
+  // Формируем путь к файлу, добавляя .html в конце
+  res.sendFile(path.join(__dirname, "dist", req.path + ".html"));
+});

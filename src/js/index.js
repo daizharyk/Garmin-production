@@ -6,6 +6,7 @@ import "../style/itempage.css";
 import "../style/accountProfile.css";
 
 let originalItems = [];
+console.log("Dsdadad");
 
 async function loadModule() {
   try {
@@ -16,7 +17,7 @@ async function loadModule() {
     const currentPage = window.location.pathname.toLowerCase();
     console.log(currentPage);
 
-    if (currentPage === "/pages/searchingpage") {
+    if (currentPage === "/pages/searchingpage.html") {
       return;
     }
     const module = await import(

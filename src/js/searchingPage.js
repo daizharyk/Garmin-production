@@ -1,6 +1,6 @@
 import { getAllArticles } from "../service/articleService";
 import { createCards } from "./htmlBuilder";
-
+console.log("ddddddddd");
 
 document.addEventListener("DOMContentLoaded", async () => {
   const currentPage = window.location.pathname;
@@ -33,6 +33,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const allArticles = await getAllArticles();
 
+console.log("ddddddddd");
 
   if (query) {
     const filteredProducts = allArticles.filter(
