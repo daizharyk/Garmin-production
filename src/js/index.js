@@ -6,7 +6,8 @@ import "../style/itempage.css";
 import "../style/accountProfile.css";
 
 let originalItems = [];
-
+const currentPage = window.location.pathname;
+    console.log(currentPage);
 async function loadModule() {
   try {
     originalItems = await getAllArticles();
@@ -14,9 +15,10 @@ async function loadModule() {
       throw new Error("Данные не загружены или не в правильном формате");
     }
     const currentPage = window.location.pathname;
+    console.log(currentPage);
 
     if (currentPage === "/pages/searchingPage.html") {
-      return; // Прекращаем выполнение функции
+      return;
     }
     const module = await import(
       /* webpackChunkName: "html-module" */ "./htmlBuilder.js"
@@ -47,7 +49,10 @@ loadModule();
 document.addEventListener("DOMContentLoaded", function () {
   const currentPage = window.location.pathname;
 
-  const protectedPages = ["/pages/accountProfile.html"];
+  const protectedPages = [
+    "/pages/accountProfile.html",
+    "/pages/searchingPage.html",
+  ];
 
   if (protectedPages.includes(currentPage)) {
     import("./auth.js")
