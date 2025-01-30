@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const currentPage = window.location.pathname;
   console.log(currentPage);
 
-  if (window.location.pathname.includes("")) {
+  if (window.location.pathname.includes("searchingpage")) {
     document.body.classList.add("searching-page");
   }
 
