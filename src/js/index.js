@@ -9,14 +9,14 @@ let originalItems = [];
 console.log("Dsdadad");
 console.log("originalItems", originalItems);
 
-const currentPage = window.location.pathname.toLowerCase();
-console.log(currentPage);
-
-if (currentPage === "/pages/searchingpage") {
-  return;
-}
-
 async function loadModule() {
+  const currentPage = window.location.pathname.toLowerCase();
+  console.log(currentPage);
+
+  if (currentPage === "/pages/searchingpage") {
+    return;
+  }
+
   try {
     originalItems = await getAllArticles();
     if (!originalItems || !Array.isArray(originalItems)) {
