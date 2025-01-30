@@ -4,6 +4,7 @@ import { createCards } from "./htmlBuilder";
 document.addEventListener("DOMContentLoaded", async () => {
   const currentPage = window.location.pathname;
   console.log(currentPage);
+  
 
   const searchInputt = document.getElementById("searchPageInput");
   const clearButton = document.getElementById("clearSearch");
