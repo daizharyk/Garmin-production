@@ -6,8 +6,7 @@ import "../style/itempage.css";
 import "../style/accountProfile.css";
 
 let originalItems = [];
-console.log("Dsdadad");
-console.log("originalItems", originalItems);
+
 
 async function loadModule() {
   const currentPage = window.location.pathname.toLowerCase();
@@ -35,7 +34,7 @@ async function loadModule() {
       updateCounts,
       initializeBoxClicks,
     } = module;
-    createCards(originalItems);
+    
     initializeFilters(originalItems);
     updateCounts(originalItems);
     setupFilterToggle(originalItems);
