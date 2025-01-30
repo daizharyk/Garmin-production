@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector(".two-step-text").style.display = "flex";
     document.querySelector(".two-step-text-first").style.display = "none";
 
+    
     verificationMethod.forEach((container) => {
       container.style.display = "none";
     });
@@ -47,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
       "none";
   });
 
-  
+
   const toggleMenuButton = document.getElementById("toggleMenu");
   const sidebar = document.querySelector(".sidebar-account");
   const arrow = document.getElementById("arrow-sidebar-account");
