@@ -9,7 +9,7 @@ let originalItems = [];
 
 
 async function loadModule() {
-  const currentPage = window.location.pathname.toLowerCase();
+  const currentPage = window.location.pathname();
   console.log(currentPage);
 
   if (currentPage === "/pages/searchingpage") {
@@ -34,7 +34,7 @@ async function loadModule() {
       updateCounts,
       initializeBoxClicks,
     } = module;
-    
+    createCards(originalItems);
     initializeFilters(originalItems);
     updateCounts(originalItems);
     setupFilterToggle(originalItems);
