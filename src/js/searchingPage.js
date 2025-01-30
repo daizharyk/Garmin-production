@@ -1,10 +1,6 @@
 import { getAllArticles } from "../service/articleService";
 import { createCards } from "./htmlBuilder";
 
-import "../style/style.css";
-import "../style/shipping.css";
-import "../style/itempage.css";
-import "../style/accountProfile.css";
 
 document.addEventListener("DOMContentLoaded", async () => {
   const container = document.getElementById("productsContainer");
@@ -51,6 +47,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     searchInputt.addEventListener("input", () => {
       const searchQuery = searchInputt.value.trim().toLowerCase();
       if (searchQuery === "") {
+
         toggleNoResultsMessage("", true);
         return;
       }

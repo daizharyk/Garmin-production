@@ -15,28 +15,28 @@ async function loadModule() {
     }
     const currentPage = window.location.pathname;
 
-
-    if (currentPage !== "/pages/searchingPage.html") {
-      const module = await import(
-        /* webpackChunkName: "html-module" */ "./htmlBuilder.js"
-      );
-      const {
-        createCards,
-        initializeSort,
-        scrollToItems,
-        setupFilterToggle,
-        initializeFilters,
-        updateCounts,
-        initializeBoxClicks,
-      } = module;
-      createCards(originalItems);
-      initializeFilters(originalItems);
-      updateCounts(originalItems);
-      setupFilterToggle(originalItems);
-      initializeSort(originalItems);
-      scrollToItems();
-      initializeBoxClicks(originalItems);
+    if (currentPage === "/pages/searchingPage.html") {
+      return; // Прекращаем выполнение функции
     }
+    const module = await import(
+      /* webpackChunkName: "html-module" */ "./htmlBuilder.js"
+    );
+    const {
+      createCards,
+      initializeSort,
+      scrollToItems,
+      setupFilterToggle,
+      initializeFilters,
+      updateCounts,
+      initializeBoxClicks,
+    } = module;
+    createCards(originalItems);
+    initializeFilters(originalItems);
+    updateCounts(originalItems);
+    setupFilterToggle(originalItems);
+    initializeSort(originalItems);
+    scrollToItems();
+    initializeBoxClicks(originalItems);
   } catch (error) {
     console.error("Ошибка при загрузке модуля:", error);
   }
