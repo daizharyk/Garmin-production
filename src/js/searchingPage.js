@@ -5,10 +5,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   const currentPage = window.location.pathname;
   console.log(currentPage);
 
-
-    document.body.classList.add("searching-page");
-  
-
   const searchInputt = document.getElementById("searchPageInput");
   const clearButton = document.getElementById("clearSearch");
   const noResultsMessage = document.getElementById("noResultsMessage");
