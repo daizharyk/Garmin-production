@@ -101,6 +101,7 @@ module.exports = {
         process.env.SERVER_API_URL || "http://localhost:3005/api/"
       ),
     }),
+    new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: "[name].[contenthash].css",
     }),
