@@ -186,8 +186,8 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       title: "Serching ...",
-      filename: "pages/searchingPage.html",
-      template: "src/pages/searchingPage.html",
+      filename: "pages/searchingpage.html",
+      template: "src/pages/searchingpage.html",
       chunks: ["main", "animation", "authState", "searchingPage"],
       templateParameters: {
         footer: fs.readFileSync(

@@ -9,7 +9,7 @@ export function createCards(data) {
     return;
   }
 
-  const isSearchPage = window.location.pathname.includes("searchingPage");
+  const isSearchPage = window.location.pathname.includes("searchingpage");
 
   data.forEach((item) => {
     const link = document.createElement("a");

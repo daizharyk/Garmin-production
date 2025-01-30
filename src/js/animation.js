@@ -149,7 +149,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (event.key === "Enter") {
           const query = searchInput.value.trim();
           if (query) {
-            window.location.href = `/pages/searchingPage.html?query=${encodeURIComponent(query)}`;
+            window.location.href = `/pages/searchingpage.html?query=${encodeURIComponent(query)}`;
           }
         }
       });

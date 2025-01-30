@@ -6,18 +6,17 @@ import "../style/itempage.css";
 import "../style/accountProfile.css";
 
 let originalItems = [];
-const currentPage = window.location.pathname;
-    console.log(currentPage);
+
 async function loadModule() {
   try {
     originalItems = await getAllArticles();
     if (!originalItems || !Array.isArray(originalItems)) {
       throw new Error("Данные не загружены или не в правильном формате");
     }
-    const currentPage = window.location.pathname;
+    const currentPage = window.location.pathname.toLowerCase();
     console.log(currentPage);
 
-    if (currentPage === "/pages/searchingPage") {
+    if (currentPage === "/pages/searchingpage") {
       return;
     }
     const module = await import(
@@ -51,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const protectedPages = [
     "/pages/accountProfile.html",
-    "/pages/searchingPage.html",
+    "/pages/searchingpage.html",
   ];
 
   if (protectedPages.includes(currentPage)) {
