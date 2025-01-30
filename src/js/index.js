@@ -29,7 +29,7 @@ async function loadModule() {
         updateCounts,
         initializeBoxClicks,
       } = module;
-      createCards(originalItems);
+      // createCards(originalItems);
       initializeFilters(originalItems);
       updateCounts(originalItems);
       setupFilterToggle(originalItems);
