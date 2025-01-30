@@ -17,7 +17,7 @@ async function loadModule() {
     const currentPage = window.location.pathname.toLowerCase();
     console.log(currentPage);
 
-    if (currentPage === "/pages/searchingpage.html") {
+    if (currentPage === "/pages/searchingpage") {
       return;
     }
     const module = await import(
