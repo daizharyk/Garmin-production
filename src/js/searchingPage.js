@@ -3,7 +3,8 @@ import { createCards } from "./htmlBuilder";
 
 
 document.addEventListener("DOMContentLoaded", async () => {
- 
+  const currentPage = window.location.pathname;
+  console.log(currentPage);
 
   if (window.location.pathname.includes("searchingPage")) {
     document.body.classList.add("searching-page");
