@@ -5,9 +5,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   const currentPage = window.location.pathname;
   console.log(currentPage);
 
-  if (window.location.pathname.includes("searchingpage")) {
+
     document.body.classList.add("searching-page");
-  }
+  
 
   const searchInputt = document.getElementById("searchPageInput");
   const clearButton = document.getElementById("clearSearch");
