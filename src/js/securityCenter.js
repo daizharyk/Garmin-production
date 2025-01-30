@@ -47,6 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
       "none";
   });
 
+  
   const toggleMenuButton = document.getElementById("toggleMenu");
   const sidebar = document.querySelector(".sidebar-account");
   const arrow = document.getElementById("arrow-sidebar-account");
