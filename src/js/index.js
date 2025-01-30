@@ -7,6 +7,7 @@ import "../style/accountProfile.css";
 
 let originalItems = [];
 console.log("Dsdadad");
+console.log("originalItems", originalItems);
 
 async function loadModule() {
   try {
