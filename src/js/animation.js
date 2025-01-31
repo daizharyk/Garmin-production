@@ -11,27 +11,6 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    if (searchInputs.length > 0) {
-      searchInputs.forEach((searchInput) => {
-        searchInput.addEventListener("keyup", (event) => {
-          if (event.key === "Enter") {
-            const query = searchInput.value.trim();
-            if (query) {
-              window.location.href = `/pages/searchingpage.html?query=${encodeURIComponent(query)}`;
-            }
-          }
-        });
-      });
-    }
-
-    if (closeSearch && searchBox && loginSection) {
-      closeSearch.addEventListener("click", () => {
-        searchBox.style.display = "none";
-        loginSection.style.display = "flex";
-        if (searchInputs.length > 0) searchInputs[0].value = "";
-      });
-    }
-
     const circleProgress = playPauseBtn.querySelector(".circle-progress");
     const playIcon = playPauseBtn.querySelector(".play-icon");
     const pauseIcon = playPauseBtn.querySelector(".pause-icon");
@@ -119,6 +98,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
   setupActiveClass();
+
   const searchingSvg = document.getElementById("searchingSvg");
   const searchBox = document.getElementById("searchBox");
   const closeSearch = document.getElementById("closeSearch");
@@ -126,7 +106,27 @@ document.addEventListener("DOMContentLoaded", function () {
   const searchInputs = document.querySelectorAll(
     "#searchInput, #searchInputMobile"
   );
+  if (searchInputs.length > 0) {
+    searchInputs.forEach((searchInput) => {
+      searchInput.addEventListener("keyup", (event) => {
+        if (event.key === "Enter") {
+          const query = searchInput.value.trim();
+          if (query) {
+            window.location.href = `/pages/searchingpage.html?query=${encodeURIComponent(query)}`;
+          }
+        }
+      });
+    });
+  }
 
+  if (closeSearch && searchBox && loginSection) {
+    closeSearch.addEventListener("click", () => {
+      searchBox.style.display = "none";
+      loginSection.style.display = "flex";
+      if (searchInputs.length > 0) searchInputs[0].value = "";
+    });
+  }
+  
   if (searchingSvg && searchBox && loginSection) {
     searchingSvg.addEventListener("click", () => {
       loginSection.style.display = "none";
