@@ -10,31 +10,19 @@ document.addEventListener("DOMContentLoaded", function () {
   const searchInputs = document.querySelectorAll(
     "#searchInput, #searchInputMobile"
   );
-  const searchInputMobile = document.getElementById("searchInputMobile");
-
-  if (searchInputMobile) {
-    searchInputMobile.addEventListener("keyup", (event) => {
-      if (event.key === "Enter") {
-        const query = searchInputMobile.value.trim();
-        if (query) {
-          window.location.href = `/pages/searchingpage.html?query=${encodeURIComponent(query)}`;
+  
+  if (searchInputs.length > 0) {
+    searchInputs.forEach((searchInput) => {
+      searchInput.addEventListener("keyup", (event) => {
+        if (event.key === "Enter") {
+          const query = searchInput.value.trim();
+          if (query) {
+            window.location.href = `/pages/searchingpage.html?query=${encodeURIComponent(query)}`;
+          }
         }
-      }
+      });
     });
   }
-
-  // if (searchInputs.length > 0) {
-  //   searchInputs.forEach((searchInput) => {
-  //     searchInput.addEventListener("keyup", (event) => {
-  //       if (event.key === "Enter") {
-  //         const query = searchInput.value.trim();
-  //         if (query) {
-  //           window.location.href = `/pages/searchingpage.html?query=${encodeURIComponent(query)}`;
-  //         }
-  //       }
-  //     });
-  //   });
-  // }
 
   if (closeSearch && searchBox && loginSection) {
     closeSearch.addEventListener("click", () => {
