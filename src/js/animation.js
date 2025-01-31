@@ -3,6 +3,72 @@ import "../style/shipping.css";
 import "../style/itempage.css";
 
 document.addEventListener("DOMContentLoaded", function () {
+  const searchingSvg = document.getElementById("searchingSvg");
+  const searchBox = document.getElementById("searchBox");
+  const closeSearch = document.getElementById("closeSearch");
+  const loginSection = document.querySelector(".login-section");
+  const searchInputs = document.querySelectorAll(
+    "#searchInput, #searchInputMobile"
+  );
+  if (searchInputs.length > 0) {
+    searchInputs.forEach((searchInput) => {
+      searchInput.addEventListener("keyup", (event) => {
+        if (event.key === "Enter") {
+          const query = searchInput.value.trim();
+          if (query) {
+            window.location.href = `/pages/searchingpage.html?query=${encodeURIComponent(query)}`;
+          }
+        }
+      });
+    });
+  }
+
+  if (closeSearch && searchBox && loginSection) {
+    closeSearch.addEventListener("click", () => {
+      searchBox.style.display = "none";
+      loginSection.style.display = "flex";
+      if (searchInputs.length > 0) searchInputs[0].value = "";
+    });
+  }
+
+  if (searchingSvg && searchBox && loginSection) {
+    searchingSvg.addEventListener("click", () => {
+      loginSection.style.display = "none";
+      searchBox.style.display = "flex";
+    });
+
+    function toggleSearchingSvg() {
+      if (window.innerWidth <= 1100) {
+        searchingSvg.style.display = "none";
+
+        if (searchBox.style.display === "flex") {
+          searchBox.style.display = "none";
+          if (searchInputs.length > 0) searchInputs[0].value = "";
+          loginSection.style.display = "flex";
+        }
+      } else {
+        searchingSvg.style.display = "block";
+      }
+    }
+
+    function isDesktopDevice() {
+      return !("ontouchstart" in window || navigator.maxTouchPoints > 0);
+    }
+
+    if (isDesktopDevice()) {
+      let resizeTimeout;
+
+      window.addEventListener("resize", () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+          toggleSearchingSvg();
+        }, 50);
+      });
+    }
+
+    toggleSearchingSvg();
+  }
+
   function initBannerSlider() {
     const banners = document.querySelectorAll(".bannersContainer .banner");
     const playPauseBtn = document.getElementById("playPauseBtn");
@@ -98,72 +164,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
   setupActiveClass();
-
-  const searchingSvg = document.getElementById("searchingSvg");
-  const searchBox = document.getElementById("searchBox");
-  const closeSearch = document.getElementById("closeSearch");
-  const loginSection = document.querySelector(".login-section");
-  const searchInputs = document.querySelectorAll(
-    "#searchInput, #searchInputMobile"
-  );
-  if (searchInputs.length > 0) {
-    searchInputs.forEach((searchInput) => {
-      searchInput.addEventListener("keyup", (event) => {
-        if (event.key === "Enter") {
-          const query = searchInput.value.trim();
-          if (query) {
-            window.location.href = `/pages/searchingpage.html?query=${encodeURIComponent(query)}`;
-          }
-        }
-      });
-    });
-  }
-
-  if (closeSearch && searchBox && loginSection) {
-    closeSearch.addEventListener("click", () => {
-      searchBox.style.display = "none";
-      loginSection.style.display = "flex";
-      if (searchInputs.length > 0) searchInputs[0].value = "";
-    });
-  }
-  
-  if (searchingSvg && searchBox && loginSection) {
-    searchingSvg.addEventListener("click", () => {
-      loginSection.style.display = "none";
-      searchBox.style.display = "flex";
-    });
-
-    function toggleSearchingSvg() {
-      if (window.innerWidth <= 1100) {
-        searchingSvg.style.display = "none";
-
-        if (searchBox.style.display === "flex") {
-          searchBox.style.display = "none";
-          if (searchInputs.length > 0) searchInputs[0].value = "";
-          loginSection.style.display = "flex";
-        }
-      } else {
-        searchingSvg.style.display = "block";
-      }
-    }
-
-    function isDesktopDevice() {
-      return !("ontouchstart" in window || navigator.maxTouchPoints > 0);
-    }
-
-    if (isDesktopDevice()) {
-      let resizeTimeout;
-
-      window.addEventListener("resize", () => {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(() => {
-          toggleSearchingSvg();
-        }, 50);
-      });
-    }
-
-    toggleSearchingSvg();
-  }
 
   function setupDropdownMenus() {
     const isLargeScreen = window.innerWidth >= 1100;
