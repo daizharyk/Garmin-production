@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
   
   if (searchInputs.length > 0) {
     searchInputs.forEach((searchInput) => {
-      searchInput.addEventListener("keyup", (event) => {
+      searchInput.addEventListener("keydown", (event) => {
         if (event.key === "Enter") {
           const query = searchInput.value.trim();
           if (query) {
