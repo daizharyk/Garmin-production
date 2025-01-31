@@ -24,7 +24,6 @@ module.exports = {
     resetPassword: path.resolve(__dirname, "src/js/reset-password.js"),
     searchingpage: path.resolve(__dirname, "src/js/searchingPage.js"),
     cart: path.resolve(__dirname, "src/js/cart.js"),
-    searchingInput: path.resolve(__dirname, "src/js/searchingInput.js"),
   },
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -189,13 +188,12 @@ module.exports = {
       title: "Serching ...",
       filename: "pages/searchingpage.html",
       template: "src/pages/searchingpage.html",
-      chunks: ["searchingInput", "main",  ],
+      chunks: ["animation", "main", "searchingpage"],
       templateParameters: {
         footer: fs.readFileSync(
           path.resolve(__dirname, "src/pages/components/footer.html"),
           "utf-8"
         ),
-        
       },
     }),
     new HtmlWebpackPlugin({
