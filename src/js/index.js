@@ -49,18 +49,20 @@ async function loadModule() {
 
 loadModule();
 
-document.addEventListener("DOMContentLoaded", function () {
-  const currentPage = window.location.pathname;
+document.addEventListener("DOMContentLoaded", async function () {
+  const currentPage = window.location.pathname.replace(
+    /^.*\/pages\//,
+    "/pages/"
+  );
 
-  const protectedPages = ["/pages/accountProfile.html", "/pages/cart.html"];
+  const protectedPages = ["/pages/accountProfile.html"];
 
   if (protectedPages.includes(currentPage)) {
-    import("./auth.js")
-      .then((module) => {
-        module.checkAuthorization();
-      })
-      .catch((err) => {
-        console.error("Ошибка при подгрузке модуля авторизации", err);
-      });
+    try {
+      const { checkAuthorization } = await import("./auth.js");
+      checkAuthorization();
+    } catch (err) {
+      console.error("Ошибка при загрузке модуля авторизации:", err);
+    }
   }
 });

@@ -45,9 +45,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       if (searchQuery === "") {
         setTimeout(() => {
-          createCards([]); // Очищаем карточки
+          createCards([]); 
           toggleNoResultsMessage("", true);
-        }, 10); // Даем браузеру немного времени
+        }, 10); 
         return;
       }
 
