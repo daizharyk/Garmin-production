@@ -140,6 +140,7 @@
   border-radius: 0;
   cursor: pointer;
   border: 1px solid #ccc;
+  font-size: 1rem;
 }
 
 .cart__quantity:focus {
@@ -2136,7 +2137,9 @@ footer {
     margin: 0;
     padding: 0.875rem;
   }
-
+  .cart__info {
+    display: block;
+  }
   .user-menu {
     position: static;
   }
@@ -2153,7 +2156,13 @@ footer {
   .content a {
     font-size: 0.8rem;
   }
-
+  .cart-item {
+    display: block;
+  }
+  .cart-image {
+    display: flex;
+    justify-content: center;
+  }
   #every_runner {
     margin: 10px;
   }
