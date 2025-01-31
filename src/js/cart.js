@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   //   if (!itemId) return;
 
   try {
-    const item = await getArticleById("6749ad8f82a3b2227ced6b66");
+    const item = await getArticleById("6749d8f82a3b2227ced6b66");
     console.log("item", item);
 
     if (!item) {

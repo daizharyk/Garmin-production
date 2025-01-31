@@ -2139,6 +2139,7 @@ footer {
   }
   .cart__info {
     display: block;
+    width: 100%;
   }
   .user-menu {
     position: static;
@@ -2158,6 +2159,10 @@ footer {
   }
   .cart-item {
     display: block;
+
+  }
+  .cart-item.skeletons {
+    width: 100%;
   }
   .cart-image {
     display: flex;
