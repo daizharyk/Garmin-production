@@ -10,11 +10,11 @@ document.addEventListener("DOMContentLoaded", function () {
   const searchInputs = document.querySelectorAll(
     "#searchInput, #searchInputMobile"
   );
-  
+
   if (searchInputs.length > 0) {
     searchInputs.forEach((searchInput) => {
       searchInput.addEventListener("keydown", (event) => {
-        if (event.key === "Enter") {
+        if (event.key === "Enter" || event.code === "Enter") {
           event.preventDefault();
           const query = searchInput.value.trim();
           if (query) {
@@ -268,7 +268,6 @@ document.addEventListener("DOMContentLoaded", function () {
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") toggleDropdown(false);
     });
-
 
     updateInteractionMode();
     window.addEventListener("resize", updateInteractionMode);
