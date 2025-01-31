@@ -200,7 +200,7 @@ module.exports = {
       title: "Garmin | Cart",
       filename: "pages/cart.html",
       template: "src/pages/cart.html",
-      chunks: ["animation", "main", "cart"],
+      chunks: ["animation", "main"],
       templateParameters: {
         footer: fs.readFileSync(
           path.resolve(__dirname, "src/pages/components/footer.html"),
