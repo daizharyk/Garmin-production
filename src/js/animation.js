@@ -297,149 +297,149 @@ document.addEventListener("DOMContentLoaded", function () {
     handleResize4();
   }
 
-  function setupDropdowns() {
-    document.querySelectorAll(".nav-item").forEach((item) => {
-      item.addEventListener("click", function () {
-        const dropdownClass = this.getAttribute("data-dropdown");
-        const dropdown = document.querySelector(`.${dropdownClass}`);
+  // function setupDropdowns() {
+  //   document.querySelectorAll(".nav-item").forEach((item) => {
+  //     item.addEventListener("click", function () {
+  //       const dropdownClass = this.getAttribute("data-dropdown");
+  //       const dropdown = document.querySelector(`.${dropdownClass}`);
 
-        if (dropdown) {
-          dropdown.style.display =
-            dropdown.style.display === "block" ? "none" : "block";
+  //       if (dropdown) {
+  //         dropdown.style.display =
+  //           dropdown.style.display === "block" ? "none" : "block";
 
-          // Скрытие всех подменю
-          const subMenus = dropdown.querySelectorAll(".sub-menu");
-          subMenus.forEach((subMenu) => {
-            subMenu.style.display = "none";
-          });
-        }
-      });
-    });
-  }
+  //         // Скрытие всех подменю
+  //         const subMenus = dropdown.querySelectorAll(".sub-menu");
+  //         subMenus.forEach((subMenu) => {
+  //           subMenu.style.display = "none";
+  //         });
+  //       }
+  //     });
+  //   });
+  // }
 
-  function resetDropdowns() {
-    document.querySelectorAll(".dropdown").forEach((dropdown) => {
-      dropdown.style.display = "none";
-    });
-  }
+  // function resetDropdowns() {
+  //   document.querySelectorAll(".dropdown").forEach((dropdown) => {
+  //     dropdown.style.display = "none";
+  //   });
+  // }
 
-  setupDropdowns();
+  // setupDropdowns();
 
-  let activeDropdown = null;
+  // let activeDropdown = null;
 
-  window.addEventListener("resize", function () {
-    if (activeDropdown) {
-      resetDropdowns();
+  // window.addEventListener("resize", function () {
+  //   if (activeDropdown) {
+  //     resetDropdowns();
 
-      activeDropdown.style.display = "none";
-      activeDropdown = null;
-    }
-  });
+  //     activeDropdown.style.display = "none";
+  //     activeDropdown = null;
+  //   }
+  // });
 
-  let burgerMenuOpen = false;
+  // let burgerMenuOpen = false;
 
-  burgerButton.addEventListener("click", function () {
-    burgerMenuOpen = !burgerMenuOpen;
-  });
+  // burgerButton.addEventListener("click", function () {
+  //   burgerMenuOpen = !burgerMenuOpen;
+  // });
 
-  window.addEventListener("resize", function () {
-    if (!burgerMenuOpen) {
-      handleResize();
-    }
-  });
+  // window.addEventListener("resize", function () {
+  //   if (!burgerMenuOpen) {
+  //     handleResize();
+  //   }
+  // });
 
-  function resetSubMenus() {
-    document
-      .querySelectorAll(".dropdown-container .sub-menu ")
-      .forEach((subMenu) => {
-        subMenu.style.display = "";
-      });
-  }
+  // function resetSubMenus() {
+  //   document
+  //     .querySelectorAll(".dropdown-container .sub-menu ")
+  //     .forEach((subMenu) => {
+  //       subMenu.style.display = "";
+  //     });
+  // }
 
-  function setupDropdown() {
-    document.querySelectorAll(".dropdown-container").forEach((container) => {
-      container.addEventListener("click", function (event) {
-        if (event.target.classList.contains("column-title")) {
-          const subMenu = event.target.nextElementSibling;
-          if (subMenu) {
-            subMenu.style.display =
-              subMenu.style.display === "block" ? "none" : "block"; // Переключаем видимость подменю
-          }
-        }
-      });
-    });
-  }
-  setupDropdown();
-  function handleResize() {
-    const windowWidth = window.innerWidth;
+  // function setupDropdown() {
+  //   document.querySelectorAll(".dropdown-container").forEach((container) => {
+  //     container.addEventListener("click", function (event) {
+  //       if (event.target.classList.contains("column-title")) {
+  //         const subMenu = event.target.nextElementSibling;
+  //         if (subMenu) {
+  //           subMenu.style.display =
+  //             subMenu.style.display === "block" ? "none" : "block"; // Переключаем видимость подменю
+  //         }
+  //       }
+  //     });
+  //   });
+  // }
+  // setupDropdown();
+  // function handleResize() {
+  //   const windowWidth = window.innerWidth;
 
-    if (windowWidth >= 1100) {
-      resetSubMenus();
+  //   if (windowWidth >= 1100) {
+  //     resetSubMenus();
 
-      document.querySelectorAll(".dropdown-container").forEach((container) => {
-        const title = container.querySelector(".column-title");
-        if (title) {
-          const newContainer = container.cloneNode(true);
-          container.parentNode.replaceChild(newContainer, container);
-        }
-      });
-    } else {
-      setupDropdown();
-    }
-  }
+  //     document.querySelectorAll(".dropdown-container").forEach((container) => {
+  //       const title = container.querySelector(".column-title");
+  //       if (title) {
+  //         const newContainer = container.cloneNode(true);
+  //         container.parentNode.replaceChild(newContainer, container);
+  //       }
+  //     });
+  //   } else {
+  //     setupDropdown();
+  //   }
+  // }
 
-  window.addEventListener("resize", handleResize);
+  // window.addEventListener("resize", handleResize);
 
-  function taggleSing() {
-    const titles = document.querySelectorAll(".nav-item, .column-title");
+  // function taggleSing() {
+  //   const titles = document.querySelectorAll(".nav-item, .column-title");
 
-    titles.forEach((title) => {
-      const toggleSign = title.querySelector(".toggle-sign");
-      if (toggleSign) {
-        toggleSign.textContent = "+";
+  //   titles.forEach((title) => {
+  //     const toggleSign = title.querySelector(".toggle-sign");
+  //     if (toggleSign) {
+  //       toggleSign.textContent = "+";
 
-        title.addEventListener("click", function () {
-          if (title.classList.contains("column-title")) {
-            document
-              .querySelectorAll(".column-title.active")
-              .forEach((activeTitle) => {
-                if (activeTitle !== this) {
-                  activeTitle.classList.remove("active");
-                  const activeToggleSign =
-                    activeTitle.querySelector(".toggle-sign");
-                  if (activeToggleSign) activeToggleSign.textContent = "+";
-                }
-              });
+  //       title.addEventListener("click", function () {
+  //         if (title.classList.contains("column-title")) {
+  //           document
+  //             .querySelectorAll(".column-title.active")
+  //             .forEach((activeTitle) => {
+  //               if (activeTitle !== this) {
+  //                 activeTitle.classList.remove("active");
+  //                 const activeToggleSign =
+  //                   activeTitle.querySelector(".toggle-sign");
+  //                 if (activeToggleSign) activeToggleSign.textContent = "+";
+  //               }
+  //             });
 
-            this.classList.toggle("active");
-            toggleSign.textContent = toggleSign.textContent === "+" ? "-" : "+";
-          }
+  //           this.classList.toggle("active");
+  //           toggleSign.textContent = toggleSign.textContent === "+" ? "-" : "+";
+  //         }
 
-          if (title.classList.contains("nav-item")) {
-            document
-              .querySelectorAll(".column-title")
-              .forEach((columnTitle) => {
-                columnTitle.classList.remove("active");
-                const columnToggleSign =
-                  columnTitle.querySelector(".toggle-sign");
-                if (columnToggleSign) columnToggleSign.textContent = "+";
-              });
-          }
-        });
-      }
-    });
-  }
+  //         if (title.classList.contains("nav-item")) {
+  //           document
+  //             .querySelectorAll(".column-title")
+  //             .forEach((columnTitle) => {
+  //               columnTitle.classList.remove("active");
+  //               const columnToggleSign =
+  //                 columnTitle.querySelector(".toggle-sign");
+  //               if (columnToggleSign) columnToggleSign.textContent = "+";
+  //             });
+  //         }
+  //       });
+  //     }
+  //   });
+  // }
 
-  function resetActiveClasses() {
-    document.querySelectorAll(".toggle-sign").forEach((toggleSign) => {
-      toggleSign.textContent = "+";
-    });
-  }
-  taggleSing();
+  // function resetActiveClasses() {
+  //   document.querySelectorAll(".toggle-sign").forEach((toggleSign) => {
+  //     toggleSign.textContent = "+";
+  //   });
+  // }
+  // taggleSing();
 
-  window.addEventListener("resize", function () {
-    resetActiveClasses();
-  });
+  // window.addEventListener("resize", function () {
+  //   resetActiveClasses();
+  // });
 
   document.getElementById("cartIcon").addEventListener("click", function () {
     window.location.href = "/pages/cart.html";
