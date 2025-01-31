@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
     searchInputs.forEach((searchInput) => {
       searchInput.addEventListener("keydown", (event) => {
         if (event.key === "Enter") {
+          event.preventDefault();
           const query = searchInput.value.trim();
           if (query) {
             window.location.href = `/pages/searchingpage.html?query=${encodeURIComponent(query)}`;
