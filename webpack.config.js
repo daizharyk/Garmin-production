@@ -189,12 +189,13 @@ module.exports = {
       title: "Serching ...",
       filename: "pages/searchingpage.html",
       template: "src/pages/searchingpage.html",
-      chunks: ["searchingInput", "main", "searchingpage"],
+      chunks: ["searchingInput", "main", "searchingpage" ],
       templateParameters: {
         footer: fs.readFileSync(
           path.resolve(__dirname, "src/pages/components/footer.html"),
           "utf-8"
         ),
+        
       },
     }),
     new HtmlWebpackPlugin({
