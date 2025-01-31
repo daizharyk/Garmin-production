@@ -188,7 +188,7 @@ module.exports = {
       title: "Serching ...",
       filename: "pages/searchingpage.html",
       template: "src/pages/searchingpage.html",
-      chunks: ["main", "animation", "authState", "searchingpage"],
+      chunks: ["animation", "main", "searchingpage"],
       templateParameters: {
         footer: fs.readFileSync(
           path.resolve(__dirname, "src/pages/components/footer.html"),
