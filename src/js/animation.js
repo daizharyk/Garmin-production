@@ -11,6 +11,27 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
+    if (searchInputs.length > 0) {
+      searchInputs.forEach((searchInput) => {
+        searchInput.addEventListener("keyup", (event) => {
+          if (event.key === "Enter") {
+            const query = searchInput.value.trim();
+            if (query) {
+              window.location.href = `/pages/searchingpage.html?query=${encodeURIComponent(query)}`;
+            }
+          }
+        });
+      });
+    }
+
+    if (closeSearch && searchBox && loginSection) {
+      closeSearch.addEventListener("click", () => {
+        searchBox.style.display = "none";
+        loginSection.style.display = "flex";
+        if (searchInputs.length > 0) searchInputs[0].value = "";
+      });
+    }
+
     const circleProgress = playPauseBtn.querySelector(".circle-progress");
     const playIcon = playPauseBtn.querySelector(".play-icon");
     const pauseIcon = playPauseBtn.querySelector(".pause-icon");
@@ -142,27 +163,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     toggleSearchingSvg();
-  }
-  
-  if (searchInputs.length > 0) {
-    searchInputs.forEach((searchInput) => {
-      searchInput.addEventListener("keyup", (event) => {
-        if (event.key === "Enter") {
-          const query = searchInput.value.trim();
-          if (query) {
-            window.location.href = `/pages/searchingpage.html?query=${encodeURIComponent(query)}`;
-          }
-        }
-      });
-    });
-  }
-
-  if (closeSearch && searchBox && loginSection) {
-    closeSearch.addEventListener("click", () => {
-      searchBox.style.display = "none";
-      loginSection.style.display = "flex";
-      if (searchInputs.length > 0) searchInputs[0].value = "";
-    });
   }
 
   function setupDropdownMenus() {
