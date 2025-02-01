@@ -2,10 +2,10 @@ import { getArticleById } from "../service/articleService";
 
 document.addEventListener("DOMContentLoaded", async () => {
   const itemId = new URLSearchParams(location.search).get("id");
-  //   if (!itemId) return;
+  if (!itemId) return;
 
   try {
-    const item = await getArticleById("6749d8f82a3b2227ced6b66");
+    const item = await getArticleById("itemId");
     console.log("item", item);
 
     if (!item) {
@@ -28,7 +28,6 @@ function renderCart(item) {
   const cartItem = document.createElement("div");
   cartItem.classList.add("cart-item");
 
-
   const cartImage = document.createElement("div");
   cartImage.classList.add("cart-image");
 
@@ -41,7 +40,6 @@ function renderCart(item) {
 
   link.appendChild(img);
   cartImage.appendChild(link);
-
 
   const cartInfo = document.createElement("div");
   cartInfo.classList.add("cart_info");
