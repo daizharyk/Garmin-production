@@ -235,7 +235,7 @@
   margin: 150px auto 150px auto;
   box-shadow: 0px 0px 3px 3px #e6e6e6;
   border-bottom: 1px solid #e0e0e0;
-padding: 10px;
+  padding: 10px;
 }
 .added-item-info p {
   font-weight: 700;
@@ -825,7 +825,18 @@ button:disabled {
     justify-content: center;
     width: 100%;
   }
-
+  .added-cart-container {
+    display: flex;
+    flex-direction: column;
+  }
+  .added-cart-buttons {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0;
+  }
+  .added-cart-buttons button {
+    width: 100%;
+  }
   .gallery-product {
     overflow: hidden;
     width: 100%;
