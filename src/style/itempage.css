@@ -826,7 +826,7 @@ button:disabled {
     width: 100%;
   }
   .added-cart-container {
-    display: flex;
+    display: none;
     flex-direction: column;
   }
   .added-cart-buttons {
