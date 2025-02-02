@@ -183,13 +183,76 @@
     "Noto Sans JP", "Noto Sans KR", "Prompt", sans-serif;
   margin: 1.5rem 0;
 }
+.added-cart-buttons {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 10px 15px 0 0;
+}
 
+.added-cart-buttons button {
+  padding: 1rem 2rem;
+  border-radius: 0;
+  border: 1px solid;
+  text-transform: uppercase;
+  font-size: 1rem;
+  transition: 0.2s all;
+  cursor: pointer;
+  font-weight: 500;
+  font-family: "Superscripts-Roboto", "Roboto", "Noto Sans TC", "Noto Sans SC",
+    "Noto Sans JP", "Noto Sans KR", "Prompt", sans-serif;
+}
+.added-cart-buttons button:first-child {
+  background: #fff;
+  color: #000;
+  border: 1px solid #000;
+}
+.added-cart-buttons button:first-child:hover {
+  background: #000;
+  color: #fff;
+  border: 1px solid #000;
+}
+.added-cart-buttons button:last-child {
+  background: #6dcff6;
+  color: #000;
+  border: 1px solid #6dcff6;
+}
+.added-cart-buttons button:last-child:hover {
+  background: #fff;
+  color: #000;
+  border: 1px solid #6dcff6;
+}
 .case-size h3 {
   display: flex;
   align-items: center;
   font-size: 0.75em;
 }
-
+.added-cart-container {
+  display: none;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 150px auto 150px auto;
+  box-shadow: 0px 0px 3px 3px #e6e6e6;
+  border-bottom: 1px solid #e0e0e0;
+padding: 10px;
+}
+.added-item-info p {
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+#added-iten-name {
+  margin-left: 20px;
+  font-weight: 400;
+}
+.added-item {
+  display: flex;
+  margin: 0 20px;
+}
+.added-cart-img {
+  width: 100px;
+  height: 100px;
+}
 .tooltip {
   font-size: 0.7rem;
   margin-left: 5px;
@@ -776,7 +839,7 @@ button:disabled {
     width: 100%;
   }
   .filters {
-    margin:  0 20px;
+    margin: 0 20px;
   }
   .similar-items-container {
     margin: 0 20px;

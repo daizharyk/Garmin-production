@@ -58,6 +58,7 @@
   flex-direction: column;
   align-items: center;
   margin: 0 10px 50px 10px;
+
 }
 .title-link {
   text-decoration: none;
@@ -163,15 +164,23 @@
   height: 100%;
 }
 .products-container {
+  display: flex;
+  flex-direction: column;
   margin: 10px;
   flex-basis: 70%;
+  gap: 20px;
 }
 .cart-image img {
   max-width: 150px;
 }
 .sidebar-container {
   margin: 10px;
+  position: sticky;
+  top: 1rem;
+  z-index: 100;
+  height: fit-content;
 }
+
 @keyframes loading {
   0% {
     background-position: 100% 0;
@@ -365,7 +374,6 @@
   font-weight: 400;
 }
 
-/* Стили для выпадающего меню */
 .dropdown {
   display: none;
   justify-content: center;
@@ -394,8 +402,6 @@
 .nav-item:hover .dropdown {
   display: flex;
 }
-
-/* Стили для колонки в выпадающем меню */
 
 .sub-menu {
   list-style-type: none;
@@ -867,7 +873,7 @@
   width: 100%;
   overflow: hidden;
 }
-/* Контейнер для кнопок управления */
+
 .slider-controls {
   position: absolute;
   top: 10px;
@@ -875,7 +881,6 @@
   z-index: 10;
 }
 
-/* Кнопка Play/Pause */
 .play-pause-btn {
   position: relative;
   width: 50px;
@@ -2159,7 +2164,6 @@ footer {
   }
   .cart-item {
     display: block;
-
   }
   .cart-item.skeletons {
     width: 100%;

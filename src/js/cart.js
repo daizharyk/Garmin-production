@@ -1,101 +1,123 @@
-import { getArticleById } from "../service/articleService";
-
+import { replaceSymbols } from "./utils/utils";
 document.addEventListener("DOMContentLoaded", async () => {
-  const itemId = new URLSearchParams(location.search).get("id");
-  if (!itemId) return;
+  const cart = JSON.parse(localStorage.getItem("cart")) || []; // Загружаем товары из localStorage
+  console.log("cart", cart);
 
-  try {
-    const item = await getArticleById("itemId");
-    console.log("item", item);
-
-    if (!item) {
-      console.error("Товар не найден!");
-      return;
-    }
-
-    renderCart(item);
-  } catch (error) {
-    console.error("Ошибка загрузки товара:", error);
+  if (cart.length === 0) {
+    return;
   }
+  renderCart(cart);
 });
 
-function renderCart(item) {
+function groupItemsById(cartItems) {
+  const groupedItems = {};
+  console.log("groupedItems", groupedItems);
+
+  cartItems.forEach((item) => {
+    const key = item._id;
+
+    if (groupedItems[key]) {
+      groupedItems[key].quantity += 1;
+    } else {
+      groupedItems[key] = { ...item, quantity: 1 };
+    }
+  });
+  console.log("groupedItems", groupedItems);
+  return Object.values(groupedItems);
+}
+
+function renderCart(cartItems) {
   const productsContainer = document.querySelector(".products-container");
   if (!productsContainer) return;
 
   productsContainer.innerHTML = "";
 
-  const cartItem = document.createElement("div");
-  cartItem.classList.add("cart-item");
+  const groupedItems = groupItemsById(cartItems);
 
-  const cartImage = document.createElement("div");
-  cartImage.classList.add("cart-image");
+  groupedItems.forEach((item) => {
+    const cartItem = document.createElement("div");
+    cartItem.classList.add("cart-item");
 
-  const link = document.createElement("a");
-  link.href = "#";
+    const cartImage = document.createElement("div");
 
-  const img = document.createElement("img");
-  img.src = item.image;
-  img.alt = item.name;
+    cartImage.classList.add("cart-image");
 
-  link.appendChild(img);
-  cartImage.appendChild(link);
+    const link = document.createElement("a");
+    link.href = `/pages/itempage.html?id=${item._id}`;
 
-  const cartInfo = document.createElement("div");
-  cartInfo.classList.add("cart_info");
+    const img = document.createElement("img");
+    img.src = item.image;
+    img.alt = item.name;
 
-  const titleLink = document.createElement("a");
-  titleLink.classList.add("title-link");
-  titleLink.href = "#";
-  const title = document.createElement("h2");
-  title.textContent = `${item.product_title}, ${item.color}`;
+    link.appendChild(img);
+    cartImage.appendChild(link);
 
-  const price = document.createElement("div");
-  price.classList.add("cart__price");
-  price.textContent = `$${item.price.toFixed(2)} USD`;
+    const cartInfo = document.createElement("div");
+    cartInfo.classList.add("cart_info");
 
-  const divQuantityWrapper = document.createElement("div");
-  divQuantityWrapper.classList.add("quantityWrapper");
-  const quantityTitle = document.createElement("p");
-  quantityTitle.textContent = "Quantity";
+    const titleLink = document.createElement("a");
+    titleLink.classList.add("title-link");
+    titleLink.href = `/pages/itempage.html?id=${item._id}`;
+    const title = document.createElement("h2");
+    title.innerHTML = `${replaceSymbols(item.product_title)}, ${item.color}`;
 
-  const quantitySelector = document.createElement("select");
-  quantitySelector.classList.add("cart__quantity");
+    const price = document.createElement("div");
+    price.classList.add("cart__price");
+    price.textContent = `$${item.price.toFixed(2)} USD`;
 
-  for (let i = 1; i <= 3; i++) {
-    const option = document.createElement("option");
-    option.value = i;
-    option.textContent = i;
-    quantitySelector.appendChild(option);
-  }
+    const divQuantityWrapper = document.createElement("div");
 
-  quantitySelector.addEventListener("change", () => {
-    const newPrice = item.price * parseInt(quantitySelector.value);
-    updateTotal(newPrice);
+    divQuantityWrapper.classList.add("quantityWrapper");
+
+    const quantityTitle = document.createElement("p");
+    quantityTitle.textContent = "Quantity";
+
+    const quantitySelector = document.createElement("select");
+    quantitySelector.classList.add("cart__quantity");
+
+    for (let i = 1; i <= item.quantity; i++) {
+      const option = document.createElement("option");
+      option.value = i;
+      option.textContent = i;
+      quantitySelector.appendChild(option);
+    }
+
+    quantitySelector.value = item.quantity;
+
+    quantitySelector.addEventListener("change", () => {
+      item.quantity = parseInt(quantitySelector.value);
+      updateCart(cartItems); // обновляем корзину в localStorage
+      updateTotal(cartItems);
+    });
+
+    const deliveryText = document.createElement("p");
+    deliveryText.classList.add("delivery-text");
+    deliveryText.textContent = "Available to ship in 1-3 business days.";
+
+    divQuantityWrapper.appendChild(quantityTitle);
+    divQuantityWrapper.appendChild(quantitySelector);
+    titleLink.appendChild(title);
+    cartInfo.appendChild(titleLink);
+    cartInfo.appendChild(price);
+    cartInfo.appendChild(divQuantityWrapper);
+
+    cartInfo.appendChild(deliveryText);
+
+    cartItem.appendChild(cartImage);
+    cartItem.appendChild(cartInfo);
+
+    productsContainer.appendChild(cartItem);
   });
-
-  const deliveryText = document.createElement("p");
-  deliveryText.classList.add("delivery-text");
-  deliveryText.textContent = "Available to ship in 1-3 business days.";
-
-  divQuantityWrapper.appendChild(quantityTitle);
-  divQuantityWrapper.appendChild(quantitySelector);
-  titleLink.appendChild(title);
-  cartInfo.appendChild(titleLink);
-  cartInfo.appendChild(price);
-  cartInfo.appendChild(divQuantityWrapper);
-
-  cartInfo.appendChild(deliveryText);
-
-  cartItem.appendChild(cartImage);
-  cartItem.appendChild(cartInfo);
-
-  productsContainer.appendChild(cartItem);
-
-  updateTotal(item.price);
+  updateTotal(cartItems);
 }
-
-function updateTotal(price) {
-  document.getElementById("subtotal").textContent = `$${price.toFixed(2)} USD`;
-  document.getElementById("total").textContent = `$${price.toFixed(2)} USD`;
+function updateTotal(cartItems) {
+  const total = cartItems.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0
+  ); // Считаем сумму с учетом количества каждого товара
+  document.getElementById("subtotal").textContent = `$${total.toFixed(2)} USD`;
+  document.getElementById("total").textContent = `$${total.toFixed(2)} USD`;
+}
+function updateCart(cartItems) {
+  localStorage.setItem("cart", JSON.stringify(cartItems));
 }

@@ -6,7 +6,7 @@ import {
   getEditionsByModelId,
   getVersionsByModelId,
 } from "../service/smartWatchService";
-
+import { replaceSymbols } from "./utils/utils";
 const navBar = document.querySelector(".nav-bar");
 const navBarOffsetTop = navBar.offsetTop;
 window.addEventListener("scroll", () => {
@@ -28,6 +28,45 @@ document.addEventListener("DOMContentLoaded", async () => {
   const solarFilterContainer = document.querySelector(".solarFilterContainer");
   const editionContainer = document.querySelector(".editionContainer");
   const versionContainer = document.querySelector(".versionContainer");
+  const addToCartBtn = document.querySelector(".add-cart");
+  const addedCartContainer = document.querySelector(".added-cart-container");
+  const mainItemContainer = document.querySelector(".main-item-container");
+  const addedItemName = document.getElementById("added-iten-name");
+
+  document.querySelector(".add-cart").addEventListener("click", () => {
+    if (!itemId) return;
+    try {
+      if (!item) {
+        console.error("Товар не найден!");
+        return;
+      }
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cart.push(item);
+
+      localStorage.setItem("cart", JSON.stringify(cart));
+
+      addedCartContainer.style.display = "flex";
+      mainItemContainer.style.display = "none";
+      addedItemName.innerHTML = replaceSymbols(
+        `${item.product_title}, ${item.color}`
+      );
+      document.querySelector(".added-cart-img").src = item.image;
+    } catch (error) {
+      console.error("Ошибка при добавлении товара в корзину:", error);
+    }
+  });
+
+  document
+    .querySelector(".added-cart-buttons button:last-child")
+    .addEventListener("click", () => {
+      window.location.href = "/pages/cart.html";
+    });
+  document
+    .querySelector(".added-cart-buttons button:first-child")
+    .addEventListener("click", () => {
+      addedCartContainer.style.display = "none";
+      mainItemContainer.style.display = "block";
+    });
 
   const caseSizeFilterContainer = document.querySelector(
     ".caseSizeFilterContainer"
@@ -431,12 +470,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     functionInfoContainer.appendChild(card);
   });
 
-  function replaceSymbols(text) {
-    if (!text) return "";
-    return text
-      .replace(/®/g, '<sup class="registered">®</sup>')
-      .replace(/™/g, '<sup class="trademark2">™</sup>');
-  }
   document.querySelector(".banner-title").innerHTML = replaceSymbols(
     item.banner_text.title
   );

@@ -594,126 +594,160 @@
       </div>
     </header>
     <main>
-      <section class="product">
-        <div class="gallery-product">
-          <div class="gallery-wrap">
-            <button class="carousel-control" id="carouselUp">
-              <span class="arrow-s">⏶</span>
-            </button>
-
-            <div class="carousel"></div>
-            <button class="carousel-control" id="carouselDown">
-              <span class="arrow-s">⏷</span>
-            </button>
-          </div>
-          <div class="product-img-container">
-            <div class="product-img-container1">
-              <button class="carousel-control1 arrow-left1" id="carouselLeft1">
-                &#9664;
-              </button>
-
-              <div class="carousel1"></div>
-              <button
-                class="carousel-control1 arrow-right1"
-                id="carouselRight1"
+      <div class="added-cart-container">
+        <div class="added-item">
+          <img class="added-cart-img" src="" alt="" />
+          <div class="added-item-info">
+            <p>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 14 14"
+                fill="Black"
+                xmlns="http://www.w3.org/2000/svg"
               >
-                &#9654;
+                <path
+                  d="M6.173 13.934a1 1 0 0 1-.723-.317l-3.5-3.75a1 1 0 1 1 1.449-1.376l2.735 2.93 6.187-8.78a1 1 0 1 1 1.64 1.14L6.979 13.61a1 1 0 0 1-.723.324h-.083z"
+                />
+              </svg>
+              Added To Cart
+            </p>
+
+            <p id="added-iten-name"></p>
+          </div>
+        </div>
+        <div class="added-cart-buttons">
+          <button>continue shopping</button>
+          <button>view cart</button>
+        </div>
+      </div>
+      <div class="main-item-container">
+        <section class="product">
+          <div class="gallery-product">
+            <div class="gallery-wrap">
+              <button class="carousel-control" id="carouselUp">
+                <span class="arrow-s">⏶</span>
+              </button>
+
+              <div class="carousel"></div>
+              <button class="carousel-control" id="carouselDown">
+                <span class="arrow-s">⏷</span>
               </button>
             </div>
-          </div>
-        </div>
-        <div class="product-info">
-          <h2 class="product-title"></h2>
-          <p class="product-color"></p>
-          <p></p>
-          <div class="sale-box">
-            <p id="sale-box"></p>
-          </div>
-          <div class="product-price">
-            <span class="currency-sign">$</span>
-            <span id="product-price"> </span>
-            <span class="currency-code">USD</span>
-          </div>
-          <div class="filters">
-            <div class="case-size musicFilterContainer">
-              <h3>Music</h3>
-              <div class="size-options" data-filter="music">
-                <div class="size-option" data-value="Yes">Yes</div>
-                <div class="size-option" data-value="No">No</div>
+            <div class="product-img-container">
+              <div class="product-img-container1">
+                <button
+                  class="carousel-control1 arrow-left1"
+                  id="carouselLeft1"
+                >
+                  &#9664;
+                </button>
+
+                <div class="carousel1"></div>
+                <button
+                  class="carousel-control1 arrow-right1"
+                  id="carouselRight1"
+                >
+                  &#9654;
+                </button>
               </div>
             </div>
-            <div class="case-size solarFilterContainer">
-              <h3>Solar</h3>
-              <div class="size-options" data-filter="solar">
-                <div class="size-option" data-value="Yes" id="filter-yes">
-                  Yes
+          </div>
+          <div class="product-info">
+            <h2 class="product-title"></h2>
+            <p class="product-color"></p>
+            <p></p>
+            <div class="sale-box">
+              <p id="sale-box"></p>
+            </div>
+            <div class="product-price">
+              <span class="currency-sign">$</span>
+              <span id="product-price"> </span>
+              <span class="currency-code">USD</span>
+            </div>
+            <div class="filters">
+              <div class="case-size musicFilterContainer">
+                <h3>Music</h3>
+                <div class="size-options" data-filter="music">
+                  <div class="size-option" data-value="Yes">Yes</div>
+                  <div class="size-option" data-value="No">No</div>
                 </div>
-                <div class="size-option" data-value="No" id="filter-no">No</div>
               </div>
+              <div class="case-size solarFilterContainer">
+                <h3>Solar</h3>
+                <div class="size-options" data-filter="solar">
+                  <div class="size-option" data-value="Yes" id="filter-yes">
+                    Yes
+                  </div>
+                  <div class="size-option" data-value="No" id="filter-no">
+                    No
+                  </div>
+                </div>
+              </div>
+              <div class="case-size caseSizeFilterContainer"></div>
+              <div class="case-size versionContainer"></div>
+              <div class="case-size editionContainer"></div>
             </div>
-            <div class="case-size caseSizeFilterContainer"></div>
-            <div class="case-size versionContainer"></div>
-            <div class="case-size editionContainer"></div>
-          </div>
-          <div class="similar-items-container">
-            <div class="model-color-title">Model/Color</div>
-            <div class="items-list"></div>
-          </div>
-          <div class="add_card">
-            <a class="add-cart">ADD TO CART</a>
-          </div>
-          <p>Available to ship in 1–3 business days.</p>
-        </div>
-      </section>
-      <article>
-        <div class="information_container">
-          <div class="nav-bar">
-            <ul class="subnav">
-              <li><a href="">Overview</a></li>
-              <li><a href="">Specs</a></li>
-              <li><a href="">In the Box</a></li>
-              <li><a href="">Video Gallery</a></li>
-              <li><a href="">Accessories</a></li>
-            </ul>
-          </div>
-          <div class="banner-with-disc">
-            <div class="bannertext-container">
-              <h2 class="banner-title"></h2>
-              <p class="disc-right"></p>
+            <div class="similar-items-container">
+              <div class="model-color-title">Model/Color</div>
+              <div class="items-list"></div>
             </div>
-            <img class="bannerwithtext" id="bannerwithtext" src="" alt="" />
-            <img
-              class="bannerwithtext"
-              id="bannerwithtext-adaptive"
-              src=""
-              alt=""
-            />
-          </div>
-          <div class="video-wrapper">
-            <div class="video-thumbnail">
-              <img src="" alt="" class="thumbnail-img" />
-              <button class="play-button">▶</button>
+            <div class="add_card">
+              <a class="add-cart">ADD TO CART</a>
             </div>
-            <iframe
-              id="video-player"
-              src=""
-              title="YouTube video player"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allowfullscreen
-            ></iframe>
+            <p>Available to ship in 1–3 business days.</p>
           </div>
-        </div>
-        <div>
-          <img class="walpapperinfo" src="" alt="" />
-          <img class="walpapperinfo-adaptive" src="" alt="" />
-        </div>
-        <div class="watch-function-info-container">
-          <div class="cards-container"></div>
-          <div id="pagination-container" class="pagination-container"></div>
-        </div>
-      </article>
+        </section>
+        <article>
+          <div class="information_container">
+            <div class="nav-bar">
+              <ul class="subnav">
+                <li><a href="">Overview</a></li>
+                <li><a href="">Specs</a></li>
+                <li><a href="">In the Box</a></li>
+                <li><a href="">Video Gallery</a></li>
+                <li><a href="">Accessories</a></li>
+              </ul>
+            </div>
+            <div class="banner-with-disc">
+              <div class="bannertext-container">
+                <h2 class="banner-title"></h2>
+                <p class="disc-right"></p>
+              </div>
+              <img class="bannerwithtext" id="bannerwithtext" src="" alt="" />
+              <img
+                class="bannerwithtext"
+                id="bannerwithtext-adaptive"
+                src=""
+                alt=""
+              />
+            </div>
+            <div class="video-wrapper">
+              <div class="video-thumbnail">
+                <img src="" alt="" class="thumbnail-img" />
+                <button class="play-button">▶</button>
+              </div>
+              <iframe
+                id="video-player"
+                src=""
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+          <div>
+            <img class="walpapperinfo" src="" alt="" />
+            <img class="walpapperinfo-adaptive" src="" alt="" />
+          </div>
+          <div class="watch-function-info-container">
+            <div class="cards-container"></div>
+            <div id="pagination-container" class="pagination-container"></div>
+          </div>
+        </article>
+      </div>
     </main>
 
     <% if (htmlWebpackPlugin.options.templateParameters.footer) { %> <%=

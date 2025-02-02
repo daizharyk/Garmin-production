@@ -586,43 +586,44 @@
       <nav class="freeground">
         <a href="./shipping.html">FREE GROUND SHIPPING ON ORDERS $25 AND UP</a>
       </nav>
-      <main>
-        <div class="cart">
-          <h1>Cart</h1>
-          <div class="cart__info">
-            <div class="products-container">
-              <div class="cart-item skeletons">
-                <div class="cart-image skeleton-image"></div>
-                <div class="skelet__info">
-                  <div class="skeletons skeleton-text"></div>
-                  <div class="skeletons skeleton-price"></div>
-                </div>
-              </div>
-            </div>
-            <div class="sidebar-container">
-              <div class="order-total">
-                <div class="order-cost-summery">
-                  <p>Subtotal: <span id="subtotal">$0.00</span></p>
-                  <p>Estimated Total: <span id="total">$0.00</span></p>
-                </div>
-                <p>Shipping and tax calculated in checkout</p>
-                <div class="discount_code">
-                  <p>Discount Code</p>
-                  <div class="discount-wrapper">
-                    <input type="text" id="discount_code" />
-                    <button id="applyDiscount">Apply</button>
-                  </div>
-                </div>
-                <button class="check-out">check out</button>
-              </div>
-              <div class="continue-shopping">
-                <a>Continue Shopping</a>
+    </header>
+    <main>
+      <div class="cart">
+        <h1>Cart</h1>
+        <div class="cart__info">
+          <div class="products-container">
+            <div class="cart-item skeletons">
+              <div class="cart-image skeleton-image"></div>
+              <div class="skelet__info">
+                <div class="skeletons skeleton-text"></div>
+                <div class="skeletons skeleton-price"></div>
               </div>
             </div>
           </div>
+          <div class="sidebar-container">
+            <div class="order-total">
+              <div class="order-cost-summery">
+                <p>Subtotal: <span id="subtotal">$0.00</span></p>
+                <p>Estimated Total: <span id="total">$0.00</span></p>
+              </div>
+              <p>Shipping and tax calculated in checkout</p>
+              <div class="discount_code">
+                <p>Discount Code</p>
+                <div class="discount-wrapper">
+                  <input type="text" id="discount_code" />
+                  <button id="applyDiscount">Apply</button>
+                </div>
+              </div>
+              <button class="check-out">check out</button>
+            </div>
+            <div class="continue-shopping">
+              <a>Continue Shopping</a>
+            </div>
+          </div>
         </div>
-      </main>
-    </header>
+      </div>
+    </main>
+
     <% if (htmlWebpackPlugin.options.templateParameters.footer) { %> <%=
     htmlWebpackPlugin.options.templateParameters.footer %> <% } %>
   </body>

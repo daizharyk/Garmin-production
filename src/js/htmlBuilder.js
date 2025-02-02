@@ -1,14 +1,15 @@
 import "../style/style.css";
 import "../style/shipping.css";
 import "../style/itempage.css";
+import { replaceSymbols } from "./utils/utils";
 
 export function createCards(data) {
   const container = document.getElementById("cards-container");
-  container.innerHTML = "";
+
   if (!container) {
     return;
   }
-
+  container.innerHTML = "";
   const isSearchPage = window.location.pathname.includes("searchingpage");
 
   data.forEach((item) => {
@@ -28,8 +29,7 @@ export function createCards(data) {
     const title = document.createElement("h2");
 
     let titleText = item.name;
-    titleText = titleText.replace(/®/g, '<sup class="registered">®</sup>');
-    titleText = titleText.replace(/™/g, '<sup class="trademark2">™</sup>');
+    titleText = replaceSymbols(`${titleText}`);
     title.innerHTML = titleText;
 
     const description = document.createElement("p");
