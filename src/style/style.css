@@ -50,8 +50,8 @@
   color: white;
   font-size: .75rem;
   font-weight: 500;
-  width: 1.25rem;
-  height: 1.25rem;
+  width: 1.3rem;
+  height: 1.3rem;
   border-radius: 100%;
   display: flex;
   align-items: center;
@@ -2137,6 +2137,9 @@ footer {
   .card-link.skeleton {
     flex: 1 1 100%;
     max-width: 100%;
+  }
+  #cartIcon{
+    margin: 0;
   }
   .login-section {
     display: flex;

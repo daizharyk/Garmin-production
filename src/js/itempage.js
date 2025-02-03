@@ -1,3 +1,4 @@
+import { updateCartCount } from "./cart";
 import { getArticleById, getItemsByModel } from "../service/articleService";
 import "../style/style.css";
 import "../style/shipping.css";
@@ -7,9 +8,12 @@ import {
   getVersionsByModelId,
 } from "../service/smartWatchService";
 import { replaceSymbols } from "./utils/utils";
-import { updateCartCount } from "./animation";
+
 const navBar = document.querySelector(".nav-bar");
 const navBarOffsetTop = navBar.offsetTop;
+
+
+
 window.addEventListener("scroll", () => {
   const currentScroll =
     window.pageYOffset || document.documentElement.scrollTop;
@@ -49,9 +53,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       localStorage.setItem("cart", JSON.stringify(cart));
 
-
-
-      updateCartCount(); 
+      updateCartCount();
 
       addedCartContainer.style.display = "flex";
       mainItemContainer.style.display = "none";
@@ -207,7 +209,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
     });
   }
-
 
   loadingContainer.style.display = "none";
   mainItemContainer.style.display = "block";
@@ -497,7 +498,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 
   initCarousel();
+
 });
+
 
 function initCarousel() {
   const carouselHorizontal = document.querySelector(".carousel1");

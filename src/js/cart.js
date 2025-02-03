@@ -1,8 +1,7 @@
-import { updateCartCount } from "./animation";
+
 import { replaceSymbols } from "./utils/utils";
 document.addEventListener("DOMContentLoaded", async () => {
   const cart = JSON.parse(localStorage.getItem("cart")) || []; // Загружаем товары из localStorage
-
 
   const emptyCartDiv = document.querySelector(".empty-cart");
   const cartDiv = document.querySelector(".cart");
@@ -17,24 +16,23 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   }
 
-  toggleCartDisplay(cart)
+  toggleCartDisplay(cart);
 
   if (cart.length === 0) return;
 
   function groupItemsById(cartItems) {
     const groupedItems = {};
 
-
     cartItems.forEach((item) => {
       const key = item._id;
 
       if (groupedItems[key]) {
-        groupedItems[key].cartQuantity += 1; 
+        groupedItems[key].cartQuantity += 1;
       } else {
         groupedItems[key] = {
           ...item,
-          cartQuantity: 1, 
-          dbQuantity: item.quantity, 
+          cartQuantity: 1,
+          dbQuantity: item.quantity,
         };
       }
     });
@@ -159,7 +157,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
     localStorage.setItem("cart", JSON.stringify(newCart));
-    updateCartCount(); 
+    updateCartCount();
     updateTotal(newCart);
   }
 
@@ -167,7 +165,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
     cart = cart.filter((item) => item._id !== id);
     localStorage.setItem("cart", JSON.stringify(cart));
-    updateCartCount(); 
+    updateCartCount();
     renderCart(cart);
     toggleCartDisplay(cart);
   }
@@ -185,3 +183,14 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   renderCart(cart);
 });
+
+export function updateCartCount() {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const cartCountElement = document.querySelector(".cart-count");
+
+  if (cartCountElement) {
+    const totalItems = cart.length;
+    cartCountElement.textContent = totalItems;
+    cartCountElement.style.visibility = totalItems > 0 ? "visible" : "hidden";
+  }
+}

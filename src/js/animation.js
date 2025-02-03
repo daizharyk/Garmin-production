@@ -1,6 +1,7 @@
 import "../style/style.css";
 import "../style/shipping.css";
 import "../style/itempage.css";
+import { updateCartCount } from "./cart";
 
 document.addEventListener("DOMContentLoaded", function () {
   const searchingSvg = document.getElementById("searchingSvg");
@@ -215,27 +216,25 @@ document.addEventListener("DOMContentLoaded", function () {
       return dropdown.contains(relatedTarget);
     }
   }
+  console.log("lllll");
 
   setupDropdownMenus();
   window.addEventListener("resize", setupDropdownMenus);
 
   const userMenu = document.querySelector(".user-menu");
   const dropdown = document.querySelector(".dropdown-user");
-
+  console.log("lllll");
   if (userMenu && dropdown) {
     let isMobile = window.innerWidth < 768;
     let hoverEnabled = false;
 
-    // Функция для управления видимостью
     const toggleDropdown = (show) => {
       dropdown.classList.toggle("show", show);
     };
 
-    // Обработчики ховера
     const handleMouseEnter = () => hoverEnabled && toggleDropdown(true);
     const handleMouseLeave = () => hoverEnabled && toggleDropdown(false);
 
-    // Обновление режима при изменении размера
     const updateInteractionMode = () => {
       isMobile = window.innerWidth < 768;
       hoverEnabled = !isMobile;
@@ -457,17 +456,4 @@ document.addEventListener("DOMContentLoaded", function () {
   updateCartCount();
 });
 
-export function updateCartCount() {
-  const cart = JSON.parse(localStorage.getItem("cart")) || [];
-  const cartCountElement = document.querySelector(".cart-count");
-  const totalItems = cart.length;
 
-  if (cartCountElement) {
-    if (totalItems > 0) {
-      cartCountElement.textContent = totalItems;
-      cartCountElement.style.visibility = "visible";
-    } else {
-      cartCountElement.style.visibility = "hidden";
-    }
-  }
-}
