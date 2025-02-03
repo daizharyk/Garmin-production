@@ -7,6 +7,7 @@ import {
   getVersionsByModelId,
 } from "../service/smartWatchService";
 import { replaceSymbols } from "./utils/utils";
+import { updateCartCount } from "./animation";
 const navBar = document.querySelector(".nav-bar");
 const navBarOffsetTop = navBar.offsetTop;
 window.addEventListener("scroll", () => {
@@ -47,6 +48,10 @@ document.addEventListener("DOMContentLoaded", async () => {
       cart.push(item);
 
       localStorage.setItem("cart", JSON.stringify(cart));
+
+
+
+      updateCartCount(); 
 
       addedCartContainer.style.display = "flex";
       mainItemContainer.style.display = "none";
@@ -206,7 +211,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   loadingContainer.style.display = "none";
   mainItemContainer.style.display = "block";
-  
+
   function initializeFilter(filterButtons, initialValue, filterKey) {
     const [yesButton, noButton] = filterButtons;
 

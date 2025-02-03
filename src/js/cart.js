@@ -1,7 +1,8 @@
+import { updateCartCount } from "./animation";
 import { replaceSymbols } from "./utils/utils";
 document.addEventListener("DOMContentLoaded", async () => {
   const cart = JSON.parse(localStorage.getItem("cart")) || []; // Загружаем товары из localStorage
-  console.log("cart", cart);
+
 
   const emptyCartDiv = document.querySelector(".empty-cart");
   const cartDiv = document.querySelector(".cart");
@@ -22,18 +23,18 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   function groupItemsById(cartItems) {
     const groupedItems = {};
-    console.log("groupedItems", groupedItems);
+
 
     cartItems.forEach((item) => {
       const key = item._id;
 
       if (groupedItems[key]) {
-        groupedItems[key].cartQuantity += 1; // Увеличиваем счётчик добавлений
+        groupedItems[key].cartQuantity += 1; 
       } else {
         groupedItems[key] = {
           ...item,
-          cartQuantity: 1, // Начальное количество в корзине
-          dbQuantity: item.quantity, // Максимум из БД
+          cartQuantity: 1, 
+          dbQuantity: item.quantity, 
         };
       }
     });
@@ -157,8 +158,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
     });
 
-    // Обновляем корзину и сохраняем
     localStorage.setItem("cart", JSON.stringify(newCart));
+    updateCartCount(); 
     updateTotal(newCart);
   }
 
@@ -166,6 +167,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
     cart = cart.filter((item) => item._id !== id);
     localStorage.setItem("cart", JSON.stringify(cart));
+    updateCartCount(); 
     renderCart(cart);
     toggleCartDisplay(cart);
   }
@@ -180,5 +182,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       `$${total.toFixed(2)} USD`;
     document.getElementById("total").textContent = `$${total.toFixed(2)} USD`;
   }
+
   renderCart(cart);
 });

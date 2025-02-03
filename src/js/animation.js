@@ -439,8 +439,35 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("resize", function () {
     resetActiveClasses();
   });
+  const cartIcon = document.getElementById("cartIcon");
 
-  document.getElementById("cartIcon").addEventListener("click", function () {
+  cartIcon.addEventListener("click", function () {
     window.location.href = "/pages/cart.html";
   });
+
+  if (cartIcon && !cartIcon.querySelector(".cart-count")) {
+    const cartCount = document.createElement("span");
+    cartCount.classList.add("cart-count");
+    cartCount.textContent = "0";
+    cartCount.style.visibility = "hidden";
+
+    cartIcon.appendChild(cartCount);
+  }
+
+  updateCartCount();
 });
+
+export function updateCartCount() {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const cartCountElement = document.querySelector(".cart-count");
+  const totalItems = cart.length;
+
+  if (cartCountElement) {
+    if (totalItems > 0) {
+      cartCountElement.textContent = totalItems;
+      cartCountElement.style.visibility = "visible";
+    } else {
+      cartCountElement.style.visibility = "hidden";
+    }
+  }
+}
