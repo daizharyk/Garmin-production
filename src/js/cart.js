@@ -3,9 +3,22 @@ document.addEventListener("DOMContentLoaded", async () => {
   const cart = JSON.parse(localStorage.getItem("cart")) || []; // Загружаем товары из localStorage
   console.log("cart", cart);
 
-  if (cart.length === 0) return;
+  const emptyCartDiv = document.querySelector(".empty-cart");
+  const cartDiv = document.querySelector(".cart");
 
- 
+  function toggleCartDisplay(cartItems) {
+    if (!cartItems || cartItems.length === 0) {
+      emptyCartDiv.style.display = "flex";
+      cartDiv.style.display = "none";
+    } else {
+      emptyCartDiv.style.display = "none";
+      cartDiv.style.display = "flex";
+    }
+  }
+
+  toggleCartDisplay(cart)
+
+  if (cart.length === 0) return;
 
   function groupItemsById(cartItems) {
     const groupedItems = {};
@@ -45,8 +58,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       cartItem.dataset.color = item.color;
       cartItem.dataset.price = item.price;
       cartItem.dataset.image = item.image;
-      cartItem.dataset.dbQuantity = item.dbQuantity; // 3 из БД
-      cartItem.dataset.cartQuantity = item.cartQuantity; // Текущее в корзине
+      cartItem.dataset.dbQuantity = item.dbQuantity;
+      cartItem.dataset.cartQuantity = item.cartQuantity;
 
       const cartImage = document.createElement("div");
 
@@ -93,10 +106,21 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
 
       quantitySelector.value = item.cartQuantity;
+      quantitySelector.addEventListener("change", (e) => {
+        cartItem.dataset.cartQuantity = parseInt(e.target.value);
+        updateCartFromDOM();
+      });
 
       const deliveryText = document.createElement("p");
       deliveryText.classList.add("delivery-text");
       deliveryText.textContent = "Available to ship in 1-3 business days.";
+
+      const removeButton = document.createElement("button");
+      removeButton.classList.add("remove-item");
+      removeButton.innerHTML = "&#10006;";
+      removeButton.addEventListener("click", () => {
+        removeFromCart(item._id);
+      });
 
       divQuantityWrapper.appendChild(quantityTitle);
       divQuantityWrapper.appendChild(quantitySelector);
@@ -104,26 +128,11 @@ document.addEventListener("DOMContentLoaded", async () => {
       cartInfo.appendChild(titleLink);
       cartInfo.appendChild(price);
       cartInfo.appendChild(divQuantityWrapper);
-
       cartInfo.appendChild(deliveryText);
-
       cartItem.appendChild(cartImage);
       cartItem.appendChild(cartInfo);
-
+      cartItem.appendChild(removeButton);
       productsContainer.appendChild(cartItem);
-
-      quantitySelector.addEventListener("change", (e) => {
-        const newQuantity = parseInt(e.target.value);
-        const maxAllowed = parseInt(cartItem.dataset.dbQuantity);
-
-        // Если выбрано больше, чем доступно, устанавливаем максимум
-        if (newQuantity > maxAllowed) {
-          e.target.value = maxAllowed;
-          return;
-        }
-        cartItem.dataset.cartQuantity = newQuantity;
-        updateCartFromDOM();
-      });
     });
     updateTotal(cartItems);
   }
@@ -151,6 +160,14 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Обновляем корзину и сохраняем
     localStorage.setItem("cart", JSON.stringify(newCart));
     updateTotal(newCart);
+  }
+
+  function removeFromCart(id) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cart = cart.filter((item) => item._id !== id);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    renderCart(cart);
+    toggleCartDisplay(cart);
   }
 
   function updateTotal(cartItems) {

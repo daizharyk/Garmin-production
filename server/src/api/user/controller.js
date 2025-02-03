@@ -97,7 +97,7 @@ module.exports = {
 
     try {
       await userService.resetPassword(token, newPassword);
-      res.status(200).send({  message: "Password has been reset successfully" });
+      res.status(200).send({ message: "Password has been reset successfully" });
     } catch (error) {
       next(error);
     }

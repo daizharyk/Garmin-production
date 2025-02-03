@@ -28,10 +28,13 @@ document.addEventListener("DOMContentLoaded", async () => {
   const solarFilterContainer = document.querySelector(".solarFilterContainer");
   const editionContainer = document.querySelector(".editionContainer");
   const versionContainer = document.querySelector(".versionContainer");
-  const addToCartBtn = document.querySelector(".add-cart");
   const addedCartContainer = document.querySelector(".added-cart-container");
   const mainItemContainer = document.querySelector(".main-item-container");
   const addedItemName = document.getElementById("added-iten-name");
+  const loadingContainer = document.getElementById("loading-container");
+
+  loadingContainer.style.display = "flex";
+  mainItemContainer.style.display = "none";
 
   document.querySelector(".add-cart").addEventListener("click", () => {
     if (!itemId) return;
@@ -200,6 +203,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   }
 
+
+  loadingContainer.style.display = "none";
+  mainItemContainer.style.display = "block";
+  
   function initializeFilter(filterButtons, initialValue, filterKey) {
     const [yesButton, noButton] = filterButtons;
 

@@ -12,8 +12,10 @@ document
     const name = document.getElementById("name").value;
     const country = document.getElementById("country").value;
     const loadingSpinner = document.getElementById("loadingSpinner");
+    const signInBtn = document.querySelector(".sign-in-btn");
 
     loadingSpinner.style.display = "inline-block";
+    signInBtn.style.color = "#ddd";
     document.getElementById("createAccountBtn").style.color = "#ddd";
     createAccountBtn.disabled = true;
     loginError.style.display = "none";
@@ -22,17 +24,32 @@ document
       const data = await register({ name, email, password, country });
 
       loadingSpinner.style.display = "none";
+      signInBtn.style.color = "#000";
       createAccountBtn.disabled = false;
       document.getElementById("createAccountBtn").style.color = "#000";
 
-      if (data.success) {
+      if (data.message === "User registered successfully") {
         const loginData = await login({ email, password });
+        console.log("loginData", loginData);
+        if (loginData._id && loginData.token) {
+          localStorage.setItem(
+            "user",
+            JSON.stringify({
+              _id: loginData._id,
+              name: loginData.name,
+              email: loginData.email,
+              token: loginData.token,
+            })
+          );
 
-        if (loginData.success) {
-          localStorage.setItem("user", JSON.stringify(loginData));
-
-          alert("User registered and logged in successfully");
-          window.location.href = "../index.html";
+          const redirectAfterLogin =
+            sessionStorage.getItem("redirectAfterLogin");
+          if (redirectAfterLogin) {
+            window.location.href = redirectAfterLogin;
+          } else {
+            window.location.replace("/index.html");
+          }
+          sessionStorage.removeItem("redirectAfterLogin");
         } else {
           loginError.innerHTML = `
             ${loginData.message}
@@ -42,8 +59,13 @@ document
         }
       }
     } catch (error) {
-      console.error("Error during registration:", error);
-      alert("An error occurred. Please try again later.");
+      const errorMessage =
+        error.message || "An error occurred. Please try again.";
+      loginError.innerHTML = `
+    ${errorMessage}
+    <button class="close-btn" id="closeError">&#215</button>
+  `;
+      loginError.style.display = "block";
     } finally {
       loadingSpinner.style.display = "none";
       createAccountBtn.disabled = false;

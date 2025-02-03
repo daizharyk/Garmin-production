@@ -354,10 +354,11 @@ input.error {
 
 .sign-in-btn {
   position: relative;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   border: 1px solid transparent;
+  padding: 10px 20px;
   width: 100%;
   height: 50px;
   color: #000;
@@ -370,7 +371,7 @@ input.error {
     color 0.3s;
   font-weight: 500;
   margin: 35px 0;
-  box-sizing: border-box;
+
 }
 
 .sign-in-btn:disabled {
@@ -502,16 +503,12 @@ label .required {
   width: 25px;
   height: 25px;
   border: 3px solid transparent;
-  border-top: 5px solid #000;
+  border-top: 5px solid #000; 
   border-radius: 50%;
   animation: spin 1s linear infinite;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   pointer-events: none;
 }
-
 @keyframes spin {
   0% {
     transform: rotate(0deg);

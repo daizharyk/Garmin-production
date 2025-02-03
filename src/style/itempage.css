@@ -141,7 +141,21 @@
 .selected {
   border-color: #2c2b2b;
 }
-
+.main-item-container {
+  display: none; 
+}
+#loading-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
 .carousel-img,
 #mainImage {
   transition:
@@ -680,7 +694,7 @@ button:disabled {
 }
 
 .sticky {
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   width: 100%;
@@ -756,7 +770,20 @@ button:disabled {
   .gallery-wrap {
     display: none;
   }
-
+  .added-cart-container {
+    display: none;
+    flex-direction: column;
+  
+  }
+ 
+  .added-cart-buttons {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0;
+  }
+  .added-cart-buttons button {
+    width: 100%;
+  }
   .function-info-card img {
     object-fit: contain;
     height: auto;
@@ -825,18 +852,7 @@ button:disabled {
     justify-content: center;
     width: 100%;
   }
-  .added-cart-container {
-    display: none;
-    flex-direction: column;
-  }
-  .added-cart-buttons {
-    display: flex;
-    flex-direction: column;
-    margin: 20px 0;
-  }
-  .added-cart-buttons button {
-    width: 100%;
-  }
+
   .gallery-product {
     overflow: hidden;
     width: 100%;

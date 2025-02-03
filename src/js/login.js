@@ -48,10 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
           }
           const redirectAfterLogin =
             sessionStorage.getItem("redirectAfterLogin");
-          if (redirectAfterLogin === "account") {
-            window.location.href = "/pages/accountProfile.html";
-          } else if (redirectAfterLogin) {
-            // Перенаправляем на сохраненную страницу
+          if (redirectAfterLogin) {
             window.location.href = redirectAfterLogin;
           } else {
             window.location.href = "/index.html";
