@@ -30,7 +30,6 @@ document
 
       if (data.message === "User registered successfully") {
         const loginData = await login({ email, password });
-        console.log("loginData", loginData);
         if (loginData._id && loginData.token) {
           localStorage.setItem(
             "user",

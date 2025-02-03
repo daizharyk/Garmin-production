@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
       localStorage.removeItem("user");
       sessionStorage.removeItem("user");
 
-      if (currentPage.includes("account")) {
+      if (window.location.pathname === "/pages/accountProfile.html") {
         window.location.href = "/index.html";
       } else {
         window.location.href = currentPage;
@@ -25,10 +25,12 @@ document.addEventListener("DOMContentLoaded", function () {
     authLink.textContent = "Sign In";
   }
 
-  
   accountLink.addEventListener("click", function () {
     if (!user || user === "null" || user === "undefined") {
-      sessionStorage.setItem("redirectAfterLogin", "/pages/accountProfile.html");
+      sessionStorage.setItem(
+        "redirectAfterLogin",
+        "/pages/accountProfile.html"
+      );
       window.location.href = "/pages/signIn.html";
     } else {
       window.location.href = "/pages/accountProfile.html";
