@@ -6,6 +6,13 @@ const jwt = require("jsonwebtoken");
 
 const { generateJWToken } = require("../utils/jwtWebToken");
 const bcrypt = require("bcryptjs");
+
+function isPasswordSecure(password) {
+  const passwordRegex =
+    /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+  return passwordRegex.test(password);
+}
+
 module.exports = {
   findAllUsers: async () => {
     const users = await userRepository.findAllUser();
@@ -17,6 +24,12 @@ module.exports = {
     if (existingUser) {
       throw new ExistingEntityError("User with this email already exist");
     }
+    if (!isPasswordSecure(userData.password)) {
+      throw new Error(
+        "Password must be at least 8 characters long, contain letters, numbers, and special characters"
+      );
+    }
+
     const newUser = await userRepository.createUser(userData);
     return newUser;
   },

@@ -1,7 +1,7 @@
 import "../style/style.css";
 import "../style/shipping.css";
 import "../style/itempage.css";
-import { updateCartCount } from "./cart";
+import { updateCartCount } from "./utils/cart-utils.js";
 
 document.addEventListener("DOMContentLoaded", function () {
   const searchingSvg = document.getElementById("searchingSvg");
@@ -455,5 +455,3 @@ document.addEventListener("DOMContentLoaded", function () {
 
   updateCartCount();
 });
-
-

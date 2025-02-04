@@ -1,9 +1,9 @@
 import "../style/style.css";
 import "../style/shipping.css";
 import "../style/itempage.css";
-import { replaceSymbols } from "./utils/utils";
+import { replaceSymbols } from "./utils/replaceSymbols";
 
-export function createCards(data) {
+export function createCards(data, page = 1, perPage = 9) {
   const container = document.getElementById("cards-container");
 
   if (!container) {
@@ -12,7 +12,12 @@ export function createCards(data) {
   container.innerHTML = "";
   const isSearchPage = window.location.pathname.includes("searchingpage");
 
-  data.forEach((item) => {
+  const startIndex = (page - 1) * perPage;
+  const endIndex = startIndex + perPage;
+
+  const paginatedData = data.slice(startIndex, endIndex);
+
+  paginatedData.forEach((item) => {
     const link = document.createElement("a");
     link.href = `/pages/itempage.html?id=${item._id}`;
     link.classList.add("card-link");
@@ -52,6 +57,40 @@ export function createCards(data) {
 
     container.appendChild(link);
   });
+
+  createPaginationButtons(data.length, page, perPage);
+}
+
+function createPaginationButtons(totalItems, currentPage, perPage) {
+  const paginationContainer = document.getElementById("pagination-container");
+  if (!paginationContainer) return;
+
+  paginationContainer.innerHTML = "";
+  const totalPages = Math.ceil(totalItems / perPage);
+
+  if (totalPages > 1) {
+    for (let page = 1; page <= totalPages; page++) {
+      const pageButton = document.createElement("button");
+      pageButton.textContent = page;
+      pageButton.classList.add("pagination-btn");
+
+      if (page === currentPage) {
+        pageButton.classList.add("active"); // Подсветка текущей страницы
+      }
+
+      pageButton.addEventListener("click", () => {
+        updatePage(page);
+      });
+
+      paginationContainer.appendChild(pageButton);
+    }
+  }
+}
+
+function updatePage(page) {
+  const urlParams = new URLSearchParams(window.location.search);
+  urlParams.set("page", page);
+  window.location.search = urlParams.toString();
 }
 
 export function scrollToItems() {

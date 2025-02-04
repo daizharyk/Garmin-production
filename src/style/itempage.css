@@ -331,7 +331,7 @@
   font-weight: 600;
   line-height: 1rem;
   background: #6dcff6;
-  width: 170px;
+  width: fit-content;
   height: 45px;
   padding: 1.5em 3em;
   margin: 1em 0 1em;

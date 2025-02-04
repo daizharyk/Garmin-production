@@ -45,10 +45,10 @@
 .cart-count {
   position: absolute;
   top: 10px;
-  right: 10px;
+  right: 30px;
   background: rgb(0, 0, 0);
   color: white;
-  font-size: .75rem;
+  font-size: 0.75rem;
   font-weight: 500;
   width: 1.3rem;
   height: 1.3rem;
@@ -2138,7 +2138,7 @@ footer {
     flex: 1 1 100%;
     max-width: 100%;
   }
-  #cartIcon{
+  #cartIcon {
     margin: 0;
   }
   .login-section {
@@ -2228,7 +2228,13 @@ footer {
     font-size: 1rem;
     padding: 0;
   }
+  .cart-count {
+    top: 10px;
+    right: 10px;
 
+    width: 1.3rem;
+    height: 1.3rem;
+  }
   .content a {
     font-size: 0.8rem;
   }

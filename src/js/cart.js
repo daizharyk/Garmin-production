@@ -1,6 +1,12 @@
+import { updateCartCount } from "./utils/cart-utils.js";
+import { replaceSymbols } from "./utils/replaceSymbols";
 
-import { replaceSymbols } from "./utils/utils";
+
+
+
 document.addEventListener("DOMContentLoaded", async () => {
+
+
   const cart = JSON.parse(localStorage.getItem("cart")) || []; // Загружаем товары из localStorage
 
   const emptyCartDiv = document.querySelector(".empty-cart");
@@ -184,13 +190,3 @@ document.addEventListener("DOMContentLoaded", async () => {
   renderCart(cart);
 });
 
-export function updateCartCount() {
-  const cart = JSON.parse(localStorage.getItem("cart")) || [];
-  const cartCountElement = document.querySelector(".cart-count");
-
-  if (cartCountElement) {
-    const totalItems = cart.length;
-    cartCountElement.textContent = totalItems;
-    cartCountElement.style.visibility = totalItems > 0 ? "visible" : "hidden";
-  }
-}

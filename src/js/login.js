@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("password").value = password;
   }
 
+ 
   document
     .getElementById("loginForm")
     .addEventListener("submit", async function (event) {
@@ -23,9 +24,8 @@ document.addEventListener("DOMContentLoaded", function () {
       const loadingSpinner = document.getElementById("loadingSpinner");
 
       loginError.style.display = "none";
-
       signInBtn.disabled = true;
-
+      signInBtn.style.color = "#ddd";
       loadingSpinner.style.display = "inline-block";
 
       try {

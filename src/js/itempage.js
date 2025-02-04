@@ -1,4 +1,5 @@
-import { updateCartCount } from "./cart";
+import { updateCartCount } from "./utils/cart-utils.js";
+
 import { getArticleById, getItemsByModel } from "../service/articleService";
 import "../style/style.css";
 import "../style/shipping.css";
@@ -7,12 +8,10 @@ import {
   getEditionsByModelId,
   getVersionsByModelId,
 } from "../service/smartWatchService";
-import { replaceSymbols } from "./utils/utils";
+import { replaceSymbols } from "./utils/replaceSymbols";
 
 const navBar = document.querySelector(".nav-bar");
 const navBarOffsetTop = navBar.offsetTop;
-
-
 
 window.addEventListener("scroll", () => {
   const currentScroll =
@@ -498,9 +497,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 
   initCarousel();
-
 });
-
 
 function initCarousel() {
   const carouselHorizontal = document.querySelector(".carousel1");

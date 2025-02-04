@@ -263,7 +263,7 @@ module.exports = {
       delete_urls: deleteUrlsObject,
     };
 
-    // console.log("newItemData before saving:", newItemData);
+   
 
     const newItem = await itemRepository.createItem(newItemData); // Сохранение нового элемента
     console.log("newItem", newItem);
