@@ -1,3 +1,5 @@
+
+
 export function checkAuthorization() {
   let userData = sessionStorage.getItem("user") || localStorage.getItem("user");
 
@@ -15,5 +17,7 @@ export function checkAuthorization() {
     }
   } else {
     document.body.classList.remove("hide-content");
+
+
   }
 }

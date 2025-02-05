@@ -1,17 +1,21 @@
 const { Router } = require("express");
 const {
   removeFromCart,
-  clearCart,
   addToCart,
   getCart,
+  updateCartItem,
 } = require("./controller");
 const { protected } = require("../../middlewares/auth");
 
 const router = Router();
 
-router.get("/", getCart);
+router.get("/", protected, getCart);
 
-router.post("/add", addToCart);
+router.post("/add", protected, addToCart);
+
+router.post("/add", protected, addToCart);
+
+router.put("/update", protected, updateCartItem);
 
 router.delete("/remove/:itemId", removeFromCart);
 

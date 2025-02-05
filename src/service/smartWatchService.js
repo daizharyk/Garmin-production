@@ -10,15 +10,14 @@ export async function creatSmartwatchModel(modelName) {
   const smartwatchModels = await postRequest(`${API_URL}/models`, {
     name: modelName,
   });
-  console.log("smartwatchModels", smartwatchModels);
 
   return smartwatchModels;
 }
 
 export async function getModelById(modelId) {
   try {
-    const model = await getRequest(`${API_URL}/models/${modelId}`); // Предполагается эндпоинт API
-    console.log("model", model);
+    const model = await getRequest(`${API_URL}/models/${modelId}`); 
+
 
     return model;
   } catch (error) {

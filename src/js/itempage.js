@@ -9,6 +9,7 @@ import {
   getVersionsByModelId,
 } from "../service/smartWatchService";
 import { replaceSymbols } from "./utils/replaceSymbols";
+import { addToCart } from "../service/cartService.js";
 
 const navBar = document.querySelector(".nav-bar");
 const navBarOffsetTop = navBar.offsetTop;
@@ -40,26 +41,45 @@ document.addEventListener("DOMContentLoaded", async () => {
   loadingContainer.style.display = "flex";
   mainItemContainer.style.display = "none";
 
-  document.querySelector(".add-cart").addEventListener("click", () => {
+  document.querySelector(".add-cart").addEventListener("click", async () => {
     if (!itemId) return;
     try {
       if (!item) {
         console.error("Товар не найден!");
         return;
       }
-      const cart = JSON.parse(localStorage.getItem("cart")) || [];
-      cart.push(item);
 
-      localStorage.setItem("cart", JSON.stringify(cart));
+      const userData = localStorage.getItem("user");
 
-      updateCartCount();
+      if (userData) {
+        try {
+          const response = await addToCart(item._id, 1);
+          console.log("Товар добавлен в корзину на сервере:", response);
 
-      addedCartContainer.style.display = "flex";
-      mainItemContainer.style.display = "none";
-      addedItemName.innerHTML = replaceSymbols(
-        `${item.product_title}, ${item.color}`
-      );
-      document.querySelector(".added-cart-img").src = item.image;
+          updateCartCount();
+          addedCartContainer.style.display = "flex";
+          mainItemContainer.style.display = "none";
+          addedItemName.innerHTML = replaceSymbols(
+            `${item.product_title}, ${item.color}`
+          );
+          document.querySelector(".added-cart-img").src = item.image;
+        } catch (error) {
+          console.error("Ошибка при добавлении товара на сервер:", error);
+        }
+      } else {
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        cart.push(item);
+        localStorage.setItem("cart", JSON.stringify(cart));
+
+        updateCartCount();
+
+        addedCartContainer.style.display = "flex";
+        mainItemContainer.style.display = "none";
+        addedItemName.innerHTML = replaceSymbols(
+          `${item.product_title}, ${item.color}`
+        );
+        document.querySelector(".added-cart-img").src = item.image;
+      }
     } catch (error) {
       console.error("Ошибка при добавлении товара в корзину:", error);
     }

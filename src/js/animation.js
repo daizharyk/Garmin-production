@@ -216,14 +216,13 @@ document.addEventListener("DOMContentLoaded", function () {
       return dropdown.contains(relatedTarget);
     }
   }
-  console.log("lllll");
 
   setupDropdownMenus();
   window.addEventListener("resize", setupDropdownMenus);
 
   const userMenu = document.querySelector(".user-menu");
   const dropdown = document.querySelector(".dropdown-user");
-  console.log("lllll");
+
   if (userMenu && dropdown) {
     let isMobile = window.innerWidth < 768;
     let hoverEnabled = false;

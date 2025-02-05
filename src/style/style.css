@@ -74,7 +74,7 @@
   cursor: pointer;
 }
 .cart {
-  display: none;
+  display: flex;
 
   flex-direction: column;
   align-items: center;
@@ -145,18 +145,18 @@
   background-color: transparent;
   color: #000;
   border: 0;
+  text-decoration: none;
   text-transform: uppercase;
   text-align: center;
   font-weight: 500;
+  border: 1px solid #ccc;
   font-size: 1rem;
   cursor: pointer;
   transition: 0.2s all;
   font-family: "Superscripts-Roboto", "Roboto", "Noto Sans TC", "Noto Sans SC",
     "Noto Sans JP", "Noto Sans KR", "Prompt", sans-serif;
 }
-.continue-shopping:hover {
-  text-decoration: underline;
-}
+
 .cart__info {
   display: flex;
   max-width: 1200px;
@@ -169,6 +169,7 @@
 }
 .cart_info {
   display: flex;
+  margin-right: 15px;
   flex-direction: column;
   height: 100%;
   gap: 10px;
@@ -195,6 +196,11 @@
 }
 
 .cart__quantity:focus {
+  border-radius: 0;
+  outline: none;
+  border: 1px solid #000;
+}
+.cart__quantity:hover {
   border-radius: 0;
   outline: none;
   border: 1px solid #000;
@@ -890,9 +896,10 @@
   top: 0;
   right: 0;
   padding: 5px;
+  scale: 1;
 }
 .remove-item:hover {
-  scale: 1;
+  scale: 1.2;
 }
 .content {
   display: flex;

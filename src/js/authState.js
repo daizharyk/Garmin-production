@@ -1,3 +1,5 @@
+import { syncCartWithServer } from "./utils/syncCartWithServer";
+
 document.addEventListener("DOMContentLoaded", function () {
   const authLink = document.getElementById("authLink");
   const user = sessionStorage.getItem("user") || localStorage.getItem("user");
@@ -5,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (user) {
     authLink.textContent = "Sign Out";
-
+    // syncCartWithServer();
     authLink.setAttribute("href", "#");
 
     authLink.addEventListener("click", function (event) {
