@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const addedCartContainer = document.querySelector(".added-cart-container");
   const mainItemContainer = document.querySelector(".main-item-container");
   const addedItemName = document.getElementById("added-iten-name");
-  const loadingContainer = document.getElementById("loading-container");
+  const loadingContainer = document.getElementById("loading-container-white");
 
   loadingContainer.style.display = "flex";
   mainItemContainer.style.display = "none";

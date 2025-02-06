@@ -14,10 +14,11 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const emptyCartDiv = document.querySelector(".empty-cart");
   const cartDiv = document.querySelector(".cart");
-  const loadingContainer = document.querySelector(".loading-container");
-  const loadingContainerWhite = document.getElementById("loading-container");
+  const loadingContainer = document.querySelector(
+    ".loading-container-transperent"
+  );
+
   const skeletons = document.querySelector(".cart-item.skeletons");
-  console.log("skeletons", skeletons);
 
   function toggleCartDisplay(cartItems) {
     if (!cartItems || cartItems.length === 0) {
@@ -140,7 +141,7 @@ document.addEventListener("DOMContentLoaded", async () => {
               ? { ...cartItem, cartQuantity: newQuantity }
               : cartItem
           );
-           updateCartCount();
+          updateCartCount();
           updateTotalFromDB(fullCartItems);
         });
 
@@ -152,16 +153,21 @@ document.addEventListener("DOMContentLoaded", async () => {
         removeButton.classList.add("remove-item");
         removeButton.innerHTML = "&#10006;";
         removeButton.addEventListener("click", async () => {
-          loadingContainerWhite.style.display = "flex";
+          loadingContainer.style.display = "flex";
           await removeCart(item._id);
           fullCartItems = fullCartItems.filter(
             (cartItem) => cartItem._id !== item._id
           );
 
-          productsContainer.innerHTML = "";
+          skeletons.style.display = "flex";
+          const productItems = productsContainer.querySelectorAll(
+            ".cart-item:not(.skeletons)"
+          );
+          productItems.forEach((item) => item.remove());
+
           updateCartCount();
           await renderCartFromDB(userId);
-          loadingContainerWhite.style.display = "none";
+          loadingContainer.style.display = "none";
         });
 
         divQuantityWrapper.appendChild(quantityTitle);
