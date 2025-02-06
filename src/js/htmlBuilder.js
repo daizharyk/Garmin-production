@@ -75,7 +75,7 @@ function createPaginationButtons(totalItems, currentPage, perPage) {
       pageButton.classList.add("pagination-btn");
 
       if (page === currentPage) {
-        pageButton.classList.add("active"); // Подсветка текущей страницы
+        pageButton.classList.add("active"); 
       }
 
       pageButton.addEventListener("click", () => {

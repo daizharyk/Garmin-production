@@ -6,55 +6,61 @@ import {
 } from "../service/cartService.js";
 import { updateCartCount } from "./utils/cart-utils.js";
 import { replaceSymbols } from "./utils/replaceSymbols";
+import { syncCartWithServer } from "./utils/syncCartWithServer.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const userId = JSON.parse(localStorage.getItem("user"));
 
   const emptyCartDiv = document.querySelector(".empty-cart");
   const cartDiv = document.querySelector(".cart");
   const loadingContainer = document.querySelector(".loading-container");
+  const loadingContainerWhite = document.getElementById("loading-container");
+  const skeletons = document.querySelector(".cart-item.skeletons");
+  console.log("skeletons", skeletons);
 
-  // function toggleCartDisplay(cartItems) {
-  //   if (!cartItems || cartItems.length === 0) {
-  //     emptyCartDiv.style.display = "flex";
-  //     cartDiv.style.display = "none";
-  //   } else {
-  //     emptyCartDiv.style.display = "none";
-  //     cartDiv.style.display = "flex";
-  //   }
-  // }
+  function toggleCartDisplay(cartItems) {
+    if (!cartItems || cartItems.length === 0) {
+      emptyCartDiv.style.display = "flex";
+      cartDiv.style.display = "none";
+    } else {
+      emptyCartDiv.style.display = "none";
+      cartDiv.style.display = "flex";
+    }
+  }
 
-  // toggleCartDisplay(cart);
+  let fullCartItems = [];
+
+  if (userId && userId._id) {
+    renderCartFromDB(userId._id);
+  } else {
+    toggleCartDisplay(cart);
+    renderCart(cart);
+  }
 
   async function renderCartFromDB(userId) {
+    await syncCartWithServer();
     const productsContainer = document.querySelector(".products-container");
-    console.log("productsContainer", productsContainer);
     if (!productsContainer) return;
-
-    productsContainer.innerHTML = "";
 
     try {
       const cartItems = await fetchCart(userId);
-      console.log("cartItems", cartItems);
 
-      // if (cartItems.length === 0) {
-      //   productsContainer.innerHTML = "<p>Ваша корзина пуста</p>";
-      //   return;
-      // }
+      toggleCartDisplay(cartItems);
 
       const productDataPromises = cartItems.map((item) =>
         getArticleById(item.productId)
       );
 
       const productsData = await Promise.all(productDataPromises);
-      console.log("productsData", productsData);
 
-      const fullCartItems = cartItems.map((item, index) => ({
+      fullCartItems = cartItems.map((item) => ({
         ...item,
-        ...productsData[index], // Данные о товаре
+        ...(productsData.find((product) => product._id === item.productId) ||
+          {}),
       }));
 
-      console.log("fullCartItems", fullCartItems);
+      console.log("fullcartItems", fullCartItems);
 
       fullCartItems.forEach((item) => {
         if (!item._id) return;
@@ -118,9 +124,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
         quantitySelector.value = selectedQuantity;
 
-
-        
         quantitySelector.value = item.cartQuantity;
+
         quantitySelector.addEventListener("change", async (e) => {
           const newQuantity = parseInt(e.target.value);
           cartItem.dataset.cartQuantity = newQuantity;
@@ -129,16 +134,12 @@ document.addEventListener("DOMContentLoaded", async () => {
           await updateCartItem(userId, item.productId, newQuantity);
           loadingContainer.style.display = "none";
 
-          const updatedCartItems = fullCartItems.map((cartItem) => {
-            if (cartItem) {
-              return { ...cartItem, cartQuantity: newQuantity }; // Обновляем cartQuantity
-            }
-            return cartItem;
-          });
-
-          console.log("updatedCartItems", updatedCartItems);
-
-          updateTotalFromDB(updatedCartItems, "db");
+          fullCartItems = fullCartItems.map((cartItem) =>
+            cartItem._id === item._id
+              ? { ...cartItem, cartQuantity: newQuantity }
+              : cartItem
+          );
+          updateTotalFromDB(fullCartItems);
         });
 
         const deliveryText = document.createElement("p");
@@ -149,8 +150,16 @@ document.addEventListener("DOMContentLoaded", async () => {
         removeButton.classList.add("remove-item");
         removeButton.innerHTML = "&#10006;";
         removeButton.addEventListener("click", async () => {
+          loadingContainerWhite.style.display = "flex";
           await removeCart(item._id);
-          renderCartFromDB(userId);
+          fullCartItems = fullCartItems.filter(
+            (cartItem) => cartItem._id !== item._id
+          );
+
+          productsContainer.innerHTML = "";
+          updateCartCount();
+          await renderCartFromDB(userId);
+          loadingContainerWhite.style.display = "none";
         });
 
         divQuantityWrapper.appendChild(quantityTitle);
@@ -165,8 +174,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         cartItem.appendChild(removeButton);
         productsContainer.appendChild(cartItem);
       });
-
-      updateTotalFromDB(fullCartItems, "db");
+      skeletons.style.display = "none";
+      updateTotalFromDB(fullCartItems);
     } catch (error) {
       console.error("Ошибка при загрузке корзины из БД:", error);
     }
@@ -177,14 +186,11 @@ document.addEventListener("DOMContentLoaded", async () => {
       (sum, item) => sum + item.price * item.cartQuantity,
       0
     );
-console.log("total",total);
 
     document.getElementById("subtotal").textContent =
-      `$${total.toFixed(2)} USD`; // Субтотал
+      `$${total.toFixed(2)} USD`;
     document.getElementById("total").textContent = `$${total.toFixed(2)} USD`; // Общая сумма
   }
-
-  renderCartFromDB("67692aeb7d40e63f38dc29a9");
 
   if (cart.length === 0) return;
 
@@ -347,6 +353,4 @@ console.log("total",total);
       `$${total.toFixed(2)} USD`;
     document.getElementById("total").textContent = `$${total.toFixed(2)} USD`;
   }
-
-  // renderCart(cart);
 });

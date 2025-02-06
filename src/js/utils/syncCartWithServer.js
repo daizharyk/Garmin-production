@@ -9,7 +9,7 @@ export async function syncCartWithServer() {
         await addToCart(item._id);
       }
 
-    //   localStorage.removeItem("cart");
+      localStorage.removeItem("cart");
 
       console.log("Корзина синхронизирована с сервером.");
     } catch (error) {

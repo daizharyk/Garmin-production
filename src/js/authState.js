@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (user) {
     authLink.textContent = "Sign Out";
-    // syncCartWithServer();
+    syncCartWithServer();
     authLink.setAttribute("href", "#");
 
     authLink.addEventListener("click", function (event) {
