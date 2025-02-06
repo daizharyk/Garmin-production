@@ -1,4 +1,5 @@
 import { addToCart } from "../../service/cartService";
+import { updateCartCount } from "./cart-utils";
 
 export async function syncCartWithServer() {
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -7,6 +8,7 @@ export async function syncCartWithServer() {
     try {
       for (let item of cart) {
         await addToCart(item._id);
+        await updateCartCount();
       }
 
       localStorage.removeItem("cart");

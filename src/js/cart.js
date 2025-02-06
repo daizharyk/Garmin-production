@@ -40,6 +40,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   async function renderCartFromDB(userId) {
     await syncCartWithServer();
+
     const productsContainer = document.querySelector(".products-container");
     if (!productsContainer) return;
 
@@ -139,6 +140,7 @@ document.addEventListener("DOMContentLoaded", async () => {
               ? { ...cartItem, cartQuantity: newQuantity }
               : cartItem
           );
+           updateCartCount();
           updateTotalFromDB(fullCartItems);
         });
 

@@ -2,6 +2,7 @@ import "../style/style.css";
 import "../style/shipping.css";
 import "../style/itempage.css";
 import { replaceSymbols } from "./utils/replaceSymbols";
+import { getAllArticles } from "../service/articleService";
 
 export function createCards(data, page = 1, perPage = 9) {
   const container = document.getElementById("cards-container");
@@ -67,6 +68,7 @@ function createPaginationButtons(totalItems, currentPage, perPage) {
 
   paginationContainer.innerHTML = "";
   const totalPages = Math.ceil(totalItems / perPage);
+  console.log("totalPages", totalPages);
 
   if (totalPages > 1) {
     for (let page = 1; page <= totalPages; page++) {
@@ -75,7 +77,7 @@ function createPaginationButtons(totalItems, currentPage, perPage) {
       pageButton.classList.add("pagination-btn");
 
       if (page === currentPage) {
-        pageButton.classList.add("active"); 
+        pageButton.classList.add("active");
       }
 
       pageButton.addEventListener("click", () => {
@@ -92,6 +94,24 @@ function updatePage(page) {
   urlParams.set("page", page);
   window.location.search = urlParams.toString();
 }
+
+document.addEventListener("DOMContentLoaded", async () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  let currentPage = parseInt(urlParams.get("page")) || 1; 
+  const perPage = 9; // Количество товаров на странице
+
+  const allArticles = await getAllArticles(); 
+
+  const totalItems = allArticles.length;
+  const startIndex = (currentPage - 1) * perPage;
+  const endIndex = startIndex + perPage;
+
+  const paginatedArticles = allArticles.slice(startIndex, endIndex); // Получаем товары для текущей страницы
+
+
+  createCards(paginatedArticles, currentPage, perPage); // Отображаем товары на странице
+  createPaginationButtons(totalItems, currentPage, perPage); // Создаём кнопки пагинации
+});
 
 export function scrollToItems() {
   let shopall = document.getElementById("shopall");
