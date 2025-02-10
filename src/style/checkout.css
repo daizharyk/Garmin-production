@@ -230,3 +230,26 @@ select {
   line-height: 1.6;
   font-size: 0.9rem;
 }
+@media (max-width: 850px) {
+  .checkoutContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .delivery-info-form {
+    justify-content: center;
+    align-items: center;
+  }
+  .order-form {
+    width: 100%;
+    max-width: none;
+  }
+  .order-container {
+    width: 100%;
+  }
+  .order-summary {
+    width: 100%;
+    padding: 0 20px;
+  }
+}
