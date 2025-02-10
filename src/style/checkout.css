@@ -252,4 +252,10 @@ select {
     width: 100%;
     padding: 0 20px;
   }
+  .order-cart {
+    padding: 0;
+  }
+  .order-summary-total {
+    margin-bottom: 10px;
+  }
 }
