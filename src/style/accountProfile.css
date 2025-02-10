@@ -384,12 +384,14 @@ h2 {
 }
 
 .error-message {
-  color: red;
+  color: rgb(146, 0, 0);
+  margin-top: 16px;
   font-size: 12px;
   display: none;
 }
 
 input:invalid + .error-message {
+
   display: block;
 }
 
@@ -397,7 +399,6 @@ input:invalid + .error-message {
   display: flex;
   gap: 10px;
 }
-
 
 .save-btn,
 .cancel-btn {
@@ -413,8 +414,6 @@ input:invalid + .error-message {
   font-family: "Roboto", "Noto Sans TC", "Noto Sans SC", "Noto Sans JP",
     "Noto Sans KR", "Prompt", sans-serif;
 }
-
-
 
 .save-btn {
   display: flex;
@@ -497,7 +496,6 @@ input:invalid + .error-message {
   color: #333333;
 }
 .skeleton {
-  
   background-color: #e0e0e0;
   border-radius: 4px;
   height: 16px;

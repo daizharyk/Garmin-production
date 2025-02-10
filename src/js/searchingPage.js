@@ -1,11 +1,7 @@
 import { getAllArticles } from "../service/articleService";
-import { createCards } from "./htmlBuilder";
+import { replaceSymbols } from "./utils/replaceSymbols";
 
 document.addEventListener("DOMContentLoaded", async () => {
-  const currentPage = window.location.pathname;
-  console.log(currentPage);
-  
-
   const searchInputt = document.getElementById("searchPageInput");
   const clearButton = document.getElementById("clearSearch");
   const noResultsMessage = document.getElementById("noResultsMessage");
@@ -27,6 +23,53 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   }
 
+  function createCards(data) {
+    const container = document.getElementById("cards-container");
+
+    if (!container) return;
+
+    container.innerHTML = "";
+ 
+ 
+
+    data.forEach((item) => {
+      const link = document.createElement("a");
+      link.href = `/pages/itempage.html?id=${item._id}`;
+      link.classList.add("card-link");
+
+      const cardImg = document.createElement("div");
+      cardImg.classList.add("item-card-img");
+      const img = document.createElement("img");
+      img.src = item.image;
+      img.alt = item.name;
+      cardImg.appendChild(img);
+
+      const cardDesc = document.createElement("figcaption");
+      cardDesc.classList.add("product-card-description");
+      const title = document.createElement("h2");
+
+      let titleText = item.name;
+      titleText = replaceSymbols(`${titleText}`);
+      title.innerHTML = titleText;
+
+      const description = document.createElement("p");
+      description.classList.add("product-description");
+      description.textContent = item.text;
+     
+   
+
+      cardDesc.appendChild(title);
+      cardDesc.appendChild(description);
+  
+
+      link.appendChild(cardImg);
+      link.appendChild(cardDesc);
+
+      container.appendChild(link);
+    });
+
+  }
+
   const allArticles = await getAllArticles();
 
   if (query) {
@@ -45,9 +88,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       if (searchQuery === "") {
         setTimeout(() => {
-          createCards([]); 
+          createCards([]);
           toggleNoResultsMessage("", true);
-        }, 10); 
+        }, 10);
         return;
       }
 

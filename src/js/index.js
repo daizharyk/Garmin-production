@@ -4,6 +4,7 @@ import "../style/style.css";
 import "../style/shipping.css";
 import "../style/itempage.css";
 import "../style/accountProfile.css";
+import "../style/checkout.css";
 
 let originalItems = [];
 

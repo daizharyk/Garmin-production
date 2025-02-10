@@ -4,17 +4,23 @@ import "../style/itempage.css";
 import { replaceSymbols } from "./utils/replaceSymbols";
 import { getAllArticles } from "../service/articleService";
 
+let currentPage = 1;
+const perPage = 9;
+const allArticles = await getAllArticles();
+
 export function createCards(data, page = 1, perPage = 9) {
   const container = document.getElementById("cards-container");
 
-  if (!container) {
-    return;
-  }
+  if (!container) return;
+
   container.innerHTML = "";
   const isSearchPage = window.location.pathname.includes("searchingpage");
 
   const startIndex = (page - 1) * perPage;
+  console.log(startIndex);
+
   const endIndex = startIndex + perPage;
+  console.log(endIndex);
 
   const paginatedData = data.slice(startIndex, endIndex);
 
@@ -68,7 +74,6 @@ function createPaginationButtons(totalItems, currentPage, perPage) {
 
   paginationContainer.innerHTML = "";
   const totalPages = Math.ceil(totalItems / perPage);
-  console.log("totalPages", totalPages);
 
   if (totalPages > 1) {
     for (let page = 1; page <= totalPages; page++) {
@@ -81,37 +86,15 @@ function createPaginationButtons(totalItems, currentPage, perPage) {
       }
 
       pageButton.addEventListener("click", () => {
-        updatePage(page);
+        currentPage = page;
+        createCards(allArticles, currentPage, perPage);
       });
 
       paginationContainer.appendChild(pageButton);
     }
   }
 }
-
-function updatePage(page) {
-  const urlParams = new URLSearchParams(window.location.search);
-  urlParams.set("page", page);
-  window.location.search = urlParams.toString();
-}
-
-document.addEventListener("DOMContentLoaded", async () => {
-  const urlParams = new URLSearchParams(window.location.search);
-  let currentPage = parseInt(urlParams.get("page")) || 1; 
-  const perPage = 9; // Количество товаров на странице
-
-  const allArticles = await getAllArticles(); 
-
-  const totalItems = allArticles.length;
-  const startIndex = (currentPage - 1) * perPage;
-  const endIndex = startIndex + perPage;
-
-  const paginatedArticles = allArticles.slice(startIndex, endIndex); // Получаем товары для текущей страницы
-
-
-  createCards(paginatedArticles, currentPage, perPage); // Отображаем товары на странице
-  createPaginationButtons(totalItems, currentPage, perPage); // Создаём кнопки пагинации
-});
+createCards(allArticles, currentPage, perPage);
 
 export function scrollToItems() {
   let shopall = document.getElementById("shopall");

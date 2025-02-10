@@ -126,6 +126,8 @@
   margin: 20px 0 0 0;
   padding: 14px;
   background-color: #6dcff6;
+  text-decoration: none;
+  text-align: center;
   color: #000;
   border: 0;
   text-transform: uppercase;
@@ -188,6 +190,7 @@
     "Noto Sans JP", "Noto Sans KR", "Prompt", sans-serifF;
 }
 .cart__quantity {
+  max-width: 100px;
   padding: 14px 48px 14px 14px;
   border-radius: 0;
   cursor: pointer;
@@ -541,11 +544,7 @@
   font-weight: bold;
 }
 
-.new-cards-container {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
+
 
 .freeground {
   display: block;
@@ -616,9 +615,7 @@
   outline: none;
   border-radius: 0;
 }
-.cart-item.skeletons {
-  width: 600px;
-}
+
 .skeletons {
   background: linear-gradient(90deg, #eee 25%, #ddd 50%, #eee 75%);
   background-size: 200% 100%;
@@ -1286,7 +1283,7 @@
     Prompt,
     sans-serif;
   margin-bottom: 0.9rem;
-  font-size: 0.8rem;
+  font-size: 1rem;
 }
 
 .product-card-description h2 {
@@ -1301,7 +1298,7 @@
 }
 .searching-page .product-card-description h2 {
   font-family: "Oswald";
-  font-size: 0.9rem;
+  font-size: 1.1rem;
   font-weight: 500;
   letter-spacing: 0.05rem;
   line-height: 1.25;
@@ -1822,9 +1819,7 @@ footer {
     letter-spacing: 0.05rem;
   }
 
-  .new-cards-container {
-    display: none;
-  }
+  
 
   .sub-menu li {
     font-family: "Roboto", sans-serif;

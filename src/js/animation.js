@@ -226,6 +226,7 @@ document.addEventListener("DOMContentLoaded", function () {
   if (userMenu && dropdown) {
     let isMobile = window.innerWidth < 768;
     let hoverEnabled = false;
+    let resizeEnabled = !isMobile;
 
     const toggleDropdown = (show) => {
       dropdown.classList.toggle("show", show);
@@ -250,9 +251,15 @@ document.addEventListener("DOMContentLoaded", function () {
         // Мобилка: добавляем клик
         userMenu.addEventListener("click", handleClick);
       }
+      if (isMobile) {
+        resizeEnabled = false;
+        window.removeEventListener("resize", updateInteractionMode);
+      } else if (!resizeEnabled) {
+        resizeEnabled = true;
+        window.addEventListener("resize", updateInteractionMode);
+      }
     };
 
-    // Обработчик клика
     const handleClick = (e) => {
       e.stopPropagation();
       toggleDropdown(!dropdown.classList.contains("show"));
@@ -269,19 +276,24 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     updateInteractionMode();
-    window.addEventListener("resize", updateInteractionMode);
+    if (!isMobile) {
+      window.addEventListener("resize", updateInteractionMode);
+    }
   }
 
   const burgerButton = document.getElementById("burgerButton");
   const navMenu = document.getElementById("navMenu");
 
   if (burgerButton && navMenu) {
+    let resizeEnabled = window.innerWidth >= 1100;
+
     burgerButton.addEventListener("click", function () {
       this.classList.toggle("active");
       navMenu.style.display =
         navMenu.style.display === "block" ? "none" : "block";
     });
-    function handleResize4() {
+
+    function handleResize() {
       const windowWidth = window.innerWidth;
 
       if (windowWidth >= 1100) {
@@ -289,10 +301,21 @@ document.addEventListener("DOMContentLoaded", function () {
           burgerButton.classList.remove("active");
           navMenu.style.display = "";
         }
+        if (!resizeEnabled) {
+          resizeEnabled = true;
+          window.addEventListener("resize", handleResize);
+        }
+      } else if (resizeEnabled) {
+        resizeEnabled = false;
+        window.removeEventListener("resize", handleResize);
       }
     }
-    window.addEventListener("resize", handleResize4);
-    handleResize4();
+
+    handleResize();
+
+    if (resizeEnabled) {
+      window.addEventListener("resize", handleResize);
+    }
   }
 
   function setupDropdowns() {
@@ -368,24 +391,33 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   setupDropdown();
   function handleResize() {
-    const windowWidth = window.innerWidth;
+    if (window.innerWidth < 1100) return;
 
-    if (windowWidth >= 1100) {
-      resetSubMenus();
+    resetSubMenus();
 
-      document.querySelectorAll(".dropdown-container").forEach((container) => {
-        const title = container.querySelector(".column-title");
-        if (title) {
-          const newContainer = container.cloneNode(true);
-          container.parentNode.replaceChild(newContainer, container);
-        }
-      });
-    } else {
-      setupDropdown();
-    }
+    document.querySelectorAll(".dropdown-container").forEach((container) => {
+      const title = container.querySelector(".column-title");
+      if (title) {
+        const newContainer = container.cloneNode(true);
+        container.parentNode.replaceChild(newContainer, container);
+      }
+    });
+  }
+  let resizeEnabled = window.innerWidth >= 1100;
+
+  if (resizeEnabled) {
+    window.addEventListener("resize", handleResize);
   }
 
-  window.addEventListener("resize", handleResize);
+  window.addEventListener("resize", function () {
+    if (window.innerWidth < 500 && resizeEnabled) {
+      resizeEnabled = false;
+      window.removeEventListener("resize", handleResize);
+    } else if (window.innerWidth >= 1100 && !resizeEnabled) {
+      resizeEnabled = true;
+      window.addEventListener("resize", handleResize);
+    }
+  });
 
   function taggleSing() {
     const titles = document.querySelectorAll(".nav-item, .column-title");
@@ -435,7 +467,9 @@ document.addEventListener("DOMContentLoaded", function () {
   taggleSing();
 
   window.addEventListener("resize", function () {
-    resetActiveClasses();
+    if (window.innerWidth >= 1100) {
+      resetActiveClasses();
+    }
   });
   const cartIcon = document.getElementById("cartIcon");
 

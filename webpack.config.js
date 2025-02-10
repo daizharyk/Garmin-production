@@ -24,6 +24,7 @@ module.exports = {
     resetPassword: path.resolve(__dirname, "src/js/reset-password.js"),
     searchingpage: path.resolve(__dirname, "src/js/searchingPage.js"),
     cart: path.resolve(__dirname, "src/js/cart.js"),
+    checkout: path.resolve(__dirname, "src/js/checkout.js"),
   },
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -201,6 +202,18 @@ module.exports = {
       filename: "pages/cart.html",
       template: "src/pages/cart.html",
       chunks: ["animation", "main", "cart", "authState"],
+      templateParameters: {
+        footer: fs.readFileSync(
+          path.resolve(__dirname, "src/pages/components/footer.html"),
+          "utf-8"
+        ),
+      },
+    }),
+    new HtmlWebpackPlugin({
+      title: "Checkout",
+      filename: "pages/checkout.html",
+      template: "src/pages/checkout.html",
+      chunks: ["main", "checkout"],
       templateParameters: {
         footer: fs.readFileSync(
           path.resolve(__dirname, "src/pages/components/footer.html"),
