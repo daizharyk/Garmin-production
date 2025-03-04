@@ -9,7 +9,12 @@ const api = require("./api/routes");
 const { auth } = require("./middlewares/auth");
 const cors = require("cors");
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://your-netlify-site.netlify.app", // замени на реальный URL Netlify
+    credentials: true, // если работаешь с авторизацией и куками
+  })
+);
 
 app.use(express.json());
 
@@ -22,4 +27,3 @@ app.use(errorHandler);
 app.listen(PORT, () => {
   console.log(`Server started on ${PORT}`);
 });
-
