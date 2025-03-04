@@ -11,10 +11,11 @@ const cors = require("cors");
 
 app.use(
   cors({
-    origin: "https://garmin-d.netlify.app",
+    origin: ["https://garmin-d.netlify.app", "https://garmin-adm.netlify.app"],
     credentials: true, // если используешь авторизацию и куки
   })
 );
+
 
 
 app.use(express.json());
