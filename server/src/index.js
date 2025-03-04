@@ -9,14 +9,7 @@ const api = require("./api/routes");
 const { auth } = require("./middlewares/auth");
 const cors = require("cors");
 
-app.use(
-  cors({
-    origin: ["https://garmin-d.netlify.app", "https://garmin-adm.netlify.app"],
-    credentials: true, // если используешь авторизацию и куки
-  })
-);
-
-
+app.use(cors());
 
 app.use(express.json());
 
@@ -29,3 +22,4 @@ app.use(errorHandler);
 app.listen(PORT, () => {
   console.log(`Server started on ${PORT}`);
 });
+
